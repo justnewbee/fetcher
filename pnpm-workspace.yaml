@@ -1,0 +1,11 @@
+packages:
+  - "packages-*/*"
+trustLockfile: true
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+  core-js: false
+  esbuild: false
+  nx: false
+  unrs-resolver: false
+minimumReleaseAge: 10

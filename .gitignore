@@ -1,0 +1,27 @@
+# common
+.*
+!.*ignore
+!.*.yaml
+!.*rc
+!.*rc.*
+!.husky
+!.storybook
+*.log*
+
+# dev
+
+**/node_modules
+
+# lock
+
+*.lock
+*-lock.json
+**/*.lock
+**/*-lock.json
+**/*-lock.yaml
+!pnpm-lock.yaml
+
+# build
+
+**/dist/
+**/coverage/

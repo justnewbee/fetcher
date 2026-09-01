@@ -1,0 +1,19 @@
+ignores: [
+  "eslint-*",
+  "stylelint",
+  "stylelint-*",
+  "ts-node",
+  "lerna",
+  "rimraf",
+  "@babel/*",
+  "@storybook/*",
+  "@commitlint/*",
+  "markdownlint-cli2",
+  "@kcuf/*-config",
+  "@chromatic-com/storybook",
+  "@vitest/coverage-v8"
+]
+ignorePatterns: [
+  "build",
+  "dist"
+]
