@@ -1,11 +1,13 @@
 import {
-  TFetcherHeaders,
+  FetcherHeaders,
+  mergeHeaders
+} from '@fetchx/fetcher-helper-headers';
+
+import {
   IFetcherConfig
 } from '../types';
 
-import mergeHeaders from './merge-headers';
-
-export default function mergeConfigHeaders(config: IFetcherConfig, headers?: TFetcherHeaders): void {
+export default function mergeConfigHeaders(config: IFetcherConfig, headers?: FetcherHeaders): void {
   if (!headers) {
     return;
   }

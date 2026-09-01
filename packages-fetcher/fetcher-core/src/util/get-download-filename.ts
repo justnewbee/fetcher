@@ -1,11 +1,13 @@
 import {
+  isInstanceofHeaders,
+  headersNormalize,
+  headersGet
+} from '@fetchx/fetcher-helper-headers';
+
+import {
   IFetcherConfig,
   IFetcherResponse
 } from '../types';
-
-import isInstanceofHeaders from './is-instanceof-headers';
-import headersNormalize from './headers-normalize';
-import headersGet from './headers-get';
 
 export default function getDownloadFilename(config: IFetcherConfig, fetcherResponse?: IFetcherResponse): string {
   if (config.downloadName) {

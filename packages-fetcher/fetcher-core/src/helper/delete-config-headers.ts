@@ -1,9 +1,10 @@
 import {
+  isInstanceofHeaders
+} from '@fetchx/fetcher-helper-headers';
+
+import {
   IFetcherConfig
 } from '../types';
-import {
-  isInstanceofHeaders
-} from '../util';
 
 /**
  * Fetcher 遵循传入值的优先级高于拦截器注入，因此在利用 headers 进行登录判断的情况下，

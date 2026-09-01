@@ -11,7 +11,7 @@ import fetchMock from 'fetch-mock';
 
 import {
   createFetcher
-} from '@kcuf/fetcher';
+} from '@fetchx/fetcher';
 
 import intercept from '../src';
 

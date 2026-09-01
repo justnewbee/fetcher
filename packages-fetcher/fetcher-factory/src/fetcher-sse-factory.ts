@@ -1,10 +1,10 @@
 import {
   buildUrl
-} from '@kcuf/fetcher';
+} from '@fetchx/fetcher';
 import fetchSse, {
   FetchSseOptions,
   FetchSseResult
-} from '@kcuf/fetch-sse';
+} from '@fetchx/fetch-sse';
 
 import {
   IFetcherSseFactoryOptions

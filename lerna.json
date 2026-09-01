@@ -3,7 +3,8 @@
   "version": "independent",
   "npmClient": "pnpm",
   "allowBranch": [
-    "lerna/pub"
+    "main",
+    "pub"
   ],
   "message": "chore: 🧊 lerna version",
   "command": {

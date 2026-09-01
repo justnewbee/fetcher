@@ -67,6 +67,6 @@ describe('interceptor request', () => {
     expect(fetchMock.callHistory.calls().length).toBe(0);
     
     eject();
-    expect(myFetcher.post(API_POST.url)).resolves.toEqual(API_POST.result);
+    void expect(myFetcher.post(API_POST.url)).resolves.toEqual(API_POST.result);
   });
 });

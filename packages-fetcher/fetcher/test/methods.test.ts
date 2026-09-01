@@ -29,8 +29,8 @@ describe('methods', () => {
   beforeEach(setupFetchMock);
   
   test('standard', () => {
-    expect(fetcher.get(API_GET.url)).resolves.toEqual(API_GET.result);
-    expect(fetcher.post(API_POST.url, {
+    void expect(fetcher.get(API_GET.url)).resolves.toEqual(API_GET.result);
+    void expect(fetcher.post(API_POST.url, {
       str: 'a string',
       num: 1234,
       boo: true,
@@ -38,9 +38,9 @@ describe('methods', () => {
         right: 'x'
       }]
     })).resolves.toEqual(API_POST.result);
-    expect(fetcher.put(API_PUT.url)).resolves.toEqual(API_PUT.result);
-    expect(fetcher.patch(API_PATCH.url)).resolves.toEqual(API_PATCH.result);
-    expect(fetcher.delete(API_DELETE.url)).resolves.toEqual(API_DELETE.result);
+    void expect(fetcher.put(API_PUT.url)).resolves.toEqual(API_PUT.result);
+    void expect(fetcher.patch(API_PATCH.url)).resolves.toEqual(API_PATCH.result);
+    void expect(fetcher.delete(API_DELETE.url)).resolves.toEqual(API_DELETE.result);
   });
   
   test('jsonp', async () => {

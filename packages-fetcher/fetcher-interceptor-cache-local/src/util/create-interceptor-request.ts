@@ -3,7 +3,7 @@ import {
   FetcherInterceptRequestReturn,
   createFetcherErrorSkipNetwork,
   cloneResponseData
-} from '@kcuf/fetcher-core';
+} from '@fetchx/fetcher-core';
 
 import {
   IFetcherConfigAugmentedCacheLocal

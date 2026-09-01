@@ -1,14 +1,14 @@
 import {
+  TErrorNameNormalizer,
   TInterceptorEject,
+  IInterceptorQueueItemRequest,
+  IInterceptorQueueItemResponse,
   IFetcherClass,
   IFetcherConfig,
   IFetcherConfigDefault,
   IFetcherError,
   IFetcherErrorSkipNetwork,
   IFetcherResponse,
-  IInterceptorQueueItemRequest,
-  IInterceptorQueueItemResponse,
-  TErrorNameNormalizer,
   TFetcherAdapter,
   TFetcherInterceptRequest,
   TFetcherInterceptResponseFulfilled,
@@ -48,9 +48,7 @@ export default class FetcherCore implements IFetcherClass {
   
   private readonly interceptorQueueResponse: IInterceptorQueueItemResponse[] = [];
   
-  private interceptorRequestSealed = false;
-  
-  private interceptorResponseSealed = false;
+  private frozen = false;
   
   /**
    * 传递给 Interceptor，在 Interceptor 内部有需要可以重新请求
@@ -156,8 +154,8 @@ export default class FetcherCore implements IFetcherClass {
   }
   
   interceptRequest(onFulfilled: TFetcherInterceptRequest, priority?: number): TInterceptorEject {
-    if (this.interceptorRequestSealed) {
-      throw new Error('[Fetcher#interceptRequest] Interceptor request is sealed. You need to unseal it first.');
+    if (this.frozen) {
+      throw new Error('[Fetcher#interceptRequest] This fetcher instance is frozen, cannot add more interceptors.');
     }
     
     return queueInterceptor<IInterceptorQueueItemRequest>(this.interceptorQueueRequest, {
@@ -170,8 +168,8 @@ export default class FetcherCore implements IFetcherClass {
    * 添加「预设」响应拦截器，返回解除拦截的无参方法
    */
   interceptResponse(onFulfilled?: TFetcherInterceptResponseFulfilled, onRejected?: TFetcherInterceptResponseRejected, priority?: number): TInterceptorEject {
-    if (this.interceptorResponseSealed) {
-      throw new Error('[Fetcher#interceptResponse] Interceptor response is sealed. You need to unseal it first.');
+    if (this.frozen) {
+      throw new Error('[Fetcher#interceptResponse] This fetcher instance is frozen, cannot add more interceptors.');
     }
     
     return queueInterceptor<IInterceptorQueueItemResponse>(this.interceptorQueueResponse, {
@@ -182,11 +180,10 @@ export default class FetcherCore implements IFetcherClass {
   }
   
   /**
-   * 对于「开箱即用」的 Fetcher 实例，由于是会被复用的单例，一般不希望它的拦截器被扩展，如果还是坚持要扩展，需要手动解除
+   * 对于「开箱即用」的 Fetcher 实例，由于是会被复用的单例，一般不希望它被扩展和修改，此操作不可逆
    */
-  sealInterceptors(requestSealed = true, responseSealed = true): void {
-    this.interceptorRequestSealed = requestSealed;
-    this.interceptorResponseSealed = responseSealed;
+  freeze(): void {
+    this.frozen = true;
   }
   
   /**
@@ -209,7 +206,7 @@ export default class FetcherCore implements IFetcherClass {
         return (error as IFetcherErrorSkipNetwork<T>).result; // 直接返回结果
       }
       
-      throw error; // 继续错下去，但不会进入请求环节
+      throw error; // 继续错下去，不会进入请求环节
     }
     
     // 2. 网络请求

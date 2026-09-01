@@ -1,6 +1,6 @@
 {
-  "name": "@kcuf/fetcher-interceptor-headers",
-  "version": "0.1.4",
+  "name": "@fetchx/fetcher-interceptor-headers",
+  "version": "0.1.0",
   "description": "Fetcher interceptor that adds headers.",
   "keywords": [],
   "license": "MIT",
@@ -10,10 +10,10 @@
   "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justnewbee/kcuf-fetcher.git"
+    "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/kcuf-fetcher/tree/main/packages-fetcher/fetcher-interceptor-headers",
-  "bugs": "https://github.com/justnewbee/kcuf-fetcher/issues",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-fetcher/fetcher-interceptor-headers",
+  "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -35,7 +35,8 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@kcuf/fetcher-core": "workspace:^"
+    "@fetchx/fetcher-core": "workspace:^",
+    "@fetchx/fetcher-helper-headers": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",
@@ -44,8 +45,6 @@
     "build:types": "tsc -rootDir src --outDir dist/types --declaration --noEmit false --emitDeclarationOnly --isolatedModules false",
     "build": "pnpm build:esm && pnpm build:cjs && pnpm build:types",
     "watch": "pnpm build:esm -w",
-    "test": "vitest",
-    "test:cov": "vitest --coverage --coverage.include=src",
     "prepublishOnly": "pnpm build:clean && pnpm build"
   }
 }

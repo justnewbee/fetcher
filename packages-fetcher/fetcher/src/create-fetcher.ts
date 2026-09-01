@@ -1,6 +1,6 @@
-import factory from '@kcuf/fetcher-core';
-import fetcherTransportWeb, {
+import factory from '@fetchx/fetcher-core';
+import fetcherAdapterWeb, {
   normalizeErrorName
-} from '@kcuf/fetcher-transport-web';
+} from '@fetchx/fetcher-adapter-web';
 
-export default factory(fetcherTransportWeb, normalizeErrorName);
+export default factory(fetcherAdapterWeb, normalizeErrorName);

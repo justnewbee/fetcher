@@ -11,10 +11,10 @@ import fetchMock from 'fetch-mock';
 
 import {
   createFetcher
-} from '@kcuf/fetcher';
+} from '@fetchx/fetcher';
 import {
   SlsPostBody
-} from '@kcuf/sls-logger-web';
+} from '@fetchx/sls-logger-web';
 
 import intercept from '../src';
 
@@ -35,7 +35,7 @@ function sleep(time: number): Promise<void> {
 }
 
 function getLastCallBody(): SlsPostBody {
-  return JSON.parse(fetchMock.callHistory.lastCall()?.options.body as string || '');
+  return JSON.parse(fetchMock.callHistory.lastCall()?.options.body as string || '') as SlsPostBody;
 }
 
 describe('fetcherInterceptorSls', () => {

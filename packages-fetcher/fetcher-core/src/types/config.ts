@@ -1,10 +1,11 @@
 import {
+  FetcherHeaders
+} from '@fetchx/fetcher-helper-headers';
+
+import {
   EFetcherResponseType
 } from '../enum';
 
-import {
-  TFetcherHeaders
-} from './config-headers';
 import {
   TFetcherParams,
   IFetcherParamsSerializeOptions
@@ -77,7 +78,7 @@ export interface IFetcherConfig {
   /**
    * 请求头
    */
-  headers?: TFetcherHeaders;
+  headers?: FetcherHeaders;
   /**
    * 如果传入的 `params` 是对象，用 `qs` 来序列化它的参数
    */

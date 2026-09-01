@@ -1,6 +1,6 @@
 {
-  "name": "@kcuf/fetcher-interceptor-delay",
-  "version": "0.3.8",
+  "name": "@fetchx/fetcher-interceptor-delay",
+  "version": "0.1.0",
   "description": "Fetcher interceptor that delays the request for testing purpose.",
   "keywords": [],
   "license": "MIT",
@@ -10,10 +10,10 @@
   "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justnewbee/kcuf-fetcher.git"
+    "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/kcuf-fetcher/tree/main/packages-fetcher/fetcher-interceptor-delay",
-  "bugs": "https://github.com/justnewbee/kcuf-fetcher/issues",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-fetcher/fetcher-interceptor-delay",
+  "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -35,7 +35,7 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@kcuf/fetcher-core": "workspace:^"
+    "@fetchx/fetcher-core": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",
@@ -44,8 +44,6 @@
     "build:types": "tsc -rootDir src --outDir dist/types --declaration --noEmit false --emitDeclarationOnly --isolatedModules false",
     "build": "pnpm build:esm && pnpm build:cjs && pnpm build:types",
     "watch": "pnpm build:esm -w",
-    "test": "vitest",
-    "test:cov": "vitest --coverage --coverage.include=src",
     "prepublishOnly": "pnpm build:clean && pnpm build"
   }
 }

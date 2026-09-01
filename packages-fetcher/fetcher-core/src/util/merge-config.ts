@@ -1,9 +1,12 @@
 import _forEach from 'lodash/forEach';
 
 import {
+  FetcherHeaders
+} from '@fetchx/fetcher-helper-headers';
+
+import {
   IFetcherConfig,
   TFetcherBody,
-  TFetcherHeaders,
   TFetcherParams
 } from '../types';
 
@@ -25,7 +28,7 @@ export default function mergeConfig(config1: IFetcherConfig | undefined, config2
       
       switch (k as keyof IFetcherConfig) {
       case 'headers': // headers 合并
-        mergeConfigHeaders(merged, v as TFetcherHeaders);
+        mergeConfigHeaders(merged, v as FetcherHeaders);
         
         break;
       case 'params': // 参数合并

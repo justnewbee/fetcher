@@ -1,10 +1,9 @@
 import {
   Fetcher,
   createFetcher
-} from '@kcuf/fetcher';
-import interceptBiz from '@kcuf/fetcher-interceptor-biz';
-import interceptCacheLocal from '@kcuf/fetcher-interceptor-cache-local';
-// import interceptMerging from '@kcuf/fetcher-interceptor-merging';
+} from '@fetchx/fetcher';
+import interceptBiz from '@fetchx/fetcher-interceptor-biz';
+import interceptCacheLocal from '@fetchx/fetcher-interceptor-cache-local';
 
 import {
   IFetcherConfigX,
@@ -15,6 +14,7 @@ import fetcherSetup from './fetcher-setup';
 export default function fetcherFactory({
   urlBase,
   getHeaders,
+  interceptorMergingOptions,
   interceptorBizOptions,
   interceptorSlsOptions,
   interceptorLoginOptions
@@ -28,10 +28,10 @@ export default function fetcherFactory({
   
   interceptBiz(fetcher, interceptorBizOptions);
   interceptCacheLocal(fetcher);
-  // interceptMerging(fetcher); // FIXME 暂时不能用，会跟 interceptor-login 冲突
   
   fetcherSetup(fetcher, {
     getHeaders,
+    interceptorMergingOptions,
     interceptorSlsOptions,
     interceptorLoginOptions
   }, false);

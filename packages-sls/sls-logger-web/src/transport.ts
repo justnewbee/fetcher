@@ -1,4 +1,4 @@
-import fetcherFetch from '@kcuf/fetcher-fetch';
+import fetcherFetch from '@fetchx/fetcher-fetch';
 
 export default function transport(trackUrl: string, body: string, headers: Record<string, string>): void {
   fetcherFetch(trackUrl, {

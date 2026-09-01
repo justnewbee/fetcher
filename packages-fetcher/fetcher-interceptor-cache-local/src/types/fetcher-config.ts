@@ -1,6 +1,6 @@
 import {
   FetcherConfig
-} from '@kcuf/fetcher-core';
+} from '@fetchx/fetcher-core';
 
 import {
   ICacheLocal

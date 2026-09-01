@@ -1,4 +1,4 @@
-# @kcuf/fetcher-interceptor-login
+# @fetchx/fetcher-interceptor-login
 
 无感登录是很常见的需求。
 
@@ -11,7 +11,7 @@
 ## 使用
 
 ```ts
-import interceptLogin from '@kcuf/fetcher-interceptor-login';
+import interceptLogin from '@fetchx/fetcher-interceptor-login';
 
 import needLogin from './need-login';
 import doLogin from './do-login';

@@ -3,7 +3,7 @@ import {
   TIsSuccess
 } from '../types';
 
-export default function isResponseSuccess(o: TResponseResult, checker?: TIsSuccess): boolean {
+export default function isResponseSuccess(o: TResponseResult, code: string, checker: TIsSuccess = '200'): boolean {
   if (typeof checker === 'boolean') {
     return checker;
   }
@@ -12,5 +12,5 @@ export default function isResponseSuccess(o: TResponseResult, checker?: TIsSucce
     return checker(o);
   }
   
-  return String(o.code) === '200'; // default，兼容数字和字符串
+  return checker === code;
 }

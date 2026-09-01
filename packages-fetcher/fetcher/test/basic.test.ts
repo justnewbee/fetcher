@@ -46,7 +46,7 @@ describe('basic', () => {
     await fetcher.get(API_CORS.url);
     
     expect(fetchMock.callHistory.calls().length).toBe(1);
-    expect(fetchMock.callHistory.lastCall()?.options?.credentials).toBe('include');
+    expect(fetchMock.callHistory.lastCall()?.options.credentials).toBe('include');
     
     await fetcher.get(API_CORS2.url);
     

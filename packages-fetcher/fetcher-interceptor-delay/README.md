@@ -1,9 +1,9 @@
-# @kcuf/fetcher-interceptor-delay
+# @fetchx/fetcher-interceptor-delay
 
 ## How to Use
 
 ```ts
-import interceptDelay from '@kcuf/fetcher-interceptor-delay';
+import interceptDelay from '@fetchx/fetcher-interceptor-delay';
 
 interceptDelay(fetcher);
 ```

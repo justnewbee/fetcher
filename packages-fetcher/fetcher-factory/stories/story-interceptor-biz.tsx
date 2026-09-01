@@ -8,15 +8,13 @@ import {
   Button,
   PromiseViewer
 } from '@kcuf/demo-rc';
-import {
-  createFetcher
-} from '@kcuf/fetcher';
-import interceptBiz from '@kcuf/fetcher-interceptor-biz';
 
-const fetcher = createFetcher();
+import fetcherFactory from '../src';
 
-interceptBiz(fetcher, {
-  isSuccess: o => o.code === 0
+const fetcher = fetcherFactory({
+  interceptorBizOptions: {
+    isSuccess: '0'
+  }
 });
 
 export default function StoryInterceptorBiz(): ReactElement {

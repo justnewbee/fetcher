@@ -1,9 +1,10 @@
 import {
+  FetcherHeadersNormalized
+} from '@fetchx/fetcher-helper-headers';
+
+import {
   TFetcherConfigX
 } from './config';
-import {
-  TFetcherHeadersNormalized
-} from './config-headers';
 import {
   TFetcherBodyNormalized
 } from './config-body';
@@ -28,7 +29,7 @@ import {
 /**
  * 真正调用 adapter 执行网络请求前，Fetcher 会处理好完整的请求地址、标准的 Headers 和标准的 body（有的话），adapter 只需要安心使用即可
  */
-export type TFetcherAdapter = <T>(url: string, headers: TFetcherHeadersNormalized, body: TFetcherBodyNormalized, config: TFetcherConfigX) => Promise<IFetcherResponse<T>>;
+export type TFetcherAdapter = <T>(url: string, headers: FetcherHeadersNormalized, body: TFetcherBodyNormalized, config: TFetcherConfigX) => Promise<IFetcherResponse<T>>;
 
 export interface IFetcherClass<X = object> {
   /**
@@ -47,12 +48,12 @@ export interface IFetcherClass<X = object> {
   interceptResponse(onFulfilled?: TFetcherInterceptResponseFulfilled, onRejected?: TFetcherInterceptResponseRejected, priority?: number): TInterceptorEject;
   
   /**
-   * 对于「开箱即用」的 fetcher，因为它是会被复用的单例，所以一般不希望它的拦截器被扩展，如果还是坚持要扩展，需要手动解除
+   * 对于「开箱即用」的 Fetcher 实例，由于是会被复用的单例，一般不希望它被扩展和修改，此操作不可逆
    */
-  sealInterceptors(requestSealed?: boolean, responseSealed?: boolean): void;
+  freeze(): void;
 }
 
-export interface IFetcher<X = object> extends Pick<IFetcherClass<X>, 'interceptRequest' | 'interceptResponse' | 'sealInterceptors' | 'request'> {
+export interface IFetcher<X = object> extends Pick<IFetcherClass<X>, 'interceptRequest' | 'interceptResponse' | 'freeze' | 'request'> {
   jsonp: IFetcherFnJsonp<X>;
   get: IFetcherFnGet<X>;
   post: IFetcherFnPost<X>;

@@ -1,6 +1,6 @@
 {
-  "name": "@kcuf/fetcher-factory",
-  "version": "0.1.9",
+  "name": "@fetchx/fetcher-factory",
+  "version": "0.1.0",
   "description": "Fetcher factory to create custom fetcher with ease.",
   "keywords": [],
   "license": "MIT",
@@ -10,10 +10,10 @@
   "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justnewbee/kcuf-fetcher.git"
+    "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/kcuf-fetcher/tree/main/packages-fetcher/fetcher-factory",
-  "bugs": "https://github.com/justnewbee/kcuf-fetcher/issues",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-fetcher/fetcher-factory",
+  "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -44,13 +44,14 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@kcuf/fetch-sse": "workspace:^",
-    "@kcuf/fetcher": "workspace:^",
-    "@kcuf/fetcher-interceptor-biz": "workspace:^",
-    "@kcuf/fetcher-interceptor-cache-local": "workspace:^",
-    "@kcuf/fetcher-interceptor-headers": "workspace:^",
-    "@kcuf/fetcher-interceptor-login": "workspace:^",
-    "@kcuf/fetcher-interceptor-sls": "workspace:^"
+    "@fetchx/fetch-sse": "workspace:^",
+    "@fetchx/fetcher": "workspace:^",
+    "@fetchx/fetcher-interceptor-biz": "workspace:^",
+    "@fetchx/fetcher-interceptor-cache-local": "workspace:^",
+    "@fetchx/fetcher-interceptor-headers": "workspace:^",
+    "@fetchx/fetcher-interceptor-login": "workspace:^",
+    "@fetchx/fetcher-interceptor-merging": "workspace:^",
+    "@fetchx/fetcher-interceptor-sls": "workspace:^"
   },
   "scripts": {
     "start": "storybook dev -p 6006",

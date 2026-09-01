@@ -14,7 +14,7 @@ import {
   FetcherErrorName,
   FetcherError,
   createFetcher
-} from '@kcuf/fetcher';
+} from '@fetchx/fetcher';
 
 import interceptLogin, {
   messageListenInterceptorLogin

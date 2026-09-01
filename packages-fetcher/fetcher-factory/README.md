@@ -1,21 +1,21 @@
-# @kcuf/fetcher-factory
+# @fetchx/fetcher-factory
 
 注意，此 Fetcher 工厂方法，目前仅适用于 Web 端。
 
 ## 拦截器
 
-* `@kcuf/fetcher-interceptor-biz`
-* `@kcuf/fetcher-interceptor-cache-local`
-* `@kcuf/fetcher-interceptor-merging` 💥 与 Login 冲突，暂不开启
-* `@kcuf/fetcher-interceptor-login`
-* `@kcuf/fetcher-interceptor-sls`
+* `@fetchx/fetcher-interceptor-biz`
+* `@fetchx/fetcher-interceptor-cache-local`
+* `@fetchx/fetcher-interceptor-merging` 💥 与 Login 冲突，暂不开启
+* `@fetchx/fetcher-interceptor-login`
+* `@fetchx/fetcher-interceptor-sls`
 
 ## How to Use
 
 你可以封装自己的 `Fetcher` 实例：
 
 ```ts
-import fetcherFactory from '@kcuf/fetcher-factory';
+import fetcherFactory from '@fetchx/fetcher-factory';
 
 // 所有参数均可选
 export default fetcherFactory({

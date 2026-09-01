@@ -33,7 +33,7 @@ describe('interceptor response', () => {
     expect(await myFetcher.post(API_POST.url)).toBe('response altered');
     
     eject();
-    expect(myFetcher.post(API_POST.url)).resolves.toEqual(API_POST.result);
+    void expect(myFetcher.post(API_POST.url)).resolves.toEqual(API_POST.result);
   });
   
   test('interceptor response onRejected', async () => {
@@ -45,6 +45,6 @@ describe('interceptor response', () => {
     expect(await myFetcher.post(API_STATUS_404.url)).toBe('response corrected');
     
     eject();
-    expect(fetcher.get(API_STATUS_404.url)).rejects.toHaveProperty('name', FetcherErrorName.RESPONSE_STATUS);
+    void expect(fetcher.get(API_STATUS_404.url)).rejects.toHaveProperty('name', FetcherErrorName.RESPONSE_STATUS);
   });
 });

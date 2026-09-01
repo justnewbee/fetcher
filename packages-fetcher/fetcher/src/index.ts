@@ -1,13 +1,4 @@
-import createFetcher from './create-fetcher';
+export { default } from './the-fetcher';
+export { default as createFetcher } from './create-fetcher';
 
-const fetcher = createFetcher();
-
-fetcher.sealInterceptors();
-
-export default fetcher;
-
-export * from '@kcuf/fetcher-core';
-
-export {
-  createFetcher
-};
+export * from '@fetchx/fetcher-core';

@@ -1,6 +1,6 @@
 import {
   Fetcher
-} from '@kcuf/fetcher-core';
+} from '@fetchx/fetcher-core';
 
 interface IGlobalThis {
   __FETCHER_DELAY?: number;

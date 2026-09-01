@@ -25,7 +25,7 @@ export default function factory(fetcherAdapter: TFetcherAdapter, normalizeErrorN
     return {
       interceptRequest: fetcher.interceptRequest.bind(fetcher),
       interceptResponse: fetcher.interceptResponse.bind(fetcher),
-      sealInterceptors: fetcher.sealInterceptors.bind(fetcher),
+      freeze: fetcher.freeze.bind(fetcher),
       request: fetcher.request.bind(fetcher),
       jsonp: createFnGet(fetcher, 'JSONP'),
       get: createFnGet(fetcher, 'GET'),

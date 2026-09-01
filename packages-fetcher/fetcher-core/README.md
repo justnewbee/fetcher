@@ -1,10 +1,10 @@
-# @kcuf/fetcher-core
+# @fetchx/fetcher-core
 
 Fetcher 核心实现，不带 transport，这样可以在多端环境下使用，支持：
 
 1. Web
 2. Node
-3. 小程序
+3. 小程序 Taro
 
 ## FAQ
 
@@ -22,7 +22,7 @@ import {
   Fetcher,
   FetcherConfig,
   FetcherIntercept__
-} from '@kcuf/fetcher-core';
+} from '@fetchx/fetcher-core';
 
 export interface IFetcherConfigLog {
   logTitle?: string;
@@ -48,7 +48,7 @@ export type {
 
 最佳实践：
 
-1. 尽量仅依赖 `@kcuf/fetcher-core`
+1. 尽量仅依赖 `@fetchx/fetcher-core`
 2. 仅输出 `intercept` 方法，接收 `fetcher: Fetcher` 为第一参数，可以额外添加别的参数
 3. 拦截器方法使用工厂方法创建，这样可以允许传配置
 4. 若对 `FetcherConfig` 有类型扩展，则输出 `FetcherConfigXx`（这里 Xx 代表拦截器的名字，仅含扩展部分）

@@ -1,4 +1,4 @@
-export interface ICacheQueueItem {
+interface ICacheQueueItem {
   resolve(data: unknown): void;
   reject(err: Error): void;
 }

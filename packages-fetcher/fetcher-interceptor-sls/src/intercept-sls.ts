@@ -1,12 +1,12 @@
 import {
   Fetcher
-} from '@kcuf/fetcher-core';
+} from '@fetchx/fetcher-core';
 import {
   transport
-} from '@kcuf/sls-logger-web';
+} from '@fetchx/sls-logger-web';
 import interceptSlsCore, {
   FetcherInterceptorSlsOptions
-} from '@kcuf/fetcher-interceptor-sls-core';
+} from '@fetchx/fetcher-interceptor-sls-core';
 
 export default function interceptSls(fetcher: Fetcher, options: FetcherInterceptorSlsOptions, priority?: number): () => void {
   return interceptSlsCore(fetcher, transport, options, priority);

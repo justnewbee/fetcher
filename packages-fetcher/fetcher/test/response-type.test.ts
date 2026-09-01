@@ -29,10 +29,10 @@ describe('response type can be set text', () => {
       responseType: 'text'
     }, API_TEXT.url);
     
-    expect(promise).resolves.toBeTypeOf('string');
+    void expect(promise).resolves.toBeTypeOf('string');
   });
   
-  test('responseType text - jsonp', async () => {
+  test('responseType text - jsonp', () => {
     const dom = new JSDOM('<!DOCTYPE html><html lang="en"><head><title>JsDom</title></head><body></body></html>', {
       resources: 'usable',
       runScripts: 'dangerously'
@@ -41,7 +41,7 @@ describe('response type can be set text', () => {
     (global as Record<string, unknown>).window = dom.window;
     (global as Record<string, unknown>).document = dom.window.document;
     
-    expect(fetcher.jsonp({
+    void expect(fetcher.jsonp({
       jsonpCallback: 'jsonp',
       jsonpCallbackFunction: 'text-only',
       responseType: 'text'

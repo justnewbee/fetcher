@@ -9,14 +9,14 @@ import {
   PromiseViewer,
   InputSwitch
 } from '@kcuf/demo-rc';
-import {
-  createFetcher
-} from '@kcuf/fetcher';
-import interceptCacheLocal from '@kcuf/fetcher-interceptor-cache-local';
 
-const fetcher = createFetcher();
+import fetcherFactory from '../src';
 
-interceptCacheLocal(fetcher);
+const fetcher = fetcherFactory({
+  interceptorBizOptions: {
+    isSuccess: '0'
+  }
+});
 
 export default function StoryInterceptorCacheLocal(): ReactElement {
   const [stateCacheLocal, setStateCacheLocal] = useState<boolean>(true);

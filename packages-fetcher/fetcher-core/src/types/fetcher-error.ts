@@ -1,13 +1,14 @@
 import {
+  FetcherHeadersFallbackNormalized
+} from '@fetchx/fetcher-helper-headers';
+
+import {
   EFetcherErrorName
 } from '../enum';
 
 import {
   IFetcherConfig
 } from './config';
-import {
-  TFetcherHeadersFallbackNormalized
-} from './config-headers';
 
 /**
  * Adapter 可能有或没有自己的错误名称定义，又需要的时候，应尽可能标准化为 Fetcher 定义好的名称
@@ -26,7 +27,7 @@ export interface IErrorExtendedInfo {
   /**
    * 预留扩展字段 - 原始 response 中的 header
    */
-  responseHeaders?: Headers | TFetcherHeadersFallbackNormalized | null;
+  responseHeaders?: Headers | FetcherHeadersFallbackNormalized | null;
   /**
    * 预留扩展字段 - 原始 response 中的数据；强行把返回变成出错时需要
    */

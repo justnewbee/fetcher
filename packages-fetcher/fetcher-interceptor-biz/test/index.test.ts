@@ -11,7 +11,7 @@ import fetchMock from 'fetch-mock';
 
 import {
   createFetcher
-} from '@kcuf/fetcher';
+} from '@fetchx/fetcher';
 
 import intercept from '../src';
 
@@ -70,29 +70,31 @@ describe('fetcherInterceptorBiz', () => {
   });
   
   test('data will be extracted', () => {
-    expect(fetcher.get('/api/get')).resolves.toEqual('hello get');
-    expect(fetcher.post('/api/post')).resolves.toEqual('hello post');
-    expect(fetcher.put('/api/put')).resolves.toEqual('hello put');
-    expect(fetcher.delete('/api/delete')).resolves.toEqual('hello delete');
+    void expect(fetcher.get('/api/get')).resolves.toEqual('hello get');
+    void expect(fetcher.post('/api/post')).resolves.toEqual('hello post');
+    void expect(fetcher.put('/api/put')).resolves.toEqual('hello put');
+    void expect(fetcher.delete('/api/delete')).resolves.toEqual('hello delete');
   });
   
   test('custom data', () => {
-    expect(fetcher.get({
+    void expect(fetcher.get({
       getData: 'DATA'
     }, '/api/custom-data')).resolves.toEqual('hello custom data');
   });
   
   test('custom success', () => {
-    expect(fetcher.get({
+    void expect(fetcher.get({
       isSuccess: true
     }, '/api/custom-success')).resolves.toEqual('hello custom success');
     
-    expect(fetcher.get({
+    void expect(fetcher.get({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       isSuccess: o => o.ok === true
     }, '/api/custom-success-2')).resolves.toEqual('hello custom success 2');
     
-    expect(fetcher.get({
+    void expect(fetcher.get({
       isSuccess: true,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       getData: o => o
     }, '/api/custom-data')).resolves.toEqual({
       code: 200,
@@ -101,9 +103,9 @@ describe('fetcherInterceptorBiz', () => {
   });
   
   test('error', () => {
-    expect(fetcher.get('/api/error')).rejects.toHaveProperty('code', 'SomethingWentWrong');
-    expect(fetcher.get('/api/error')).rejects.toHaveProperty('name', 'FetcherError.Biz');
-    expect(fetcher.get('/api/error-num')).rejects.toHaveProperty('code', '1000123');
+    void expect(fetcher.get('/api/error')).rejects.toHaveProperty('code', 'SomethingWentWrong');
+    void expect(fetcher.get('/api/error')).rejects.toHaveProperty('name', 'FetcherError.Biz');
+    void expect(fetcher.get('/api/error-num')).rejects.toHaveProperty('code', '1000123');
   });
   
   test('custom when create fetcher', () => {
@@ -114,7 +116,7 @@ describe('fetcherInterceptorBiz', () => {
       getData: 'info'
     });
     
-    expect(myFetcher.get('/api/custom-my')).resolves.toEqual('hello custom my');
-    expect(myFetcher.get('/api/get')).rejects.toHaveProperty('code', '200');
+    void expect(myFetcher.get('/api/custom-my')).resolves.toEqual('hello custom my');
+    void expect(myFetcher.get('/api/get')).rejects.toHaveProperty('code', '200');
   });
 });

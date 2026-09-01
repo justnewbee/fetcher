@@ -1,6 +1,6 @@
-# @kcuf/sls-logger-web
+# @fetchx/sls-logger-web
 
-基于 `@kcuf/sls-logger-base` 封装的 SLS 工厂方法包。
+基于 `@fetchx/sls-logger-base` 封装的 SLS 工厂方法包。
 
 ## Features
 
@@ -29,7 +29,7 @@ sls(options, topic, payload);
 
 以上，`options` 可用于覆盖创建 `sls` 的时候的 `topicPrefix`、`sampling` 等工厂默认的参数，也可以立即发送日志，默认所有的日志会在一定的时间内积压，以避免和业务逻辑竞争。
 
-更多内容见 `@kcuf/sls-logger-base` 的说明。
+更多内容见 `@fetchx/sls-logger-base` 的说明。
 
 ## 记录的数据
 
@@ -87,4 +87,4 @@ sls({
 
 ## 单测
 
-这里的测试比较简单，更详细的测试在 `@kcuf/sls-logger-base`，100% 的覆盖率。
+这里的测试比较简单，更详细的测试在 `@fetchx/sls-logger-base`，100% 的覆盖率。

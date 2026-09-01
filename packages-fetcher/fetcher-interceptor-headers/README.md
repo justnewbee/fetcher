@@ -1,9 +1,9 @@
-# @kcuf/fetcher-interceptor-headers
+# @fetchx/fetcher-interceptor-headers
 
 ## How to Use
 
 ```ts
-import interceptHeaders from '@kcuf/fetcher-interceptor-headers';
+import interceptHeaders from '@fetchx/fetcher-interceptor-headers';
 
 interceptHeaders(fetcher, {
   // some headers

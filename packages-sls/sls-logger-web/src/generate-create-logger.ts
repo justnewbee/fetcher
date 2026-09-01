@@ -2,7 +2,7 @@ import {
   CreateLogger,
   GenerateCreateLoggerOptions,
   generateCreateLoggerBase
-} from '@kcuf/sls-logger-base';
+} from '@fetchx/sls-logger-base';
 
 import transport from './transport';
 

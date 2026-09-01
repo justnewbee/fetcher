@@ -2,7 +2,7 @@ import {
   FetcherInterceptRequest,
   FetcherInterceptRequestReturn,
   createFetcherErrorSkipNetwork
-} from '@kcuf/fetcher-core';
+} from '@fetchx/fetcher-core';
 
 import {
   IFetcherConfigAugmentedMerging

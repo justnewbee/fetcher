@@ -4,7 +4,7 @@ import {
   FetcherErrorName,
   FetcherInterceptResponseFulfilled,
   createFetcherError
-} from '@kcuf/fetcher-core';
+} from '@fetchx/fetcher-core';
 
 import {
   TResponseResult,
@@ -13,10 +13,10 @@ import {
 } from '../types';
 
 import isResponseSuccess from './is-response-success';
-import getDataFromResponse from './get-data-from-response';
-import getErrorCode from './get-error-code';
-import getErrorTitle from './get-error-title';
-import getErrorMessage from './get-error-message';
+import getResponseData from './get-response-data';
+import getResponseCode from './get-response-code';
+import getResponseTitle from './get-response-title';
+import getResponseMessage from './get-response-message';
 
 /**
  * 请求到这里，说明服务端有返回，但业务上不一定是成功的。
@@ -29,17 +29,18 @@ export default function createInterceptorResponseFulfilled(options?: IFetcherInt
     }
     
     const result = o as TResponseResult;
-    const success = isResponseSuccess(result, config.isSuccess ?? options?.isSuccess);
+    const code = getResponseCode(result, config.getCode ?? options?.getCode) || '__UNKNOWN__';
+    const success = isResponseSuccess(result, code, config.isSuccess ?? options?.isSuccess);
     
     if (success) {
-      return getDataFromResponse(result, config.getData ?? options?.getData);
+      return getResponseData(result, config.getData ?? options?.getData);
     }
     
     throw createFetcherError(config, {
+      code,
       name: FetcherErrorName.BIZ,
-      message: getErrorMessage(result, config.getMessage ?? options?.getMessage),
-      code: getErrorCode(result, config.getCode ?? options?.getCode) || '__UNKNOWN__',
-      title: getErrorTitle(result, config.getTitle ?? options?.getTitle)
+      message: getResponseMessage(result, config.getMessage ?? options?.getMessage),
+      title: getResponseTitle(result, config.getTitle ?? options?.getTitle)
     });
   };
 }

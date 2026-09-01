@@ -3,10 +3,10 @@ import {
   FetcherError,
   FetcherConfig,
   FetcherResponse
-} from '@kcuf/fetcher-core';
+} from '@fetchx/fetcher-core';
 import createLogger, {
   SlsLoggerTransport
-} from '@kcuf/sls-logger-base';
+} from '@fetchx/sls-logger-base';
 
 import {
   IFetcherInterceptorSlsOptions

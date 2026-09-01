@@ -1,19 +1,25 @@
 {
-  "name": "kcuf-fetcher",
-  "version": "0.1.0",
+  "name": "fetcher",
+  "version": "0.0.0",
   "type": "module",
   "description": "Fetcher with interceptors.",
   "keywords": [
-    "lerna"
+    "fetcher",
+    "fetch",
+    "xhr",
+    "jsonp",
+    "http-client",
+    "request",
+    "response"
   ],
   "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justnewbee/kcuf-fetcher.git"
+    "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/kcuf-fetcher",
-  "bugs": "https://github.com/justnewbee/kcuf-fetcher/issues",
+  "homepage": "https://github.com/justnewbee/fetcher",
+  "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -31,13 +37,13 @@
     "@kcuf/stylelint-config": "^0.4.0",
     "@kcuf/ts-config": "^0.2.0",
     "@tsconfig/node22": "^22.0.6",
-    "@types/node": "^26.4.0",
+    "@types/node": "^26.4.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "commander": "^15.0.0",
-    "depcheck": "^1.4.7",
     "eslint": "^9.39.3",
     "husky": "^9.1.7",
+    "knip": "^6.34.0",
     "lerna": "^10.0.1",
     "lint-staged": "^17.4.1",
     "markdownlint-cli2": "^0.23.2",
@@ -54,12 +60,14 @@
     "prepare": "husky",
     "boot": "pnpm clean && pnpm i --registry https://registry.npmmirror.com",
     "boot:packages": "pnpm -r prepublishOnly",
+    "clean:tag:remote": "git tag -l \"@fetchx*/*\" | xargs -n 1 git push --delete origin",
+    "clean:tag:local": "git tag -l \"@fetchx*/*\" | xargs -n 1 git tag -d",
     "lint": "eslint packages*/*/src/ --ext js,ts,tsx",
     "lint:style": "stylelint \"**/src/**/*.{css,less,ts,tsx}\"",
     "lint:md": "markdownlint-cli2 **/*.md !node_modules",
     "lint:pkg": "pnpm -r --include-workspace-root exec npmPkgJsonLint .",
     "taze": "taze -r",
-    "depcheck": "pnpm -r --include-workspace-root --no-bail --filter '!web' exec depcheck",
+    "knip": "knip",
     "lerna:publish": "lerna publish",
     "lerna:publish:patch": "lerna publish patch",
     "lerna:publish:minor": "lerna publish minor",

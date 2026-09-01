@@ -1,7 +1,7 @@
 import {
   downloadBlob,
   downloadArrayBuffer
-} from '@kcuf/fetcher-helper-file';
+} from '@fetchx/fetcher-helper-file';
 
 import {
   EFetcherResponseType

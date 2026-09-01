@@ -1,7 +1,7 @@
 {
-  "name": "@kcuf/fetcher-core",
-  "version": "0.2.8",
-  "description": "Fetcher core without real network transport.",
+  "name": "@fetchx/fetcher-core",
+  "version": "0.1.0",
+  "description": "Fetcher core without actual network transport.",
   "keywords": [],
   "license": "MIT",
   "sideEffects": false,
@@ -10,10 +10,10 @@
   "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justnewbee/kcuf-fetcher.git"
+    "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/kcuf-fetcher/tree/main/packages-fetcher/fetcher-core",
-  "bugs": "https://github.com/justnewbee/kcuf-fetcher/issues",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-fetcher/fetcher-core",
+  "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -37,7 +37,8 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@kcuf/fetcher-helper-file": "workspace:^",
+    "@fetchx/fetcher-helper-file": "workspace:^",
+    "@fetchx/fetcher-helper-headers": "workspace:^",
     "@kcuf/md5": "^0.0.2",
     "lodash": "^4.18.1",
     "qs": "^6.16.0"

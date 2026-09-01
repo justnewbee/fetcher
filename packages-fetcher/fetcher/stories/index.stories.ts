@@ -1,10 +1,10 @@
 import {
-  TMeta
-} from './types';
+  Meta
+} from '@storybook/react-vite';
 
 export default {
   title: 'fetcher'
-} satisfies TMeta;
+} satisfies Meta;
 
 export { default as Methods } from './story-methods';
 export { default as Abort } from './story-abort';

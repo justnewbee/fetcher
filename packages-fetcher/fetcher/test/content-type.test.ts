@@ -68,7 +68,7 @@ describe('content-type', () => {
     
     const promises = fetcher.post(API_UPLOAD.url, formData);
     
-    expect(promises).resolves.toEqual(API_UPLOAD.result);
+    void expect(promises).resolves.toEqual(API_UPLOAD.result);
     
     await promises;
     

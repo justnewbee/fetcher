@@ -1,4 +1,4 @@
-# @kcuf/sls-logger-base
+# @fetchx/sls-logger-base
 
 阿里云 SLS WebTracking 基础实现，将最终发送消息的方法抽象出去，使其能够很方便地应用于 Web、小程序、Node 等具体环境。
 
@@ -19,9 +19,9 @@
 
 业务代码不会直接用到这个包，因为它不会真正发送日志，只有设定 `sender(topic, body, headers)` 才行，可以用以下封入 `sender` 的包：
 
-* Web 端：`@kcuf/sls-logger-web`
-* Node 端：`@kcuf/sls-logger-node` TODO
-* 小程序 端：`@kcuf/sls-logger-mp` TODO
+* Web 端：`@fetchx/sls-logger-web`
+* Node 端：`@fetchx/sls-logger-node` TODO
+* 小程序 端：`@fetchx/sls-logger-mp` TODO
 
 业务代码最终使用的是 `createLogger` 的产物，即 `sls` 方法，你可以这样调用：
 

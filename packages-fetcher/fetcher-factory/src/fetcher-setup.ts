@@ -1,10 +1,11 @@
-import interceptHeaders from '@kcuf/fetcher-interceptor-headers';
-import interceptSls from '@kcuf/fetcher-interceptor-sls';
-import interceptLogin from '@kcuf/fetcher-interceptor-login';
+import interceptHeaders from '@fetchx/fetcher-interceptor-headers';
+import interceptMerging from '@fetchx/fetcher-interceptor-merging';
+import interceptSls from '@fetchx/fetcher-interceptor-sls';
+import interceptLogin from '@fetchx/fetcher-interceptor-login';
 
 import {
-  IFetcherFactoryOptions,
-  TFetcher
+  TFetcher,
+  IFetcherFactoryOptions
 } from './types';
 
 /**
@@ -15,9 +16,10 @@ import {
 export default function fetcherSetup(fetcher: TFetcher, {
   urlBase,
   getHeaders,
+  interceptorMergingOptions,
   interceptorSlsOptions,
   interceptorLoginOptions
-}: Omit<IFetcherFactoryOptions, 'interceptorBizOptions'>, seal = true): void {
+}: Omit<IFetcherFactoryOptions, 'interceptorBizOptions'>, freeze = true): void {
   if (urlBase) {
     fetcher.interceptRequest(() => ({
       urlBase
@@ -28,6 +30,10 @@ export default function fetcherSetup(fetcher: TFetcher, {
     interceptHeaders(fetcher, getHeaders);
   }
   
+  if (interceptorMergingOptions) { // FIXME 跟 interceptor-login 冲突，启用需谨慎
+    interceptMerging(fetcher);
+  }
+
   if (interceptorSlsOptions) {
     interceptSls(fetcher, interceptorSlsOptions);
   }
@@ -36,7 +42,7 @@ export default function fetcherSetup(fetcher: TFetcher, {
     interceptLogin(fetcher, interceptorLoginOptions);
   }
   
-  if (seal) {
-    fetcher.sealInterceptors(); // 不要多次 setup
+  if (freeze) {
+    fetcher.freeze(); // 不要多次 setup
   }
 }

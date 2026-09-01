@@ -1,6 +1,6 @@
 import {
-  TFetcherHeadersFallbackNormalized
-} from './config-headers';
+  FetcherHeadersFallbackNormalized
+} from '@fetchx/fetcher-helper-headers';
 
 /**
  * 将 fetch 和 jsonp 各自的 response 同化后的类型，剔除 fetch Response 中不关心的部分（body、bodyUsed、ok、
@@ -8,6 +8,6 @@ import {
  */
 export interface IFetcherResponse<T = unknown> {
   readonly url: string;
-  readonly headers: Headers | TFetcherHeadersFallbackNormalized;
+  readonly headers: Headers | FetcherHeadersFallbackNormalized;
   readonly data: T;
 }

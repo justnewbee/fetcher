@@ -1,20 +1,23 @@
 import {
+  FetcherHeadersNormalized,
+  isInstanceofHeaders,
+  cloneTypeHeaders,
+  headersNormalize,
+  headersGet,
+  headersSet,
+  headersDelete
+} from '@fetchx/fetcher-helper-headers';
+
+import {
   IFetcherConfig,
-  TFetcherHeadersNormalized,
   TFetcherBodyNormalized
 } from '../types';
 
-import isInstanceofHeaders from './is-instanceof-headers';
 import isInstanceofBlob from './is-instanceof-blob';
 import isInstanceofFormData from './is-instanceof-form-data';
 import isInstanceofUrlSearchParams from './is-instanceof-url-search-params';
 import isConfigAllowBody from './is-config-allow-body';
 import serializeBody from './serialize-body';
-import cloneTypeHeaders from './clone-type-headers';
-import headersNormalize from './headers-normalize';
-import headersGet from './headers-get';
-import headersSet from './headers-set';
-import headersDelete from './headers-delete';
 
 /**
  * 处理 headers 和 body
@@ -68,7 +71,7 @@ import headersDelete from './headers-delete';
  * });
  * ```
  */
-export default function getHeadersAndBodyFromConfig(config: IFetcherConfig): [TFetcherHeadersNormalized, TFetcherBodyNormalized] {
+export default function getHeadersAndBodyFromConfig(config: IFetcherConfig): [FetcherHeadersNormalized, TFetcherBodyNormalized] {
   const headers = isInstanceofHeaders(config.headers) ? cloneTypeHeaders(config.headers) : headersNormalize(config.headers);
   const body = config.body;
   

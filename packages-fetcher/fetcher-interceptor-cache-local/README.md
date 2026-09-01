@@ -1,4 +1,4 @@
-# @kcuf/fetcher-interceptor-cache-local
+# @fetchx/fetcher-interceptor-cache-local
 
 > 本地内存缓存
 
