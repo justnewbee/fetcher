@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-interceptor-delay",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Fetcher interceptor that delays the request for testing purpose.",
   "keywords": [],
   "license": "MIT",

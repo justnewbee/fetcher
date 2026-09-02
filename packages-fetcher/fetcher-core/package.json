@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-core",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Fetcher core without actual network transport.",
   "keywords": [],
   "license": "MIT",

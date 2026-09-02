@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-adapter-web",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Fetcher adapter for web using transports fetch, jsonp and xhr.",
   "keywords": [],
   "license": "MIT",
