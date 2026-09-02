@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Fetcher with more reasonable interceptors.",
   "keywords": [],
   "license": "MIT",
