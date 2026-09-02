@@ -7,8 +7,6 @@ export {
   EFetcherResponseType as FetcherResponseType
 } from './enum';
 
-export * from '@fetchx/fetcher-helper-headers'; // TODO rm from here
-
 export type {
   IFetcher as Fetcher,
   // common
