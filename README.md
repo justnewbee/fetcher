@@ -8,6 +8,7 @@
 
 ## 特性
 
+* 100% TypeScript
 * Web 默认实现：基于 `fetch`，需要 JSONP 或上传进度时自动选择合适的传输方式
 * 可组合架构：核心层与平台适配器分离，可实现自己的运行时适配器
 * 便捷请求：提供 `get`、`post`、`put`、`patch`、`delete`、`jsonp` 和 `request`

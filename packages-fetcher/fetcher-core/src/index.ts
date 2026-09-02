@@ -34,3 +34,8 @@ export type {
   IFetcherResponse as FetcherResponse,
   IFetcherError as FetcherError
 } from './types';
+
+// 仅 re-export 类型
+export type {
+  FetcherHeaders
+} from '@fetchx/fetcher-helper-headers';
