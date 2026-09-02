@@ -10,9 +10,7 @@ export default {
       ],
       project: [
         'src/**/*.{ts,tsx}',
-        'stories/**/*.{ts,tsx}',
-        '!dist',
-        '!coverage'
+        'stories/**/*.{ts,tsx}'
       ]
     }
   },
