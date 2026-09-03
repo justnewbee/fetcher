@@ -1,7 +1,7 @@
 {
-  "name": "@fetchx/fetcher-interceptor-headers",
+  "name": "@fetchx/fetcher-interceptor-delay",
   "version": "0.1.1",
-  "description": "Fetcher interceptor that adds headers.",
+  "description": "Fetcher interceptor that delays the request for testing purpose.",
   "keywords": [],
   "license": "MIT",
   "sideEffects": false,
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-fetcher/fetcher-interceptor-headers",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-interceptor/fetcher-interceptor-delay",
   "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
@@ -35,8 +35,7 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@fetchx/fetcher-core": "workspace:^",
-    "@fetchx/fetcher-helper-headers": "workspace:^"
+    "@fetchx/fetcher-core": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",

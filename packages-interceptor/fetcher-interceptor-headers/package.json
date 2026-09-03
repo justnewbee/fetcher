@@ -1,7 +1,7 @@
 {
-  "name": "@fetchx/fetcher-interceptor-login",
+  "name": "@fetchx/fetcher-interceptor-headers",
   "version": "0.1.1",
-  "description": "Fetcher interceptor seamless login and redo request.",
+  "description": "Fetcher interceptor that adds headers.",
   "keywords": [],
   "license": "MIT",
   "sideEffects": false,
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-fetcher/fetcher-interceptor-login",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-interceptor/fetcher-interceptor-headers",
   "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
@@ -27,21 +27,16 @@
     "@babel/plugin-transform-runtime": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-typescript": "^7.29.7",
-    "@fetchx/fetcher-adapter-web": "workspace:^",
     "@kcuf/ts-config": "^0.2.0",
-    "@vitest/coverage-v8": "^4.1.11",
-    "fetch-mock": "^12.6.0",
-    "jsdom": "^30.0.1",
     "rimraf": "^6.1.3",
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.11"
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
     "@fetchx/fetcher-core": "workspace:^",
-    "@kcuf/messenger": "^0.0.3"
+    "@fetchx/fetcher-helper-headers": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",
@@ -50,7 +45,6 @@
     "build:types": "tsc -rootDir src --outDir dist/types --declaration --noEmit false --emitDeclarationOnly --isolatedModules false",
     "build": "pnpm build:esm && pnpm build:cjs && pnpm build:types",
     "watch": "pnpm build:esm -w",
-    "test": "vitest --coverage --coverage.include=src",
     "prepublishOnly": "pnpm build:clean && pnpm build"
   }
 }
