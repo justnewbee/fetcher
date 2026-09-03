@@ -12,6 +12,7 @@ import {
 } from '../types';
 
 import singletonPromise from './singleton-promise';
+import isLoginNeeded from './is-login-needed';
 
 export default function createInterceptorResponseRejected({
   needLogin,
@@ -20,7 +21,7 @@ export default function createInterceptorResponseRejected({
   const singletonLogin = singletonPromise(doLogin);
   
   return (error: FetcherError, config: FetcherConfig, _: FetcherResponse | undefined, requestByInterceptor: FetcherCallRequest) => {
-    if (!needLogin(error.code ?? '', error)) {
+    if (!isLoginNeeded(error, needLogin)) {
       throw error;
     }
     

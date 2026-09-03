@@ -26,6 +26,14 @@ interceptLogin(fetcher, {
 
 ### needLogin
 
+`needLogin` 可以直接设置为需要登录的错误码：
+
+```ts
+needLogin: 'NeedLogin'
+```
+
+也可以通过函数进行自定义判断：
+
 ```ts
 function needLogin(code: string, error: FetcherError): boolean;
 ```

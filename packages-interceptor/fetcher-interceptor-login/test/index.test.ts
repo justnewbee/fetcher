@@ -138,6 +138,32 @@ describe('fetcherInterceptorLogin', () => {
     expect(doLogin).toHaveBeenCalledTimes(1);
   });
   
+  test('will auto login when needLogin is a string', async () => {
+    const fetcherWithStringNeedLogin = factory(fetcherAdapterWeb);
+
+    fetcherWithStringNeedLogin.interceptResponse(result => {
+      if (loggedIn) {
+        return (result as IResult).data;
+      }
+
+      const err: FetcherError = new Error('Please login');
+
+      err.name = FetcherErrorName.BIZ;
+      err.code = CODE_NEED_LOGIN;
+
+      throw err;
+    });
+
+    interceptLogin(fetcherWithStringNeedLogin, {
+      needLogin: CODE_NEED_LOGIN,
+      doLogin
+    });
+
+    expect(await fetcherWithStringNeedLogin.get(API_URL_NEED_LOGIN)).toBe('logged');
+    expect(needLogin).not.toHaveBeenCalled();
+    expect(doLogin).toHaveBeenCalledTimes(1);
+  });
+
   test('error with no code will not doLogin', async () => {
     expect(await fetcher.get(API_URL_NO_CODE).catch((err: unknown) => (err as FetcherError).name)).toBe(FetcherErrorName.BIZ);
     expect(await fetcher.get(API_URL_NO_CODE).catch((err: unknown) => (err as FetcherError).code)).toBeUndefined();

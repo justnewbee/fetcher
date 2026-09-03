@@ -3,6 +3,6 @@ import {
 } from '@fetchx/fetcher-core';
 
 export interface IFetcherInterceptorLoginOptions {
-  needLogin(code: string, err: FetcherError): boolean;
+  needLogin: string | ((code: string, err: FetcherError) => boolean);
   doLogin(): Promise<unknown>;
 }
