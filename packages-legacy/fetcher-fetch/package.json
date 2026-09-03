@@ -1,7 +1,7 @@
 {
-  "name": "@fetchx/fetcher-helper-file",
-  "version": "0.1.0",
-  "description": "Fetcher helpers of files for upload and download.",
+  "name": "@kcuf/fetcher-fetch",
+  "version": "0.3.0",
+  "description": "An improved fetch with timeout.",
   "keywords": [],
   "license": "MIT",
   "sideEffects": false,
@@ -10,9 +10,9 @@
   "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justnewbee/fetcher.git"
+    "url": "git+https://github.com/justnewbee/kcuf.git"
   },
-  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-helper/fetcher-helper-file",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-legacy/fetcher-fetch",
   "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
@@ -27,10 +27,20 @@
     "@babel/plugin-transform-runtime": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-typescript": "^7.29.7",
+    "@chromatic-com/storybook": "^5.3.0",
+    "@kcuf/demo-rc": "^0.6.1",
     "@kcuf/ts-config": "^0.2.0",
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/addon-links": "^10.5.10",
+    "@storybook/react-vite": "^10.5.10",
+    "@types/react": "^19.2.18",
     "@vitest/coverage-v8": "^4.1.11",
+    "fetch-mock": "^12.6.0",
     "jsdom": "^30.0.1",
+    "react": "^19.2.8",
     "rimraf": "^6.1.3",
+    "storybook": "^10.5.10",
+    "styled-components": "^6.5.3",
     "typescript": "^6.0.3",
     "vitest": "^4.1.11"
   },
@@ -38,16 +48,19 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@kcuf/md5": "^0.0.2"
+    "@fetchx/fetcher-fetch": "workspace:^"
   },
   "scripts": {
+    "start": "storybook dev -p 6006",
     "build:clean": "rimraf dist",
     "build:esm": "ESM=1 babel src -d dist/esm --extensions .ts,.tsx --source-maps",
     "build:cjs": "ESM=0 babel src -d dist/cjs --extensions .ts,.tsx",
     "build:types": "tsc -rootDir src --outDir dist/types --declaration --noEmit false --emitDeclarationOnly --isolatedModules false",
+    "build:sb": "storybook build",
     "build": "pnpm build:esm && pnpm build:cjs && pnpm build:types",
     "watch": "pnpm build:esm -w",
-    "test": "vitest --coverage --coverage.include=src",
+    "test": "vitest",
+    "test:cov": "vitest --coverage --coverage.include=src",
     "prepublishOnly": "pnpm build:clean && pnpm build"
   }
 }

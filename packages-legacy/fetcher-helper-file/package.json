@@ -1,7 +1,7 @@
 {
-  "name": "@fetchx/fetcher-helper-file",
-  "version": "0.1.0",
-  "description": "Fetcher helpers of files for upload and download.",
+  "name": "@kcuf/fetcher-helper-file",
+  "version": "0.4.2",
+  "description": "Helpers of files for fetcher on upload and download, maybe more.",
   "keywords": [],
   "license": "MIT",
   "sideEffects": false,
@@ -10,9 +10,9 @@
   "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justnewbee/fetcher.git"
+    "url": "git+https://github.com/justnewbee/kcuf.git"
   },
-  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-helper/fetcher-helper-file",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-legacy/fetcher-helper-file",
   "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
@@ -38,7 +38,7 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@kcuf/md5": "^0.0.2"
+    "@fetchx/fetcher-helper-file": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",
@@ -47,7 +47,8 @@
     "build:types": "tsc -rootDir src --outDir dist/types --declaration --noEmit false --emitDeclarationOnly --isolatedModules false",
     "build": "pnpm build:esm && pnpm build:cjs && pnpm build:types",
     "watch": "pnpm build:esm -w",
-    "test": "vitest --coverage --coverage.include=src",
+    "test": "vitest",
+    "test:cov": "vitest --coverage --coverage.include=src",
     "prepublishOnly": "pnpm build:clean && pnpm build"
   }
 }
