@@ -9,13 +9,12 @@ import {
 } from 'vitest';
 import fetchMock from 'fetch-mock';
 
-import {
-  createFetcher
-} from '@fetchx/fetcher';
+import factory from '@fetchx/fetcher-core';
+import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 
 import intercept from '../src';
 
-const fetcher = createFetcher();
+const fetcher = factory(fetcherAdapterWeb);
 
 intercept(fetcher);
 
@@ -109,7 +108,7 @@ describe('fetcherInterceptorBiz', () => {
   });
   
   test('custom when create fetcher', () => {
-    const myFetcher = createFetcher();
+    const myFetcher = factory(fetcherAdapterWeb);
     
     intercept(myFetcher, {
       isSuccess: o => o.code === 0,

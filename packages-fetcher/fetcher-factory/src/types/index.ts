@@ -1,8 +1,9 @@
 import {
   Fetcher,
+  FetcherAdapter,
   FetcherHeaders,
   FetcherConfig
-} from '@fetchx/fetcher';
+} from '@fetchx/fetcher-core';
 import {
   FetcherInterceptorBizOptions,
   FetcherConfigBiz
@@ -21,6 +22,7 @@ import {
 } from '@fetchx/fetcher-interceptor-login';
 
 export interface IFetcherFactoryOptions {
+  adapter?: FetcherAdapter;
   urlBase?: string;
   getHeaders?(): FetcherHeaders;
   interceptorMergingOptions?: boolean; // 暂时和 interceptorLogin 有冲突，默认不开启

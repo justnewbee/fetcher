@@ -9,13 +9,12 @@ import {
 } from 'vitest';
 import fetchMock from 'fetch-mock';
 
-import {
-  createFetcher
-} from '@fetchx/fetcher';
+import factory from '@fetchx/fetcher-core';
+import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 
 import intercept from '../src';
 
-const fetcher = createFetcher();
+const fetcher = factory(fetcherAdapterWeb);
 
 intercept(fetcher);
 
@@ -96,7 +95,7 @@ describe('fetcherInterceptorMerging', () => {
   });
 
   test('can be released', async () => {
-    const myFetcher = createFetcher();
+    const myFetcher = factory(fetcherAdapterWeb);
     const release = intercept(myFetcher);
 
     await Promise.all([

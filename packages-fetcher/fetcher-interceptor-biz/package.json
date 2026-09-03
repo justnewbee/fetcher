@@ -27,7 +27,7 @@
     "@babel/plugin-transform-runtime": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-typescript": "^7.29.7",
-    "@fetchx/fetcher": "workspace:^",
+    "@fetchx/fetcher-adapter-web": "workspace:^",
     "@kcuf/ts-config": "^0.2.0",
     "@types/lodash": "^4.17.25",
     "@vitest/coverage-v8": "^4.1.11",

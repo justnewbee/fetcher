@@ -28,39 +28,7 @@
 应用中通常只需安装默认 Web 实现：
 
 ```bash
-pnpm add @fetchx/fetcher @babel/runtime
-```
-
-默认实例可直接发起请求：
-
-```ts
-import fetcher from '@fetchx/fetcher';
-
-interface IUser {
-  id: string;
-  name: string;
-}
-
-const user = await fetcher.get<IUser>('/api/users/1');
-```
-
-默认导出的 `fetcher` 已被冻结，适合无需额外配置的场景。若要设置基础地址或添加拦截器，请创建独立实例。
-
-```ts
-import {
-  createFetcher
-} from '@fetchx/fetcher';
-
-const api = createFetcher({
-  urlBase: 'https://api.example.com',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
-
-const userId = await api.post<string>('/api/users', {
-  name: 'Alice'
-});
+pnpm add @fetchx/fetcher-factory @babel/runtime
 ```
 
 ## 核心用法
@@ -153,16 +121,9 @@ pnpm add @fetchx/fetcher-interceptor-biz
 ```
 
 ```ts
-import {
-  createFetcher
-} from '@fetchx/fetcher';
 import interceptBiz from '@fetchx/fetcher-interceptor-biz';
 
-const api = createFetcher({
-  urlBase: 'https://api.example.com'
-});
-
-interceptBiz(api, {
+interceptBiz(fetcher, {
   isSuccess: '0',
   getData: 'data'
 });

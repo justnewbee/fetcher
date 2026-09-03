@@ -1,5 +1,4 @@
 import {
-  TErrorNameNormalizer,
   TInterceptorEject,
   IInterceptorQueueItemRequest,
   IInterceptorQueueItemResponse,
@@ -38,17 +37,13 @@ import interceptResponseDownload from './intercept-response-download';
  * 6. `interceptRequest` 可以不必返回全的 `FetcherConfig`，会自动进行 merge，axios 要求返回全的
  */
 export default class FetcherCore implements IFetcherClass {
-  private readonly adapter: TFetcherAdapter;
-  
-  private readonly normalizeErrorName: TErrorNameNormalizer | null;
-  
-  private readonly defaultConfig?: IFetcherConfigDefault;
-  
   private readonly interceptorQueueRequest: IInterceptorQueueItemRequest[] = [];
   
   private readonly interceptorQueueResponse: IInterceptorQueueItemResponse[] = [];
   
   private frozen = false;
+  
+  constructor(private adapter?: TFetcherAdapter, private defaultConfig?: IFetcherConfigDefault) {}
   
   /**
    * 传递给 Interceptor，在 Interceptor 内部有需要可以重新请求
@@ -58,10 +53,106 @@ export default class FetcherCore implements IFetcherClass {
     _byInterceptor: true
   });
   
-  constructor(adapter: TFetcherAdapter, normalizeErrorName: TErrorNameNormalizer | null = null, defaultConfig?: IFetcherConfigDefault) {
+  /**
+   * 对于「开箱即用」的 Fetcher 实例，由于是会被复用的单例，一般不希望它被扩展和修改，此操作不可逆
+   */
+  freeze(): void {
+    this.frozen = true;
+  }
+  
+  /**
+   * 如果不方便在 new 的时候设置 adapter 和（或）defaultConfig，允许稍后进行设置
+   */
+  setup(adapter: TFetcherAdapter, defaultConfig?: IFetcherConfigDefault): void {
+    this.assertNotFrozen('setup');
+    
     this.adapter = adapter;
-    this.normalizeErrorName = normalizeErrorName;
-    this.defaultConfig = defaultConfig;
+    
+    if (defaultConfig !== undefined) {
+      this.defaultConfig = defaultConfig;
+    }
+  }
+  
+  interceptRequest(onFulfilled: TFetcherInterceptRequest, priority?: number): TInterceptorEject {
+    this.assertNotFrozen('interceptRequest');
+    
+    return queueInterceptor<IInterceptorQueueItemRequest>(this.interceptorQueueRequest, {
+      onFulfilled,
+      priority
+    });
+  }
+  
+  /**
+   * 添加「预设」响应拦截器，返回解除拦截的无参方法
+   */
+  interceptResponse(onFulfilled?: TFetcherInterceptResponseFulfilled, onRejected?: TFetcherInterceptResponseRejected, priority?: number): TInterceptorEject {
+    this.assertNotFrozen('interceptResponse');
+    
+    return queueInterceptor<IInterceptorQueueItemResponse>(this.interceptorQueueResponse, {
+      onFulfilled,
+      onRejected,
+      priority
+    });
+  }
+  
+  /**
+   * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
+   */
+  request<T = unknown>(config: IFetcherConfig): Promise<T> {
+    const adapter = this.adapter;
+    
+    if (!adapter) {
+      throw new Error('[Fetcher#request] Adapter is not set, either .setup(adapter) or use constructor adapter arg.'); // 此为同步抛错
+    }
+    
+    return this.requestWithAdapter<T>(adapter, config);
+  }
+  
+  private assertNotFrozen(fn: string): void {
+    if (this.frozen) {
+      throw new Error(`[Fetcher#${fn}] This fetcher instance is frozen.`);
+    }
+  }
+  
+  /**
+   * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
+   */
+  private async requestWithAdapter<T = unknown>(adapter: TFetcherAdapter, config: IFetcherConfig): Promise<T> {
+    let finalConfig: IFetcherConfig = mergeConfig(this.defaultConfig, config);
+    
+    finalConfig._config = config; // 保留原初 config 对象
+    
+    // 1. 前置请求拦截器
+    try {
+      finalConfig = await this.invokeInterceptorQueueRequest(finalConfig);
+    } catch (err) {
+      const error = createFetcherError(finalConfig, {
+        originalError: err
+      });
+      
+      if (error.name === 'FetcherSkipNetwork') { // 跳过网络请求和响应拦截器
+        return (error as IFetcherErrorSkipNetwork<T>).result; // 直接返回结果
+      }
+      
+      throw error; // 继续错下去，不会进入请求环节
+    }
+    
+    // 2. 网络请求
+    let fetcherResponse: IFetcherResponse<T> | undefined;
+    let error: IFetcherError | undefined;
+    
+    try {
+      const [headers, body] = getHeadersAndBodyFromConfig(finalConfig);
+      
+      fetcherResponse = await adapter<T>(buildUrl(finalConfig), headers, body, finalConfig);
+    } catch (err) {
+      error = createFetcherError(finalConfig, {
+        originalError: err
+      });
+    }
+    
+    // 3. 后置响应拦截器
+    return this.invokeInterceptorQueueResponse<T>(finalConfig, fetcherResponse, error);
   }
   
   /**
@@ -151,82 +242,5 @@ export default class FetcherCore implements IFetcherClass {
     });
     
     return promise;
-  }
-  
-  interceptRequest(onFulfilled: TFetcherInterceptRequest, priority?: number): TInterceptorEject {
-    if (this.frozen) {
-      throw new Error('[Fetcher#interceptRequest] This fetcher instance is frozen, cannot add more interceptors.');
-    }
-    
-    return queueInterceptor<IInterceptorQueueItemRequest>(this.interceptorQueueRequest, {
-      onFulfilled,
-      priority
-    });
-  }
-  
-  /**
-   * 添加「预设」响应拦截器，返回解除拦截的无参方法
-   */
-  interceptResponse(onFulfilled?: TFetcherInterceptResponseFulfilled, onRejected?: TFetcherInterceptResponseRejected, priority?: number): TInterceptorEject {
-    if (this.frozen) {
-      throw new Error('[Fetcher#interceptResponse] This fetcher instance is frozen, cannot add more interceptors.');
-    }
-    
-    return queueInterceptor<IInterceptorQueueItemResponse>(this.interceptorQueueResponse, {
-      onFulfilled,
-      onRejected,
-      priority
-    });
-  }
-  
-  /**
-   * 对于「开箱即用」的 Fetcher 实例，由于是会被复用的单例，一般不希望它被扩展和修改，此操作不可逆
-   */
-  freeze(): void {
-    this.frozen = true;
-  }
-  
-  /**
-   * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
-   */
-  async request<T = unknown>(config: IFetcherConfig): Promise<T> {
-    let finalConfig: IFetcherConfig = mergeConfig(this.defaultConfig, config);
-    
-    finalConfig._config = config; // 保留原初 config 对象
-    
-    // 1. 前置请求拦截器
-    try {
-      finalConfig = await this.invokeInterceptorQueueRequest(finalConfig);
-    } catch (err) {
-      const error = createFetcherError(finalConfig, {
-        originalError: err
-      });
-      
-      if (error.name === 'FetcherSkipNetwork') { // 跳过网络请求和响应拦截器
-        return (error as IFetcherErrorSkipNetwork<T>).result; // 直接返回结果
-      }
-      
-      throw error; // 继续错下去，不会进入请求环节
-    }
-    
-    // 2. 网络请求
-    let fetcherResponse: IFetcherResponse<T> | undefined;
-    let error: IFetcherError | undefined;
-    
-    try {
-      const [headers, body] = getHeadersAndBodyFromConfig(finalConfig);
-      
-      fetcherResponse = await this.adapter<T>(buildUrl(finalConfig), headers, body, finalConfig);
-    } catch (err) {
-      const originalErrorName = (err as Error | undefined)?.name;
-      
-      error = createFetcherError(finalConfig, {
-        originalError: err,
-        name: originalErrorName ? this.normalizeErrorName?.(originalErrorName) : undefined
-      });
-    }
-    
-    // 3. 后置响应拦截器
-    return this.invokeInterceptorQueueResponse<T>(finalConfig, fetcherResponse, error);
   }
 }

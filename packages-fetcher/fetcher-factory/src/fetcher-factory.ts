@@ -1,7 +1,7 @@
-import {
-  Fetcher,
-  createFetcher
-} from '@fetchx/fetcher';
+import factory, {
+  Fetcher
+} from '@fetchx/fetcher-core';
+import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 import interceptBiz from '@fetchx/fetcher-interceptor-biz';
 import interceptCacheLocal from '@fetchx/fetcher-interceptor-cache-local';
 
@@ -12,6 +12,7 @@ import {
 import fetcherSetup from './fetcher-setup';
 
 export default function fetcherFactory({
+  adapter = fetcherAdapterWeb,
   urlBase,
   getHeaders,
   interceptorMergingOptions,
@@ -19,7 +20,7 @@ export default function fetcherFactory({
   interceptorSlsOptions,
   interceptorLoginOptions
 }: IFetcherFactoryOptions = {}): Fetcher<IFetcherConfigX> {
-  const fetcher = createFetcher<IFetcherConfigX>({
+  const fetcher = factory<IFetcherConfigX>(adapter, {
     urlBase,
     headers: {
       'Content-Type': 'application/json'

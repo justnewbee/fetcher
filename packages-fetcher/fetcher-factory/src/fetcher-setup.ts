@@ -14,12 +14,17 @@ import {
  * 应用启动时进行，且默认只允许执行一次，因此执行完会默认封禁拦截器扩展
  */
 export default function fetcherSetup(fetcher: TFetcher, {
+  adapter,
   urlBase,
   getHeaders,
   interceptorMergingOptions,
   interceptorSlsOptions,
   interceptorLoginOptions
 }: Omit<IFetcherFactoryOptions, 'interceptorBizOptions'>, freeze = true): void {
+  if (adapter) {
+    fetcher.setup(adapter);
+  }
+  
   if (urlBase) {
     fetcher.interceptRequest(() => ({
       urlBase

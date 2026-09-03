@@ -9,6 +9,7 @@ export {
 
 export type {
   IFetcher as Fetcher,
+  TFetcherAdapter as FetcherAdapter,
   // common
   IPromiseWithAbort as PromiseWithAbort,
   // param

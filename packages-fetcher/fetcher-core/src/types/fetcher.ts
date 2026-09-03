@@ -3,6 +3,7 @@ import {
 } from '@fetchx/fetcher-helper-headers';
 
 import {
+  IFetcherConfigDefault,
   TFetcherConfigX
 } from './config';
 import {
@@ -33,9 +34,14 @@ export type TFetcherAdapter = <T>(url: string, headers: FetcherHeadersNormalized
 
 export interface IFetcherClass<X = object> {
   /**
-   * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
+   * 对于「开箱即用」的 Fetcher 实例，由于是会被复用的单例，一般不希望它被扩展和修改，此操作不可逆
    */
-  request<T = unknown>(config: TFetcherConfigX<X>): Promise<T>;
+  freeze(): void;
+  
+  /**
+   * 动态替换 adapter，比如运行期切换传输层、测试中替换替身；实例被 freeze 后调用会 throw
+   */
+  setup(adapter: TFetcherAdapter, defaultConfig?: IFetcherConfigDefault): void;
   
   /**
    * 添加「预设」请求拦截器，返回解除拦截的无参方法
@@ -48,12 +54,12 @@ export interface IFetcherClass<X = object> {
   interceptResponse(onFulfilled?: TFetcherInterceptResponseFulfilled, onRejected?: TFetcherInterceptResponseRejected, priority?: number): TInterceptorEject;
   
   /**
-   * 对于「开箱即用」的 Fetcher 实例，由于是会被复用的单例，一般不希望它被扩展和修改，此操作不可逆
+   * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
    */
-  freeze(): void;
+  request<T = unknown>(config: TFetcherConfigX<X>): Promise<T>;
 }
 
-export interface IFetcher<X = object> extends Pick<IFetcherClass<X>, 'interceptRequest' | 'interceptResponse' | 'freeze' | 'request'> {
+export interface IFetcher<X = object> extends Pick<IFetcherClass<X>, 'freeze' | 'setup' | 'interceptRequest' | 'interceptResponse' | 'request'> {
   jsonp: IFetcherFnJsonp<X>;
   get: IFetcherFnGet<X>;
   post: IFetcherFnPost<X>;

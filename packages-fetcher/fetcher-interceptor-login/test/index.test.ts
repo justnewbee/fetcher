@@ -10,11 +10,11 @@ import {
 } from 'vitest';
 import fetchMock from 'fetch-mock';
 
-import {
+import factory, {
   FetcherErrorName,
-  FetcherError,
-  createFetcher
-} from '@fetchx/fetcher';
+  FetcherError
+} from '@fetchx/fetcher-core';
+import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 
 import interceptLogin, {
   messageListenInterceptorLogin
@@ -28,7 +28,7 @@ const API_URL_NEED_LOGIN = '/api/error/need-login';
 const API_URL_NO_CODE = '/api/error/no-code';
 const CODE_NEED_LOGIN = 'NeedLogin';
 
-const fetcher = createFetcher();
+const fetcher = factory(fetcherAdapterWeb);
 let loggedIn = false;
 let willCancelLogin = false;
 

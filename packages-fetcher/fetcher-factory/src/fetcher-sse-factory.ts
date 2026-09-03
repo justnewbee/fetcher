@@ -1,6 +1,6 @@
 import {
   buildUrl
-} from '@fetchx/fetcher';
+} from '@fetchx/fetcher-core';
 import fetchSse, {
   FetchSseOptions,
   FetchSseResult

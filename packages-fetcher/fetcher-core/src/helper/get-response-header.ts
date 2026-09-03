@@ -6,6 +6,6 @@ import {
   IFetcherResponse
 } from '../types';
 
-export default function getResponseHeader(response: IFetcherResponse, keys: string): string | null | undefined {
-  return headersGet(response.headers, keys);
+export default function getResponseHeader(response: IFetcherResponse, key: string): string | null | undefined {
+  return headersGet(response.headers, key);
 }

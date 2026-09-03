@@ -10,11 +10,10 @@ import {
 import fetchMock from 'fetch-mock';
 
 import {
-  createFetcher
-} from '@fetchx/fetcher';
-import {
   SlsPostBody
 } from '@fetchx/sls-logger-web';
+import factory from '@fetchx/fetcher-core';
+import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 
 import intercept from '../src';
 
@@ -24,7 +23,7 @@ import {
   SLS_WAIT_TIME
 } from './const';
 
-const fetcher = createFetcher();
+const fetcher = factory(fetcherAdapterWeb);
 
 intercept(fetcher, INTERCEPTOR_OPTIONS);
 
@@ -103,7 +102,7 @@ describe('fetcherInterceptorSls', () => {
   test('custom topic & default params', async () => {
     await sleep(SLS_SILENT_TIME);
     
-    const myFetcher = createFetcher();
+    const myFetcher = factory(fetcherAdapterWeb);
     
     intercept(myFetcher, {
       ...INTERCEPTOR_OPTIONS,
