@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-factory",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Fetcher factory to create custom fetcher with ease.",
   "keywords": [],
   "license": "MIT",
