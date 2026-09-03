@@ -1,13 +1,2 @@
-export { default } from './factory/create-logger';
-export { default as generateCreateLoggerBase } from './factory/generate-create-logger';
-
-export type {
-  ICreateLogger as CreateLogger,
-  ICreateLoggerOptions as CreateLoggerOptions,
-  IGenerateCreateLoggerOptions as GenerateCreateLoggerOptions,
-  ISlsLogger as SlsLogger,
-  TSlsLoggerTransport as SlsLoggerTransport,
-  ISlsLogOptions as SlsLogOptions,
-  ISlsLogOptionsQuick as SlsLogOptionsQuick,
-  ISlsPostBody as SlsPostBody
-} from './types';
+export { default } from '@fetchx/sls-logger-base';
+export * from '@fetchx/sls-logger-base';

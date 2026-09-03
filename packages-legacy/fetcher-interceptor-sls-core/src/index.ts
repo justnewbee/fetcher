@@ -1,5 +1,2 @@
-export { default } from './intercept-sls-core';
-
-export type {
-  IFetcherInterceptorSlsOptions as FetcherInterceptorSlsOptions
-} from './types';
+export { default } from '@fetchx/fetcher-interceptor-sls-core';
+export * from '@fetchx/fetcher-interceptor-sls-core';

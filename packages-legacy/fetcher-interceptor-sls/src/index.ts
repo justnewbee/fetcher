@@ -1,3 +1,2 @@
-export { default } from './intercept-sls';
-
-export * from '@kcuf/fetcher-interceptor-sls-core';
+export { default } from '@fetchx/fetcher-interceptor-sls';
+export * from '@fetchx/fetcher-interceptor-sls';

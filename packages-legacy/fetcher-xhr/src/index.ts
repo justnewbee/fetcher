@@ -1,10 +1,2 @@
-export { default } from './util/fetcher-xhr';
-
-export {
-  EXhrErrorName as XhrErrorName
-} from './enum';
-
-export type {
-  IXhrOptions as XhrOptions,
-  IXhrResponse as XhrResponse
-} from './types';
+export { default } from '@fetchx/fetcher-xhr';
+export * from '@fetchx/fetcher-xhr';

@@ -1,3 +1,5 @@
 # @kcuf/fetcher-transport-taro
 
-The transport for Taro MP when using Fetcher.
+> 💥 不再维护，请用 `@fetchx/fetcher-adapter-taro`
+>
+> 💥 No Longer maintained, use `@fetchx/fetcher-adapter-taro` instead

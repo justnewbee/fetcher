@@ -38,8 +38,7 @@
     "@tarojs/taro": ">=4.2.0"
   },
   "dependencies": {
-    "@kcuf/fetcher-core": "workspace:^",
-    "lodash": "^4.18.1"
+    "@fetchx/fetcher-adapter-taro": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",

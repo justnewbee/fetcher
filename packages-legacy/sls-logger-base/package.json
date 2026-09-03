@@ -40,7 +40,7 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "lodash": "^4.18.1"
+    "@fetchx/sls-logger-base": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",

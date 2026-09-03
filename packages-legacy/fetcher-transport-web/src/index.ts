@@ -1,3 +1,1 @@
-export { default } from './fetch-transport-web';
-
-export { default as normalizeErrorName } from './normalize-error-name';
+export { default } from '@fetchx/fetcher-adapter-web';

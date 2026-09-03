@@ -34,6 +34,9 @@
   "peerDependencies": {
     "@babel/runtime": ">=7.0.0"
   },
+  "dependencies": {
+    "@fetchx/fetcher-xhr": "workspace:^"
+  },
   "scripts": {
     "build:clean": "rimraf dist",
     "build:esm": "ESM=1 babel src -d dist/esm --extensions .ts,.tsx --source-maps",

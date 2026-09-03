@@ -1,1 +1,1 @@
-export { default } from './intercept-delay';
+export { default } from '@fetchx/fetcher-interceptor-delay';

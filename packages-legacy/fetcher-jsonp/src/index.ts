@@ -1,10 +1,2 @@
-export { default } from './util/jsonp';
-
-export {
-  EJsonpErrorName as JsonpErrorName
-} from './enum';
-
-export type {
-  IJsonpOptions as JsonpOptions,
-  IJsonpResponse as JsonpResponse
-} from './types';
+export { default } from '@fetchx/fetcher-jsonp';
+export * from '@fetchx/fetcher-jsonp';

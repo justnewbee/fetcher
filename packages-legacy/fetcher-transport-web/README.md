@@ -1,3 +1,5 @@
 # @kcuf/fetcher-transport-web
 
-The transport for web when using Fetcher.
+> 💥 不再维护，请用 `@fetchx/fetcher-adapter-web`
+>
+> 💥 No Longer maintained, use `@fetchx/fetcher-adapter-web` instead

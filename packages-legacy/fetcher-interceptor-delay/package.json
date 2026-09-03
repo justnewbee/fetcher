@@ -35,7 +35,7 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@kcuf/fetcher-core": "workspace:^"
+    "@fetchx/fetcher-interceptor-delay": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",

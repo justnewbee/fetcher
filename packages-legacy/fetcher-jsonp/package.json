@@ -47,6 +47,9 @@
   "peerDependencies": {
     "@babel/runtime": ">=7.0.0"
   },
+  "dependencies": {
+    "@fetchx/fetcher-jsonp": "workspace:^"
+  },
   "scripts": {
     "start": "storybook dev -p 6006",
     "build:clean": "rimraf dist",

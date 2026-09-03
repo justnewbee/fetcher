@@ -1,1 +1,1 @@
-export { default } from './intercept-headers';
+export { default } from '@fetchx/fetcher-interceptor-headers';

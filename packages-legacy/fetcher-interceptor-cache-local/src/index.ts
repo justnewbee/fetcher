@@ -1,6 +1,2 @@
-export { default } from './intercept-cache-local';
-
-export type {
-  ICacheLocal as CacheLocal,
-  IFetcherConfigCacheLocal as FetcherConfigCacheLocal
-} from './types';
+export { default } from '@fetchx/fetcher-interceptor-cache-local';
+export * from '@fetchx/fetcher-interceptor-cache-local';

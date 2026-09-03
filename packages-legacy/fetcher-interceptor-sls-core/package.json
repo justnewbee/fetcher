@@ -35,8 +35,7 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@kcuf/fetcher-core": "workspace:^",
-    "@kcuf/sls-logger-base": "workspace:^"
+    "@fetchx/fetcher-interceptor-sls-core": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",

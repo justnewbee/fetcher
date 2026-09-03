@@ -1,7 +1,2 @@
-export { default } from './intercept-login';
-
-export * from './helper';
-
-export type {
-  IFetcherInterceptorLoginOptions as FetcherInterceptorLoginOptions
-} from './types';
+export { default } from '@fetchx/fetcher-interceptor-login';
+export * from '@fetchx/fetcher-interceptor-login';

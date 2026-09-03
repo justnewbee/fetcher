@@ -1,1 +1,1 @@
-export { default } from './fetcher-transport-taro';
+export { default } from '@fetchx/fetcher-adapter-taro';
