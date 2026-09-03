@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/sls-logger-base",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Aliyun SLS logger without transport implementation.",
   "keywords": [],
   "license": "MIT",
