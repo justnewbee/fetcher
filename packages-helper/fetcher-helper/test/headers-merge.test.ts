@@ -8,12 +8,12 @@ import {
 } from 'vitest';
 
 import {
-  mergeHeaders,
+  isInstanceofHeaders,
   headersGet,
-  isInstanceofHeaders
+  headersMerge
 } from '../src';
 
-describe('mergeHeaders', () => {
+describe('headersMerge', () => {
   test('when both inputs are Headers, returns a Headers containing all entries', () => {
     const h1 = new Headers({
       A: '1'
@@ -22,7 +22,7 @@ describe('mergeHeaders', () => {
       B: '2'
     });
     
-    const merged = mergeHeaders(h1, h2);
+    const merged = headersMerge(h1, h2);
     
     expect(isInstanceofHeaders(merged)).toBe(true);
     expect((merged as Headers).get('A')).toBe('1');
@@ -37,7 +37,7 @@ describe('mergeHeaders', () => {
       B: '2'
     });
     
-    const merged = mergeHeaders(h1, h2);
+    const merged = headersMerge(h1, h2);
     
     expect(isInstanceofHeaders(merged)).toBe(true);
     expect(headersGet(merged, 'A')).toBe('1');
@@ -52,7 +52,7 @@ describe('mergeHeaders', () => {
       B: '2'
     };
     
-    const merged = mergeHeaders(h1, h2);
+    const merged = headersMerge(h1, h2);
     
     expect(isInstanceofHeaders(merged)).toBe(false);
     expect(headersGet(merged, 'A')).toBe('1');
@@ -67,7 +67,7 @@ describe('mergeHeaders', () => {
       accept: 'application/json'
     };
     
-    const merged = mergeHeaders(h1, h2);
+    const merged = headersMerge(h1, h2);
     
     expect(isInstanceofHeaders(merged)).toBe(false);
     expect((merged as Record<string, string>)['Content-Type']).toBe('text/plain');
@@ -82,7 +82,7 @@ describe('mergeHeaders', () => {
       B: '2'
     });
     
-    mergeHeaders(h1, h2);
+    headersMerge(h1, h2);
     
     expect(h1.has('B')).toBe(false);
     expect(h2.has('A')).toBe(false);
@@ -96,7 +96,7 @@ describe('mergeHeaders', () => {
       B: '2'
     };
     
-    mergeHeaders(h1, h2);
+    headersMerge(h1, h2);
     
     expect('B' in h1).toBe(false);
     expect('A' in h2).toBe(false);

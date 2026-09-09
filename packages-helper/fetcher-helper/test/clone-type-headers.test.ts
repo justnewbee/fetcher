@@ -8,8 +8,8 @@ import {
 } from 'vitest';
 
 import {
-  cloneTypeHeaders,
-  isInstanceofHeaders
+  isInstanceofHeaders,
+  cloneTypeHeaders
 } from '../src';
 
 describe('cloneTypeHeaders', () => {

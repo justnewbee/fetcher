@@ -1,8 +1,9 @@
 import {
   TFetcherHeadersNormalized
-} from '../types';
-
-import isInstanceofHeaders from './is-instanceof-headers';
+} from '../../types';
+import {
+  isInstanceofHeaders
+} from '../fundamental';
 
 export default function headersSet(headers: TFetcherHeadersNormalized, key: string, value: string): void {
   if (isInstanceofHeaders(headers)) {

@@ -1,8 +1,9 @@
 import {
   TFetcherHeadersNormalized
-} from '../types';
-
-import isInstanceofHeaders from './is-instanceof-headers';
+} from '../../types';
+import {
+  isInstanceofHeaders
+} from '../fundamental';
 
 export default function headersDelete(headers: TFetcherHeadersNormalized, key: string): void {
   if (isInstanceofHeaders(headers)) {

@@ -2,7 +2,7 @@ import _forEach from 'lodash/forEach';
 
 import {
   TFetcherHeaders
-} from '../types';
+} from '../../types';
 
 import isInstanceofHeaders from './is-instanceof-headers';
 

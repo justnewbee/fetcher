@@ -4,7 +4,7 @@ import _capitalize from 'lodash/capitalize';
 import {
   TFetcherHeadersFallback,
   TFetcherHeadersFallbackNormalized
-} from '../types';
+} from '../../types';
 
 /**
  * 关于 Headers 参考 https://developer.mozilla.org/en-US/docs/Web/API/Headers
