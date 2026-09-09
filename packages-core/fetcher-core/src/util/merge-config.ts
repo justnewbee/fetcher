@@ -2,7 +2,7 @@ import _forEach from 'lodash/forEach';
 
 import {
   FetcherHeaders
-} from '@fetchx/fetcher-helper-headers';
+} from '@fetchx/fetcher-helper';
 
 import {
   IFetcherConfig,

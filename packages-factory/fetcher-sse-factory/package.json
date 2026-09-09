@@ -1,7 +1,7 @@
 {
-  "name": "@fetchx/fetcher-interceptor-headers",
-  "version": "0.1.3",
-  "description": "Fetcher interceptor that adds headers.",
+  "name": "@fetchx/fetcher-sse-factory",
+  "version": "0.0.1",
+  "description": "Fetcher SSE factory.",
   "keywords": [],
   "license": "MIT",
   "sideEffects": false,
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-interceptor/fetcher-interceptor-headers",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-factoray/fetcher-sse-factory",
   "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
@@ -35,8 +35,7 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@fetchx/fetcher-core": "workspace:^",
-    "@fetchx/fetcher-helper": "workspace:^"
+    "@fetchx/fetch-sse": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",

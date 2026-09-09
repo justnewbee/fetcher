@@ -1,10 +1,12 @@
+import {
+  Fetcher
+} from '@fetchx/fetcher-core';
 import interceptHeaders from '@fetchx/fetcher-interceptor-headers';
 import interceptMerging from '@fetchx/fetcher-interceptor-merging';
 import interceptSls from '@fetchx/fetcher-interceptor-sls';
 import interceptLogin from '@fetchx/fetcher-interceptor-login';
 
 import {
-  TFetcher,
   IFetcherFactoryOptions
 } from './types';
 
@@ -13,7 +15,7 @@ import {
  * 有些则是在初始化时不方便设置（比如登录有可能造成循环依赖），通常此操作在
  * 应用启动时进行，且默认只允许执行一次，因此执行完会默认封禁拦截器扩展
  */
-export default function fetcherSetup(fetcher: TFetcher, {
+export default function fetcherSetup(fetcher: Fetcher, {
   adapter,
   urlBase,
   getHeaders,

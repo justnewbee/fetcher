@@ -14,7 +14,7 @@ import {
  *
  * 🎈 为什么写这个，而为什么不用 EventSource 或 EventSourcePolyfill？
  *
- * 1. 原生 EventSource 只有一个 `withCredentials` 参数，不接收 `headers`，而我们的接口需要
+ * 1. 原生 EventSource 只有一个 `withCredentials` 参数，不接收 `headers`
  * 2. Polyfill 有个会循环启动的 BUG
  * 3. Polyfill 版本代码臃肿，有较多过时的逻辑
  *

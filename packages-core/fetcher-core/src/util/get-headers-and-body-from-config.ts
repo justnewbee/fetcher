@@ -6,7 +6,7 @@ import {
   headersGet,
   headersSet,
   headersDelete
-} from '@fetchx/fetcher-helper-headers';
+} from '@fetchx/fetcher-helper';
 
 import {
   IFetcherConfig,

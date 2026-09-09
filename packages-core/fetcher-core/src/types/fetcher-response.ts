@@ -1,6 +1,6 @@
 import {
   FetcherHeadersFallbackNormalized
-} from '@fetchx/fetcher-helper-headers';
+} from '@fetchx/fetcher-helper';
 
 /**
  * 将 fetch 和 jsonp 各自的 response 同化后的类型，剔除 fetch Response 中不关心的部分（body、bodyUsed、ok、

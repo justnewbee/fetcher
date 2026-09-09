@@ -1,7 +1,7 @@
 {
-  "name": "@fetchx/fetcher-helper-headers",
-  "version": "0.1.1",
-  "description": "Fetcher helpers of headers for fetcher.",
+  "name": "@fetchx/fetcher-helper",
+  "version": "0.0.0",
+  "description": "Fetcher helpers for url, headers, params and body.",
   "keywords": [],
   "license": "MIT",
   "sideEffects": false,
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-helper/fetcher-helper-headers",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-helper/fetcher-helper",
   "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",

@@ -37,7 +37,7 @@
   "dependencies": {
     "@fetchx/fetcher-core": "workspace:^",
     "@fetchx/fetcher-fetch": "workspace:^",
-    "@fetchx/fetcher-helper-headers": "workspace:^",
+    "@fetchx/fetcher-helper": "workspace:^",
     "@fetchx/fetcher-jsonp": "workspace:^",
     "@fetchx/fetcher-xhr": "workspace:^"
   },

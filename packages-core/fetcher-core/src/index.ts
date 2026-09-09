@@ -39,4 +39,4 @@ export type {
 // 仅 re-export 类型
 export type {
   FetcherHeaders
-} from '@fetchx/fetcher-helper-headers';
+} from '@fetchx/fetcher-helper';

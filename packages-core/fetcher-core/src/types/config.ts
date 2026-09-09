@@ -1,6 +1,6 @@
 import {
   FetcherHeaders
-} from '@fetchx/fetcher-helper-headers';
+} from '@fetchx/fetcher-helper';
 
 import {
   EFetcherResponseType

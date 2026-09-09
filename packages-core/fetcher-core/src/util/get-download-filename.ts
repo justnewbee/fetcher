@@ -2,7 +2,7 @@ import {
   isInstanceofHeaders,
   headersNormalize,
   headersGet
-} from '@fetchx/fetcher-helper-headers';
+} from '@fetchx/fetcher-helper';
 
 import {
   IFetcherConfig,

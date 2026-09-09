@@ -4,7 +4,7 @@ import Taro, {
 import {
   FetcherHeadersNormalized,
   headersNormalize
-} from '@fetchx/fetcher-helper-headers';
+} from '@fetchx/fetcher-helper';
 import {
   FetcherErrorName,
   FetcherConfig,

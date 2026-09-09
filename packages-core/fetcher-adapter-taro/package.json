@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@fetchx/fetcher-core": "workspace:^",
-    "@fetchx/fetcher-helper-headers": "workspace:^",
+    "@fetchx/fetcher-helper": "workspace:^",
     "lodash": "^4.18.1"
   },
   "scripts": {

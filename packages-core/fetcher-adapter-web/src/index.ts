@@ -9,7 +9,7 @@ import fetcherJsonp, {
 } from '@fetchx/fetcher-jsonp';
 import {
   FetcherHeadersNormalized
-} from '@fetchx/fetcher-helper-headers';
+} from '@fetchx/fetcher-helper';
 import {
   FetcherErrorName,
   FetcherResponse,

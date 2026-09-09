@@ -219,7 +219,7 @@ SSE、JSONP、XHR、浏览器下载及 Web SLS 均依赖浏览器 API。
 ### 文件与 Header 工具
 
 * `@fetchx/fetcher-helper-file`：上传、下载、MIME 类型与扩展名、MD5、Base64、Blob、File 转换，以及 `prepareFormData(file, fieldName?)`
-* `@fetchx/fetcher-helper-headers`：Header 规范化、查询、设置、删除、合并和类型克隆等工具
+* `@fetchx/fetcher-helper`：Header 规范化、查询、设置、删除、合并和类型克隆等工具
 
 ### 阿里云 SLS 日志
 
@@ -255,7 +255,7 @@ sls({
 | 适配器 | `@fetchx/fetcher-adapter-web`、`@fetchx/fetcher-adapter-taro` |
 | 拦截器 | `@fetchx/fetcher-interceptor-biz`、`@fetchx/fetcher-interceptor-cache-local`、`@fetchx/fetcher-interceptor-delay`、`@fetchx/fetcher-interceptor-headers`、`@fetchx/fetcher-interceptor-login`、`@fetchx/fetcher-interceptor-merging`、`@fetchx/fetcher-interceptor-sls-core`、`@fetchx/fetcher-interceptor-sls` |
 | 传输层 | `@fetchx/fetcher-fetch`、`@fetchx/fetcher-jsonp`、`@fetchx/fetcher-xhr`、`@fetchx/fetch-sse` |
-| 辅助工具 | `@fetchx/fetcher-helper-file`、`@fetchx/fetcher-helper-headers` |
+| 辅助工具 | `@fetchx/fetcher-helper-file`、`@fetchx/fetcher-helper` |
 | 日志 | `@fetchx/sls-logger-base`、`@fetchx/sls-logger-web` |
 
 工作区目录按职责划分：

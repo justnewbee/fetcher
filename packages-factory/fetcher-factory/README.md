@@ -1,6 +1,6 @@
 # @fetchx/fetcher-factory
 
-注意，此 Fetcher 工厂方法，目前仅适用于 Web 端。
+注意，此 Fetcher 工厂方法，默认适用于 Web 端，可使用 `fetcherSetup` 改换 `adapter` 以适配其他端。
 
 ## 拦截器
 
@@ -28,7 +28,7 @@ export default fetcherFactory({
 });
 ```
 
-如果你的 Fetcher 需要支持多端，因而无法确定 Header、SLS、Login 等，可以不配，而在应用侧利用此包额外输出的以下拦截器进行配置：
+如果你的 Fetcher 需要支持多端，因而无法确定 Header、SLS、Login 等，可以不配，而在应用侧利用此包提供的 `fetcherSetup` 以下拦截器进行配置：
 
 * `interceptHeaders`
 * `interceptSls`
