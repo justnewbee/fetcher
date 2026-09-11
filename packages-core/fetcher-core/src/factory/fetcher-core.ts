@@ -63,14 +63,10 @@ export default class FetcherCore implements IFetcherClass {
   /**
    * 如果不方便在 new 的时候设置 adapter 和（或）defaultConfig，允许稍后进行设置
    */
-  setup(adapter: TFetcherAdapter, defaultConfig?: IFetcherConfigDefault): void {
+  setup(adapter: TFetcherAdapter): void {
     this.assertNotFrozen('setup');
     
     this.adapter = adapter;
-    
-    if (defaultConfig !== undefined) {
-      this.defaultConfig = defaultConfig;
-    }
   }
   
   interceptRequest(onFulfilled: TFetcherInterceptRequest, priority?: number): TInterceptorEject {

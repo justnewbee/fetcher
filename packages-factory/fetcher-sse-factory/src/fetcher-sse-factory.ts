@@ -1,10 +1,12 @@
 import {
-  buildUrl
-} from '@fetchx/fetcher-core';
+  FetcherParams,
+  urlBuild,
+  urlMergeWithBase
+} from '@fetchx/fetcher-helper';
 import fetchSse, {
   FetchSseOptions,
   FetchSseResult
-} from '@fetchx/fetch-sse';
+} from '@fetchx/fetcher-sse';
 
 import {
   IFetcherSseFactoryOptions
@@ -13,13 +15,11 @@ import {
 export default function fetcherSseFactory({
   urlBase,
   getHeaders
-}: IFetcherSseFactoryOptions = {}): (url: string, params?: object | null, options?: FetchSseOptions) => FetchSseResult {
-  return function fetcherSse(url: string, params?: object | null, options?: FetchSseOptions): FetchSseResult {
-    return fetchSse(buildUrl({
-      url,
-      urlBase,
-      params: params as Record<string, unknown> | undefined
-    }), getHeaders ? {
+}: IFetcherSseFactoryOptions = {}): (url: string, params?: FetcherParams, options?: FetchSseOptions) => FetchSseResult {
+  return function fetcherSse(url: string, params?: FetcherParams, options?: FetchSseOptions): FetchSseResult {
+    const sseUrl = urlMergeWithBase(urlBuild(url, params), urlBase);
+    
+    return fetchSse(sseUrl, getHeaders ? {
       headers: getHeaders(),
       ...options
     } : options);

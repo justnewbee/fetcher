@@ -4,7 +4,6 @@ import {
 } from '@fetchx/fetcher-helper';
 
 import {
-  IFetcherConfigDefault,
   TFetcherConfigX
 } from './config';
 import {
@@ -39,7 +38,7 @@ export interface IFetcherClass<X = object> {
   /**
    * 动态替换 adapter，比如运行期切换传输层、测试中替换替身；实例被 freeze 后调用会 throw
    */
-  setup(adapter: TFetcherAdapter, defaultConfig?: IFetcherConfigDefault): void;
+  setup(adapter: TFetcherAdapter): void;
   
   /**
    * 添加「预设」请求拦截器，返回解除拦截的无参方法

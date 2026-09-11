@@ -1,4 +1,9 @@
 import {
+  ensureError,
+  decodeTextIntoSseChunks
+} from '@fetchx/fetcher-helper';
+
+import {
   ISseOptions,
   TSseAbort
 } from '../types';
@@ -32,19 +37,17 @@ export default function sseWithFetch(url: string, {
     signal: abortController.signal
   }).then((response): Promise<void> => {
     if (response.status !== 200) {
-      throw new Error(`Status: ${response.status}`);
+      throw new Error(`[sseWithFetch] Status: ${response.status}`);
     }
     
     reader = response.body?.getReader();
     
     if (!reader) {
-      throw new Error('No ReadableStreamReader from body'); // 一般来说不会出现此错误
+      throw new Error('[sseWithFetch] No ReadableStreamReader from body'); // 一般来说不会出现此错误
     }
     
     readyState = EReadyState.OPEN;
     onOpen?.();
-    
-    const textDecoder = new TextDecoder();
     
     // 建立链接后，abortController 就不会让 fetch 报错，而是让 reader 提前结束
     return new Promise<void>((resolve, reject) => {
@@ -59,20 +62,14 @@ export default function sseWithFetch(url: string, {
             
             resolve();
           } else {
-            const text = textDecoder.decode(result.value);
-            
-            text.split('\n').forEach(v => {
-              const chunk = v.replace(/^data:/, '');
-              
-              if (chunk.trim() && !chunk.startsWith('retry:')) {
-                onChunk?.(chunk);
-              }
-            });
+            if (onChunk) {
+              decodeTextIntoSseChunks(result.value).forEach(onChunk);
+            }
             
             readNextChunk();
           }
         }).catch((err: unknown) => {
-          reject(err); // eslint-disable-line @typescript-eslint/prefer-promise-reject-errors
+          reject(ensureError(err));
         });
       }
       
@@ -84,10 +81,8 @@ export default function sseWithFetch(url: string, {
     }
     
     readyState = EReadyState.CLOSED;
-    onError?.(err as Error);
+    onError?.(ensureError(err));
     onClose?.('error');
-    
-    throw err;
   });
   
   return (): boolean => {

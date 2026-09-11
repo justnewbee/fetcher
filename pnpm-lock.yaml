@@ -164,7 +164,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-core/fetcher-adapter-taro:
     dependencies:
@@ -400,9 +400,12 @@ importers:
       '@babel/runtime':
         specifier: '>=7.0.0'
         version: 7.29.7
-      '@fetchx/fetch-sse':
+      '@fetchx/fetcher-helper':
         specifier: workspace:^
-        version: link:../../packages-transport/fetch-sse
+        version: link:../../packages-helper/fetcher-helper
+      '@fetchx/fetcher-sse':
+        specifier: workspace:^
+        version: link:../../packages-transport/fetcher-sse
     devDependencies:
       '@babel/cli':
         specifier: ^7.29.7
@@ -479,7 +482,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-helper/fetcher-helper-file:
     dependencies:
@@ -522,7 +525,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-interceptor/fetcher-interceptor-biz:
     dependencies:
@@ -577,7 +580,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-interceptor/fetcher-interceptor-cache-local:
     dependencies:
@@ -632,7 +635,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-interceptor/fetcher-interceptor-delay:
     dependencies:
@@ -755,7 +758,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-interceptor/fetcher-interceptor-merging:
     dependencies:
@@ -804,7 +807,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-interceptor/fetcher-interceptor-sls:
     dependencies:
@@ -859,7 +862,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-interceptor/fetcher-interceptor-sls-core:
     dependencies:
@@ -945,7 +948,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-sls/sls-logger-web:
     dependencies:
@@ -994,7 +997,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-transport/fetch-sse:
     dependencies:
@@ -1101,7 +1104,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-transport/fetcher-jsonp:
     dependencies:
@@ -1171,13 +1174,16 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-transport/fetcher-sse:
     dependencies:
       '@babel/runtime':
         specifier: '>=7.0.0'
         version: 7.29.7
+      '@fetchx/fetcher-helper':
+        specifier: workspace:^
+        version: link:../../packages-helper/fetcher-helper
     devDependencies:
       '@babel/cli':
         specifier: ^7.29.7
@@ -1197,12 +1203,21 @@ importers:
       '@kcuf/ts-config':
         specifier: ^0.2.0
         version: 0.2.0(typescript@6.0.3)
+      '@vitest/coverage-v8':
+        specifier: ^5.0.0
+        version: 5.0.0(vitest@5.0.0)
+      jsdom:
+        specifier: ^30.0.1
+        version: 30.0.1
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
+      vitest:
+        specifier: ^5.0.0
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   packages-transport/fetcher-xhr:
     dependencies:
@@ -11953,7 +11968,7 @@ snapshots:
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+      vitest: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
 
   '@vitest/expect@3.2.4':
     dependencies:
@@ -11969,7 +11984,7 @@ snapshots:
     dependencies:
       '@vitest/istanbul-lib-coverage': 1.0.1
 
-  '@vitest/mocker@5.0.0(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
+  '@vitest/mocker@5.0.0(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@vitest/spy': 5.0.0
@@ -17175,10 +17190,10 @@ snapshots:
       terser: 5.49.0
       yaml: 2.9.0
 
-  vitest@5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)):
+  vitest@5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0)):
     dependencies:
       '@types/chai': 5.2.3
-      '@vitest/mocker': 5.0.0(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+      '@vitest/mocker': 5.0.0(vite@8.1.5(@types/node@26.5.1)(jiti@2.7.0))
       chai: 6.2.2
       es-module-lexer: 2.3.2
       expect-type: 1.4.0

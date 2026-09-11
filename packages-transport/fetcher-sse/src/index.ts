@@ -8,7 +8,7 @@ import {
 } from './types';
 
 export default function fetcherSse(url: string, options?: ISseOptions, preferEventSource = true): TSseAbort {
-  return preferEventSource && !options?.headers ? sseWithEventSource(url, options) : sseWithFetch(url, options);
+  return preferEventSource && !options?.headers && typeof EventSource !== 'undefined' ? sseWithEventSource(url, options) : sseWithFetch(url, options);
 }
 
 export type {

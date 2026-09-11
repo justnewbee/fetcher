@@ -35,7 +35,8 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@fetchx/fetch-sse": "workspace:^"
+    "@fetchx/fetcher-helper": "workspace:^",
+    "@fetchx/fetcher-sse": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",

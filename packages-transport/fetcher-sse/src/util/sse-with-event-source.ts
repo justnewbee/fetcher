@@ -29,8 +29,8 @@ export default function sseWithEventSource(url: string, {
     }
   });
   eventSource.addEventListener('error', () => {
-    if (eventSource.readyState === eventSource.CLOSED) { // 无法连接
-      const error = new Error('EventSource connection failed');
+    if (eventSource.readyState === eventSource.CLOSED) { // 一般是无法连接，Error Event 里没什么有用信息
+      const error = new Error('[sseWithEventSource] EventSource connection failed');
       
       onError?.(error);
       onClose?.('error');

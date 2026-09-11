@@ -13,3 +13,5 @@ export { default as mergeTypeFormData } from './merge-type-form-data';
 export { default as mergeTypeSearchParams } from './merge-type-search-params';
 
 export { default as ensureError } from './ensure-error';
+export { default as decodeText } from './decode-text';
+export { default as decodeTextIntoSseChunks } from './decode-text-into-sse-chunks';
