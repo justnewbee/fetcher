@@ -14,10 +14,10 @@ import {
   TFetcherInterceptResponseRejected
 } from '../types';
 import {
-  buildUrl,
-  createFetcherError,
-  getHeadersAndBodyFromConfig,
   mergeConfig,
+  buildUrl,
+  getHeadersAndBodyFromConfig,
+  createFetcherError,
   queueInterceptor,
   sortInterceptors
 } from '../util';

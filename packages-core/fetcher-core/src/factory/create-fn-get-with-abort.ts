@@ -1,6 +1,9 @@
 import {
+  FetcherParams
+} from '@fetchx/fetcher-helper';
+
+import {
   IFetcherClass,
-  TFetcherParams,
   TFetcherArgsJsonp,
   IFetcherFnGetWithAbort,
   IPromiseWithAbort
@@ -11,7 +14,7 @@ import {
 } from '../util';
 
 export default function createFnGetWithAbort<X = object>(fetcher: IFetcherClass, method: 'GET' | 'JSONP'): IFetcherFnGetWithAbort<X> {
-  return <T, P extends TFetcherParams>(...args: TFetcherArgsJsonp<P>): IPromiseWithAbort<T> => {
+  return <T, P extends FetcherParams>(...args: TFetcherArgsJsonp<P>): IPromiseWithAbort<T> => {
     const [config, url, params] = parseArgsGet(args);
     const abortController = new AbortController();
     const abort = (): void => abortController.abort();

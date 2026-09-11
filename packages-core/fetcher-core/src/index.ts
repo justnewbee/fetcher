@@ -1,5 +1,7 @@
 export { default } from './factory';
 
+export * from '@fetchx/fetcher-helper';
+
 export * from './helper';
 
 export {
@@ -12,10 +14,6 @@ export type {
   TFetcherAdapter as FetcherAdapter,
   // common
   IPromiseWithAbort as PromiseWithAbort,
-  // param
-  TFetcherParams as FetcherParams,
-  TFetcherBody as FetcherBody,
-  TFetcherBodyNormalized as FetcherBodyNormalized,
   // config
   IFetcherConfig as FetcherConfig,
   IFetcherConfigDefault as FetcherConfigDefault,
@@ -35,8 +33,3 @@ export type {
   IFetcherResponse as FetcherResponse,
   IFetcherError as FetcherError
 } from './types';
-
-// 仅 re-export 类型
-export type {
-  FetcherHeaders
-} from '@fetchx/fetcher-helper';

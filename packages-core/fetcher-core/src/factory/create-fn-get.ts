@@ -1,6 +1,9 @@
 import {
+  FetcherParams
+} from '@fetchx/fetcher-helper';
+
+import {
   IFetcherClass,
-  TFetcherParams,
   TFetcherArgsJsonp,
   IFetcherFnGet
 } from '../types';
@@ -10,7 +13,7 @@ import {
 } from '../util';
 
 export default function createFnGet<X = object>(fetcher: IFetcherClass, method: 'GET' | 'JSONP'): IFetcherFnGet<X> {
-  return <T, P extends TFetcherParams>(...args: TFetcherArgsJsonp<P>): Promise<T> => {
+  return <T, P extends FetcherParams>(...args: TFetcherArgsJsonp<P>): Promise<T> => {
     const [config, url, params] = parseArgsGet(args);
     
     return fetcher.request<T>(mergeConfig(config, {

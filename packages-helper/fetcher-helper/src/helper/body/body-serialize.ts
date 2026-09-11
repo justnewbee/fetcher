@@ -1,4 +1,6 @@
-import qs from 'qs';
+import {
+  stringify
+} from 'qs';
 
 import {
   TFetcherBody,
@@ -17,7 +19,7 @@ import {
  * 默认简单数组 `a: [1, 2]` 会变成 `a[]=1&a[]=2`，而一般我们需要 `a=1&a=2`，所以默认使用 `arrayFormat: 'repeat'`
  * 但有的时候，复杂对象数组 `arr: [{a: xx, b, c}, ...]` 默认转成 arr[0][a]=xx 需要搞成 `arr[0].a=xx`，这个时候可以传 `{ allowDots: true }` 覆盖默认行为
  */
-export default function bodySerialize(body: TFetcherBody, options: IFetcherBodySerializeOptions = DEFAULT_SERIALIZE_BODY_OPTIONS): string | URLSearchParams | FormData | Blob {
+export default function bodySerialize(body: TFetcherBody | undefined, options: IFetcherBodySerializeOptions = DEFAULT_SERIALIZE_BODY_OPTIONS): string | URLSearchParams | FormData | Blob {
   if (!body) {
     return '';
   }
@@ -26,5 +28,5 @@ export default function bodySerialize(body: TFetcherBody, options: IFetcherBodyS
     return body;
   }
   
-  return qs.stringify(body, options);
+  return stringify(body, options);
 }

@@ -1,6 +1,6 @@
 import {
   FetcherHeaders,
-  mergeHeaders
+  headersMerge
 } from '@fetchx/fetcher-helper';
 
 import {
@@ -18,5 +18,5 @@ export default function mergeConfigHeaders(config: IFetcherConfig, headers?: Fet
     return;
   }
   
-  config.headers = mergeHeaders(config.headers, headers);
+  config.headers = headersMerge(config.headers, headers);
 }

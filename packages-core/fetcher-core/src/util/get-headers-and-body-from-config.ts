@@ -1,23 +1,23 @@
 import {
   FetcherHeadersNormalized,
+  FetcherBodyNormalized,
   isInstanceofHeaders,
+  isInstanceofUrlSearchParams,
+  isInstanceofBlob,
+  isInstanceofFormData,
   cloneTypeHeaders,
   headersNormalize,
   headersGet,
   headersSet,
-  headersDelete
+  headersDelete,
+  bodySerialize
 } from '@fetchx/fetcher-helper';
 
 import {
-  IFetcherConfig,
-  TFetcherBodyNormalized
+  IFetcherConfig
 } from '../types';
 
-import isInstanceofBlob from './is-instanceof-blob';
-import isInstanceofFormData from './is-instanceof-form-data';
-import isInstanceofUrlSearchParams from './is-instanceof-url-search-params';
 import isConfigAllowBody from './is-config-allow-body';
-import serializeBody from './serialize-body';
 
 /**
  * 处理 headers 和 body
@@ -71,7 +71,7 @@ import serializeBody from './serialize-body';
  * });
  * ```
  */
-export default function getHeadersAndBodyFromConfig(config: IFetcherConfig): [FetcherHeadersNormalized, TFetcherBodyNormalized] {
+export default function getHeadersAndBodyFromConfig(config: IFetcherConfig): [FetcherHeadersNormalized, FetcherBodyNormalized] {
   const headers = isInstanceofHeaders(config.headers) ? cloneTypeHeaders(config.headers) : headersNormalize(config.headers);
   const body = config.body;
   
@@ -101,7 +101,7 @@ export default function getHeadersAndBodyFromConfig(config: IFetcherConfig): [Fe
     
     headersSet(headers, 'Content-Type', 'application/x-www-form-urlencoded');
     
-    return [headers, serializeBody(body, config.serializeBody)];
+    return [headers, bodySerialize(body, config.serializeBody)];
   }
   
   // JSON 的时候不传 body 可能导致后端抛错

@@ -1,12 +1,14 @@
 import {
-  IFetcherConfig,
-  TFetcherParams
+  FetcherParams,
+  paramsDeserialize,
+  paramsMerge
+} from '@fetchx/fetcher-helper';
+
+import {
+  IFetcherConfig
 } from '../types';
 
-import deserializeParams from './deserialize-params';
-import mergeParams from './merge-params';
-
-export default function mergeConfigParams(config: IFetcherConfig, params?: TFetcherParams): void {
+export default function mergeConfigParams(config: IFetcherConfig, params?: FetcherParams): void {
   if (!params) {
     return;
   }
@@ -22,8 +24,8 @@ export default function mergeConfigParams(config: IFetcherConfig, params?: TFetc
     return;
   }
   
-  config.params = mergeParams(
-      typeof config.params === 'string' ? deserializeParams(config.params, config.serializeParams) : config.params,
-      typeof params === 'string' ? deserializeParams(params, config.serializeParams) : params
+  config.params = paramsMerge(
+      typeof config.params === 'string' ? paramsDeserialize(config.params, config.serializeParams) : config.params,
+      typeof params === 'string' ? paramsDeserialize(params, config.serializeParams) : params
   );
 }

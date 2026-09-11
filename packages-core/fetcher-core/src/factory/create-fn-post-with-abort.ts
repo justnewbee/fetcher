@@ -1,7 +1,10 @@
 import {
+  FetcherParams,
+  FetcherBody
+} from '@fetchx/fetcher-helper';
+
+import {
   IFetcherClass,
-  TFetcherBody,
-  TFetcherParams,
   TFetcherArgsPost,
   IFetcherFnPostWithAbort,
   IPromiseWithAbort
@@ -12,7 +15,7 @@ import {
 } from '../util';
 
 export default function createFnPostWithAbort<X = object>(fetcher: IFetcherClass, method: 'POST' | 'PUT' | 'PATCH' | 'DELETE'): IFetcherFnPostWithAbort<X> {
-  return <T, B extends TFetcherBody, P extends TFetcherParams>(...args: TFetcherArgsPost<B, P>): IPromiseWithAbort<T> => {
+  return <T, B extends FetcherBody, P extends FetcherParams>(...args: TFetcherArgsPost<B, P>): IPromiseWithAbort<T> => {
     const [config, url, body, params] = parseArgsPost(args);
     const abortController = new AbortController();
     const abort = (): void => abortController.abort();

@@ -1,4 +1,8 @@
 import {
+  isInstanceofBlob,
+  isInstanceofArrayBuffer
+} from '@fetchx/fetcher-helper';
+import {
   downloadBlob,
   downloadArrayBuffer
 } from '@fetchx/fetcher-helper-file';
@@ -11,8 +15,6 @@ import {
   IFetcherResponse
 } from '../types';
 import {
-  isInstanceofBlob,
-  isInstanceofArrayBuffer,
   getDownloadFilename
 } from '../util';
 

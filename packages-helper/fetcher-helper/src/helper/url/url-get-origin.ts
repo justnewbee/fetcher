@@ -5,7 +5,7 @@
  * RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
  * by any combination of letters, digits, plus, period, or hyphen.」
  */
-const REG_ORIGIN = /^https?:?\/\/[^/]+/;
+const REG_ORIGIN = /^(?:https?:)?\/\/[^/]+/i;
 
 /**
  * 提取 protocol 和 host，如果能够提取到则说明是绝对地址

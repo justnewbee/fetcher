@@ -1,6 +1,4 @@
 export * from './common';
-export * from './config-params';
-export * from './config-body';
 export * from './config';
 export * from './fetcher-interceptor';
 export * from './fetcher-response';

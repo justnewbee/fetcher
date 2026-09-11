@@ -1,11 +1,14 @@
 import {
+  FetcherParams
+} from '@fetchx/fetcher-helper';
+
+import {
   TFetcherConfigQuick,
   TFetcherArgsJsonp,
-  TFetcherArgsGet,
-  TFetcherParams
+  TFetcherArgsGet
 } from '../types';
 
-export default function parseArgsGet<P extends TFetcherParams>(args: TFetcherArgsJsonp<P> | TFetcherArgsGet<P>): [TFetcherConfigQuick | undefined, url: string, P?] {
+export default function parseArgsGet<P extends FetcherParams>(args: TFetcherArgsJsonp<P> | TFetcherArgsGet<P>): [TFetcherConfigQuick | undefined, url: string, P?] {
   let config: TFetcherConfigQuick | undefined;
   let url: string;
   let params: P | undefined;

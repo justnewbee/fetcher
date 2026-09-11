@@ -1,13 +1,15 @@
 import {
-  IFetcherConfig,
-  TFetcherBody
+  FetcherBody,
+  isInstanceofBlob,
+  bodyDeserialize,
+  bodyMerge
+} from '@fetchx/fetcher-helper';
+
+import {
+  IFetcherConfig
 } from '../types';
 
-import isInstanceofBlob from './is-instanceof-blob';
-import mergeBody from './merge-body';
-import deserializeBody from './deserialize-body';
-
-export default function mergeConfigBody(config: IFetcherConfig, body?: TFetcherBody): void {
+export default function mergeConfigBody(config: IFetcherConfig, body?: FetcherBody): void {
   if (!body) {
     return;
   }
@@ -25,8 +27,8 @@ export default function mergeConfigBody(config: IFetcherConfig, body?: TFetcherB
     return;
   }
   
-  config.body = mergeBody(
-      typeof config.body === 'string' ? deserializeBody(config.body, config.serializeBody) : config.body,
-      typeof body === 'string' ? deserializeBody(body, config.serializeBody) : body
+  config.body = bodyMerge(
+      typeof config.body === 'string' ? bodyDeserialize(config.body, config.serializeBody) : config.body,
+      typeof body === 'string' ? bodyDeserialize(body, config.serializeBody) : body
   );
 }

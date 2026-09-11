@@ -1,16 +1,20 @@
 import {
+  FetcherParams,
+  FetcherBody
+} from '@fetchx/fetcher-helper';
+
+import {
   IFetcherClass,
-  TFetcherBody,
-  TFetcherParams,
   TFetcherArgsPost,
   IFetcherFnPost
 } from '../types';
 import {
-  mergeConfig, parseArgsPost
+  mergeConfig,
+  parseArgsPost
 } from '../util';
 
 export default function createFnPost<X = object>(fetcher: IFetcherClass, method: 'POST' | 'PUT' | 'PATCH' | 'DELETE'): IFetcherFnPost<X> {
-  return <T, B extends TFetcherBody, P extends TFetcherParams>(...args: TFetcherArgsPost<B, P>): Promise<T> => {
+  return <T, B extends FetcherBody, P extends FetcherParams>(...args: TFetcherArgsPost<B, P>): Promise<T> => {
     const [config, url, body, params] = parseArgsPost(args);
     
     return fetcher.request<T>(mergeConfig(config, {

@@ -1,11 +1,14 @@
 import {
+  FetcherParams,
+  FetcherBody
+} from '@fetchx/fetcher-helper';
+
+import {
   TFetcherConfigQuick,
-  TFetcherArgsPost,
-  TFetcherBody,
-  TFetcherParams
+  TFetcherArgsPost
 } from '../types';
 
-export default function parseArgsPost<B extends TFetcherBody, P extends TFetcherParams>(args: TFetcherArgsPost<B, P>): [TFetcherConfigQuick | undefined, string, B, P] {
+export default function parseArgsPost<B extends FetcherBody, P extends FetcherParams>(args: TFetcherArgsPost<B, P>): [TFetcherConfigQuick | undefined, string, B, P] {
   let config: TFetcherConfigQuick | undefined;
   let url: string;
   let body: B | undefined;

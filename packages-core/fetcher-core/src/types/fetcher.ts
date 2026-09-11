@@ -1,14 +1,12 @@
 import {
-  FetcherHeadersNormalized
+  FetcherHeadersNormalized,
+  FetcherBodyNormalized
 } from '@fetchx/fetcher-helper';
 
 import {
   IFetcherConfigDefault,
   TFetcherConfigX
 } from './config';
-import {
-  TFetcherBodyNormalized
-} from './config-body';
 import {
   IFetcherResponse
 } from './fetcher-response';
@@ -30,7 +28,7 @@ import {
 /**
  * 真正调用 adapter 执行网络请求前，Fetcher 会处理好完整的请求地址、标准的 Headers 和标准的 body（有的话），adapter 只需要安心使用即可
  */
-export type TFetcherAdapter = <T>(url: string, headers: FetcherHeadersNormalized, body: TFetcherBodyNormalized, config: TFetcherConfigX) => Promise<IFetcherResponse<T>>;
+export type TFetcherAdapter = <T>(url: string, headers: FetcherHeadersNormalized, body: FetcherBodyNormalized, config: TFetcherConfigX) => Promise<IFetcherResponse<T>>;
 
 export interface IFetcherClass<X = object> {
   /**

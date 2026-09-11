@@ -1,10 +1,12 @@
 import {
+  ensureError
+} from '@fetchx/fetcher-helper';
+
+import {
   IErrorExtendedInfo,
   IFetcherConfig,
   IFetcherError
 } from '../types';
-
-import ensureFetcherError from './ensure-fetcher-error';
 
 interface IOptions extends IErrorExtendedInfo {
   originalError?: unknown;
@@ -13,7 +15,7 @@ interface IOptions extends IErrorExtendedInfo {
 }
 
 export default function createFetcherError(config: IFetcherConfig, options: IOptions = {}): IFetcherError {
-  const error = ensureFetcherError(options.originalError);
+  const error = ensureError(options.originalError) as IFetcherError;
   
   error.config = config;
   

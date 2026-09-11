@@ -13,7 +13,7 @@ import {
   isInstanceofUrlSearchParams
 } from '../fundamental';
 
-export default function paramsSerialize(params: TFetcherParams, options: IFetcherParamsSerializeOptions = DEFAULT_SERIALIZE_PARAMS_OPTIONS): string {
+export default function paramsSerialize(params: TFetcherParams | undefined, options: IFetcherParamsSerializeOptions = DEFAULT_SERIALIZE_PARAMS_OPTIONS): string {
   if (!params) {
     return '';
   }

@@ -13,7 +13,7 @@ importers:
         version: 7.29.7
       '@commitlint/cli':
         specifier: ^21.2.2
-        version: 21.2.2(@types/node@26.5.0)(conventional-commits-filter@6.0.1)(conventional-commits-parser@7.1.1)(typescript@6.0.3)
+        version: 21.2.2(@types/node@26.5.1)(conventional-commits-filter@6.0.1)(conventional-commits-parser@7.1.1)(typescript@6.0.3)
       '@commitlint/config-conventional':
         specifier: ^21.2.2
         version: 21.2.2
@@ -36,14 +36,14 @@ importers:
         specifier: ^22.0.6
         version: 22.0.6
       '@types/node':
-        specifier: ^26.5.0
-        version: 26.5.0
+        specifier: ^26.5.1
+        version: 26.5.1
       '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
+        specifier: ^19.3.0
+        version: 19.3.0
       '@types/react-dom':
-        specifier: ^19.2.7
-        version: 19.2.7(@types/react@19.2.18)
+        specifier: ^19.3.0
+        version: 19.3.0(@types/react@19.3.0)
       commander:
         specifier: ^15.0.0
         version: 15.0.0
@@ -54,14 +54,14 @@ importers:
         specifier: ^9.1.7
         version: 9.1.7
       knip:
-        specifier: ^6.35.0
-        version: 6.35.0
+        specifier: ^6.35.1
+        version: 6.35.1
       lerna:
         specifier: ^10.0.1
-        version: 10.0.1(@types/node@26.5.0)(supports-color@7.2.0)(typescript@6.0.3)
+        version: 10.0.1(@types/node@26.5.1)(supports-color@7.2.0)(typescript@6.0.3)
       lint-staged:
-        specifier: ^17.5.0
-        version: 17.5.0
+        specifier: ^17.5.1
+        version: 17.5.1
       markdownlint-cli2:
         specifier: ^0.23.2
         version: 0.23.2(supports-color@7.2.0)
@@ -69,11 +69,11 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0(supports-color@7.2.0)
       react:
-        specifier: ^19.2.8
-        version: 19.2.8
+        specifier: ^19.3.0
+        version: 19.3.0
       react-dom:
-        specifier: ^19.2.8
-        version: 19.2.8(react@19.2.8)
+        specifier: ^19.3.0
+        version: 19.3.0(react@19.3.0)
       stylelint:
         specifier: ^17.15.0
         version: 17.15.0(supports-color@7.2.0)(typescript@6.0.3)
@@ -82,7 +82,7 @@ importers:
         version: 21.1.0
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@26.5.0)(typescript@6.0.3)
+        version: 10.9.2(@types/node@26.5.1)(typescript@6.0.3)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -116,28 +116,28 @@ importers:
         version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@chromatic-com/storybook':
         specifier: ^5.3.1
-        version: 5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 5.3.1(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@kcuf/demo-rc':
         specifier: ^0.6.1
-        version: 0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
+        version: 0.6.1(@babel/runtime@7.29.7)(react@19.3.0)(styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
       '@kcuf/ts-config':
         specifier: ^0.2.0
         version: 0.2.0(typescript@6.0.3)
       '@storybook/addon-docs':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@storybook/addon-links':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 10.6.0(@types/react@19.3.0)(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@storybook/react-vite':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
       '@types/jsdom':
         specifier: ^30.0.0
         version: 30.0.0
       '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
+        specifier: ^19.3.0
+        version: 19.3.0
       '@vitest/coverage-v8':
         specifier: ^5.0.0
         version: 5.0.0(vitest@5.0.0)
@@ -148,23 +148,23 @@ importers:
         specifier: ^30.0.1
         version: 30.0.1
       react:
-        specifier: ^19.2.8
-        version: 19.2.8
+        specifier: ^19.3.0
+        version: 19.3.0
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
       storybook:
         specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+        version: 10.6.0(@types/react@19.3.0)(react@19.3.0)
       styled-components:
         specifier: ^6.5.3
-        version: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-core/fetcher-adapter-taro:
     dependencies:
@@ -201,7 +201,7 @@ importers:
         version: 0.2.0(typescript@6.0.3)
       '@tarojs/taro':
         specifier: ^4.2.1
-        version: 4.2.1(73bab1be3fbc27e9c4e266b92ffb4fc8)
+        version: 4.2.1(a772ba7794606cb4fe45d43cc0c34006)
       '@types/lodash':
         specifier: ^4.17.25
         version: 4.17.25
@@ -360,37 +360,37 @@ importers:
         version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@chromatic-com/storybook':
         specifier: ^5.3.1
-        version: 5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 5.3.1(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@kcuf/demo-rc':
         specifier: ^0.6.1
-        version: 0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
+        version: 0.6.1(@babel/runtime@7.29.7)(react@19.3.0)(styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
       '@kcuf/ts-config':
         specifier: ^0.2.0
         version: 0.2.0(typescript@6.0.3)
       '@storybook/addon-docs':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@storybook/addon-links':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 10.6.0(@types/react@19.3.0)(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@storybook/react-vite':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
       '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
+        specifier: ^19.3.0
+        version: 19.3.0
       react:
-        specifier: ^19.2.8
-        version: 19.2.8
+        specifier: ^19.3.0
+        version: 19.3.0
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
       storybook:
         specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+        version: 10.6.0(@types/react@19.3.0)(react@19.3.0)
       styled-components:
         specifier: ^6.5.3
-        version: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -434,6 +434,9 @@ importers:
       '@babel/runtime':
         specifier: '>=7.0.0'
         version: 7.29.7
+      '@types/qs':
+        specifier: ^6.15.1
+        version: 6.15.1
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -462,9 +465,6 @@ importers:
       '@types/lodash':
         specifier: ^4.17.25
         version: 4.17.25
-      '@types/qs':
-        specifier: ^6.15.1
-        version: 6.15.1
       '@vitest/coverage-v8':
         specifier: ^5.0.0
         version: 5.0.0(vitest@5.0.0)
@@ -479,7 +479,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-helper/fetcher-helper-file:
     dependencies:
@@ -522,7 +522,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-interceptor/fetcher-interceptor-biz:
     dependencies:
@@ -577,7 +577,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-interceptor/fetcher-interceptor-cache-local:
     dependencies:
@@ -632,7 +632,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-interceptor/fetcher-interceptor-delay:
     dependencies:
@@ -755,7 +755,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-interceptor/fetcher-interceptor-merging:
     dependencies:
@@ -804,7 +804,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-interceptor/fetcher-interceptor-sls:
     dependencies:
@@ -859,7 +859,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-interceptor/fetcher-interceptor-sls-core:
     dependencies:
@@ -897,965 +897,6 @@ importers:
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
-
-  packages-legacy/fetch-sse:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetch-sse':
-        specifier: workspace:^
-        version: link:../../packages-transport/fetch-sse
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/fetcher:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher':
-        specifier: workspace:^
-        version: link:../../packages-core/fetcher
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@chromatic-com/storybook':
-        specifier: ^5.3.1
-        version: 5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@kcuf/demo-rc':
-        specifier: ^0.6.1
-        version: 0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@storybook/addon-docs':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@storybook/addon-links':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@storybook/react-vite':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-      '@types/jsdom':
-        specifier: ^30.0.0
-        version: 30.0.0
-      '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      react:
-        specifier: ^19.2.8
-        version: 19.2.8
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      storybook:
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)
-      styled-components:
-        specifier: ^6.5.3
-        version: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-core:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-core':
-        specifier: workspace:^
-        version: link:../../packages-core/fetcher-core
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@types/lodash':
-        specifier: ^4.17.25
-        version: 4.17.25
-      '@types/qs':
-        specifier: ^6.15.1
-        version: 6.15.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/fetcher-factory:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-factory':
-        specifier: workspace:^
-        version: link:../../packages-factory/fetcher-factory
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@chromatic-com/storybook':
-        specifier: ^5.3.1
-        version: 5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@kcuf/demo-rc':
-        specifier: ^0.6.1
-        version: 0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@storybook/addon-docs':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@storybook/addon-links':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@storybook/react-vite':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-      '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
-      react:
-        specifier: ^19.2.8
-        version: 19.2.8
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      storybook:
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)
-      styled-components:
-        specifier: ^6.5.3
-        version: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/fetcher-fetch:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-fetch':
-        specifier: workspace:^
-        version: link:../../packages-transport/fetcher-fetch
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@chromatic-com/storybook':
-        specifier: ^5.3.1
-        version: 5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@kcuf/demo-rc':
-        specifier: ^0.6.1
-        version: 0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@storybook/addon-docs':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@storybook/addon-links':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@storybook/react-vite':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-      '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      react:
-        specifier: ^19.2.8
-        version: 19.2.8
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      storybook:
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)
-      styled-components:
-        specifier: ^6.5.3
-        version: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-helper-file:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-helper-file':
-        specifier: workspace:^
-        version: link:../../packages-helper/fetcher-helper-file
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-interceptor-biz:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-interceptor-biz':
-        specifier: workspace:^
-        version: link:../../packages-interceptor/fetcher-interceptor-biz
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/fetcher':
-        specifier: workspace:^
-        version: link:../fetcher
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@types/lodash':
-        specifier: ^4.17.25
-        version: 4.17.25
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-interceptor-cache-local:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-interceptor-cache-local':
-        specifier: workspace:^
-        version: link:../../packages-interceptor/fetcher-interceptor-cache-local
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/fetcher':
-        specifier: workspace:^
-        version: link:../fetcher
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@types/lodash':
-        specifier: ^4.17.25
-        version: 4.17.25
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      lodash:
-        specifier: ^4.18.1
-        version: 4.18.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-interceptor-delay:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-interceptor-delay':
-        specifier: workspace:^
-        version: link:../../packages-interceptor/fetcher-interceptor-delay
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/fetcher-interceptor-headers:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-interceptor-headers':
-        specifier: workspace:^
-        version: link:../../packages-interceptor/fetcher-interceptor-headers
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/fetcher-interceptor-login:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-interceptor-login':
-        specifier: workspace:^
-        version: link:../../packages-interceptor/fetcher-interceptor-login
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/fetcher':
-        specifier: workspace:^
-        version: link:../fetcher
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-interceptor-merging:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-interceptor-merging':
-        specifier: workspace:^
-        version: link:../../packages-interceptor/fetcher-interceptor-merging
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/fetcher':
-        specifier: workspace:^
-        version: link:../fetcher
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-interceptor-sls:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-interceptor-sls':
-        specifier: workspace:^
-        version: link:../../packages-interceptor/fetcher-interceptor-sls
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/fetcher':
-        specifier: workspace:^
-        version: link:../fetcher
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-interceptor-sls-core:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-interceptor-sls-core':
-        specifier: workspace:^
-        version: link:../../packages-interceptor/fetcher-interceptor-sls-core
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/fetcher-jsonp:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-jsonp':
-        specifier: workspace:^
-        version: link:../../packages-transport/fetcher-jsonp
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@chromatic-com/storybook':
-        specifier: ^5.3.1
-        version: 5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@kcuf/demo-rc':
-        specifier: ^0.6.1
-        version: 0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@storybook/addon-docs':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@storybook/addon-links':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      '@storybook/react-vite':
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-      '@types/jsdom':
-        specifier: ^30.0.0
-        version: 30.0.0
-      '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      react:
-        specifier: ^19.2.8
-        version: 19.2.8
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      storybook:
-        specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)
-      styled-components:
-        specifier: ^6.5.3
-        version: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/fetcher-transport-taro:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-adapter-taro':
-        specifier: workspace:^
-        version: link:../../packages-core/fetcher-adapter-taro
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@tarojs/taro':
-        specifier: ^4.2.1
-        version: 4.2.1(@tarojs/components@4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(@tarojs/helper@4.2.1(supports-color@10.2.2))(@tarojs/shared@4.2.1)(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
-      '@types/lodash':
-        specifier: ^4.17.25
-        version: 4.17.25
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/fetcher-transport-web:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-adapter-web':
-        specifier: workspace:^
-        version: link:../../packages-core/fetcher-adapter-web
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/fetcher-xhr:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/fetcher-xhr':
-        specifier: workspace:^
-        version: link:../../packages-transport/fetcher-xhr
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-
-  packages-legacy/sls-logger-base:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/sls-logger-base':
-        specifier: workspace:^
-        version: link:../../packages-sls/sls-logger-base
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@types/lodash':
-        specifier: ^4.17.25
-        version: 4.17.25
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-
-  packages-legacy/sls-logger-web:
-    dependencies:
-      '@babel/runtime':
-        specifier: '>=7.0.0'
-        version: 7.29.7
-      '@fetchx/sls-logger-web':
-        specifier: workspace:^
-        version: link:../../packages-sls/sls-logger-web
-    devDependencies:
-      '@babel/cli':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
-      '@babel/core':
-        specifier: ^7.29.7
-        version: 7.29.7(supports-color@10.2.2)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-env':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@babel/preset-typescript':
-        specifier: ^7.29.7
-        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
-      '@kcuf/ts-config':
-        specifier: ^0.2.0
-        version: 0.2.0(typescript@6.0.3)
-      '@vitest/coverage-v8':
-        specifier: ^5.0.0
-        version: 5.0.0(vitest@5.0.0)
-      fetch-mock:
-        specifier: ^12.6.0
-        version: 12.6.0
-      jsdom:
-        specifier: ^30.0.1
-        version: 30.0.1
-      rimraf:
-        specifier: ^6.1.3
-        version: 6.1.3
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-      vitest:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-sls/sls-logger-base:
     dependencies:
@@ -1904,7 +945,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-sls/sls-logger-web:
     dependencies:
@@ -1953,7 +994,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-transport/fetch-sse:
     dependencies:
@@ -2015,25 +1056,25 @@ importers:
         version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@chromatic-com/storybook':
         specifier: ^5.3.1
-        version: 5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 5.3.1(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@kcuf/demo-rc':
         specifier: ^0.6.1
-        version: 0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
+        version: 0.6.1(@babel/runtime@7.29.7)(react@19.3.0)(styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
       '@kcuf/ts-config':
         specifier: ^0.2.0
         version: 0.2.0(typescript@6.0.3)
       '@storybook/addon-docs':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@storybook/addon-links':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 10.6.0(@types/react@19.3.0)(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@storybook/react-vite':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
       '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
+        specifier: ^19.3.0
+        version: 19.3.0
       '@vitest/coverage-v8':
         specifier: ^5.0.0
         version: 5.0.0(vitest@5.0.0)
@@ -2044,23 +1085,23 @@ importers:
         specifier: ^30.0.1
         version: 30.0.1
       react:
-        specifier: ^19.2.8
-        version: 19.2.8
+        specifier: ^19.3.0
+        version: 19.3.0
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
       storybook:
         specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+        version: 10.6.0(@types/react@19.3.0)(react@19.3.0)
       styled-components:
         specifier: ^6.5.3
-        version: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   packages-transport/fetcher-jsonp:
     dependencies:
@@ -2085,28 +1126,28 @@ importers:
         version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
       '@chromatic-com/storybook':
         specifier: ^5.3.1
-        version: 5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 5.3.1(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@kcuf/demo-rc':
         specifier: ^0.6.1
-        version: 0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
+        version: 0.6.1(@babel/runtime@7.29.7)(react@19.3.0)(styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
       '@kcuf/ts-config':
         specifier: ^0.2.0
         version: 0.2.0(typescript@6.0.3)
       '@storybook/addon-docs':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@storybook/addon-links':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
+        version: 10.6.0(@types/react@19.3.0)(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@storybook/react-vite':
         specifier: ^10.6.0
-        version: 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
       '@types/jsdom':
         specifier: ^30.0.0
         version: 30.0.0
       '@types/react':
-        specifier: ^19.2.18
-        version: 19.2.18
+        specifier: ^19.3.0
+        version: 19.3.0
       '@vitest/coverage-v8':
         specifier: ^5.0.0
         version: 5.0.0(vitest@5.0.0)
@@ -2114,23 +1155,54 @@ importers:
         specifier: ^30.0.1
         version: 30.0.1
       react:
-        specifier: ^19.2.8
-        version: 19.2.8
+        specifier: ^19.3.0
+        version: 19.3.0
       rimraf:
         specifier: ^6.1.3
         version: 6.1.3
       storybook:
         specifier: ^10.6.0
-        version: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+        version: 10.6.0(@types/react@19.3.0)(react@19.3.0)
       styled-components:
         specifier: ^6.5.3
-        version: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+
+  packages-transport/fetcher-sse:
+    dependencies:
+      '@babel/runtime':
+        specifier: '>=7.0.0'
+        version: 7.29.7
+    devDependencies:
+      '@babel/cli':
+        specifier: ^7.29.7
+        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))
+      '@babel/core':
+        specifier: ^7.29.7
+        version: 7.29.7(supports-color@10.2.2)
+      '@babel/plugin-transform-runtime':
+        specifier: ^7.29.7
+        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
+      '@babel/preset-env':
+        specifier: ^7.29.7
+        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
+      '@babel/preset-typescript':
+        specifier: ^7.29.7
+        version: 7.29.7(@babel/core@7.29.7(supports-color@10.2.2))(supports-color@10.2.2)
+      '@kcuf/ts-config':
+        specifier: ^0.2.0
+        version: 0.2.0(typescript@6.0.3)
+      rimraf:
+        specifier: ^6.1.3
+        version: 6.1.3
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
 
   packages-transport/fetcher-xhr:
     dependencies:
@@ -4983,8 +4055,8 @@ packages:
   '@types/node@26.4.1':
     resolution: {integrity: sha512-k97ENvZWtvA6yqz5/FS6a7duDgOPEeOQOc2iKS/nY6mX6qJUKtLnWzQS+Xj6tXweyj6ZcTAK2Qecetnvi9nCLA==}
 
-  '@types/node@26.5.0':
-    resolution: {integrity: sha512-dVSGpriSoCgz8WnDNTuSSuSv1PC/ALXihO4ulRZt7Md8k9mlbdin3lGOcDE8SnWOgf513ByWlXd7BK4azmyg/A==}
+  '@types/node@26.5.1':
+    resolution: {integrity: sha512-CzNm2FezW4VR/LjG6yUdiEgLE/rAQ9Slj5gCu/C2VrdcW7I0ahNZ8DRbHT7zOZ6r3ONgd/bsQIeSaoDGrd1C6g==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -4995,13 +4067,13 @@ packages:
   '@types/qs@6.15.1':
     resolution: {integrity: sha512-GZHUBZR9hckSUhrxmp1nG6NwdpM9fCunJwyThLW1X3AyHgd9IlHb6VANpQQqDr2o/qQp6McZ3y/IA2rVzKzSbw==}
 
-  '@types/react-dom@19.2.7':
-    resolution: {integrity: sha512-I8bPpDLcHBv1qiIiXDCy71Rt8eQDKJP0sMSWJphDdAcdqiJ1sGpZamavoEIRZmYzjia9LuEb2HlYdDpmoENpvQ==}
+  '@types/react-dom@19.3.0':
+    resolution: {integrity: sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q==}
     peerDependencies:
-      '@types/react': ^19.2.0
+      '@types/react': ^19.3.0
 
-  '@types/react@19.2.18':
-    resolution: {integrity: sha512-AnzbBERsrLKtk2XSfTbYRLjQPdy116Sty4q+T+Bp3IC4l6jNBvreVPAHmpq9qhXQM7CXZPjLVmGMw9sy+hxQ3w==}
+  '@types/react@19.3.0':
+    resolution: {integrity: sha512-N0rFCuH9YoxG9/m61l9MfpJKfmLOVU0em7ipIz6TRgSSkvReLB9vL85GB+yr8Bs5leqpvg96JSwF4ZS1s4viQg==}
 
   '@types/resolve@1.20.6':
     resolution: {integrity: sha512-A4STmOXPhMUtHH+S6ymgE2GiBSMqf4oTvcQZMcHzokuTLVYzXTB8ttjcgxOVaAp2lGwEdzZ0J+cRbbeevQj1UQ==}
@@ -7291,8 +6363,8 @@ packages:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
 
-  knip@6.35.0:
-    resolution: {integrity: sha512-eER1hSyi47lJTO9MTnEoJspEscPaVuFtFkHsGbuCmhjDlphzvg2xxcweNg1NCeylo9ERSkb/NzAo7sAcT9gLmA==}
+  knip@6.35.1:
+    resolution: {integrity: sha512-22wnEnv4do2fvoeJsxpFCG/MBxReNxoCVBccaCl7suUJsG+F0UvxI9ycxZ9YgtLHSSjrZl5tOas0JZ/R1vJ93g==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -7419,8 +6491,8 @@ packages:
   linkify-it@5.0.2:
     resolution: {integrity: sha512-ONTm2jCMAVZjgQa/Fy1kScXsuOoF5NPTsoFBdE1KVIZ2vAh/r9+Bqo+0jINCBYnavTPQZz38QzFTme79ENoN3Q==}
 
-  lint-staged@17.5.0:
-    resolution: {integrity: sha512-ah2qsNtvKP1+Ak4rAvEEIvcXDLjjbr/xmxCvlequxqEOFYk0qINcZcRxD3Ic8wRn7/oQ8+wC9s0DfDrdMVCRFg==}
+  lint-staged@17.5.1:
+    resolution: {integrity: sha512-7EDuco1xnBMeVpvAbeMq1U5KXwJGLmY8q6l+Ye78r36C4mPc+Vg1Z2SK8gHyRTyvPro90A0q5/FAZ+Au23d6QQ==}
     engines: {node: '>=22.22.1'}
     hasBin: true
 
@@ -8504,14 +7576,19 @@ packages:
     peerDependencies:
       react: ^19.2.8
 
+  react-dom@19.3.0:
+    resolution: {integrity: sha512-JDk8dgif51OjFoDE70+OT9ICyYr+69HlmihNwp1+Nsfbna3t5sIiCa9ZJktDmQ4/1b/rn26hIAR2uYXDMr5r0Q==}
+    peerDependencies:
+      react: ^19.3.0
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
 
-  react@19.2.8:
-    resolution: {integrity: sha512-PWaYA1L/q9u2u7xYQi+Y3L3Yfnie7XyLeaJICV1MGD6LprsBxcAqGjYyr0eY3p+QdsA+x/Irkt4Qif8D63+Sbw==}
+  react@19.3.0:
+    resolution: {integrity: sha512-E8LUcbtBWt20bbl2YoHfx4ZDBdxVTfOKtCZn9cDSJ4l6/nuoApcpIBcj47t2wZoVX8g2ZHuMHbiShgCR1T5Sog==}
     engines: {node: '>=0.10.0'}
 
   read-cmd-shim@4.0.0:
@@ -8708,6 +7785,9 @@ packages:
 
   scheduler@0.27.0:
     resolution: {integrity: sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==}
+
+  scheduler@0.28.0:
+    resolution: {integrity: sha512-juorfCmIkIw8tT+p5BXSm6PJjQF/ycEYmKyzURCIt/RaZIhL+PulbQ9Yu2z1HdOJDdqDTlxA1+xKBmHXJsczAw==}
 
   schema-utils@4.3.3:
     resolution: {integrity: sha512-eflK8wEtyOE6+hsaRVPxvUKYCpRgzLqDTb8krvAsRIwOGlHoSgYLgBXoubGgLd2fT41/OUYdb48v4k4WWHQurA==}
@@ -10574,12 +9654,12 @@ snapshots:
       hashery: 1.5.1
       keyv: 5.6.0
 
-  '@chromatic-com/storybook@5.3.1(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))':
+  '@chromatic-com/storybook@5.3.1(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))':
     dependencies:
       '@neoconfetti/react': 1.0.0
       chromatic: 18.2.0
       jsonfile: 6.2.1
-      storybook: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+      storybook: 10.6.0(@types/react@19.3.0)(react@19.3.0)
       strip-ansi: 7.2.0
     transitivePeerDependencies:
       - '@chromatic-com/cypress'
@@ -10708,12 +9788,12 @@ snapshots:
       style-mod: 4.1.3
       w3c-keyname: 2.2.8
 
-  '@commitlint/cli@21.2.2(@types/node@26.5.0)(conventional-commits-filter@6.0.1)(conventional-commits-parser@7.1.1)(typescript@6.0.3)':
+  '@commitlint/cli@21.2.2(@types/node@26.5.1)(conventional-commits-filter@6.0.1)(conventional-commits-parser@7.1.1)(typescript@6.0.3)':
     dependencies:
       '@commitlint/config-conventional': 21.2.2
       '@commitlint/format': 21.2.2
       '@commitlint/lint': 21.2.2
-      '@commitlint/load': 21.2.2(@types/node@26.5.0)(typescript@6.0.3)
+      '@commitlint/load': 21.2.2(@types/node@26.5.1)(typescript@6.0.3)
       '@commitlint/read': 21.2.1(conventional-commits-filter@6.0.1)(conventional-commits-parser@7.1.1)
       '@commitlint/types': 21.2.0
       tinyexec: 1.2.4
@@ -10758,14 +9838,14 @@ snapshots:
       '@commitlint/rules': 21.2.2
       '@commitlint/types': 21.2.0
 
-  '@commitlint/load@21.2.2(@types/node@26.5.0)(typescript@6.0.3)':
+  '@commitlint/load@21.2.2(@types/node@26.5.1)(typescript@6.0.3)':
     dependencies:
       '@commitlint/config-validator': 21.2.0
       '@commitlint/execute-rule': 21.0.1
       '@commitlint/resolve-extends': 21.2.2
       '@commitlint/types': 21.2.0
       cosmiconfig: 9.0.2(typescript@6.0.3)
-      cosmiconfig-typescript-loader: 6.3.0(@types/node@26.5.0)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3)
+      cosmiconfig-typescript-loader: 6.3.0(@types/node@26.5.1)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3)
       es-toolkit: 1.50.0
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -11177,128 +10257,128 @@ snapshots:
 
   '@inquirer/ansi@1.0.2': {}
 
-  '@inquirer/checkbox@4.3.2(@types/node@26.5.0)':
+  '@inquirer/checkbox@4.3.2(@types/node@26.5.1)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
-  '@inquirer/confirm@5.1.21(@types/node@26.5.0)':
+  '@inquirer/confirm@5.1.21(@types/node@26.5.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
-  '@inquirer/core@10.3.2(@types/node@26.5.0)':
+  '@inquirer/core@10.3.2(@types/node@26.5.1)':
     dependencies:
       '@inquirer/ansi': 1.0.2
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
-  '@inquirer/editor@4.2.23(@types/node@26.5.0)':
+  '@inquirer/editor@4.2.23(@types/node@26.5.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/external-editor': 1.0.3(@types/node@26.5.0)
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/external-editor': 1.0.3(@types/node@26.5.1)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
-  '@inquirer/expand@4.0.23(@types/node@26.5.0)':
+  '@inquirer/expand@4.0.23(@types/node@26.5.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
-  '@inquirer/external-editor@1.0.3(@types/node@26.5.0)':
+  '@inquirer/external-editor@1.0.3(@types/node@26.5.1)':
     dependencies:
       chardet: 2.2.0
       iconv-lite: 0.7.3
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
   '@inquirer/figures@1.0.15': {}
 
-  '@inquirer/input@4.3.1(@types/node@26.5.0)':
+  '@inquirer/input@4.3.1(@types/node@26.5.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
-  '@inquirer/number@3.0.23(@types/node@26.5.0)':
+  '@inquirer/number@3.0.23(@types/node@26.5.1)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
-  '@inquirer/password@4.0.23(@types/node@26.5.0)':
-    dependencies:
-      '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
-    optionalDependencies:
-      '@types/node': 26.5.0
-
-  '@inquirer/prompts@7.10.1(@types/node@26.5.0)':
-    dependencies:
-      '@inquirer/checkbox': 4.3.2(@types/node@26.5.0)
-      '@inquirer/confirm': 5.1.21(@types/node@26.5.0)
-      '@inquirer/editor': 4.2.23(@types/node@26.5.0)
-      '@inquirer/expand': 4.0.23(@types/node@26.5.0)
-      '@inquirer/input': 4.3.1(@types/node@26.5.0)
-      '@inquirer/number': 3.0.23(@types/node@26.5.0)
-      '@inquirer/password': 4.0.23(@types/node@26.5.0)
-      '@inquirer/rawlist': 4.1.11(@types/node@26.5.0)
-      '@inquirer/search': 3.2.2(@types/node@26.5.0)
-      '@inquirer/select': 4.4.2(@types/node@26.5.0)
-    optionalDependencies:
-      '@types/node': 26.5.0
-
-  '@inquirer/rawlist@4.1.11(@types/node@26.5.0)':
-    dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
-      yoctocolors-cjs: 2.1.3
-    optionalDependencies:
-      '@types/node': 26.5.0
-
-  '@inquirer/search@3.2.2(@types/node@26.5.0)':
-    dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
-      yoctocolors-cjs: 2.1.3
-    optionalDependencies:
-      '@types/node': 26.5.0
-
-  '@inquirer/select@4.4.2(@types/node@26.5.0)':
+  '@inquirer/password@4.0.23(@types/node@26.5.1)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
+    optionalDependencies:
+      '@types/node': 26.5.1
+
+  '@inquirer/prompts@7.10.1(@types/node@26.5.1)':
+    dependencies:
+      '@inquirer/checkbox': 4.3.2(@types/node@26.5.1)
+      '@inquirer/confirm': 5.1.21(@types/node@26.5.1)
+      '@inquirer/editor': 4.2.23(@types/node@26.5.1)
+      '@inquirer/expand': 4.0.23(@types/node@26.5.1)
+      '@inquirer/input': 4.3.1(@types/node@26.5.1)
+      '@inquirer/number': 3.0.23(@types/node@26.5.1)
+      '@inquirer/password': 4.0.23(@types/node@26.5.1)
+      '@inquirer/rawlist': 4.1.11(@types/node@26.5.1)
+      '@inquirer/search': 3.2.2(@types/node@26.5.1)
+      '@inquirer/select': 4.4.2(@types/node@26.5.1)
+    optionalDependencies:
+      '@types/node': 26.5.1
+
+  '@inquirer/rawlist@4.1.11(@types/node@26.5.1)':
+    dependencies:
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
-  '@inquirer/type@3.0.10(@types/node@26.5.0)':
+  '@inquirer/search@3.2.2(@types/node@26.5.1)':
+    dependencies:
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/figures': 1.0.15
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
+      yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
+
+  '@inquirer/select@4.4.2(@types/node@26.5.1)':
+    dependencies:
+      '@inquirer/ansi': 1.0.2
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/figures': 1.0.15
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 26.5.1
+
+  '@inquirer/type@3.0.10(@types/node@26.5.1)':
+    optionalDependencies:
+      '@types/node': 26.5.1
 
   '@isaacs/cliui@9.0.0': {}
 
@@ -11310,11 +10390,11 @@ snapshots:
 
   '@jest/diff-sequences@30.0.1': {}
 
-  '@joshwooding/vite-plugin-react-docgen-typescript@0.7.0(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
+  '@joshwooding/vite-plugin-react-docgen-typescript@0.7.0(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
     dependencies:
       glob: 13.0.6
       react-docgen-typescript: 2.4.0(typescript@6.0.3)
-      vite: 8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
     optionalDependencies:
       typescript: 6.0.3
 
@@ -11348,17 +10428,17 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kcuf-hook/use-controllable@0.2.0(@babel/runtime@7.29.7)(react@19.2.8)':
+  '@kcuf-hook/use-controllable@0.2.0(@babel/runtime@7.29.7)(react@19.3.0)':
     dependencies:
       '@babel/runtime': 7.29.7
-      react: 19.2.8
+      react: 19.3.0
 
-  '@kcuf-hook/use-is-unmounted@0.0.1(@babel/runtime@7.29.7)(react@19.2.8)':
+  '@kcuf-hook/use-is-unmounted@0.0.1(@babel/runtime@7.29.7)(react@19.3.0)':
     dependencies:
       '@babel/runtime': 7.29.7
-      react: 19.2.8
+      react: 19.3.0
 
-  '@kcuf-ui/codemirror-headless@0.1.0(@babel/runtime@7.29.7)(react@19.2.8)':
+  '@kcuf-ui/codemirror-headless@0.1.0(@babel/runtime@7.29.7)(react@19.3.0)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@codemirror/autocomplete': 6.20.3
@@ -11377,43 +10457,43 @@ snapshots:
       '@codemirror/state': 6.7.2
       '@codemirror/theme-one-dark': 6.1.3
       '@codemirror/view': 6.43.10
-      '@kcuf-hook/use-controllable': 0.2.0(@babel/runtime@7.29.7)(react@19.2.8)
-      '@kcuf-hook/use-is-unmounted': 0.0.1(@babel/runtime@7.29.7)(react@19.2.8)
+      '@kcuf-hook/use-controllable': 0.2.0(@babel/runtime@7.29.7)(react@19.3.0)
+      '@kcuf-hook/use-is-unmounted': 0.0.1(@babel/runtime@7.29.7)(react@19.3.0)
       '@uiw/codemirror-theme-material': 4.25.11(@codemirror/language@6.12.4)(@codemirror/state@6.7.2)(@codemirror/view@6.43.10)
       codemirror-json5: 1.0.3
       immer: 10.2.0
-      react: 19.2.8
+      react: 19.3.0
 
-  '@kcuf-ui/form-headless@0.2.0(@babel/runtime@7.29.7)(react@19.2.8)':
+  '@kcuf-ui/form-headless@0.2.0(@babel/runtime@7.29.7)(react@19.3.0)':
     dependencies:
       '@babel/runtime': 7.29.7
-      react: 19.2.8
+      react: 19.3.0
 
-  '@kcuf-ui/icon-base@0.2.4(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))':
+  '@kcuf-ui/icon-base@0.2.4(@babel/runtime@7.29.7)(react@19.3.0)(styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))':
     dependencies:
       '@babel/runtime': 7.29.7
-      react: 19.2.8
-      styled-components: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      react: 19.3.0
+      styled-components: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
-  '@kcuf-ui/input-switch-headless@0.2.0(@babel/runtime@7.29.7)(react@19.2.8)':
+  '@kcuf-ui/input-switch-headless@0.2.0(@babel/runtime@7.29.7)(react@19.3.0)':
     dependencies:
       '@babel/runtime': 7.29.7
-      '@kcuf-hook/use-controllable': 0.2.0(@babel/runtime@7.29.7)(react@19.2.8)
+      '@kcuf-hook/use-controllable': 0.2.0(@babel/runtime@7.29.7)(react@19.3.0)
       '@kcuf/ts-missing-helpers': 0.0.1
-      react: 19.2.8
+      react: 19.3.0
 
-  '@kcuf/demo-rc@0.6.1(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))':
+  '@kcuf/demo-rc@0.6.1(@babel/runtime@7.29.7)(react@19.3.0)(styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))':
     dependencies:
       '@babel/runtime': 7.29.7
-      '@kcuf-hook/use-controllable': 0.2.0(@babel/runtime@7.29.7)(react@19.2.8)
-      '@kcuf-ui/codemirror-headless': 0.1.0(@babel/runtime@7.29.7)(react@19.2.8)
-      '@kcuf-ui/form-headless': 0.2.0(@babel/runtime@7.29.7)(react@19.2.8)
-      '@kcuf-ui/icon-base': 0.2.4(@babel/runtime@7.29.7)(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
-      '@kcuf-ui/input-switch-headless': 0.2.0(@babel/runtime@7.29.7)(react@19.2.8)
+      '@kcuf-hook/use-controllable': 0.2.0(@babel/runtime@7.29.7)(react@19.3.0)
+      '@kcuf-ui/codemirror-headless': 0.1.0(@babel/runtime@7.29.7)(react@19.3.0)
+      '@kcuf-ui/form-headless': 0.2.0(@babel/runtime@7.29.7)(react@19.3.0)
+      '@kcuf-ui/icon-base': 0.2.4(@babel/runtime@7.29.7)(react@19.3.0)(styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
+      '@kcuf-ui/input-switch-headless': 0.2.0(@babel/runtime@7.29.7)(react@19.3.0)
       json5: 2.2.3
       lodash: 4.18.1
-      react: 19.2.8
-      styled-components: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      react: 19.3.0
+      styled-components: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
   '@kcuf/eslint-config@0.6.6(@typescript-eslint/parser@8.69.0(eslint@9.39.5(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)(vue-eslint-parser@10.4.1(eslint@9.39.5(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))':
     dependencies:
@@ -11551,11 +10631,11 @@ snapshots:
 
   '@marijn/find-cluster-break@1.0.3': {}
 
-  '@mdx-js/react@3.1.1(@types/react@19.2.18)(react@19.2.8)':
+  '@mdx-js/react@3.1.1(@types/react@19.3.0)(react@19.3.0)':
     dependencies:
       '@types/mdx': 2.0.14
-      '@types/react': 19.2.18
-      react: 19.2.8
+      '@types/react': 19.3.0
+      react: 19.3.0
 
   '@napi-rs/wasm-runtime@0.2.4':
     dependencies:
@@ -12286,65 +11366,74 @@ snapshots:
 
   '@stencil/core@2.22.3': {}
 
-  '@storybook/addon-docs@10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))':
+  '@storybook/addon-docs@10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))':
     dependencies:
-      '@mdx-js/react': 3.1.1(@types/react@19.2.18)(react@19.2.8)
-      '@storybook/icons': 2.1.0(react@19.2.8)
-      '@storybook/react-dom-shim': 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      react: 19.2.8
-      react-dom: 19.2.8(react@19.2.8)
-      storybook: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+      '@mdx-js/react': 3.1.1(@types/react@19.3.0)(react@19.3.0)
+      '@storybook/icons': 2.1.0(react@19.3.0)
+      '@storybook/react-dom-shim': 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.2.8(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
+      react: 19.3.0
+      react-dom: 19.2.8(react@19.3.0)
+      storybook: 10.6.0(@types/react@19.3.0)(react@19.3.0)
       ts-dedent: 2.3.0
       unplugin: 2.3.11
     optionalDependencies:
-      '@types/react': 19.2.18
+      '@types/react': 19.3.0
     transitivePeerDependencies:
       - '@types/react-dom'
 
-  '@storybook/addon-links@10.6.0(@types/react@19.2.18)(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))':
+  '@storybook/addon-links@10.6.0(@types/react@19.3.0)(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))':
     dependencies:
       '@storybook/global': 5.0.0
-      storybook: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+      storybook: 10.6.0(@types/react@19.3.0)(react@19.3.0)
     optionalDependencies:
-      '@types/react': 19.2.18
-      react: 19.2.8
+      '@types/react': 19.3.0
+      react: 19.3.0
 
-  '@storybook/builder-vite@10.6.0(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
+  '@storybook/builder-vite@10.6.0(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
     dependencies:
-      storybook: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+      storybook: 10.6.0(@types/react@19.3.0)(react@19.3.0)
       ts-dedent: 2.3.0
-      vite: 8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
 
   '@storybook/global@5.0.0': {}
 
-  '@storybook/icons@2.1.0(react@19.2.8)':
+  '@storybook/icons@2.1.0(react@19.3.0)':
     dependencies:
-      react: 19.2.8
+      react: 19.3.0
 
-  '@storybook/react-dom-shim@10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))':
+  '@storybook/react-dom-shim@10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.2.8(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))':
     dependencies:
-      react: 19.2.8
-      react-dom: 19.2.8(react@19.2.8)
-      storybook: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+      react: 19.3.0
+      react-dom: 19.2.8(react@19.3.0)
+      storybook: 10.6.0(@types/react@19.3.0)(react@19.3.0)
     optionalDependencies:
-      '@types/react': 19.2.18
-      '@types/react-dom': 19.2.7(@types/react@19.2.18)
+      '@types/react': 19.3.0
+      '@types/react-dom': 19.3.0(@types/react@19.3.0)
 
-  '@storybook/react-vite@10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
+  '@storybook/react-dom-shim@10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))':
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.7.0(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+      storybook: 10.6.0(@types/react@19.3.0)(react@19.3.0)
+    optionalDependencies:
+      '@types/react': 19.3.0
+      '@types/react-dom': 19.3.0(@types/react@19.3.0)
+
+  '@storybook/react-vite@10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(supports-color@10.2.2)(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
+    dependencies:
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.7.0(typescript@6.0.3)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
       '@rollup/pluginutils': 5.4.0
-      '@storybook/builder-vite': 10.6.0(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
-      '@storybook/react': 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)
+      '@storybook/builder-vite': 10.6.0(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+      '@storybook/react': 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(supports-color@10.2.2)(typescript@6.0.3)
       empathic: 2.0.1
       magic-string: 1.2.3
-      react: 19.2.8
+      react: 19.3.0
       react-docgen: 8.0.3(supports-color@10.2.2)
-      react-dom: 19.2.8(react@19.2.8)
+      react-dom: 19.3.0(react@19.3.0)
       resolve: 1.22.12
-      storybook: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+      storybook: 10.6.0(@types/react@19.3.0)(react@19.3.0)
       tsconfig-paths: 4.2.0
-      vite: 8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
     optionalDependencies:
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -12353,18 +11442,18 @@ snapshots:
       - rollup
       - supports-color
 
-  '@storybook/react@10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))(supports-color@10.2.2)(typescript@6.0.3)':
+  '@storybook/react@10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))(supports-color@10.2.2)(typescript@6.0.3)':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/react-dom-shim': 10.6.0(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.6.0(@types/react@19.2.18)(react@19.2.8))
-      react: 19.2.8
+      '@storybook/react-dom-shim': 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
+      react: 19.3.0
       react-docgen: 8.0.3(supports-color@10.2.2)
       react-docgen-typescript: 2.4.0(typescript@6.0.3)
-      react-dom: 19.2.8(react@19.2.8)
-      storybook: 10.6.0(@types/react@19.2.18)(react@19.2.8)
+      react-dom: 19.3.0(react@19.3.0)
+      storybook: 10.6.0(@types/react@19.3.0)(react@19.3.0)
     optionalDependencies:
-      '@types/react': 19.2.18
-      '@types/react-dom': 19.2.7(@types/react@19.2.18)
+      '@types/react': 19.3.0
+      '@types/react-dom': 19.3.0(@types/react@19.3.0)
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
@@ -12459,12 +11548,12 @@ snapshots:
       '@tarojs/runtime': 4.2.1
       '@tarojs/shared': 4.2.1
 
-  '@tarojs/components@4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
+  '@tarojs/components@4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.3.0)(html-webpack-plugin@5.6.8(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
     dependencies:
       '@stencil/core': 2.22.3
       '@tarojs/runtime': 4.2.1
       '@tarojs/shared': 4.2.1
-      '@tarojs/taro': 4.2.1(73bab1be3fbc27e9c4e266b92ffb4fc8)
+      '@tarojs/taro': 4.2.1(a772ba7794606cb4fe45d43cc0c34006)
       classnames: 2.5.1
       hammerjs: 2.0.8
       hls.js: 1.7.1
@@ -12472,30 +11561,7 @@ snapshots:
       swiper: 11.1.15
       tslib: 2.8.1
     optionalDependencies:
-      '@types/react': 19.2.18
-    transitivePeerDependencies:
-      - '@tarojs/helper'
-      - html-webpack-plugin
-      - postcss
-      - rollup
-      - webpack
-      - webpack-chain
-      - webpack-dev-server
-
-  '@tarojs/components@4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
-    dependencies:
-      '@stencil/core': 2.22.3
-      '@tarojs/runtime': 4.2.1
-      '@tarojs/shared': 4.2.1
-      '@tarojs/taro': 4.2.1(@tarojs/components@4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(@tarojs/helper@4.2.1(supports-color@10.2.2))(@tarojs/shared@4.2.1)(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
-      classnames: 2.5.1
-      hammerjs: 2.0.8
-      hls.js: 1.7.1
-      resolve-pathname: 3.0.0
-      swiper: 11.1.15
-      tslib: 2.8.1
-    optionalDependencies:
-      '@types/react': 19.2.18
+      '@types/react': 19.3.0
     transitivePeerDependencies:
       - '@tarojs/helper'
       - html-webpack-plugin
@@ -12539,33 +11605,19 @@ snapshots:
 
   '@tarojs/shared@4.2.1': {}
 
-  '@tarojs/taro@4.2.1(73bab1be3fbc27e9c4e266b92ffb4fc8)':
+  '@tarojs/taro@4.2.1(a772ba7794606cb4fe45d43cc0c34006)':
     dependencies:
       '@tarojs/api': 4.2.1(@tarojs/runtime@4.2.1)(@tarojs/shared@4.2.1)
-      '@tarojs/components': 4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@tarojs/components': 4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.3.0)(html-webpack-plugin@5.6.8(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
       '@tarojs/helper': 4.2.1(supports-color@10.2.2)
       '@tarojs/runtime': 4.2.1
       '@tarojs/shared': 4.2.1
       '@types/postcss-url': 10.0.4
       postcss: 8.5.26
     optionalDependencies:
-      '@types/react': 19.2.18
+      '@types/react': 19.3.0
       html-webpack-plugin: 5.6.8(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
       webpack: 5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)
-
-  '@tarojs/taro@4.2.1(@tarojs/components@4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(@tarojs/helper@4.2.1(supports-color@10.2.2))(@tarojs/shared@4.2.1)(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
-    dependencies:
-      '@tarojs/api': 4.2.1(@tarojs/runtime@4.2.1)(@tarojs/shared@4.2.1)
-      '@tarojs/components': 4.2.1(@tarojs/helper@4.2.1(supports-color@10.2.2))(@types/react@19.2.18)(html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)))(postcss@8.5.26)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
-      '@tarojs/helper': 4.2.1(supports-color@10.2.2)
-      '@tarojs/runtime': 4.2.1
-      '@tarojs/shared': 4.2.1
-      '@types/postcss-url': 10.0.4
-      postcss: 8.5.26
-    optionalDependencies:
-      '@types/react': 19.2.18
-      html-webpack-plugin: 5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
-      webpack: 5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)
 
   '@testing-library/dom@10.4.1':
     dependencies:
@@ -12689,7 +11741,7 @@ snapshots:
     dependencies:
       undici-types: 8.3.0
 
-  '@types/node@26.5.0':
+  '@types/node@26.5.1':
     dependencies:
       undici-types: 8.9.0
 
@@ -12702,11 +11754,11 @@ snapshots:
 
   '@types/qs@6.15.1': {}
 
-  '@types/react-dom@19.2.7(@types/react@19.2.18)':
+  '@types/react-dom@19.3.0(@types/react@19.3.0)':
     dependencies:
-      '@types/react': 19.2.18
+      '@types/react': 19.3.0
 
-  '@types/react@19.2.18':
+  '@types/react@19.3.0':
     dependencies:
       csstype: 3.2.3
 
@@ -12901,7 +11953,7 @@ snapshots:
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+      vitest: 5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
 
   '@vitest/expect@3.2.4':
     dependencies:
@@ -12917,14 +11969,14 @@ snapshots:
     dependencies:
       '@vitest/istanbul-lib-coverage': 1.0.1
 
-  '@vitest/mocker@5.0.0(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
+  '@vitest/mocker@5.0.0(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@vitest/spy': 5.0.0
       estree-walker: 3.0.3
       magic-string: 1.2.3
     optionalDependencies:
-      vite: 8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@3.2.4':
     dependencies:
@@ -13603,9 +12655,9 @@ snapshots:
     dependencies:
       browserslist: 4.28.7
 
-  cosmiconfig-typescript-loader@6.3.0(@types/node@26.5.0)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3):
+  cosmiconfig-typescript-loader@6.3.0(@types/node@26.5.1)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3):
     dependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
       cosmiconfig: 9.0.2(typescript@6.0.3)
       jiti: 2.6.1
       typescript: 6.0.3
@@ -14879,17 +13931,6 @@ snapshots:
       webpack: 5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)
     optional: true
 
-  html-webpack-plugin@5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)):
-    dependencies:
-      '@types/html-minifier-terser': 6.1.0
-      html-minifier-terser: 6.1.0
-      lodash: 4.18.1
-      pretty-error: 4.0.0
-      tapable: 2.3.3
-    optionalDependencies:
-      webpack: 5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)
-    optional: true
-
   htmlparser2@6.1.0:
     dependencies:
       domelementtype: 2.3.0
@@ -15002,17 +14043,17 @@ snapshots:
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 6.0.2
 
-  inquirer@12.9.6(@types/node@26.5.0):
+  inquirer@12.9.6(@types/node@26.5.1):
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@26.5.0)
-      '@inquirer/prompts': 7.10.1(@types/node@26.5.0)
-      '@inquirer/type': 3.0.10(@types/node@26.5.0)
+      '@inquirer/core': 10.3.2(@types/node@26.5.1)
+      '@inquirer/prompts': 7.10.1(@types/node@26.5.1)
+      '@inquirer/type': 3.0.10(@types/node@26.5.1)
       mute-stream: 2.0.0
       run-async: 4.0.6
       rxjs: 7.8.2
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
 
   internal-slot@1.1.0:
     dependencies:
@@ -15217,7 +14258,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
       merge-stream: 2.0.0
       supports-color: 8.1.1
     optional: true
@@ -15327,7 +14368,7 @@ snapshots:
 
   kind-of@6.0.3: {}
 
-  knip@6.35.0:
+  knip@6.35.1:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.7)
       formatly: 0.7.0
@@ -15351,7 +14392,7 @@ snapshots:
     dependencies:
       language-subtag-registry: 0.3.23
 
-  lerna@10.0.1(@types/node@26.5.0)(supports-color@7.2.0)(typescript@6.0.3):
+  lerna@10.0.1(@types/node@26.5.1)(supports-color@7.2.0)(typescript@6.0.3):
     dependencies:
       '@npmcli/arborist': 9.1.6(supports-color@7.2.0)
       '@npmcli/package-json': 7.0.2
@@ -15377,7 +14418,7 @@ snapshots:
       import-local: 3.1.0
       ini: 1.3.8
       init-package-json: 8.2.2
-      inquirer: 12.9.6(@types/node@26.5.0)
+      inquirer: 12.9.6(@types/node@26.5.1)
       js-yaml: 4.3.0
       libnpmaccess: 10.0.3(supports-color@7.2.0)
       libnpmpublish: 11.1.2(supports-color@7.2.0)
@@ -15515,7 +14556,7 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  lint-staged@17.5.0:
+  lint-staged@17.5.1:
     dependencies:
       picomatch: 4.0.7
       string-argv: 0.3.2
@@ -15945,24 +14986,6 @@ snapshots:
       webpack: 5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)
     optionalDependencies:
       '@swc/core': 1.3.96
-      clean-css: 5.3.3
-      cssnano: 6.1.2(postcss@8.5.26)
-      csso: 5.0.5
-      esbuild: 0.28.1
-      html-minifier-terser: 7.2.0
-      lightningcss: 1.33.0
-      postcss: 8.5.26
-      uglify-js: 3.19.3
-    optional: true
-
-  minimizer-webpack-plugin@5.6.1(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)):
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.31
-      jest-worker: 27.5.1
-      schema-utils: 4.3.3
-      terser: 5.49.0
-      webpack: 5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)
-    optionalDependencies:
       clean-css: 5.3.3
       cssnano: 6.1.2(postcss@8.5.26)
       csso: 5.0.5
@@ -17040,16 +16063,21 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  react-dom@19.2.8(react@19.2.8):
+  react-dom@19.2.8(react@19.3.0):
     dependencies:
-      react: 19.2.8
+      react: 19.3.0
       scheduler: 0.27.0
+
+  react-dom@19.3.0(react@19.3.0):
+    dependencies:
+      react: 19.3.0
+      scheduler: 0.28.0
 
   react-is@16.13.1: {}
 
   react-is@17.0.2: {}
 
-  react@19.2.8: {}
+  react@19.3.0: {}
 
   read-cmd-shim@4.0.0: {}
 
@@ -17282,6 +16310,8 @@ snapshots:
 
   scheduler@0.27.0: {}
 
+  scheduler@0.28.0: {}
+
   schema-utils@4.3.3:
     dependencies:
       '@types/json-schema': 7.0.15
@@ -17448,10 +16478,10 @@ snapshots:
       es-errors: 1.3.0
       internal-slot: 1.1.0
 
-  storybook@10.6.0(@types/react@19.2.18)(react@19.2.8):
+  storybook@10.6.0(@types/react@19.3.0)(react@19.3.0):
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/icons': 2.1.0(react@19.2.8)
+      '@storybook/icons': 2.1.0(react@19.3.0)
       '@testing-library/dom': 10.4.1
       '@testing-library/jest-dom': 6.9.1
       '@testing-library/user-event': 14.6.6(@testing-library/dom@10.4.1)
@@ -17465,10 +16495,10 @@ snapshots:
       oxc-resolver: 11.21.2
       recast: 0.23.12
       semver: 7.8.5
-      use-sync-external-store: 1.6.0(react@19.2.8)
+      use-sync-external-store: 1.6.0(react@19.3.0)
       ws: 8.21.1
     optionalDependencies:
-      '@types/react': 19.2.18
+      '@types/react': 19.3.0
     transitivePeerDependencies:
       - bufferutil
       - react
@@ -17588,14 +16618,14 @@ snapshots:
 
   style-search@0.1.0: {}
 
-  styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
       '@emotion/is-prop-valid': 1.4.0
       csstype: 3.2.3
-      react: 19.2.8
+      react: 19.3.0
       stylis: 4.3.6
     optionalDependencies:
-      react-dom: 19.2.8(react@19.2.8)
+      react-dom: 19.3.0(react@19.3.0)
 
   stylehacks@6.1.1(postcss@8.5.26):
     dependencies:
@@ -17901,14 +16931,14 @@ snapshots:
 
   ts-dedent@2.3.0: {}
 
-  ts-node@10.9.2(@types/node@26.5.0)(typescript@6.0.3):
+  ts-node@10.9.2(@types/node@26.5.1)(typescript@6.0.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.12
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
       acorn: 8.18.0
       acorn-walk: 8.3.5
       arg: 4.1.3
@@ -18106,9 +17136,9 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-sync-external-store@1.6.0(react@19.2.8):
+  use-sync-external-store@1.6.0(react@19.3.0):
     dependencies:
-      react: 19.2.8
+      react: 19.3.0
 
   util-deprecate@1.0.2: {}
 
@@ -18128,7 +17158,7 @@ snapshots:
 
   verkit@0.3.2: {}
 
-  vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0):
+  vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -18136,7 +17166,7 @@ snapshots:
       rolldown: 1.1.5
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
       esbuild: 0.28.1
       fsevents: 2.3.3
       jiti: 2.7.0
@@ -18145,10 +17175,10 @@ snapshots:
       terser: 5.49.0
       yaml: 2.9.0
 
-  vitest@5.0.0(@types/node@26.5.0)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)):
+  vitest@5.0.0(@types/node@26.5.1)(@vitest/coverage-v8@5.0.0)(jsdom@30.0.1)(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)):
     dependencies:
       '@types/chai': 5.2.3
-      '@vitest/mocker': 5.0.0(vite@8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
+      '@vitest/mocker': 5.0.0(vite@8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0))
       chai: 6.2.2
       es-module-lexer: 2.3.2
       expect-type: 1.4.0
@@ -18159,10 +17189,10 @@ snapshots:
       tinybench: 6.1.4
       tinyexec: 1.3.0
       tinyglobby: 0.2.17
-      vite: 8.1.5(@types/node@26.5.0)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@26.5.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.9.0(supports-color@10.2.2))(sass@1.103.1)(terser@5.49.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 26.5.0
+      '@types/node': 26.5.1
       '@vitest/coverage-v8': 5.0.0(vitest@5.0.0)
       jsdom: 30.0.1
     transitivePeerDependencies:
@@ -18221,43 +17251,6 @@ snapshots:
       graceful-fs: 4.2.11
       mime-db: 1.54.0
       minimizer-webpack-plugin: 5.6.1(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)(webpack@5.109.2(@swc/core@1.3.96)(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
-      neo-async: 2.6.2
-      schema-utils: 4.3.3
-      tapable: 2.3.3
-      watchpack: 2.5.2
-      webpack-sources: 3.5.1
-    transitivePeerDependencies:
-      - '@minify-html/node'
-      - '@swc/core'
-      - '@swc/css'
-      - '@swc/html'
-      - clean-css
-      - cssnano
-      - csso
-      - esbuild
-      - html-minifier-terser
-      - lightningcss
-      - postcss
-      - uglify-js
-    optional: true
-
-  webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3):
-    dependencies:
-      '@types/estree': 1.0.9
-      '@types/json-schema': 7.0.15
-      '@webassemblyjs/ast': 1.14.1
-      '@webassemblyjs/wasm-edit': 1.14.1
-      '@webassemblyjs/wasm-parser': 1.14.1
-      acorn: 8.18.0
-      browserslist: 4.28.7
-      chrome-trace-event: 1.0.4
-      enhanced-resolve: 5.24.4
-      es-module-lexer: 2.3.2
-      eslint-scope: 5.1.1
-      events: 3.3.0
-      graceful-fs: 4.2.11
-      mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.6.1(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@6.1.2(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.1)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
       neo-async: 2.6.2
       schema-utils: 4.3.3
       tapable: 2.3.3

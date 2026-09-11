@@ -1,19 +1,14 @@
 import {
-  FetcherHeaders
+  FetcherHeaders,
+  FetcherParams,
+  FetcherBody,
+  FetcherParamsSerializeOptions,
+  FetcherBodySerializeOptions
 } from '@fetchx/fetcher-helper';
 
 import {
   EFetcherResponseType
 } from '../enum';
-
-import {
-  TFetcherParams,
-  IFetcherParamsSerializeOptions
-} from './config-params';
-import {
-  TFetcherBody,
-  IFetcherBodySerializeOptions
-} from './config-body';
 
 type TFetcherConfigInternalFields = '_config' | '_hash' | '_timeStarted' | '_byInterceptor';
 
@@ -70,11 +65,11 @@ export interface IFetcherConfig {
    *
    * `{ url: '/url', params: { a: 1, b: 2} }` 等价于 `{ url: '/url', params: 'a=1&b=2' }` 等价于 `{ url: '/url?a=1&b=2' }`
    */
-  params?: TFetcherParams;
+  params?: FetcherParams;
   /**
    * POST/PUT/DELETE 等请求体
    */
-  body?: TFetcherBody;
+  body?: FetcherBody;
   /**
    * 请求头
    */
@@ -82,11 +77,11 @@ export interface IFetcherConfig {
   /**
    * 如果传入的 `params` 是对象，用 `qs` 来序列化它的参数
    */
-  serializeParams?: IFetcherParamsSerializeOptions;
+  serializeParams?: FetcherParamsSerializeOptions;
   /**
    * 自定义 `body` 的 serialize
    */
-  serializeBody?: IFetcherBodySerializeOptions;
+  serializeBody?: FetcherBodySerializeOptions;
   /**
    * 同 fetch 的 credentials
    */
