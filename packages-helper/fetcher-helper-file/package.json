@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-helper-file",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fetcher helpers of files for upload and download.",
   "keywords": [],
   "license": "MIT",

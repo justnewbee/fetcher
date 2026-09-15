@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-sse-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fetcher SSE core.",
   "keywords": [],
   "license": "MIT",
