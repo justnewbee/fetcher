@@ -1,6 +1,8 @@
 export * from './helper';
 
 export type {
+  // common
+  IPromiseWithAbort as PromiseWithAbort,
   // headers
   TFetcherHeaders as FetcherHeaders,
   TFetcherHeadersNormalized as FetcherHeadersNormalized,

@@ -1,5 +1,7 @@
 # @fetchx/fetcher-factory
 
+> `Fetcher / FetcherSse` 工厂方法，
+
 注意，此 Fetcher 工厂方法，默认适用于 Web 端，可使用 `fetcherSetup` 改换 `adapter` 以适配其他端。
 
 ## 拦截器

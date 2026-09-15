@@ -1,21 +1,22 @@
 import {
   IJsonpOptions,
   IJsonpResponse
-} from '../types';
-
-import generateCallbackName from './generate-callback-name';
-import clearCallbackFn from './clear-callback-fn';
-import createResponse from './create-response';
-import createErrorTimeout from './create-error-timeout';
-import createErrorAbort from './create-error-abort';
-import createErrorNetwork from './create-error-network';
+} from './types';
+import {
+  generateCallbackName,
+  clearCallbackFn,
+  createResponse,
+  createErrorTimeout,
+  createErrorAbort,
+  createErrorNetwork
+} from './util';
 
 /**
  * 一个「纯」的 Promise 封装的 JSONP
  *
  * 参考 https://github.com/camsong/fetch-jsonp
  */
-export default function jsonp<T = void>(url = '', options: IJsonpOptions = {}): Promise<IJsonpResponse<T>> {
+export default function fetcherJsonp<T = void>(url = '', options: IJsonpOptions = {}): Promise<IJsonpResponse<T>> {
   const {
     jsonpCallback = 'callback', // 多数的实现是 ?callback=fn_name
     jsonpCallbackFunction = generateCallbackName(),

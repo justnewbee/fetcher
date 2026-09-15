@@ -16,14 +16,10 @@ import createFnPostWithAbort from './create-fn-post-with-abort';
  * 创建 Fetcher 实例，但不会直接把实例返回，因为那样的话用起来会不舒服（方法无法脱离实例进行调用），
  * 所以实际上是返回了一组方法组合成的一个对象。
  */
-export default function factory<X = object>(fetcherAdapter?: TFetcherAdapter, defaultConfig?: IFetcherConfigDefault): IFetcher<X> {
-  const fetcher = new FetcherCore(fetcherAdapter, defaultConfig);
+export default function factory<X = object>(adapter?: TFetcherAdapter, defaultConfig?: IFetcherConfigDefault): IFetcher<X> {
+  const fetcher = new FetcherCore(adapter, defaultConfig);
   
   return {
-    freeze: fetcher.freeze.bind(fetcher),
-    setup: fetcher.setup.bind(fetcher),
-    interceptRequest: fetcher.interceptRequest.bind(fetcher),
-    interceptResponse: fetcher.interceptResponse.bind(fetcher),
     request: fetcher.request.bind(fetcher),
     jsonp: createFnGet(fetcher, 'JSONP'),
     get: createFnGet(fetcher, 'GET'),
@@ -38,6 +34,11 @@ export default function factory<X = object>(fetcherAdapter?: TFetcherAdapter, de
       put: createFnPostWithAbort<X>(fetcher, 'PUT'),
       patch: createFnPostWithAbort<X>(fetcher, 'PATCH'),
       delete: createFnPostWithAbort<X>(fetcher, 'DELETE')
-    }
+    },
+    setAdapter: fetcher.setAdapter.bind(fetcher),
+    setUrlBase: fetcher.setUrlBase.bind(fetcher),
+    interceptRequest: fetcher.interceptRequest.bind(fetcher),
+    interceptResponse: fetcher.interceptResponse.bind(fetcher),
+    freeze: fetcher.freeze.bind(fetcher)
   };
 }

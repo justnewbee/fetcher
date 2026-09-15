@@ -48,6 +48,7 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
+    "@fetchx/fetcher-helper": "workspace:^",
     "@kcuf/sandbox-escape": "^0.0.1",
     "unfetch": "^4.2.0"
   },

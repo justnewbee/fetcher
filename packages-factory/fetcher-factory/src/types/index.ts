@@ -1,7 +1,9 @@
 import {
+  FetcherHeaders
+} from '@fetchx/fetcher-helper';
+import {
   Fetcher,
   FetcherAdapter,
-  FetcherHeaders,
   FetcherConfig
 } from '@fetchx/fetcher-core';
 import {

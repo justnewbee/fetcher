@@ -1,13 +1,14 @@
 import {
   EFetchErrorName
-} from '../enum';
+} from './enum';
 import {
   IFetchOptions
-} from '../types';
-
-import getFetch from './get-fetch';
-import createErrorTimeout from './create-error-timeout';
-import createErrorNetwork from './create-error-network';
+} from './types';
+import {
+  getFetch,
+  createErrorTimeout,
+  createErrorNetwork
+} from './util';
 
 /**
  * 「几乎」纯生的 fetch，增加 timeout

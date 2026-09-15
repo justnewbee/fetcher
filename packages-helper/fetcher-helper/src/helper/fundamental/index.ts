@@ -12,6 +12,9 @@ export { default as mergeTypeHeaders } from './merge-type-headers';
 export { default as mergeTypeFormData } from './merge-type-form-data';
 export { default as mergeTypeSearchParams } from './merge-type-search-params';
 
+export { default as createError } from './create-error';
 export { default as ensureError } from './ensure-error';
+export { default as makePromiseWithAbort } from './make-promise-with-abort';
+
 export { default as decodeText } from './decode-text';
 export { default as decodeTextIntoSseChunks } from './decode-text-into-sse-chunks';

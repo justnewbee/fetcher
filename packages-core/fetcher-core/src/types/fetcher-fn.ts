@@ -1,6 +1,7 @@
 import {
-  IPromiseWithAbort
-} from './common';
+  PromiseWithAbort
+} from '@fetchx/fetcher-helper';
+
 import {
   TFetcherConfigX,
   TFetcherConfigQuick,
@@ -38,10 +39,10 @@ export interface IFetcherFnJsonp<X = object> {
 }
 
 export interface IFetcherFnJsonpWithAbort<X = object> {
-  <T = unknown>(url: string): IPromiseWithAbort<T>;
-  <T = unknown, P = unknown>(url: string, params: P): IPromiseWithAbort<T>;
-  <T = unknown>(config: TFetcherConfigQuickJsonp<X>, url: string): IPromiseWithAbort<T>;
-  <T = unknown, P = unknown>(config: TFetcherConfigQuickJsonp<X>, url: string, params: P): IPromiseWithAbort<T>;
+  <T = unknown>(url: string): PromiseWithAbort<T>;
+  <T = unknown, P = unknown>(url: string, params: P): PromiseWithAbort<T>;
+  <T = unknown>(config: TFetcherConfigQuickJsonp<X>, url: string): PromiseWithAbort<T>;
+  <T = unknown, P = unknown>(config: TFetcherConfigQuickJsonp<X>, url: string, params: P): PromiseWithAbort<T>;
 }
 
 /**
@@ -66,10 +67,10 @@ export interface IFetcherFnGet<X = object> {
 }
 
 export interface IFetcherFnGetWithAbort<X = object> {
-  <T = unknown>(url: string): IPromiseWithAbort<T>;
-  <T = unknown, P = unknown>(url: string, params: P): IPromiseWithAbort<T>;
-  <T = unknown>(config: TFetcherConfigQuick<X>, url: string): IPromiseWithAbort<T>;
-  <T = unknown, P = unknown>(config: TFetcherConfigQuick<X>, url: string, params: P): IPromiseWithAbort<T>;
+  <T = unknown>(url: string): PromiseWithAbort<T>;
+  <T = unknown, P = unknown>(url: string, params: P): PromiseWithAbort<T>;
+  <T = unknown>(config: TFetcherConfigQuick<X>, url: string): PromiseWithAbort<T>;
+  <T = unknown, P = unknown>(config: TFetcherConfigQuick<X>, url: string, params: P): PromiseWithAbort<T>;
 }
 
 /**
@@ -97,10 +98,10 @@ export interface IFetcherFnPost<X = object> {
 }
 
 export interface IFetcherFnPostWithAbort<X = object> {
-  <T = unknown>(url: string): Promise<T>;
-  <T = unknown, B = unknown>(url: string, body: B): IPromiseWithAbort<T>;
-  <T = unknown, B = unknown, P = unknown>(url: string, body: B, params: P): IPromiseWithAbort<T>;
-  <T = unknown>(config: TFetcherConfigQuick<X>, url: string): IPromiseWithAbort<T>;
-  <T = unknown, B = unknown>(config: TFetcherConfigQuick<X>, url: string, body: B): IPromiseWithAbort<T>;
-  <T = unknown, B = unknown, P = unknown>(config: TFetcherConfigQuick<X>, url: string, body: B, params: P): IPromiseWithAbort<T>;
+  <T = unknown>(url: string): PromiseWithAbort<T>;
+  <T = unknown, B = unknown>(url: string, body: B): PromiseWithAbort<T>;
+  <T = unknown, B = unknown, P = unknown>(url: string, body: B, params: P): PromiseWithAbort<T>;
+  <T = unknown>(config: TFetcherConfigQuick<X>, url: string): PromiseWithAbort<T>;
+  <T = unknown, B = unknown>(config: TFetcherConfigQuick<X>, url: string, body: B): PromiseWithAbort<T>;
+  <T = unknown, B = unknown, P = unknown>(config: TFetcherConfigQuick<X>, url: string, body: B, params: P): PromiseWithAbort<T>;
 }

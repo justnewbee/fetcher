@@ -1,17 +1,17 @@
 import {
-  ISseOptions,
-  TSseAbort
+  createError
+} from '@fetchx/fetcher-helper';
+
+import {
+  ISseOptions
 } from '../types';
 
 export default function sseWithEventSource(url: string, {
   withCredentials = true,
+  signal,
   onOpen,
-  onChunk,
-  onSuccess,
-  onError,
-  onAbort,
-  onClose
-}: Omit<ISseOptions, 'headers'> = {}): TSseAbort {
+  onChunk
+}: Omit<ISseOptions, 'headers'> = {}): Promise<void> {
   const eventSource = new EventSource(url, {
     withCredentials
   });
@@ -28,28 +28,28 @@ export default function sseWithEventSource(url: string, {
       onChunk?.(data);
     }
   });
-  eventSource.addEventListener('error', () => {
-    if (eventSource.readyState === eventSource.CLOSED) { // 一般是无法连接，Error Event 里没什么有用信息
-      const error = new Error('[sseWithEventSource] EventSource connection failed');
-      
-      onError?.(error);
-      onClose?.('error');
-    } else {
-      eventSource.close(); // 否则 EventSource 会不断自动重连
-      onSuccess?.();
-      onClose?.('success');
-    }
-  });
   
-  return (): boolean => {
-    if (eventSource.readyState === eventSource.CLOSED) {
-      return false;
-    }
+  return new Promise<void>((resolve, reject) => {
+    eventSource.addEventListener('error', () => {
+      if (eventSource.readyState === eventSource.CLOSED) { // 一般是无法连接，Error Event 里没什么有用信息
+        const error = createError('[sseWithEventSource] EventSource connection failed');
+        
+        reject(error);
+      } else {
+        eventSource.close(); // 否则 EventSource 会不断自动重连
+        resolve();
+      }
+    });
     
-    eventSource.close(); // 不会额外触发 error 事件
-    onAbort?.();
-    onClose?.('abort');
-    
-    return true;
-  };
+    signal?.addEventListener('abort', () => {
+      if (eventSource.readyState === eventSource.CLOSED) {
+        return;
+      }
+      
+      eventSource.close();
+      reject(createError('[sseWithEventSource] EventSource aborted', 'AbortError'));
+    }, {
+      once: true
+    });
+  });
 }

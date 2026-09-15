@@ -1,12 +1,13 @@
 import {
-  FetcherParams
+  PromiseWithAbort,
+  FetcherParams,
+  makePromiseWithAbort
 } from '@fetchx/fetcher-helper';
 
 import {
   IFetcherClass,
   TFetcherArgsJsonp,
-  IFetcherFnGetWithAbort,
-  IPromiseWithAbort
+  IFetcherFnGetWithAbort
 } from '../types';
 import {
   mergeConfig,
@@ -14,19 +15,15 @@ import {
 } from '../util';
 
 export default function createFnGetWithAbort<X = object>(fetcher: IFetcherClass, method: 'GET' | 'JSONP'): IFetcherFnGetWithAbort<X> {
-  return <T, P extends FetcherParams>(...args: TFetcherArgsJsonp<P>): IPromiseWithAbort<T> => {
+  return <T, P extends FetcherParams>(...args: TFetcherArgsJsonp<P>): PromiseWithAbort<T> => {
     const [config, url, params] = parseArgsGet(args);
     const abortController = new AbortController();
-    const abort = (): void => abortController.abort();
-    const promise = fetcher.request<T>(mergeConfig(config, {
+    
+    return makePromiseWithAbort(fetcher.request<T>(mergeConfig(config, {
       url,
       method,
       params,
       signal: abortController.signal
-    })) as IPromiseWithAbort<T>;
-    
-    promise.abort = abort;
-    
-    return promise;
+    })), abortController);
   };
 }

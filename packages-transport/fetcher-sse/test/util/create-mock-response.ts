@@ -21,6 +21,7 @@ export default function createMockResponse(chunks: string[] = [], options: ICrea
     pull(controller) {
       if (options.hang) {
         return new Promise(() => {
+          // hang forever
         });
       }
       

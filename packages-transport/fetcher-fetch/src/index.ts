@@ -1,4 +1,4 @@
-export { default } from './util/fetcher-fetch';
+export { default } from './fetcher-fetch';
 
 export {
   EFetchErrorName as FetchErrorName

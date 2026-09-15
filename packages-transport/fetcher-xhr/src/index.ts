@@ -1,4 +1,4 @@
-export { default } from './util/fetcher-xhr';
+export { default } from './fetcher-xhr';
 
 export {
   EXhrErrorName as XhrErrorName

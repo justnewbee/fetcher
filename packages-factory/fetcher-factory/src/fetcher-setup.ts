@@ -24,13 +24,11 @@ export default function fetcherSetup(fetcher: Fetcher, {
   interceptorLoginOptions
 }: Omit<IFetcherFactoryOptions, 'interceptorBizOptions'>, freeze = true): void {
   if (adapter) {
-    fetcher.setup(adapter);
+    fetcher.setAdapter(adapter);
   }
   
   if (urlBase) {
-    fetcher.interceptRequest(() => ({
-      urlBase
-    }));
+    fetcher.setUrlBase(urlBase);
   }
   
   if (getHeaders) {

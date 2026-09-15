@@ -54,7 +54,7 @@ describe('fetcherSse', () => {
     expect(fetchSpy).toHaveBeenCalledWith(URL, expect.objectContaining({
       headers: expect.objectContaining({
         Authorization: 'Bearer token'
-      })
+      }) as Record<string, string>
     }));
   });
   
@@ -87,7 +87,7 @@ describe('sseWithEventSource', () => {
       onOpen
     });
     
-    instances[0].emit('open', new Event('open'));
+    instances[0]?.emit('open', new Event('open'));
     
     expect(onOpen).toHaveBeenCalledTimes(1);
   });
@@ -96,10 +96,10 @@ describe('sseWithEventSource', () => {
     const onChunk = vi.fn();
     
     sseWithEventSource(URL, {
-      onChunk
+      onChunk: onChunk
     });
     
-    instances[0].emit('message', new MessageEvent('message', {
+    instances[0]?.emit('message', new MessageEvent('message', {
       data: 'hello'
     }));
     
@@ -110,10 +110,10 @@ describe('sseWithEventSource', () => {
     const onChunk = vi.fn();
     
     sseWithEventSource(URL, {
-      onChunk
+      onChunk: onChunk
     });
     
-    instances[0].emit('message', new MessageEvent('message', {
+    instances[0]?.emit('message', new MessageEvent('message', {
       data: null
     } as MessageEventInit));
     
@@ -129,8 +129,9 @@ describe('sseWithEventSource', () => {
       onClose
     });
     
-    instances[0].readyState = instances[0].CLOSED;
-    instances[0].emit('error', new Event('error'));
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    instances[0]!.readyState = instances[0]!.CLOSED;
+    instances[0]?.emit('error', new Event('error'));
     
     expect(onError).toHaveBeenCalledWith(new Error('[sseWithEventSource] EventSource connection failed'));
     expect(onClose).toHaveBeenCalledWith('error');
@@ -147,12 +148,12 @@ describe('sseWithEventSource', () => {
       onError
     });
     
-    instances[0].emit('error', new Event('error'));
+    instances[0]?.emit('error', new Event('error'));
     
     expect(onSuccess).toHaveBeenCalledTimes(1);
     expect(onClose).toHaveBeenCalledWith('success');
     expect(onError).not.toHaveBeenCalled();
-    expect(instances[0].readyState).toBe(instances[0].CLOSED);
+    expect(instances[0]?.readyState).toBe(instances[0]?.CLOSED);
   });
   
   test('abort closes connection and invokes callbacks', () => {
@@ -165,7 +166,7 @@ describe('sseWithEventSource', () => {
     });
     
     expect(abort()).toBe(true);
-    expect(instances[0].readyState).toBe(instances[0].CLOSED);
+    expect(instances[0]?.readyState).toBe(instances[0]?.CLOSED);
     expect(onAbort).toHaveBeenCalledTimes(1);
     expect(onClose).toHaveBeenCalledWith('abort');
   });
@@ -173,7 +174,7 @@ describe('sseWithEventSource', () => {
   test('abort returns false when already closed', () => {
     const abort = sseWithEventSource(URL);
     
-    instances[0].close();
+    instances[0]?.close();
     
     expect(abort()).toBe(false);
   });
@@ -183,7 +184,7 @@ describe('sseWithEventSource', () => {
       withCredentials: false
     });
     
-    expect(instances[0].withCredentials).toBe(false);
+    expect(instances[0]?.withCredentials).toBe(false);
   });
 });
 
@@ -206,7 +207,7 @@ describe('sseWithFetch', () => {
     
     const abort = sseWithFetch(URL, {
       onOpen,
-      onChunk,
+      onChunk: onChunk,
       onSuccess,
       onClose
     });
@@ -236,7 +237,7 @@ describe('sseWithFetch', () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(response);
     
     sseWithFetch(URL, {
-      onChunk
+      onChunk: onChunk
     });
     
     await response.done;

@@ -1,4 +1,4 @@
-export { default } from './util/jsonp';
+export { default } from './fetcher-jsonp';
 
 export {
   EJsonpErrorName as JsonpErrorName

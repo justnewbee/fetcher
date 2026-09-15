@@ -47,6 +47,7 @@
     "@fetchx/fetch-sse": "workspace:^",
     "@fetchx/fetcher-adapter-web": "workspace:^",
     "@fetchx/fetcher-core": "workspace:^",
+    "@fetchx/fetcher-helper": "workspace:^",
     "@fetchx/fetcher-interceptor-biz": "workspace:^",
     "@fetchx/fetcher-interceptor-cache-local": "workspace:^",
     "@fetchx/fetcher-interceptor-headers": "workspace:^",

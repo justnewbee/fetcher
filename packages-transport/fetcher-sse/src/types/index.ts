@@ -1,12 +1,11 @@
+import {
+  FetcherHeaders
+} from '@fetchx/fetcher-helper';
+
 export interface ISseOptions {
   withCredentials?: boolean;
-  headers?: Record<string, string>;
+  headers?: FetcherHeaders;
+  signal?: AbortSignal | null;
   onOpen?(): void;
   onChunk?(chunk: string): void;
-  onSuccess?(): void;
-  onError?(error: Error): void;
-  onAbort?(): void;
-  onClose?(reason: 'success' | 'error' | 'abort'): void;
 }
-
-export type TSseAbort = () => boolean;

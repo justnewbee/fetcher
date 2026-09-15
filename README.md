@@ -167,7 +167,7 @@ const api = fetcherFactory({
 });
 ```
 
-需要 SSE 时可使用同包导出的 `fetcherSseFactory`。该工厂仅适用于 Web 端；多端应用可直接使用各个拦截器包按运行平台自行组合。
+需要 SSE 时可使用同包导出的 `fetcherSseFactoryOld`。该工厂仅适用于 Web 端；多端应用可直接使用各个拦截器包按运行平台自行组合。
 
 ## 运行平台与传输层
 

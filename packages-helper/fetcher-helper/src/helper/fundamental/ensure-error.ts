@@ -1,5 +1,7 @@
 import _isError from 'lodash/isError';
 
+import createError from './create-error';
+
 /**
  * 由于 JavaScript 的自由行，你甚至可以 `throw undefined`，这里将传入的一切不可靠信息转成可靠的 Error 对象
  */
@@ -12,7 +14,7 @@ export default function ensureError(originalError: unknown): Error {
       
       return originalError;
     } catch (_err) { // Clone 错误，避免后续的 name 只读造成的运行时错误
-      const err = new Error(originalError.message);
+      const err = createError(originalError.message);
       
       err.name = originalError.name;
       err.stack = originalError.stack;
@@ -23,12 +25,12 @@ export default function ensureError(originalError: unknown): Error {
   }
   
   if (!originalError) {
-    return new Error();
+    return createError();
   }
   
   if (typeof originalError === 'string') {
-    return new Error(originalError);
+    return createError(originalError);
   }
   
-  return new Error(originalError.toString()); // eslint-disable-line @typescript-eslint/no-base-to-string
+  return createError(originalError.toString()); // eslint-disable-line @typescript-eslint/no-base-to-string
 }

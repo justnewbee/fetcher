@@ -1,7 +1,7 @@
 {
   "name": "@fetchx/fetcher-sse-factory",
-  "version": "0.0.1",
-  "description": "Fetcher SSE factory.",
+  "version": "0.0.0",
+  "description": "FetcherSse factory to create custom fetcherSse with ease.",
   "keywords": [],
   "license": "MIT",
   "sideEffects": false,
@@ -36,7 +36,8 @@
   },
   "dependencies": {
     "@fetchx/fetcher-helper": "workspace:^",
-    "@fetchx/fetcher-sse": "workspace:^"
+    "@fetchx/fetcher-sse-adapter-web": "workspace:^",
+    "@fetchx/fetcher-sse-core": "workspace:^"
   },
   "scripts": {
     "build:clean": "rimraf dist",

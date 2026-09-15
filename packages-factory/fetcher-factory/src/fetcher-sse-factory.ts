@@ -10,6 +10,9 @@ import {
   IFetcherSseFactoryOptions
 } from './types';
 
+/**
+ * @deprecated use `@fetchx/fetcher-sse-factory`
+ */
 export default function fetcherSseFactory({
   urlBase,
   getHeaders

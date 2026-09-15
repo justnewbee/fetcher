@@ -25,7 +25,7 @@ import {
  * - EventSourcePolyfill → https://github.com/Yaffle/EventSource
  */
 export default function fetchSse(url: string, options: IFetchSseOptions = {}): IFetchSseResult {
-  const controller = new AbortController();
+  const abortController = new AbortController();
   let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
   
   const {
@@ -45,7 +45,7 @@ export default function fetchSse(url: string, options: IFetchSseOptions = {}): I
       Accept: 'text/event-stream'
     },
     ...restOptions,
-    signal: controller.signal
+    signal: abortController.signal
   }).then((response): Promise<void> => {
     if (response.status !== 200) {
       throw createFetchSseErrorResponseStatus(response);
@@ -93,7 +93,7 @@ export default function fetchSse(url: string, options: IFetchSseOptions = {}): I
     promise,
     cancel(): void {
       void reader?.cancel(); // https://bugzilla.mozilla.org/show_bug.cgi?id=1583815
-      controller.abort();
+      abortController.abort();
       onCancel?.();
     }
   };

@@ -36,17 +36,30 @@ export interface IFetcherClass<X = object> {
   freeze(): void;
   
   /**
-   * 动态替换 adapter，比如运行期切换传输层、测试中替换替身；实例被 freeze 后调用会 throw
+   * 替换 `adapter`，让同一个业务级别的 `Fetcher` 实例得以适用于不同环境
+   *
+   * 🥶 实例 freeze 后调用会 throw
    */
-  setup(adapter: TFetcherAdapter): void;
+  setAdapter(adapter: TFetcherAdapter): void;
+  
+  /**
+   * 替换 `defaultConfig.urlBase`，注意优先级低于拦截器设置的 `urlBase`
+   *
+   * 🥶 实例 freeze 后调用会 throw
+   */
+  setUrlBase(urlBase: string): void;
   
   /**
    * 添加「预设」请求拦截器，返回解除拦截的无参方法
+   *
+   * 🥶 实例 freeze 后调用会 throw
    */
   interceptRequest(onFulfilled: TFetcherInterceptRequest, priority?: number): TInterceptorEject;
   
   /**
    * 添加「预设」响应拦截器，返回解除拦截的无参方法
+   *
+   * 🥶 实例 freeze 后调用会 throw
    */
   interceptResponse(onFulfilled?: TFetcherInterceptResponseFulfilled, onRejected?: TFetcherInterceptResponseRejected, priority?: number): TInterceptorEject;
   
@@ -56,7 +69,7 @@ export interface IFetcherClass<X = object> {
   request<T = unknown>(config: TFetcherConfigX<X>): Promise<T>;
 }
 
-export interface IFetcher<X = object> extends Pick<IFetcherClass<X>, 'freeze' | 'setup' | 'interceptRequest' | 'interceptResponse' | 'request'> {
+export interface IFetcher<X = object> extends Pick<IFetcherClass<X>, 'request' | 'setAdapter' | 'setUrlBase' | 'interceptRequest' | 'interceptResponse' | 'freeze'> {
   jsonp: IFetcherFnJsonp<X>;
   get: IFetcherFnGet<X>;
   post: IFetcherFnPost<X>;

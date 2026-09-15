@@ -43,7 +43,7 @@ export default class FetcherCore implements IFetcherClass {
   
   private frozen = false;
   
-  constructor(private adapter?: TFetcherAdapter, private defaultConfig?: IFetcherConfigDefault) {}
+  constructor(private adapter?: TFetcherAdapter, private readonly defaultConfig: IFetcherConfigDefault = {}) {}
   
   /**
    * 传递给 Interceptor，在 Interceptor 内部有需要可以重新请求
@@ -54,19 +54,28 @@ export default class FetcherCore implements IFetcherClass {
   });
   
   /**
-   * 对于「开箱即用」的 Fetcher 实例，由于是会被复用的单例，一般不希望它被扩展和修改，此操作不可逆
+   * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
    */
-  freeze(): void {
-    this.frozen = true;
+  request<T = unknown>(config: IFetcherConfig): Promise<T> {
+    const adapter = this.adapter;
+    
+    if (!adapter) {
+      throw new Error('[Fetcher#request] Adapter is not set, either .setAdapter(adapter) or use constructor adapter arg.'); // 此为同步抛错
+    }
+    
+    return this.requestWithAdapter<T>(adapter, config);
   }
   
-  /**
-   * 如果不方便在 new 的时候设置 adapter 和（或）defaultConfig，允许稍后进行设置
-   */
-  setup(adapter: TFetcherAdapter): void {
-    this.assertNotFrozen('setup');
+  setAdapter(adapter: TFetcherAdapter): void {
+    this.assertNotFrozen('setAdapter');
     
     this.adapter = adapter;
+  }
+  
+  setUrlBase(urlBase: string): void {
+    this.assertNotFrozen('setUrlBase');
+    
+    this.defaultConfig.urlBase = urlBase;
   }
   
   interceptRequest(onFulfilled: TFetcherInterceptRequest, priority?: number): TInterceptorEject {
@@ -91,22 +100,13 @@ export default class FetcherCore implements IFetcherClass {
     });
   }
   
-  /**
-   * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
-   */
-  request<T = unknown>(config: IFetcherConfig): Promise<T> {
-    const adapter = this.adapter;
-    
-    if (!adapter) {
-      throw new Error('[Fetcher#request] Adapter is not set, either .setup(adapter) or use constructor adapter arg.'); // 此为同步抛错
-    }
-    
-    return this.requestWithAdapter<T>(adapter, config);
+  freeze(): void {
+    this.frozen = true;
   }
   
   private assertNotFrozen(fn: string): void {
     if (this.frozen) {
-      throw new Error(`[Fetcher#${fn}] This fetcher instance is frozen.`);
+      throw new Error(`[Fetcher#${fn}] This Fetcher instance is frozen.`);
     }
   }
   

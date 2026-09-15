@@ -1,9 +1,11 @@
 import {
+  createError
+} from '@fetchx/fetcher-helper';
+
+import {
   EJsonpErrorName
 } from '../enum';
 
-import createError from './create-error';
-
 export default function createErrorTimeout(url: string, timeout: number): Error {
-  return createError(EJsonpErrorName.TIMEOUT, `fetcher-jsonp timeout, url = ${url}, timeout = ${timeout}ms`);
+  return createError(`fetcher-jsonp timeout, url = ${url}, timeout = ${timeout}ms`, EJsonpErrorName.TIMEOUT);
 }

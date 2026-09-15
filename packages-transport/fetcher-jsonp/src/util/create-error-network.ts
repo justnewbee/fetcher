@@ -1,9 +1,11 @@
 import {
+  createError
+} from '@fetchx/fetcher-helper';
+
+import {
   EJsonpErrorName
 } from '../enum';
 
-import createError from './create-error';
-
 export default function createErrorNetwork(url: string): Error {
-  return createError(EJsonpErrorName.NETWORK, `fetcher-jsonp network failure, url = ${url}`);
+  return createError(`fetcher-jsonp network failure, url = ${url}`, EJsonpErrorName.NETWORK);
 }

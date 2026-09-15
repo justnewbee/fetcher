@@ -1,12 +1,13 @@
 import {
   IXhrOptions,
   IXhrResponse
-} from '../types';
-
-import createResponse from './create-response';
-import createErrorTimeout from './create-error-timeout';
-import createErrorAbort from './create-error-abort';
-import createErrorNetwork from './create-error-network';
+} from './types';
+import {
+  createResponse,
+  createErrorTimeout,
+  createErrorAbort,
+  createErrorNetwork
+} from './util';
 
 export default function fetcherXhr<T = unknown>(url: string, options: IXhrOptions = {}): Promise<IXhrResponse<T>> {
   const {
@@ -43,8 +44,7 @@ export default function fetcherXhr<T = unknown>(url: string, options: IXhrOption
       }
     }
     
-    // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
-    if (signal) {
+    if (signal) { // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
       signal.addEventListener('abort', () => xhr.abort());
     }
     
