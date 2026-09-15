@@ -44,9 +44,9 @@ export default function fetcherXhr<T = unknown>(url: string, options: IXhrOption
       }
     }
     
-    if (signal) { // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
-      signal.addEventListener('abort', () => xhr.abort());
-    }
+    signal?.addEventListener('abort', () => xhr.abort(), {
+      once: true
+    });
     
     if (onProgress) {
       xhr.upload.onprogress = e => {

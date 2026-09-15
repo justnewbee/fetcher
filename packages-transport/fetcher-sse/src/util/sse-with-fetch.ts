@@ -20,7 +20,7 @@ export default function sseWithFetch(url: string, {
   return fetch(url, {
     credentials: withCredentials ? 'include' : 'omit',
     headers: {
-      ...headers,
+      ...headers as object,
       Accept: 'text/event-stream'
     },
     signal

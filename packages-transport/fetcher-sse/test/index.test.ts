@@ -30,160 +30,165 @@ describe('fetcherSse', () => {
     vi.restoreAllMocks();
     defineGlobalEventSource();
   });
-  
+
   test('prefers EventSource when no headers are provided', () => {
-    const eventSourceSpy = vi.spyOn(globalThis, 'EventSource', 'get');
-    
-    eventSourceSpy.mockReturnValue(MockEventSource as unknown as typeof EventSource);
-    
-    const abort = fetcherSse(URL);
-    
-    expect(eventSourceSpy).toHaveBeenCalled();
-    expect(typeof abort).toBe('function');
+    const instances: MockEventSource[] = [];
+
+    defineGlobalEventSource(instances);
+
+    const promise = fetcherSse(URL);
+
+    expect(instances).toHaveLength(1);
+    expect(promise).toBeInstanceOf(Promise);
   });
-  
+
   test('uses fetch when headers are provided', () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(createMockResponse());
-    
-    fetcherSse(URL, {
+
+    void fetcherSse(URL, {
       headers: {
         Authorization: 'Bearer token'
       }
     });
-    
+
     expect(fetchSpy).toHaveBeenCalledWith(URL, expect.objectContaining({
       headers: expect.objectContaining({
         Authorization: 'Bearer token'
       }) as Record<string, string>
     }));
   });
-  
+
   test('uses fetch when preferEventSource is false', () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(createMockResponse());
-    
-    fetcherSse(URL, undefined, false);
-    
+
+    void fetcherSse(URL, undefined, false);
+
     expect(fetchSpy).toHaveBeenCalled();
+  });
+
+  test('passes signal to fetch', () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(createMockResponse());
+    const abortController = new AbortController();
+
+    void fetcherSse(URL, {
+      signal: abortController.signal
+    }, false);
+
+    expect(fetchSpy).toHaveBeenCalledWith(URL, expect.objectContaining({
+      signal: abortController.signal
+    }));
   });
 });
 
 describe('sseWithEventSource', () => {
   let instances: MockEventSource[];
-  
+
   beforeEach(() => {
     vi.restoreAllMocks();
     instances = [];
     defineGlobalEventSource(instances);
   });
-  
+
   afterEach(() => {
     instances.forEach(instance => instance.close());
   });
-  
+
   test('calls onOpen when connection opens', () => {
     const onOpen = vi.fn();
-    
-    sseWithEventSource(URL, {
+
+    void sseWithEventSource(URL, {
       onOpen
     });
-    
+
     instances[0]?.emit('open', new Event('open'));
-    
+
     expect(onOpen).toHaveBeenCalledTimes(1);
   });
-  
+
   test('calls onChunk with message data', () => {
     const onChunk = vi.fn();
-    
-    sseWithEventSource(URL, {
-      onChunk: onChunk
+
+    void sseWithEventSource(URL, {
+      onChunk
     });
-    
+
     instances[0]?.emit('message', new MessageEvent('message', {
       data: 'hello'
     }));
-    
+
     expect(onChunk).toHaveBeenCalledWith('hello');
   });
-  
+
   test('ignores message events with non-string data', () => {
     const onChunk = vi.fn();
-    
-    sseWithEventSource(URL, {
-      onChunk: onChunk
+
+    void sseWithEventSource(URL, {
+      onChunk
     });
-    
+
     instances[0]?.emit('message', new MessageEvent('message', {
       data: null
     } as MessageEventInit));
-    
+
     expect(onChunk).not.toHaveBeenCalled();
   });
-  
-  test('handles connection failure error', () => {
-    const onError = vi.fn();
-    const onClose = vi.fn();
-    
-    sseWithEventSource(URL, {
-      onError,
-      onClose
-    });
-    
+
+  test('rejects when connection failed', async () => {
+    const promise = sseWithEventSource(URL);
+
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     instances[0]!.readyState = instances[0]!.CLOSED;
     instances[0]?.emit('error', new Event('error'));
-    
-    expect(onError).toHaveBeenCalledWith(new Error('[sseWithEventSource] EventSource connection failed'));
-    expect(onClose).toHaveBeenCalledWith('error');
+
+    await expect(promise).rejects.toThrow('[sseWithEventSource] EventSource connection failed');
   });
-  
-  test('handles normal completion error', () => {
-    const onSuccess = vi.fn();
-    const onClose = vi.fn();
-    const onError = vi.fn();
-    
-    sseWithEventSource(URL, {
-      onSuccess,
-      onClose,
-      onError
-    });
-    
+
+  test('resolves and closes connection on normal completion', async () => {
+    const promise = sseWithEventSource(URL);
+
     instances[0]?.emit('error', new Event('error'));
-    
-    expect(onSuccess).toHaveBeenCalledTimes(1);
-    expect(onClose).toHaveBeenCalledWith('success');
-    expect(onError).not.toHaveBeenCalled();
+
+    await expect(promise).resolves.toBeUndefined();
     expect(instances[0]?.readyState).toBe(instances[0]?.CLOSED);
   });
-  
-  test('abort closes connection and invokes callbacks', () => {
-    const onAbort = vi.fn();
-    const onClose = vi.fn();
-    
-    const abort = sseWithEventSource(URL, {
-      onAbort,
-      onClose
+
+  test('abort rejects with AbortError and closes connection', async () => {
+    const abortController = new AbortController();
+    const promise = sseWithEventSource(URL, {
+      signal: abortController.signal
     });
-    
-    expect(abort()).toBe(true);
+
+    abortController.abort();
+
+    const error = await promise.catch((e: unknown) => e);
+
+    expect(error).toBeInstanceOf(Error);
+    expect((error as Error).name).toBe('AbortError');
+    expect((error as Error).message).toBe('[sseWithEventSource] EventSource aborted');
     expect(instances[0]?.readyState).toBe(instances[0]?.CLOSED);
-    expect(onAbort).toHaveBeenCalledTimes(1);
-    expect(onClose).toHaveBeenCalledWith('abort');
   });
-  
-  test('abort returns false when already closed', () => {
-    const abort = sseWithEventSource(URL);
-    
+
+  test('abort after connection closed leaves promise pending', async () => {
+    const abortController = new AbortController();
+    const promise = sseWithEventSource(URL, {
+      signal: abortController.signal
+    });
+
     instances[0]?.close();
-    
-    expect(abort()).toBe(false);
+    abortController.abort();
+
+    const onSettled = vi.fn();
+
+    void promise.then(onSettled, onSettled);
+    await flushPromises();
+    expect(onSettled).not.toHaveBeenCalled();
   });
-  
+
   test('passes withCredentials option', () => {
-    sseWithEventSource(URL, {
+    void sseWithEventSource(URL, {
       withCredentials: false
     });
-    
+
     expect(instances[0]?.withCredentials).toBe(false);
   });
 });
@@ -192,39 +197,29 @@ describe('sseWithFetch', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
   });
-  
-  test('calls onOpen, onChunk and onSuccess for successful stream', async () => {
+
+  test('resolves after stream completes, calling onOpen and onChunk', async () => {
     const onOpen = vi.fn();
     const onChunk = vi.fn();
-    const onSuccess = vi.fn();
-    const onClose = vi.fn();
     const response = createMockResponse([
       'data: hello\n',
       'data: world\n'
     ]);
-    
+
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(response);
-    
-    const abort = sseWithFetch(URL, {
+
+    const promise = sseWithFetch(URL, {
       onOpen,
-      onChunk: onChunk,
-      onSuccess,
-      onClose
+      onChunk
     });
-    
-    await vi.waitFor(() => {
-      expect(onSuccess).toHaveBeenCalled();
-    });
-    
-    expect(abort()).toBe(false); // already closed by success
+
+    await expect(promise).resolves.toBeUndefined();
     expect(onOpen).toHaveBeenCalledTimes(1);
     expect(onChunk).toHaveBeenCalledTimes(2);
-    expect(onChunk).toHaveBeenNthCalledWith(1, ' hello', 0, [' hello']);
-    expect(onChunk).toHaveBeenNthCalledWith(2, ' world', 0, [' world']);
-    expect(onSuccess).toHaveBeenCalledTimes(1);
-    expect(onClose).toHaveBeenCalledWith('success');
+    expect(onChunk).toHaveBeenNthCalledWith(1, ' hello');
+    expect(onChunk).toHaveBeenNthCalledWith(2, ' world');
   });
-  
+
   test('ignores empty lines and retry lines', async () => {
     const onChunk = vi.fn();
     const response = createMockResponse([
@@ -233,132 +228,135 @@ describe('sseWithFetch', () => {
       'retry: 3000\n',
       'data: second\n'
     ]);
-    
+
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(response);
-    
-    sseWithFetch(URL, {
-      onChunk: onChunk
+
+    void sseWithFetch(URL, {
+      onChunk
     });
-    
+
     await response.done;
-    
     expect(onChunk).toHaveBeenCalledTimes(2);
-    expect(onChunk).toHaveBeenNthCalledWith(1, ' first', 0, [' first']);
-    expect(onChunk).toHaveBeenNthCalledWith(2, ' second', 0, [' second']);
+    expect(onChunk).toHaveBeenNthCalledWith(1, ' first');
+    expect(onChunk).toHaveBeenNthCalledWith(2, ' second');
   });
-  
-  test('handles non-200 status', async () => {
-    const onError = vi.fn();
-    const onClose = vi.fn();
-    
+
+  test('resolves without onChunk when stream has data', async () => {
+    const response = createMockResponse(['data: hello\n']);
+
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(response);
+
+    const promise = sseWithFetch(URL);
+
+    await expect(promise).resolves.toBeUndefined();
+  });
+
+  test('rejects on non-200 status', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(null, {
       status: 500
     }));
-    
-    sseWithFetch(URL, {
-      onError,
-      onClose
-    });
-    
-    await flushPromises();
-    
-    expect(onError).toHaveBeenCalledWith(expect.objectContaining({
-      message: '[sseWithFetch] Status: 500'
-    }));
-    expect(onClose).toHaveBeenCalledWith('error');
+
+    const promise = sseWithFetch(URL);
+
+    await expect(promise).rejects.toThrow('[sseWithFetch] Status: 500');
   });
-  
-  test('handles missing body', async () => {
-    const onError = vi.fn();
-    const onClose = vi.fn();
-    
+
+  test('rejects when body has no reader', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(null, {
       status: 200
     }));
-    
-    sseWithFetch(URL, {
-      onError,
-      onClose
-    });
-    
-    await flushPromises();
-    
-    expect(onError).toHaveBeenCalledWith(expect.objectContaining({
-      message: '[sseWithFetch] No ReadableStreamReader from body'
-    }));
-    expect(onClose).toHaveBeenCalledWith('error');
+
+    const promise = sseWithFetch(URL);
+
+    await expect(promise).rejects.toThrow('[sseWithFetch] No ReadableStreamReader from body');
   });
-  
-  test('abort invokes callbacks', async () => {
-    const onAbort = vi.fn();
-    const onClose = vi.fn();
+
+  test('rejects when reading the stream fails', async () => {
+    const stream = new ReadableStream<Uint8Array>({
+      pull(controller) {
+        controller.error(new Error('read failed'));
+      }
+    });
+
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(stream, {
+      status: 200
+    }));
+
+    const promise = sseWithFetch(URL);
+
+    await expect(promise).rejects.toThrow('read failed');
+  });
+
+  test('abort cancels the reader and resolves the promise', async () => {
     const response = createMockResponse([], {
       hang: true
     });
-    
-    vi.spyOn(globalThis, 'fetch').mockResolvedValue(response);
-    
-    const abort = sseWithFetch(URL, {
-      onAbort,
-      onClose
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(response);
+    const abortController = new AbortController();
+
+    const promise = sseWithFetch(URL, {
+      signal: abortController.signal
     });
-    
+
     await flushPromises();
-    
-    expect(abort()).toBe(true);
+
+    abortController.abort();
+
+    expect(fetchSpy).toHaveBeenCalledWith(URL, expect.objectContaining({
+      signal: abortController.signal
+    }));
     expect(response.readerCancel).toHaveBeenCalled();
-    expect(onAbort).toHaveBeenCalledTimes(1);
-    expect(onClose).toHaveBeenCalledWith('abort');
+    await expect(promise).resolves.toBeUndefined();
   });
-  
-  test('abort returns false when already closed', async () => {
-    const onSuccess = vi.fn();
+
+  test('abort after stream completed keeps the resolved result', async () => {
     const response = createMockResponse([]);
-    
+
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(response);
-    
-    const abort = sseWithFetch(URL, {
-      onSuccess
+
+    const abortController = new AbortController();
+    const promise = sseWithFetch(URL, {
+      signal: abortController.signal
     });
-    
-    await vi.waitFor(() => {
-      expect(onSuccess).toHaveBeenCalled();
-    });
-    
-    expect(abort()).toBe(false);
+
+    await expect(promise).resolves.toBeUndefined();
+
+    abortController.abort();
+
+    await expect(promise).resolves.toBeUndefined();
   });
-  
+
   test('uses include credentials by default', () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(createMockResponse());
-    
-    sseWithFetch(URL);
-    
+
+    void sseWithFetch(URL);
+
     expect(fetchSpy).toHaveBeenCalledWith(URL, expect.objectContaining({
       credentials: 'include'
     }));
   });
-  
+
   test('uses omit credentials when withCredentials is false', () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(createMockResponse());
-    
-    sseWithFetch(URL, {
+
+    void sseWithFetch(URL, {
       withCredentials: false
     });
-    
+
     expect(fetchSpy).toHaveBeenCalledWith(URL, expect.objectContaining({
       credentials: 'omit'
     }));
   });
-  
+
   test('merges custom headers with Accept header', () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(createMockResponse());
-    
-    sseWithFetch(URL, {
+
+    void sseWithFetch(URL, {
       headers: {
         'X-Custom': 'value'
       }
     });
-    
+
     expect(fetchSpy).toHaveBeenCalledWith(URL, expect.objectContaining({
       headers: {
         'X-Custom': 'value',

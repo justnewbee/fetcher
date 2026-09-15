@@ -91,18 +91,17 @@ export default function fetcherJsonp<T = void>(url = '', options: IJsonpOptions 
     }
   
     // 异步事件 3：abort，监听 signal 的 abort（和 fetch 一样）
-    // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
-    if (signal) {
-      signal.addEventListener('abort', () => {
-        if (returned) {
-          return;
-        }
-        
-        returned = true;
-        reject(createErrorAbort(url));
-        cleanupPrematurely();
-      });
-    }
+    signal?.addEventListener('abort', () => {
+      if (returned) {
+        return;
+      }
+      
+      returned = true;
+      reject(createErrorAbort(url));
+      cleanupPrematurely();
+    }, {
+      once: true
+    });
     
     // 异步事件 3：404/500 等
     scriptElement.onerror = () => {

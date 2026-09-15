@@ -1,6 +1,4 @@
-export type TFnDefaultParams = () => Record<string, unknown>;
-
-export type TDefaultParams = Record<string, unknown> | TFnDefaultParams;
+export type TDefaultParams = Record<string, unknown> | (() => Record<string, unknown>);
 
 export type TDontSend = () => undefined | boolean;
 
