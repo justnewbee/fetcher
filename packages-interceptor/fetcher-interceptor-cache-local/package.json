@@ -30,13 +30,13 @@
     "@fetchx/fetcher-adapter-web": "workspace:^",
     "@kcuf/ts-config": "^0.2.0",
     "@types/lodash": "^4.17.25",
-    "@vitest/coverage-v8": "^5.0.0",
+    "@vitest/coverage-v8": "^5.0.1",
     "fetch-mock": "^12.6.0",
-    "jsdom": "^30.0.1",
+    "jsdom": "^30.1.0",
     "lodash": "^4.18.1",
     "rimraf": "^6.1.3",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.0"
+    "vitest": "^5.0.1"
   },
   "peerDependencies": {
     "@babel/runtime": ">=7.0.0"

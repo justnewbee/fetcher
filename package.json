@@ -37,12 +37,12 @@
     "@kcuf/stylelint-config": "^0.4.0",
     "@kcuf/ts-config": "^0.2.0",
     "@tsconfig/node22": "^22.0.6",
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.3",
     "husky": "^9.1.7",
-    "knip": "^6.35.1",
+    "knip": "^6.36.0",
     "lerna": "^10.0.1",
     "lint-staged": "^17.5.1",
     "markdownlint-cli2": "^0.23.2",
@@ -70,6 +70,7 @@
     "lerna:publish": "lerna publish",
     "lerna:publish:patch": "lerna publish patch",
     "lerna:publish:minor": "lerna publish minor",
-    "lerna:publish:canary": "lerna publish --npm-tag=canary --canary=canary"
+    "lerna:publish:canary": "lerna publish --npm-tag=canary --canary=canary",
+    "sync": "pnpm -r exec cnpm sync"
   }
 }

@@ -4,13 +4,9 @@ import {
 
 export default {
   workspaces: {
-    'packages-*/*': {
+    '.': {
       entry: [
-        'src/index.{ts,tsx}'
-      ],
-      project: [
-        'src/**/*.{ts,tsx}',
-        'stories/**/*.{ts,tsx}'
+        'taze.config.ts'
       ]
     }
   },
