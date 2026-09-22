@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-fetch",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An improved fetch with timeout.",
   "keywords": [],
   "license": "MIT",

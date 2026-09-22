@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/error-finalizer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The final place an error goes to, either prompted or ignored.",
   "keywords": [],
   "license": "MIT",
