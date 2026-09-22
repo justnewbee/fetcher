@@ -10,5 +10,9 @@ export default {
       ]
     }
   },
-  tags: ['-lintignore']
+  tags: ['-lintignore'],
+  ignoreBinaries: [
+    'cnpm',
+    'prepublishOnly'
+  ]
 } satisfies KnipConfig;
