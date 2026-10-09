@@ -14,16 +14,11 @@ import {
  * SLS 日志管道，用于在一定的时间内积压日志，以避免造成业务请求性能问题
  */
 export default class SlsPipe {
-  private readonly transport: TSlsLoggerTransport;
-  private readonly options: ISlsPipeOptions;
   private queue: ISlsLogPayload[] = [];
   private timer: ReturnType<typeof setTimeout> | null = null;
   private silent = false;
   
-  constructor(transport: TSlsLoggerTransport, options: ISlsPipeOptions) {
-    this.transport = transport;
-    this.options = options;
-    
+  constructor(private readonly transport: TSlsLoggerTransport, private readonly options: ISlsPipeOptions) {
     const silentCountdown = getSilentCountdown(options.silentTime);
     
     if (silentCountdown > 0) {

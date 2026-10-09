@@ -24,12 +24,10 @@ import SlsPipe from './sls-pipe';
  * 创建 SLS 日志方法
  */
 export default class SlsLogger {
-  private readonly options: ICreateLoggerOptions;
   private readonly slsPipe: SlsPipe;
   private once: Record<string, 1> = {};
   
-  constructor(transport: TSlsLoggerTransport, options: ICreateLoggerOptions) {
-    this.options = options;
+  constructor(transport: TSlsLoggerTransport, private readonly options: ICreateLoggerOptions) {
     this.slsPipe = new SlsPipe(transport, {
       trackUrl: `https://${options.project}.${options.endpoint}/logstores/${options.logstore}/track`,
       apiVersion: options.apiVersion || API_VERSION,
