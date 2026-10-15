@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-helper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fetcher helpers for url, headers, params and body.",
   "keywords": [],
   "license": "MIT",

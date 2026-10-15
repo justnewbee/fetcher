@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-sse-factory",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "FetcherSse factory to create custom fetcherSse with ease.",
   "keywords": [],
   "license": "MIT",

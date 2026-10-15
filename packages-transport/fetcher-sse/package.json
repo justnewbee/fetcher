@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-sse",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Fetcher SSE with EventSource or fetch under the hood.",
   "keywords": [
     "sse"
