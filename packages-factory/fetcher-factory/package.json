@@ -44,7 +44,6 @@
     "@babel/runtime": ">=7.0.0"
   },
   "dependencies": {
-    "@fetchx/fetch-sse": "workspace:^",
     "@fetchx/fetcher-adapter-web": "workspace:^",
     "@fetchx/fetcher-core": "workspace:^",
     "@fetchx/fetcher-helper": "workspace:^",

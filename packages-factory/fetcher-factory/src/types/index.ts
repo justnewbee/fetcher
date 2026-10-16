@@ -33,11 +33,6 @@ export interface IFetcherFactoryOptions {
   interceptorLoginOptions?: FetcherInterceptorLoginOptions;
 }
 
-export interface IFetcherSseFactoryOptions {
-  urlBase?: string;
-  getHeaders?(): Record<string, string>;
-}
-
 export interface IFetcherConfigX extends FetcherConfigBiz, FetcherConfigCacheLocal, FetcherConfigMerging {}
 
 export interface IFetcherConfigAugmented extends FetcherConfig, IFetcherConfigX {}

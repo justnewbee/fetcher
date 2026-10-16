@@ -1,9 +1,7 @@
 export { default } from './fetcher-factory';
 export { default as fetcherSetup } from './fetcher-setup';
-export { default as fetcherSseFactory } from './fetcher-sse-factory';
 
 export * from '@fetchx/fetcher-core'; // eslint-disable-line import/export
-export * from '@fetchx/fetch-sse';
 
 export type {
   FetcherInterceptorBizOptions
