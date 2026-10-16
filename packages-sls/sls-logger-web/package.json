@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/sls-logger-web",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Aliyun SLS logger with fetch for web.",
   "keywords": [],
   "license": "MIT",
