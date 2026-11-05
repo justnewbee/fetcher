@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-interceptor-cache-local",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Fetcher interceptor cache local in memory.",
   "keywords": [],
   "license": "MIT",
