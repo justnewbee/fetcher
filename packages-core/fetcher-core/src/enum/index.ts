@@ -28,6 +28,12 @@ export enum EFetcherErrorName {
   /**
    * 在 interceptor-login 中使用
    *
+   * 针对开发者特意忽略，修改错误 `error.name`（可以不改 `error.code`）
+   */
+  LOGIN_IGNORED = 'FetcherError.LoginIgnored',
+  /**
+   * 在 interceptor-login 中使用
+   *
    * 针对用户主动取消登录，修改错误 `error.name`（可以不改 `error.code`）
    */
   LOGIN_CANCELLED = 'FetcherError.LoginCancelled'

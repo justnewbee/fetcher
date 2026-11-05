@@ -131,43 +131,121 @@ describe('fetcherInterceptorLogin', () => {
   
   test('login cancel will transform error', async () => {
     willCancelLogin = true;
-
+    
     expect(await fetcher.get(API_URL_NEED_LOGIN).catch((err: unknown) => (err as FetcherError).name)).toBe(FetcherErrorName.LOGIN_CANCELLED);
-
+    
     expect(needLogin).toHaveBeenCalledTimes(1);
     expect(doLogin).toHaveBeenCalledTimes(1);
   });
   
   test('will auto login when needLogin is a string', async () => {
     const fetcherWithStringNeedLogin = factory(fetcherAdapterWeb);
-
+    
     fetcherWithStringNeedLogin.interceptResponse(result => {
       if (loggedIn) {
         return (result as IResult).data;
       }
-
+      
       const err: FetcherError = new Error('Please login');
-
+      
       err.name = FetcherErrorName.BIZ;
       err.code = CODE_NEED_LOGIN;
-
+      
       throw err;
     });
-
+    
     interceptLogin(fetcherWithStringNeedLogin, {
       needLogin: CODE_NEED_LOGIN,
       doLogin
     });
-
+    
     expect(await fetcherWithStringNeedLogin.get(API_URL_NEED_LOGIN)).toBe('logged');
     expect(needLogin).not.toHaveBeenCalled();
     expect(doLogin).toHaveBeenCalledTimes(1);
   });
-
+  
+  test('will not doLogin when url is ignored by string', async () => {
+    const fetcherWithIgnore = factory(fetcherAdapterWeb);
+    
+    fetcherWithIgnore.interceptResponse(result => {
+      if (loggedIn) {
+        return (result as IResult).data;
+      }
+      
+      const err: FetcherError = new Error('Please login');
+      
+      err.name = FetcherErrorName.BIZ;
+      err.code = CODE_NEED_LOGIN;
+      
+      throw err;
+    });
+    
+    interceptLogin(fetcherWithIgnore, {
+      needLogin,
+      ignore: API_URL_NEED_LOGIN,
+      doLogin
+    });
+    
+    expect(await fetcherWithIgnore.get(API_URL_NEED_LOGIN).catch((err: unknown) => (err as FetcherError).name)).toBe(FetcherErrorName.LOGIN_IGNORED);
+    expect(doLogin).toHaveBeenCalledTimes(0);
+  });
+  
+  test('will not doLogin when url is ignored by array', async () => {
+    const fetcherWithIgnore = factory(fetcherAdapterWeb);
+    
+    fetcherWithIgnore.interceptResponse(result => {
+      if (loggedIn) {
+        return (result as IResult).data;
+      }
+      
+      const err: FetcherError = new Error('Please login');
+      
+      err.name = FetcherErrorName.BIZ;
+      err.code = CODE_NEED_LOGIN;
+      
+      throw err;
+    });
+    
+    interceptLogin(fetcherWithIgnore, {
+      needLogin,
+      ignore: ['/api/others', API_URL_NEED_LOGIN],
+      doLogin
+    });
+    
+    expect(await fetcherWithIgnore.get(API_URL_NEED_LOGIN).catch((err: unknown) => (err as FetcherError).name)).toBe(FetcherErrorName.LOGIN_IGNORED);
+    expect(doLogin).toHaveBeenCalledTimes(0);
+  });
+  
+  test('will doLogin when url is not in ignore', async () => {
+    const fetcherWithIgnore = factory(fetcherAdapterWeb);
+    
+    fetcherWithIgnore.interceptResponse(result => {
+      if (loggedIn) {
+        return (result as IResult).data;
+      }
+      
+      const err: FetcherError = new Error('Please login');
+      
+      err.name = FetcherErrorName.BIZ;
+      err.code = CODE_NEED_LOGIN;
+      
+      throw err;
+    });
+    
+    interceptLogin(fetcherWithIgnore, {
+      needLogin,
+      ignore: ['/api/others'],
+      doLogin
+    });
+    
+    expect(await fetcherWithIgnore.get(API_URL_NEED_LOGIN)).toBe('logged');
+    expect(doLogin).toHaveBeenCalledTimes(1);
+  });
+  
   test('error with no code will not doLogin', async () => {
     expect(await fetcher.get(API_URL_NO_CODE).catch((err: unknown) => (err as FetcherError).name)).toBe(FetcherErrorName.BIZ);
     expect(await fetcher.get(API_URL_NO_CODE).catch((err: unknown) => (err as FetcherError).code)).toBeUndefined();
-
+    
     expect(needLogin).toHaveBeenCalledTimes(2);
     expect(doLogin).toHaveBeenCalledTimes(0);
   });

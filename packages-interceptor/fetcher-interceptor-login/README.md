@@ -18,6 +18,7 @@ import doLogin from './do-login';
 
 interceptLogin(fetcher, {
   needLogin,
+  ignore,
   doLogin
 });
 ```
@@ -32,11 +33,15 @@ interceptLogin(fetcher, {
 needLogin: 'NeedLogin'
 ```
 
-也可以通过函数进行自定义判断：
+也可以通过函数进行自定义判断（非常特殊的情况才需要用这个形式）：
 
 ```ts
 function needLogin(code: string, error: FetcherError): boolean;
 ```
+
+### ignore
+
+`ignore` 用以忽略某个或某些接口：
 
 ### doLogin
 
@@ -45,10 +50,6 @@ function doLogin(): Promise<void>;
 ```
 
 这是一个无参的返回 `Promise<void>` 的方法，一般来说对弹窗登录的 `Promise` 封装。
-
-### ~~headerKeys~~
-
-已废弃，现在重新请求时的 config 是原初对象，不会受到前面请求的污染。
 
 ## FAQ
 

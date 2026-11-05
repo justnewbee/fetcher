@@ -13,15 +13,23 @@ import {
 
 import singletonPromise from './singleton-promise';
 import isLoginNeeded from './is-login-needed';
+import isLoginIgnored from './is-login-ignored';
 
 export default function createInterceptorResponseRejected({
   needLogin,
+  ignore,
   doLogin
 }: IFetcherInterceptorLoginOptions): FetcherInterceptResponseRejected {
   const singletonLogin = singletonPromise(doLogin);
   
   return (error: FetcherError, config: FetcherConfig, _: FetcherResponse | undefined, requestByInterceptor: FetcherCallRequest) => {
     if (!isLoginNeeded(error, needLogin)) {
+      throw error;
+    }
+    
+    if (isLoginIgnored(error, ignore)) {
+      error.name = FetcherErrorName.LOGIN_IGNORED;
+      
       throw error;
     }
     
