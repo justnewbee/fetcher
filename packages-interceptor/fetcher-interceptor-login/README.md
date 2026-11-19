@@ -13,13 +13,13 @@
 ```ts
 import interceptLogin from '@fetchx/fetcher-interceptor-login';
 
-import needLogin from './need-login';
 import doLogin from './do-login';
 
 interceptLogin(fetcher, {
-  needLogin,
-  ignore,
-  doLogin
+  needLogin: 'NeedLogin', // 或方法
+  ignore, // 如果有哪些 url 需要忽略
+  doLogin,
+  onLoginSuccess
 });
 ```
 

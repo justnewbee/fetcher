@@ -67,7 +67,7 @@ export default async function fetchAdapterWeb<T = unknown>(url: string, headers:
     const error = err as Error | null;
     
     if (error?.name) { // 标准化为 Fetcher 定义好的名称
-      switch (error.name as FetchErrorName | XhrErrorName | JsonpErrorName) {
+      switch (error.name as unknown as FetchErrorName | XhrErrorName | JsonpErrorName) {
       case FetchErrorName.NETWORK:
       case XhrErrorName.NETWORK:
       case JsonpErrorName.NETWORK:
