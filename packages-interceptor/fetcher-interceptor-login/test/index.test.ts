@@ -16,9 +16,7 @@ import factory, {
 } from '@fetchx/fetcher-core';
 import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 
-import interceptLogin, {
-  messageListenInterceptorLogin
-} from '../src';
+import interceptLogin from '../src';
 
 interface IResult {
   data: unknown;
@@ -57,15 +55,7 @@ const needLogin = vi.fn().mockImplementation((code: string): boolean => {
   return code === CODE_NEED_LOGIN;
 });
 
-const listenInterceptorLoginCallback = vi.fn().mockImplementation((_logged: boolean, _info: unknown): void => {
-  // do nothing
-});
-
 const doLogin = vi.fn().mockImplementation(() => {
-  const release = messageListenInterceptorLogin((logged, info) => {
-    listenInterceptorLoginCallback(logged, info);
-  });
-  
   return new Promise<true>((resolve, reject) => {
     setTimeout(() => {
       if (willCancelLogin) {
@@ -74,8 +64,6 @@ const doLogin = vi.fn().mockImplementation(() => {
         loggedIn = true;
         resolve(true);
       }
-      
-      release();
     }, 200);
   });
 });
@@ -94,7 +82,6 @@ describe('fetcherInterceptorLogin', () => {
     loggedIn = false;
     willCancelLogin = false;
     needLogin.mockClear();
-    listenInterceptorLoginCallback.mockClear();
     doLogin.mockClear();
     
     fetchMock.route(API_URL_NEED_LOGIN, {
@@ -125,7 +112,6 @@ describe('fetcherInterceptorLogin', () => {
     ]);
     
     expect(needLogin).toHaveBeenCalledTimes(3);
-    expect(listenInterceptorLoginCallback).toHaveBeenCalledTimes(1); // message 会被触发
     expect(doLogin).toHaveBeenCalledTimes(1);
   });
   

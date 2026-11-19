@@ -1,12 +1,6 @@
 import {
   cloneResponseData
 } from '@fetchx/fetcher-core';
-import messenger from '@kcuf/messenger';
-
-import {
-  MESSAGE_TYPE_LOGIN_SUCCESS,
-  MESSAGE_TYPE_LOGIN_ERROR
-} from '../const';
 
 interface IPromiseQueueItem<T = void, E extends Error = Error> {
   resolve(data: T): void;
@@ -24,8 +18,6 @@ export default function singletonPromise<T>(fn: () => Promise<T>): () => Promise
       
       queue = null;
     }
-    
-    messenger.emit(MESSAGE_TYPE_LOGIN_SUCCESS, responseData);
   }
   
   function rejectQueue(err: Error): void {
@@ -36,8 +28,6 @@ export default function singletonPromise<T>(fn: () => Promise<T>): () => Promise
       
       queue = null;
     }
-    
-    messenger.emit(MESSAGE_TYPE_LOGIN_ERROR, err);
   }
   
   return (): Promise<T> => {

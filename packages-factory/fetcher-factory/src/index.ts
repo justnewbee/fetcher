@@ -1,7 +1,7 @@
 export { default } from './fetcher-factory';
 export { default as fetcherSetup } from './fetcher-setup';
 
-export * from '@fetchx/fetcher-core'; // eslint-disable-line import/export
+export * from '@fetchx/fetcher-core'; // eslint-disable-line import-x/export
 
 export type {
   FetcherInterceptorBizOptions
@@ -14,7 +14,7 @@ export type {
 } from '@fetchx/fetcher-interceptor-login';
 
 export type {
-  TFetcher as Fetcher, // eslint-disable-line import/export
-  IFetcherConfigAugmented as FetcherConfig, // eslint-disable-line import/export
+  TFetcher as Fetcher, // eslint-disable-line import-x/export
+  IFetcherConfigAugmented as FetcherConfig, // eslint-disable-line import-x/export
   IFetcherFactoryOptions as FetcherFactoryOptions
 } from './types';
