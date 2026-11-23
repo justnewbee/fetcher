@@ -12,9 +12,11 @@ import fetchMock from 'fetch-mock';
 import factory from '@fetchx/fetcher-core';
 import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 
-import intercept from '../src';
+import intercept, {
+  FetcherConfigMerging
+} from '../src';
 
-const fetcher = factory(fetcherAdapterWeb);
+const fetcher = factory<FetcherConfigMerging>(fetcherAdapterWeb);
 
 intercept(fetcher);
 

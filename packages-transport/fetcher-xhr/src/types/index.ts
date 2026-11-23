@@ -3,7 +3,7 @@ export interface IXhrOptions {
   timeout?: number;
   signal?: AbortSignal | null;
   withCredentials?: boolean; // default true
-  headers?: HeadersInit | Record<string, string | number | boolean>;
+  headers?: HeadersInit | Record<string, string | number | boolean> | null;
   body?: XMLHttpRequestBodyInit | null;
   onProgress?(progress: number): void; // progress 范围 [0, 1]
 }

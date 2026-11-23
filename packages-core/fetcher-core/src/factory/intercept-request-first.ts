@@ -2,7 +2,7 @@ import {
   IFetcherConfig
 } from '../types';
 import {
-  getHashFromConfig
+  configToHash
 } from '../util';
 
 /**
@@ -17,7 +17,7 @@ export default function interceptRequestFirst(config: IFetcherConfig): Partial<I
   config.method = method; // 设进去，为了 _hash...
   
   return {
-    _hash: getHashFromConfig(config),
+    _hash: configToHash(config),
     method
   };
 }

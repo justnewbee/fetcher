@@ -2,7 +2,7 @@ import {
   IFetcherConfig
 } from '../types';
 import {
-  isConfigCors
+  configCheckCors
 } from '../util';
 
 /**
@@ -19,7 +19,7 @@ export default function interceptRequestFinal(config: IFetcherConfig): Partial<I
     };
   }
   
-  configMix.credentials = config.credentials ?? (isConfigCors(config) ? 'include' : 'same-origin'); // MUST
+  configMix.credentials = config.credentials ?? (configCheckCors(config) ? 'include' : 'same-origin'); // MUST
   
   return configMix;
 }

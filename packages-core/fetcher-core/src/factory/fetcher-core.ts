@@ -14,9 +14,9 @@ import {
   TFetcherInterceptResponseRejected
 } from '../types';
 import {
-  mergeConfig,
-  buildUrl,
-  getHeadersAndBodyFromConfig,
+  configMerge,
+  configToUrl,
+  configToHeadersAndBody,
   createFetcherError,
   queueInterceptor,
   sortInterceptors
@@ -114,7 +114,7 @@ export default class FetcherCore implements IFetcherClass {
    * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
    */
   private async requestWithAdapter<T = unknown>(adapter: TFetcherAdapter, config: IFetcherConfig): Promise<T> {
-    let finalConfig: IFetcherConfig = mergeConfig(this.defaultConfig, config);
+    let finalConfig: IFetcherConfig = configMerge(this.defaultConfig, config);
     
     finalConfig._config = config; // 保留原初 config 对象
     
@@ -138,9 +138,9 @@ export default class FetcherCore implements IFetcherClass {
     let error: IFetcherError | undefined;
     
     try {
-      const [headers, body] = getHeadersAndBodyFromConfig(finalConfig);
+      const [headers, body] = configToHeadersAndBody(finalConfig);
       
-      fetcherResponse = await adapter<T>(buildUrl(finalConfig), headers, body, finalConfig);
+      fetcherResponse = await adapter<T>(configToUrl(finalConfig), headers, body, finalConfig);
     } catch (err) {
       error = createFetcherError(finalConfig, {
         originalError: err
@@ -191,7 +191,7 @@ export default class FetcherCore implements IFetcherClass {
         // configToMerge 是 onFulfilled 计算后得到的结果，可能为空；也可能是 Promise
         return Promise.resolve()
           .then(() => onFulfilled(configLastMerged, this.requestByInterceptor))
-          .then(configToMerge => mergeConfig(configLastMerged, configToMerge));
+          .then(configToMerge => configMerge(configLastMerged, configToMerge));
       });
     });
     

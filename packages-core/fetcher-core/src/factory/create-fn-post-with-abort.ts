@@ -11,7 +11,7 @@ import {
   IFetcherFnPostWithAbort
 } from '../types';
 import {
-  mergeConfig,
+  configMerge,
   parseArgsPost
 } from '../util';
 
@@ -20,7 +20,7 @@ export default function createFnPostWithAbort<X = object>(fetcher: IFetcherClass
     const [config, url, body, params] = parseArgsPost(args);
     const abortController = new AbortController();
     
-    return makePromiseWithAbort(fetcher.request<T>(mergeConfig(config, {
+    return makePromiseWithAbort(fetcher.request<T>(configMerge(config, {
       url,
       method,
       params,

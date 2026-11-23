@@ -4,11 +4,10 @@ import {
 
 import {
   TFetcherConfigQuick,
-  TFetcherArgsJsonp,
   TFetcherArgsGet
 } from '../types';
 
-export default function parseArgsGet<P extends FetcherParams>(args: TFetcherArgsJsonp<P> | TFetcherArgsGet<P>): [TFetcherConfigQuick | undefined, url: string, P?] {
+export default function parseArgsGet<P extends FetcherParams>(args: TFetcherArgsGet<P>): [TFetcherConfigQuick | undefined, url: string, P?] {
   let config: TFetcherConfigQuick | undefined;
   let url: string;
   let params: P | undefined;

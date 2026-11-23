@@ -7,7 +7,7 @@ import {
   IFetcherConfig
 } from '../types';
 
-export default function mergeConfigHeaders(config: IFetcherConfig, headers?: FetcherHeaders): void {
+export default function configMergeHeaders(config: IFetcherConfig, headers?: FetcherHeaders): void {
   if (!headers) {
     return;
   }

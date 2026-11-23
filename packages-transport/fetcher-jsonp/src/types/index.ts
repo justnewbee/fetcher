@@ -2,6 +2,7 @@
  * 纯 JSONP options
  */
 export interface IJsonpOptions {
+  charset?: string;
   /**
    * 与服务端的参数名协议，告诉服务端，当你接收到参数名为此配置值的时候，需要返回 JSONP 格式，默认为 jsonp
    */
@@ -11,7 +12,6 @@ export interface IJsonpOptions {
    * 但必须自己保证可以通过 `window[此配置值]` 访问到它
    */
   jsonpCallbackFunction?: string;
-  charset?: string;
   timeout?: number;
   /**
    * 让 JSONP 得以 abort，和 fetch 类型一致

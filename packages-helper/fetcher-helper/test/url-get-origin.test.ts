@@ -1,3 +1,6 @@
+/**
+ * @vitest-environment jsdom
+ */
 import {
   describe,
   test,
@@ -8,7 +11,7 @@ import {
   urlGetOrigin
 } from '../src';
 
-describe('urlGetOrigin', () => {
+describe('urlGetOrigin with location', () => {
   test('extracts the origin from an https url with path and query', () => {
     expect(urlGetOrigin('https://example.com/path/to?q=1')).toBe('https://example.com');
   });
@@ -21,12 +24,16 @@ describe('urlGetOrigin', () => {
     expect(urlGetOrigin('https://example.com:8080/api')).toBe('https://example.com:8080');
   });
 
-  test('includes userinfo in the origin', () => {
-    expect(urlGetOrigin('https://user:pass@example.com/api')).toBe('https://user:pass@example.com');
+  test('strips userinfo from the origin', () => {
+    expect(urlGetOrigin('https://user:pass@example.com/api')).toBe('https://example.com');
   });
 
-  test('for a protocol-relative url', () => {
-    expect(urlGetOrigin('//example.com/path')).toBe('//example.com');
+  test('resolves a protocol-relative url against location.href', () => {
+    expect(urlGetOrigin('//example.com/path')).toBe(`${location.protocol}//example.com`);
+  });
+
+  test('normalizes the case of the origin', () => {
+    expect(urlGetOrigin('HTTPS://EXAMPLE.COM')).toBe('https://example.com');
   });
 
   test('returns an empty string for a relative path', () => {
@@ -46,11 +53,7 @@ describe('urlGetOrigin', () => {
     expect(urlGetOrigin('https://')).toBe('');
   });
 
-  test('case insensitive', () => {
-    expect(urlGetOrigin('HTTPS://EXAMPLE.COM')).toBe('HTTPS://EXAMPLE.COM');
-  });
-
-  test('return empty when invalid url', () => {
+  test('returns an empty string when invalid url', () => {
     expect(urlGetOrigin('https//example.com')).toBe('');
   });
 });

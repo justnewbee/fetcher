@@ -12,7 +12,9 @@ import {
   createFetcherError
 } from '@fetchx/fetcher-core';
 
-export default async function buildResponse<T>(response: JsonpResponse<T> | XhrResponse<T> | Response, config: FetcherConfig): Promise<FetcherResponse<T>> {
+export default async function buildResponse<T>(responsePromise: Promise<JsonpResponse<T> | XhrResponse<T> | Response>, config: FetcherConfig): Promise<FetcherResponse<T>> {
+  const response = await responsePromise;
+  
   if (!response.ok) { // 如 400 500 系列错误，也可能有 response.json()
     let responseData: unknown;
     
@@ -24,7 +26,7 @@ export default async function buildResponse<T>(response: JsonpResponse<T> | XhrR
     
     throw createFetcherError(config, {
       name: FetcherErrorName.RESPONSE_STATUS,
-      message: `Response status ${response.status}.`,
+      message: `Response status ${response.status}, url: ${config.url ?? ''}`,
       code: `${response.status}`,
       responseHeaders: response.headers,
       responseData

@@ -15,7 +15,7 @@ import {
  *
  * 这里，将以上参数混合在一起，生成一个新 URL
  */
-export default function buildUrl(config: IFetcherConfig): string {
+export default function configToUrl(config: IFetcherConfig): string {
   const {
     url = '',
     urlBase,

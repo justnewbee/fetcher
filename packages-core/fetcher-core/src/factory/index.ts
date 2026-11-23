@@ -5,6 +5,8 @@ import {
 } from '../types';
 
 import FetcherCore from './fetcher-core';
+import createFnJsonp from './create-fn-jsonp';
+import createFnJsonpWithAbort from './create-fn-jsonp-with-abort';
 import createFnGet from './create-fn-get';
 import createFnGetWithAbort from './create-fn-get-with-abort';
 import createFnPost from './create-fn-post';
@@ -21,19 +23,19 @@ export default function factory<X = object>(adapter?: TFetcherAdapter, defaultCo
   
   return {
     request: fetcher.request.bind(fetcher),
-    jsonp: createFnGet(fetcher, 'JSONP'),
-    get: createFnGet(fetcher, 'GET'),
+    get: createFnGet(fetcher),
     post: createFnPost(fetcher, 'POST'),
     put: createFnPost(fetcher, 'PUT'),
     patch: createFnPost(fetcher, 'PATCH'),
     delete: createFnPost(fetcher, 'DELETE'),
+    jsonp: createFnJsonp(fetcher),
     withAbort: {
-      jsonp: createFnGetWithAbort<X>(fetcher, 'JSONP'),
-      get: createFnGetWithAbort<X>(fetcher, 'GET'),
+      get: createFnGetWithAbort<X>(fetcher),
       post: createFnPostWithAbort<X>(fetcher, 'POST'),
       put: createFnPostWithAbort<X>(fetcher, 'PUT'),
       patch: createFnPostWithAbort<X>(fetcher, 'PATCH'),
-      delete: createFnPostWithAbort<X>(fetcher, 'DELETE')
+      delete: createFnPostWithAbort<X>(fetcher, 'DELETE'),
+      jsonp: createFnJsonpWithAbort<X>(fetcher)
     },
     setAdapter: fetcher.setAdapter.bind(fetcher),
     setUrlBase: fetcher.setUrlBase.bind(fetcher),

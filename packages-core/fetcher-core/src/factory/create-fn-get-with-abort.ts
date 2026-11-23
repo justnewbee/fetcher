@@ -6,22 +6,22 @@ import {
 
 import {
   IFetcherClass,
-  TFetcherArgsJsonp,
+  TFetcherArgsGet,
   IFetcherFnGetWithAbort
 } from '../types';
 import {
-  mergeConfig,
+  configMerge,
   parseArgsGet
 } from '../util';
 
-export default function createFnGetWithAbort<X = object>(fetcher: IFetcherClass, method: 'GET' | 'JSONP'): IFetcherFnGetWithAbort<X> {
-  return <T, P extends FetcherParams>(...args: TFetcherArgsJsonp<P>): PromiseWithAbort<T> => {
+export default function createFnGetWithAbort<X = object>(fetcher: IFetcherClass): IFetcherFnGetWithAbort<X> {
+  return <T, P extends FetcherParams>(...args: TFetcherArgsGet<P>): PromiseWithAbort<T> => {
     const [config, url, params] = parseArgsGet(args);
     const abortController = new AbortController();
     
-    return makePromiseWithAbort(fetcher.request<T>(mergeConfig(config, {
+    return makePromiseWithAbort(fetcher.request<T>(configMerge(config, {
       url,
-      method,
+      method: 'GET',
       params,
       signal: abortController.signal
     })), abortController);

@@ -38,7 +38,7 @@ export default function fetcherAdapterTaro<T = unknown>(url: string, headers: Fe
     if (result.statusCode < 200 || result.statusCode >= 300) {
       throw createFetcherError(config, {
         name: FetcherErrorName.RESPONSE_STATUS,
-        message: `Response status ${result.statusCode}.`,
+        message: `Response status ${result.statusCode}, url ${url}`,
         code: `${result.statusCode}`,
         responseHeaders: headersNormalize(result.header),
         responseData: result.data // 401 等状态还是会有 data

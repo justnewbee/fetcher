@@ -8,7 +8,7 @@ import {
   IFetcherConfig
 } from '../types';
 
-export default function mergeConfigParams(config: IFetcherConfig, params?: FetcherParams): void {
+export default function configMergeParams(config: IFetcherConfig, params?: FetcherParams): void {
   if (!params) {
     return;
   }

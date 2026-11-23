@@ -15,7 +15,7 @@ import {
   IFetcherResponse
 } from '../types';
 import {
-  getDownloadFilename
+  configToDownloadFilename
 } from '../util';
 
 export default function interceptResponseDownload(o: unknown, config: IFetcherConfig, fetcherResponse?: IFetcherResponse): unknown {
@@ -24,11 +24,11 @@ export default function interceptResponseDownload(o: unknown, config: IFetcherCo
   }
   
   if (isInstanceofBlob(o) && config.responseType === EFetcherResponseType.BLOB_DOWNLOAD) {
-    downloadBlob(o, getDownloadFilename(config, fetcherResponse));
+    downloadBlob(o, configToDownloadFilename(config, fetcherResponse));
   }
   
   if (isInstanceofArrayBuffer(o) && config.responseType === EFetcherResponseType.ARRAY_BUFFER_DOWNLOAD) {
-    downloadArrayBuffer(o, getDownloadFilename(config, fetcherResponse));
+    downloadArrayBuffer(o, configToDownloadFilename(config, fetcherResponse));
   }
   
   return o;

@@ -70,18 +70,18 @@ export interface IFetcherClass<X = object> {
 }
 
 export interface IFetcher<X = object> extends Pick<IFetcherClass<X>, 'request' | 'setAdapter' | 'setUrlBase' | 'interceptRequest' | 'interceptResponse' | 'freeze'> {
-  jsonp: IFetcherFnJsonp<X>;
   get: IFetcherFnGet<X>;
   post: IFetcherFnPost<X>;
   put: IFetcherFnPost<X>;
   patch: IFetcherFnPost<X>;
   delete: IFetcherFnPost<X>;
+  jsonp: IFetcherFnJsonp<X>;
   withAbort: {
-    jsonp: IFetcherFnJsonpWithAbort<X>;
     get: IFetcherFnGetWithAbort<X>;
     post: IFetcherFnPostWithAbort<X>;
     put: IFetcherFnPostWithAbort<X>;
     patch: IFetcherFnPostWithAbort<X>;
     delete: IFetcherFnPostWithAbort<X>;
+    jsonp: IFetcherFnJsonpWithAbort<X>;
   };
 }

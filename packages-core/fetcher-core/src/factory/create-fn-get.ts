@@ -4,21 +4,21 @@ import {
 
 import {
   IFetcherClass,
-  TFetcherArgsJsonp,
+  TFetcherArgsGet,
   IFetcherFnGet
 } from '../types';
 import {
-  mergeConfig,
+  configMerge,
   parseArgsGet
 } from '../util';
 
-export default function createFnGet<X = object>(fetcher: IFetcherClass, method: 'GET' | 'JSONP'): IFetcherFnGet<X> {
-  return <T, P extends FetcherParams>(...args: TFetcherArgsJsonp<P>): Promise<T> => {
+export default function createFnGet<X = object>(fetcher: IFetcherClass): IFetcherFnGet<X> {
+  return <T, P extends FetcherParams>(...args: TFetcherArgsGet<P>): Promise<T> => {
     const [config, url, params] = parseArgsGet(args);
     
-    return fetcher.request<T>(mergeConfig(config, {
+    return fetcher.request<T>(configMerge(config, {
       url,
-      method,
+      method: 'GET',
       params
     }));
   };

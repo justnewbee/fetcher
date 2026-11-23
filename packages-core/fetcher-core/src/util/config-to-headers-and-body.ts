@@ -17,7 +17,7 @@ import {
   IFetcherConfig
 } from '../types';
 
-import isConfigAllowBody from './is-config-allow-body';
+import configAllowBody from './config-allow-body';
 
 /**
  * 处理 headers 和 body
@@ -71,11 +71,11 @@ import isConfigAllowBody from './is-config-allow-body';
  * });
  * ```
  */
-export default function getHeadersAndBodyFromConfig(config: IFetcherConfig): [FetcherHeadersNormalized, FetcherBodyNormalized] {
+export default function configToHeadersAndBody(config: IFetcherConfig): [FetcherHeadersNormalized, FetcherBodyNormalized] {
   const headers = isInstanceofHeaders(config.headers) ? cloneTypeHeaders(config.headers) : headersNormalize(config.headers);
   const body = config.body;
   
-  if (!isConfigAllowBody(config)) {
+  if (!configAllowBody(config)) {
     return [headers, null];
   }
   

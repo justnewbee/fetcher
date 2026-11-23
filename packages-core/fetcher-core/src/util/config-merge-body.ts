@@ -9,7 +9,7 @@ import {
   IFetcherConfig
 } from '../types';
 
-export default function mergeConfigBody(config: IFetcherConfig, body?: FetcherBody): void {
+export default function configMergeBody(config: IFetcherConfig, body?: FetcherBody): void {
   if (!body) {
     return;
   }

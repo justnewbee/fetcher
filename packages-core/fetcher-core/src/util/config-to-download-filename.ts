@@ -9,7 +9,7 @@ import {
   IFetcherResponse
 } from '../types';
 
-export default function getDownloadFilename(config: IFetcherConfig, fetcherResponse?: IFetcherResponse): string {
+export default function configToDownloadFilename(config: IFetcherConfig, fetcherResponse?: IFetcherResponse): string {
   if (config.downloadName) {
     return config.downloadName;
   }

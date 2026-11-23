@@ -9,7 +9,7 @@ import {
   IFetcherFnPost
 } from '../types';
 import {
-  mergeConfig,
+  configMerge,
   parseArgsPost
 } from '../util';
 
@@ -17,7 +17,7 @@ export default function createFnPost<X = object>(fetcher: IFetcherClass, method:
   return <T, B extends FetcherBody, P extends FetcherParams>(...args: TFetcherArgsPost<B, P>): Promise<T> => {
     const [config, url, body, params] = parseArgsPost(args);
     
-    return fetcher.request<T>(mergeConfig(config, {
+    return fetcher.request<T>(configMerge(config, {
       url,
       method,
       params,

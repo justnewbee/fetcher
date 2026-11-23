@@ -12,9 +12,11 @@ import fetchMock from 'fetch-mock';
 import factory from '@fetchx/fetcher-core';
 import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 
-import intercept from '../src';
+import intercept, {
+  FetcherConfigBiz
+} from '../src';
 
-const fetcher = factory(fetcherAdapterWeb);
+const fetcher = factory<FetcherConfigBiz>(fetcherAdapterWeb);
 
 intercept(fetcher);
 
@@ -87,13 +89,11 @@ describe('fetcherInterceptorBiz', () => {
     }, '/api/custom-success')).resolves.toEqual('hello custom success');
     
     void expect(fetcher.get({
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       isSuccess: o => o.ok === true
     }, '/api/custom-success-2')).resolves.toEqual('hello custom success 2');
     
     void expect(fetcher.get({
       isSuccess: true,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       getData: o => o
     }, '/api/custom-data')).resolves.toEqual({
       code: 200,

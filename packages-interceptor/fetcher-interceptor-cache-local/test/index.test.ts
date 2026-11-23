@@ -14,9 +14,11 @@ import fetchMock from 'fetch-mock';
 import factory from '@fetchx/fetcher-core';
 import fetcherAdapterWeb from '@fetchx/fetcher-adapter-web';
 
-import intercept from '../src';
+import intercept, {
+  FetcherConfigCacheLocal
+} from '../src';
 
-const fetcher = factory(fetcherAdapterWeb);
+const fetcher = factory<FetcherConfigCacheLocal>(fetcherAdapterWeb);
 
 intercept(fetcher);
 
@@ -326,7 +328,7 @@ describe('fetcherInterceptorCacheLocal', () => {
   });
   
   test('can be released', async () => {
-    const myFetcher = factory(fetcherAdapterWeb);
+    const myFetcher = factory<FetcherConfigCacheLocal>(fetcherAdapterWeb);
     const release = intercept(myFetcher);
     
     await myFetcher.get({

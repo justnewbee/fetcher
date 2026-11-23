@@ -8,8 +8,18 @@
 const REG_ORIGIN = /^(?:https?:)?\/\/[^/]+/i;
 
 /**
- * 提取 protocol 和 host，如果能够提取到则说明是绝对地址
+ * 提取 URL 中的 origin 进行标准化，如果能够提取到则说明是绝对地址
  */
 export default function urlGetOrigin(url?: string): string {
-  return url ? REG_ORIGIN.exec(url)?.[0] ?? '' : '';
+  const domain = url ? REG_ORIGIN.exec(url)?.[0] ?? '' : '';
+  
+  try {
+    if (domain) {
+      return new URL(domain, location.href).origin;
+    }
+  } catch (_err) {
+    // ignore
+  }
+  
+  return domain;
 }

@@ -10,14 +10,14 @@ import {
   IFetcherConfig
 } from '../types';
 
-import mergeConfigHeaders from './merge-config-headers';
-import mergeConfigParams from './merge-config-params';
-import mergeConfigBody from './merge-config-body';
+import configMergeHeaders from './config-merge-headers';
+import configMergeParams from './config-merge-params';
+import configMergeBody from './config-merge-body';
 
 /**
  * 将多个 FetcherConfig 进行合并
  */
-export default function mergeConfig(config1: IFetcherConfig | undefined, config2: IFetcherConfig | undefined): IFetcherConfig {
+export default function configMerge(config1: IFetcherConfig | undefined, config2: IFetcherConfig | undefined): IFetcherConfig {
   const merged: IFetcherConfig = {};
   
   [config1, config2].forEach(partialConfig => {
@@ -28,15 +28,15 @@ export default function mergeConfig(config1: IFetcherConfig | undefined, config2
       
       switch (k as keyof IFetcherConfig) {
       case 'headers': // headers 合并
-        mergeConfigHeaders(merged, v as FetcherHeaders);
+        configMergeHeaders(merged, v as FetcherHeaders);
         
         break;
       case 'params': // 参数合并
-        mergeConfigParams(merged, v as FetcherParams);
+        configMergeParams(merged, v as FetcherParams);
         
         break;
       case 'body': // body 合并
-        mergeConfigBody(merged, v as FetcherBody);
+        configMergeBody(merged, v as FetcherBody);
         
         break;
       default: // 其他，替换
