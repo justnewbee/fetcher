@@ -7,16 +7,14 @@ import {
   TEventListenerCallback
 } from '../types';
 import {
-  ensureEventListenerList
+  ensureEventListenerList,
+  addEventListener,
+  removeEventListener
 } from '../util';
 
 import {
   getEventTargetInternalData
 } from './event-target-shim';
-import {
-  addListener,
-  removeListener
-} from './listener-list';
 import {
   InvalidAttributeHandler
 } from './warnings';
@@ -61,7 +59,7 @@ function removeEventAttributeListener(target: TAnyEventTarget, type: string): vo
   const list = listMap[type];
   
   if (list?.attrListener) {
-    removeListener(list, list.attrListener.callback, false);
+    removeEventListener(list, list.attrListener.callback, false);
     list.attrCallback = list.attrListener = undefined;
   }
 }
@@ -78,7 +76,7 @@ function upsertEventAttributeListener(target: TAnyEventTarget, type: string, cal
   list.attrCallback = callback;
   
   if (list.attrListener === undefined) {
-    list.attrListener = addListener(list, defineEventAttributeCallback(list), false, false, false, undefined);
+    list.attrListener = addEventListener(list, defineEventAttributeCallback(list), false, false, false, undefined);
   }
 }
 

@@ -17,7 +17,16 @@ import {
   formatMessage,
   createEventListenerListMap,
   ensureEventListenerList,
-  isEventListenerObject
+  isEventListenerObject,
+  isEventListenerCapture,
+  isEventListenerOnce,
+  isEventListenerPassive,
+  isEventListenerRemoved,
+  invokeEventListenerCallback,
+  addEventListener,
+  findEventListenerIndex,
+  removeEventListener,
+  removeEventListenerAt
 } from '../util';
 
 import EventShim, {
@@ -26,19 +35,6 @@ import EventShim, {
 import {
   EventWrapper
 } from './event-wrapper';
-import {
-  invokeEventListenerCallback,
-  isEventListenerCapture,
-  isEventListenerOnce,
-  isEventListenerPassive,
-  isEventListenerRemoved
-} from './listener';
-import {
-  addListener,
-  findIndexOfListener,
-  removeListener,
-  removeListenerAt
-} from './listener-list';
 import {
   EventListenerWasDuplicated,
   InvalidEventListener,
@@ -251,7 +247,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
     const list = ensureEventListenerList(listenerMap, type);
     
     // Find existing listener.
-    const index = findIndexOfListener(list, callback as unknown as TEventListenerLike, capture);
+    const index = findEventListenerIndex(list, callback as unknown as TEventListenerLike, capture);
     
     if (index !== -1) {
       const listener = list.listeners[index];
@@ -264,7 +260,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
     }
     
     // Add the new listener.
-    addListener(list, callback as unknown as TEventListenerLike, capture, passive, once, signal);
+    addEventListener(list, callback as unknown as TEventListenerLike, capture, passive, once, signal);
   }
   
   // /**
@@ -312,7 +308,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
     const list = listenerMap[type];
     
     if (callback !== undefined && list !== undefined) {
-      removeListener(list, callback as unknown as TEventListenerLike, capture);
+      removeEventListener(list, callback as unknown as TEventListenerLike, capture);
     }
   }
   
@@ -373,7 +369,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
         }
         
         // Remove this listener if has the `once` flag.
-        if (isEventListenerOnce(listener) && removeListenerAt(list, i, !cow)) {
+        if (isEventListenerOnce(listener) && removeEventListenerAt(list, i, !cow)) {
           // Because this listener was removed, the next index is the
           // same as the current value.
           i -= 1;

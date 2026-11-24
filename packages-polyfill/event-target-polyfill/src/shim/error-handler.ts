@@ -2,14 +2,14 @@ import {
   IEventClassType,
   TErrorHandler
 } from '../types';
-import {
-  anyToString,
-  assertType
-} from '../util';
+import anyToString from '../util/any-to-string';
+import assertType from '../util/assert-type';
 
 declare const dispatchEvent: ((event: IEventClassType) => boolean) | undefined;
 declare const ErrorEvent: (new (type: string, init: { error?: unknown; message?: string; }) => IEventClassType) | undefined;
-declare const process: { emit?(event: string, error: Error): boolean; } | undefined;
+declare const process: {
+  emit?(event: string, error: Error): boolean;
+} | undefined;
 
 let currentErrorHandler: TErrorHandler | undefined;
 
