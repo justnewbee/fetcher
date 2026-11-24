@@ -21,6 +21,13 @@ const CAPTURING_PHASE = 1;
 const AT_TARGET = 2;
 const BUBBLING_PHASE = 3;
 
+const EVENT_CONSTANTS = {
+  NONE,
+  CAPTURING_PHASE,
+  AT_TARGET,
+  BUBBLING_PHASE
+} as const;
+
 const IS_TRUSTED = false;
 
 /**
@@ -127,37 +134,15 @@ export {
  * @see https://dom.spec.whatwg.org/#event
  */
 export default class EventShim<EventType extends string = string> implements IEventClassType<EventType> {
-  static get NONE(): 0 {
-    return NONE;
-  }
+  static readonly NONE = NONE;
+  static readonly CAPTURING_PHASE = CAPTURING_PHASE;
+  static readonly AT_TARGET = AT_TARGET;
+  static readonly BUBBLING_PHASE = BUBBLING_PHASE;
   
-  static get CAPTURING_PHASE(): 1 {
-    return CAPTURING_PHASE;
-  }
-  
-  static get AT_TARGET(): 2 {
-    return AT_TARGET;
-  }
-  
-  static get BUBBLING_PHASE(): 3 {
-    return BUBBLING_PHASE;
-  }
-  
-  get NONE(): 0 {
-    return NONE;
-  }
-  
-  get CAPTURING_PHASE(): 1 {
-    return CAPTURING_PHASE;
-  }
-  
-  get AT_TARGET(): 2 {
-    return AT_TARGET;
-  }
-  
-  get BUBBLING_PHASE(): 3 {
-    return BUBBLING_PHASE;
-  }
+  readonly NONE = NONE;
+  readonly CAPTURING_PHASE = CAPTURING_PHASE;
+  readonly AT_TARGET = AT_TARGET;
+  readonly BUBBLING_PHASE = BUBBLING_PHASE;
   
   /**
    * Initialize this event instance.
@@ -188,6 +173,16 @@ export default class EventShim<EventType extends string = string> implements IEv
       dispatchFlag: false,
       timeStamp: Date.now()
     });
+    
+    // Class fields are writable at runtime, but the DOM's constants are read-only.
+    for (const [key, value] of Object.entries(EVENT_CONSTANTS)) {
+      Object.defineProperty(this, key, {
+        value,
+        writable: false,
+        enumerable: true,
+        configurable: true
+      });
+    }
   }
   
   /**
@@ -389,19 +384,18 @@ export default class EventShim<EventType extends string = string> implements IEv
   }
 }
 
-// Class members are non-enumerable by default, but the DOM's Event exposes
-// both the constants and the prototype members to for-in.
-for (const key of [
-  'NONE',
-  'CAPTURING_PHASE',
-  'AT_TARGET',
-  'BUBBLING_PHASE'
-]) {
+// Class fields are writable at runtime, but the DOM's constants are read-only.
+for (const [key, value] of Object.entries(EVENT_CONSTANTS)) {
   Object.defineProperty(EventShim, key, {
-    enumerable: true
+    value,
+    writable: false,
+    enumerable: true,
+    configurable: true
   });
 }
 
+// Class members are non-enumerable by default, but the DOM's Event exposes
+// both the constants and the prototype members to for-in.
 for (const key of Object.getOwnPropertyNames(EventShim.prototype)) {
   if (key === 'constructor') {
     continue;

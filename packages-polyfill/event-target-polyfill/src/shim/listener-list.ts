@@ -4,16 +4,17 @@ import {
   IEventListener,
   IAbortSignal
 } from '../types';
+import {
+  createEventListener
+} from '../util';
 
 import {
-  createListener,
-  isCapture,
-  setRemoved
+  isEventListenerCapture,
+  setEventListenerRemoved
 } from './listener';
 
 /**
- * Find the index of given listener.
- * This returns `-1` if not found.
+ * Find the index of given listener. This returns `-1` if not found.
  * @param list The listener list.
  * @param callback The callback function to find.
  * @param capture The capture flag to find.
@@ -22,8 +23,7 @@ export function findIndexOfListener({
   listeners
 }: IListenerList, callback: TEventListenerLike, capture: boolean): number {
   return listeners.findIndex(listener => {
-    return listener.callback === callback
-      && isCapture(listener) === capture;
+    return listener.callback === callback && isEventListenerCapture(listener) === capture;
   });
 }
 
@@ -38,7 +38,7 @@ export function removeListenerAt(list: IListenerList, index: number, disableCow 
   }
 
   // Set the removed flag.
-  setRemoved(listener);
+  setEventListenerRemoved(listener);
 
   // Dispose the abort signal listener if exists.
   if (listener.signal !== undefined && listener.signalListener !== undefined) {
@@ -97,7 +97,7 @@ export function addListener(
     signal.addEventListener('abort', signalListener);
   }
 
-  const listener = createListener(
+  const listener = createEventListener(
       callback,
       capture,
       passive,

@@ -6,6 +6,9 @@ import {
   TAnyEventTarget,
   TEventListenerCallback
 } from '../types';
+import {
+  ensureEventListenerList
+} from '../util';
 
 import {
   getEventTargetInternalData
@@ -14,9 +17,6 @@ import {
   addListener,
   removeListener
 } from './listener-list';
-import {
-  ensureListenerList
-} from './listener-list-map';
 import {
   InvalidAttributeHandler
 } from './warnings';
@@ -73,7 +73,7 @@ function removeEventAttributeListener(target: TAnyEventTarget, type: string): vo
  * @param callback The event listener.
  */
 function upsertEventAttributeListener(target: TAnyEventTarget, type: string, callback: TEventListenerLike): void {
-  const list = ensureListenerList(getEventTargetInternalData(target, 'target'), type);
+  const list = ensureEventListenerList(getEventTargetInternalData(target, 'target'), type);
   
   list.attrCallback = callback;
   

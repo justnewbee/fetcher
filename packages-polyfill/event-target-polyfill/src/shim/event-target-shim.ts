@@ -10,11 +10,14 @@ import {
   TEventListenerLike,
   TEventData,
   TFallbackEvent,
-  TListenerListMap
+  TEventListenerListMap
 } from '../types';
 import {
   assertType,
-  formatMessage
+  formatMessage,
+  createEventListenerListMap,
+  ensureEventListenerList,
+  isEventListenerObject
 } from '../util';
 
 import EventShim, {
@@ -24,12 +27,11 @@ import {
   EventWrapper
 } from './event-wrapper';
 import {
-  invokeCallback,
-  isCapture,
-  isEventListenerObject,
-  isOnce,
-  isPassive,
-  isRemoved
+  invokeEventListenerCallback,
+  isEventListenerCapture,
+  isEventListenerOnce,
+  isEventListenerPassive,
+  isEventListenerRemoved
 } from './listener';
 import {
   addListener,
@@ -37,10 +39,6 @@ import {
   removeListener,
   removeListenerAt
 } from './listener-list';
-import {
-  createListenerListMap,
-  ensureListenerList
-} from './listener-list-map';
 import {
   EventListenerWasDuplicated,
   InvalidEventListener,
@@ -71,25 +69,18 @@ interface INormalizedAddOptions<Target extends TAnyEventTarget, EventType extend
 /**
  * Internal data.
  */
-const internalDataMap = new WeakMap<object, TListenerListMap>();
+const internalDataMap = new WeakMap<object, TEventListenerListMap>();
 
 /**
  * Get private data.
- * @param target The event target object to get private data.
- * @param name The variable name to report.
- * @returns The private data of the event.
  */
-function $(target: object, name = 'this'): TListenerListMap {
+export function getEventTargetInternalData(target: object, name = 'this'): TEventListenerListMap {
   const retv = internalDataMap.get(target);
   
   assertType(retv !== undefined, '\'%s\' must be an object that EventTarget constructor created, but got another one: %o', name, target);
   
   return retv;
 }
-
-export {
-  $ as getEventTargetInternalData
-};
 
 /**
  * Check if the given value is an options object.
@@ -180,13 +171,13 @@ function normalizeOptions<Target extends TAnyEventTarget, EventType extends IEve
  * @param signal The signal object of the new duplicated listener.
  */
 function warnDuplicate(listener: IEventListener, passive: boolean, once: boolean, signal: IAbortSignal | undefined): void {
-  EventListenerWasDuplicated.warn(isCapture(listener) ? 'capture' : 'bubble', listener.callback);
+  EventListenerWasDuplicated.warn(isEventListenerCapture(listener) ? 'capture' : 'bubble', listener.callback);
   
-  if (isPassive(listener) !== passive) {
+  if (isEventListenerPassive(listener) !== passive) {
     OptionWasIgnored.warn('passive');
   }
   
-  if (isOnce(listener) !== once) {
+  if (isEventListenerOnce(listener) !== once) {
     OptionWasIgnored.warn('once');
   }
   
@@ -204,7 +195,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
    * Initialize this instance.
    */
   constructor() {
-    internalDataMap.set(this, createListenerListMap());
+    internalDataMap.set(this, createEventListenerListMap());
   }
   
   // /**
@@ -243,7 +234,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   addEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IAddEventListenerOptions): void {
-    const listenerMap = $(this);
+    const listenerMap = getEventTargetInternalData(this);
     const {
       callback,
       capture,
@@ -257,7 +248,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
       return;
     }
     
-    const list = ensureListenerList(listenerMap, type);
+    const list = ensureEventListenerList(listenerMap, type);
     
     // Find existing listener.
     const index = findIndexOfListener(list, callback as unknown as TEventListenerLike, capture);
@@ -312,7 +303,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   removeEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IEventListenerOptions): void {
-    const listenerMap = $(this);
+    const listenerMap = getEventTargetInternalData(this);
     const {
       callback,
       capture,
@@ -339,7 +330,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   dispatchEvent(e: TEventData<EventMap, Mode, string> | TFallbackEvent<Mode>): boolean {
-    const list = $(this)[e.type];
+    const list = getEventTargetInternalData(this)[e.type];
     
     if (list === undefined) {
       return true;
@@ -377,20 +368,20 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
         }
         
         // Skip if removed.
-        if (isRemoved(listener)) {
+        if (isEventListenerRemoved(listener)) {
           continue;
         }
         
         // Remove this listener if has the `once` flag.
-        if (isOnce(listener) && removeListenerAt(list, i, !cow)) {
+        if (isEventListenerOnce(listener) && removeListenerAt(list, i, !cow)) {
           // Because this listener was removed, the next index is the
           // same as the current value.
           i -= 1;
         }
         
         // Call this listener with the `passive` flag.
-        eventData.inPassiveListenerFlag = isPassive(listener);
-        invokeCallback(listener, this, event);
+        eventData.inPassiveListenerFlag = isEventListenerPassive(listener);
+        invokeEventListenerCallback(listener, this, event);
         eventData.inPassiveListenerFlag = false;
         
         // Stop if the `event.stopImmediatePropagation()` method was called.
