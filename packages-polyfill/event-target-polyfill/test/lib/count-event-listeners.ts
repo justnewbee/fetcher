@@ -1,0 +1,21 @@
+import EventTargetShim, {
+  getEventTargetInternalData
+} from '../../src/shim/event-target-shim';
+
+/**
+ * Get registered event listeners from an `EventTarget` object.
+ * @param target The `EventTarget` object to get.
+ * @param type The type of events to get.
+ */
+export function countEventListeners(
+    target: EventTargetShim,
+    type?: string
+): number {
+  const listenerMap = getEventTargetInternalData(target, 'target');
+  const keys = type ? [type] : Object.keys(listenerMap);
+
+  return keys.reduce(
+      (count, key) => count + (listenerMap[key]?.listeners.length ?? 0),
+      0
+  );
+}

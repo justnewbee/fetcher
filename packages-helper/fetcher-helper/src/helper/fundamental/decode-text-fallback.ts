@@ -56,7 +56,6 @@ export default function decodeTextFallback(input: ArrayBuffer | Uint8Array): str
       case 12:
         cp1 = (inputAs8[index += 1] || 0) & 0xff;
         codePoint <<= 6;
-        // eslint-disable-next-line no-mixed-operators
         codePoint |= ((cp0 & 0b11111) << 6) | cp1 & 0b00111111;
         minBits = minBits + 7 | 0;
         
@@ -105,14 +104,38 @@ export default function decodeTextFallback(input: ArrayBuffer | Uint8Array): str
     tmpStr += String.fromCharCode(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        TMP_BUFFER_U16[0], TMP_BUFFER_U16[1], TMP_BUFFER_U16[2], TMP_BUFFER_U16[3],
-        TMP_BUFFER_U16[4], TMP_BUFFER_U16[5], TMP_BUFFER_U16[6], TMP_BUFFER_U16[7],
-        TMP_BUFFER_U16[8], TMP_BUFFER_U16[9], TMP_BUFFER_U16[10], TMP_BUFFER_U16[11],
-        TMP_BUFFER_U16[12], TMP_BUFFER_U16[13], TMP_BUFFER_U16[14], TMP_BUFFER_U16[15],
-        TMP_BUFFER_U16[16], TMP_BUFFER_U16[17], TMP_BUFFER_U16[18], TMP_BUFFER_U16[19],
-        TMP_BUFFER_U16[20], TMP_BUFFER_U16[21], TMP_BUFFER_U16[22], TMP_BUFFER_U16[23],
-        TMP_BUFFER_U16[24], TMP_BUFFER_U16[25], TMP_BUFFER_U16[26], TMP_BUFFER_U16[27],
-        TMP_BUFFER_U16[28], TMP_BUFFER_U16[29], TMP_BUFFER_U16[30], TMP_BUFFER_U16[31]
+        TMP_BUFFER_U16[0],
+        TMP_BUFFER_U16[1],
+        TMP_BUFFER_U16[2],
+        TMP_BUFFER_U16[3],
+        TMP_BUFFER_U16[4],
+        TMP_BUFFER_U16[5],
+        TMP_BUFFER_U16[6],
+        TMP_BUFFER_U16[7],
+        TMP_BUFFER_U16[8],
+        TMP_BUFFER_U16[9],
+        TMP_BUFFER_U16[10],
+        TMP_BUFFER_U16[11],
+        TMP_BUFFER_U16[12],
+        TMP_BUFFER_U16[13],
+        TMP_BUFFER_U16[14],
+        TMP_BUFFER_U16[15],
+        TMP_BUFFER_U16[16],
+        TMP_BUFFER_U16[17],
+        TMP_BUFFER_U16[18],
+        TMP_BUFFER_U16[19],
+        TMP_BUFFER_U16[20],
+        TMP_BUFFER_U16[21],
+        TMP_BUFFER_U16[22],
+        TMP_BUFFER_U16[23],
+        TMP_BUFFER_U16[24],
+        TMP_BUFFER_U16[25],
+        TMP_BUFFER_U16[26],
+        TMP_BUFFER_U16[27],
+        TMP_BUFFER_U16[28],
+        TMP_BUFFER_U16[29],
+        TMP_BUFFER_U16[30],
+        TMP_BUFFER_U16[31]
     );
     
     if (pos < 32) {

@@ -1,0 +1,415 @@
+import {
+  assertType
+} from '../util';
+import {
+  IEventClassType,
+  IEventTargetClassType,
+  IEventInit
+} from '../types';
+
+import {
+  CanceledInPassiveListener,
+  FalsyWasAssignedToCancelBubble,
+  InitEventWasCalledWhileDispatching,
+  NonCancelableEventWasCanceled,
+  TruthyWasAssignedToReturnValue
+} from './warnings';
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Event/eventPhase
+const NONE = 0;
+const CAPTURING_PHASE = 1;
+const AT_TARGET = 2;
+const BUBBLING_PHASE = 3;
+
+const IS_TRUSTED = false;
+
+/**
+ * Private data.
+ */
+interface IEventInternalData {
+  /**
+   * The value of `type` attribute.
+   */
+  readonly type: string;
+  /**
+   * The value of `bubbles` attribute.
+   */
+  readonly bubbles: boolean;
+  /**
+   * The value of `cancelable` attribute.
+   */
+  readonly cancelable: boolean;
+  /**
+   * The value of `composed` attribute.
+   */
+  readonly composed: boolean;
+  /**
+   * The value of `timeStamp` attribute.
+   */
+  readonly timeStamp: number;
+  /**
+   * @see https://dom.spec.whatwg.org/#dom-event-target
+   */
+  target: IEventTargetClassType | null;
+  /**
+   * @see https://dom.spec.whatwg.org/#dom-event-currenttarget
+   */
+  currentTarget: IEventTargetClassType | null;
+  /**
+   * @see https://dom.spec.whatwg.org/#stop-propagation-flag
+   */
+  stopPropagationFlag: boolean;
+  /**
+   * @see https://dom.spec.whatwg.org/#stop-immediate-propagation-flag
+   */
+  stopImmediatePropagationFlag: boolean;
+  /**
+   * @see https://dom.spec.whatwg.org/#canceled-flag
+   */
+  canceledFlag: boolean;
+  /**
+   * @see https://dom.spec.whatwg.org/#in-passive-listener-flag
+   */
+  inPassiveListenerFlag: boolean;
+  /**
+   * @see https://dom.spec.whatwg.org/#dispatch-flag
+   */
+  dispatchFlag: boolean;
+}
+
+/**
+ * Private data for event wrappers.
+ */
+const internalDataMap = new WeakMap<object, IEventInternalData>();
+
+/**
+ * Get private data.
+ *
+ * @param event The event object to get private data.
+ * @param name The variable name to report.
+ * @returns The private data of the event.
+ */
+function getEventInternalData(event: unknown, name = 'this'): IEventInternalData {
+  const retv = internalDataMap.get(event as object);
+  
+  assertType(retv !== undefined, '\'%s\' must be an object that Event constructor created, but got another one: %o', name, event);
+  
+  return retv;
+}
+
+/**
+ * https://dom.spec.whatwg.org/#set-the-canceled-flag
+ */
+function setCancelFlag(data: IEventInternalData): void {
+  if (data.inPassiveListenerFlag) {
+    CanceledInPassiveListener.warn();
+    
+    return;
+  }
+  
+  if (!data.cancelable) {
+    NonCancelableEventWasCanceled.warn();
+    
+    return;
+  }
+  
+  data.canceledFlag = true;
+}
+
+export {
+  getEventInternalData as getEventInternalData
+};
+
+/**
+ * An implementation of `Event` interface, that wraps a given event object.
+ * `EventTarget` shim can control the internal state of this `Event` objects.
+ *
+ * @see https://dom.spec.whatwg.org/#event
+ */
+export default class EventShim<EventType extends string = string> implements IEventClassType<EventType> {
+  static get NONE(): 0 {
+    return NONE;
+  }
+  
+  static get CAPTURING_PHASE(): 1 {
+    return CAPTURING_PHASE;
+  }
+  
+  static get AT_TARGET(): 2 {
+    return AT_TARGET;
+  }
+  
+  static get BUBBLING_PHASE(): 3 {
+    return BUBBLING_PHASE;
+  }
+  
+  get NONE(): 0 {
+    return NONE;
+  }
+  
+  get CAPTURING_PHASE(): 1 {
+    return CAPTURING_PHASE;
+  }
+  
+  get AT_TARGET(): 2 {
+    return AT_TARGET;
+  }
+  
+  get BUBBLING_PHASE(): 3 {
+    return BUBBLING_PHASE;
+  }
+  
+  /**
+   * Initialize this event instance.
+   * @param type The type of this event.
+   * @param eventInitDict Options to initialize.
+   * @see https://dom.spec.whatwg.org/#dom-event-event
+   */
+  constructor(type: EventType, eventInitDict?: IEventInit) {
+    Object.defineProperty(this, 'isTrusted', {
+      value: false,
+      enumerable: true
+    });
+    
+    const opts = eventInitDict ?? {};
+    
+    internalDataMap.set(this, {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- coerce at runtime because callers may pass non-string types
+      type: String(type),
+      bubbles: opts.bubbles ?? false,
+      cancelable: opts.cancelable ?? false,
+      composed: opts.composed ?? false,
+      target: null,
+      currentTarget: null,
+      stopPropagationFlag: false,
+      stopImmediatePropagationFlag: false,
+      canceledFlag: false,
+      inPassiveListenerFlag: false,
+      dispatchFlag: false,
+      timeStamp: Date.now()
+    });
+  }
+  
+  /**
+   * The type of this event.
+   * @see https://dom.spec.whatwg.org/#dom-event-type
+   */
+  get type(): EventType {
+    return getEventInternalData(this).type as EventType;
+  }
+  
+  /**
+   * The event target of the current dispatching.
+   * @see https://dom.spec.whatwg.org/#dom-event-target
+   */
+  get target(): IEventTargetClassType | null {
+    return getEventInternalData(this).target;
+  }
+  
+  /**
+   * The event target of the current dispatching.
+   * @deprecated Use the `target` property instead.
+   * @see https://dom.spec.whatwg.org/#dom-event-srcelement
+   */
+  get srcElement(): IEventTargetClassType | null {
+    return getEventInternalData(this).target;
+  }
+  
+  /**
+   * The event target of the current dispatching.
+   * @see https://dom.spec.whatwg.org/#dom-event-currenttarget
+   */
+  get currentTarget(): IEventTargetClassType | null {
+    return getEventInternalData(this).currentTarget;
+  }
+  
+  /**
+   * The event target of the current dispatching.
+   * This doesn't support node tree.
+   * @see https://dom.spec.whatwg.org/#dom-event-composedpath
+   */
+  composedPath(): IEventTargetClassType[] {
+    const currentTarget = getEventInternalData(this).currentTarget;
+    
+    if (currentTarget) {
+      return [currentTarget];
+    }
+    
+    return [];
+  }
+  
+  /**
+   * The current event phase.
+   * @see https://dom.spec.whatwg.org/#dom-event-eventphase
+   */
+  get eventPhase(): number {
+    return getEventInternalData(this).dispatchFlag ? 2 : 0;
+  }
+  
+  /**
+   * Stop event bubbling.
+   * Because this shim doesn't support node tree, this merely changes the `cancelBubble` property value.
+   * @see https://dom.spec.whatwg.org/#dom-event-stoppropagation
+   */
+  stopPropagation(): void {
+    getEventInternalData(this).stopPropagationFlag = true;
+  }
+  
+  /**
+   * `true` if event bubbling was stopped.
+   * @deprecated
+   * @see https://dom.spec.whatwg.org/#dom-event-cancelbubble
+   */
+  get cancelBubble(): boolean {
+    return getEventInternalData(this).stopPropagationFlag;
+  }
+  
+  /**
+   * Stop event bubbling if `true` is set.
+   * @deprecated Use the `stopPropagation()` method instead.
+   * @see https://dom.spec.whatwg.org/#dom-event-cancelbubble
+   */
+  set cancelBubble(value: boolean) {
+    if (value) {
+      getEventInternalData(this).stopPropagationFlag = true;
+    } else {
+      FalsyWasAssignedToCancelBubble.warn();
+    }
+  }
+  
+  /**
+   * Stop event bubbling and subsequent event listener callings.
+   * @see https://dom.spec.whatwg.org/#dom-event-stopimmediatepropagation
+   */
+  stopImmediatePropagation(): void {
+    const data = getEventInternalData(this);
+    
+    data.stopPropagationFlag = data.stopImmediatePropagationFlag = true;
+  }
+  
+  /**
+   * `true` if this event will bubble.
+   * @see https://dom.spec.whatwg.org/#dom-event-bubbles
+   */
+  get bubbles(): boolean {
+    return getEventInternalData(this).bubbles;
+  }
+  
+  /**
+   * `true` if this event can be canceled by the `preventDefault()` method.
+   * @see https://dom.spec.whatwg.org/#dom-event-cancelable
+   */
+  get cancelable(): boolean {
+    return getEventInternalData(this).cancelable;
+  }
+  
+  /**
+   * `true` if the default behavior will act.
+   * @deprecated Use the `defaultPrevented` proeprty instead.
+   * @see https://dom.spec.whatwg.org/#dom-event-returnvalue
+   */
+  get returnValue(): boolean {
+    return !getEventInternalData(this).canceledFlag;
+  }
+  
+  /**
+   * Cancel the default behavior if `false` is set.
+   * @deprecated Use the `preventDefault()` method instead.
+   * @see https://dom.spec.whatwg.org/#dom-event-returnvalue
+   */
+  set returnValue(value: boolean) {
+    if (!value) {
+      setCancelFlag(getEventInternalData(this));
+    } else {
+      TruthyWasAssignedToReturnValue.warn();
+    }
+  }
+  
+  /**
+   * Cancel the default behavior.
+   * @see https://dom.spec.whatwg.org/#dom-event-preventdefault
+   */
+  preventDefault(): void {
+    setCancelFlag(getEventInternalData(this));
+  }
+  
+  /**
+   * `true` if the default behavior was canceled.
+   * @see https://dom.spec.whatwg.org/#dom-event-defaultprevented
+   */
+  get defaultPrevented(): boolean {
+    return getEventInternalData(this).canceledFlag;
+  }
+  
+  /**
+   * @see https://dom.spec.whatwg.org/#dom-event-composed
+   */
+  get composed(): boolean {
+    return getEventInternalData(this).composed;
+  }
+  
+  /**
+   * @see https://dom.spec.whatwg.org/#dom-event-istrusted
+   */
+  get isTrusted(): boolean {
+    return IS_TRUSTED;
+  }
+  
+  /**
+   * @see https://dom.spec.whatwg.org/#dom-event-timestamp
+   */
+  get timeStamp(): number {
+    return getEventInternalData(this).timeStamp;
+  }
+  
+  /**
+   * @deprecated Don't use this method. The constructor did initialization.
+   */
+  initEvent(type: string, bubbles = false, cancelable = false): void {
+    const data = getEventInternalData(this);
+    
+    if (data.dispatchFlag) {
+      InitEventWasCalledWhileDispatching.warn();
+      
+      return;
+    }
+    
+    internalDataMap.set(this, {
+      ...data,
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- coerce at runtime because callers may pass non-string types
+      type: String(type),
+      bubbles,
+      cancelable,
+      target: null,
+      currentTarget: null,
+      stopPropagationFlag: false,
+      stopImmediatePropagationFlag: false,
+      canceledFlag: false
+    });
+  }
+}
+
+// Class members are non-enumerable by default, but the DOM's Event exposes
+// both the constants and the prototype members to for-in.
+for (const key of [
+  'NONE',
+  'CAPTURING_PHASE',
+  'AT_TARGET',
+  'BUBBLING_PHASE'
+]) {
+  Object.defineProperty(EventShim, key, {
+    enumerable: true
+  });
+}
+
+for (const key of Object.getOwnPropertyNames(EventShim.prototype)) {
+  if (key === 'constructor') {
+    continue;
+  }
+  
+  Object.defineProperty(EventShim.prototype, key, {
+    enumerable: true
+  });
+}
+
+globalThis.Event = EventShim;
