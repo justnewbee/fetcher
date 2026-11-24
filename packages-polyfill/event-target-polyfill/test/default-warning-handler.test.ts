@@ -10,7 +10,7 @@ import {
 import EventTargetShim from '../src/index';
 import {
   InvalidEventListener
-} from '../src/shim/warnings';
+} from '../src/util';
 
 import {
   spy

@@ -1,10 +1,11 @@
 import {
-  reportError
-} from '../shim/error-handler';
-import {
   IEventClassType,
   IEventListener
 } from '../types';
+
+import {
+  reportError
+} from './error';
 
 /**
  * Call an event listener.

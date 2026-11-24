@@ -2,8 +2,9 @@ import {
   IEventClassType,
   TErrorHandler
 } from '../types';
-import anyToString from '../util/any-to-string';
-import assertType from '../util/assert-type';
+
+import anyToString from './any-to-string';
+import assertType from './assert-type';
 
 declare const dispatchEvent: ((event: IEventClassType) => boolean) | undefined;
 declare const ErrorEvent: (new (type: string, init: { error?: unknown; message?: string; }) => IEventClassType) | undefined;
@@ -12,16 +13,6 @@ declare const process: {
 } | undefined;
 
 let currentErrorHandler: TErrorHandler | undefined;
-
-/**
- * Set the error handler.
- * @param value The error handler to set.
- */
-export function setErrorHandler(value: TErrorHandler | undefined): void {
-  assertType(value === undefined || typeof value === 'function', 'The error handler must be a function or undefined, but got %o.', value);
-  
-  currentErrorHandler = value;
-}
 
 /**
  * Print an error message.
@@ -54,4 +45,13 @@ export function reportError(maybeError: unknown): void {
   } catch {
     // ignore
   }
+}
+
+/**
+ * Set the error handler.
+ */
+export function setErrorHandler(value: TErrorHandler | undefined): void {
+  assertType(value === undefined || typeof value === 'function', 'The error handler must be a function or undefined, but got %o.', value);
+  
+  currentErrorHandler = value;
 }

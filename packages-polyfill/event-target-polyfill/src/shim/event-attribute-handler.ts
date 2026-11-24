@@ -7,25 +7,18 @@ import {
   TEventListenerCallback
 } from '../types';
 import {
+  InvalidAttributeHandler,
   ensureEventListenerList,
   addEventListener,
-  removeEventListener
+  removeEventListener,
+  eventTargetInternalDataGet
 } from '../util';
-
-import {
-  getEventTargetInternalData
-} from './event-target-shim';
-import {
-  InvalidAttributeHandler
-} from './warnings';
 
 /**
  * Get the current value of a given event attribute.
- * @param target The `EventTarget` object to get.
- * @param type The event type.
  */
 export function getEventAttributeValue<Target extends TAnyEventTarget, EventType extends IEventClassType>(target: Target, type: string): TEventListenerCallback<Target, EventType> | null {
-  const listMap = getEventTargetInternalData(target, 'target');
+  const listMap = eventTargetInternalDataGet(target, 'target');
   
   return (listMap[type]?.attrCallback ?? null) as unknown as TEventListenerCallback<Target, EventType> | null;
 }
@@ -37,7 +30,6 @@ export function getEventAttributeValue<Target extends TAnyEventTarget, EventType
 /**
  * Define the callback function for the given listener list object.
  * It calls `attrCallback` property if the property value is a function.
- * @param list The `IListenerList` object.
  */
 function defineEventAttributeCallback(list: IListenerList): TListenerCallback {
   return function (this: object, event: IEventClassType): void {
@@ -55,7 +47,7 @@ function defineEventAttributeCallback(list: IListenerList): TListenerCallback {
  * @param type The event type.
  */
 function removeEventAttributeListener(target: TAnyEventTarget, type: string): void {
-  const listMap = getEventTargetInternalData(target, 'target');
+  const listMap = eventTargetInternalDataGet(target, 'target');
   const list = listMap[type];
   
   if (list?.attrListener) {
@@ -71,7 +63,7 @@ function removeEventAttributeListener(target: TAnyEventTarget, type: string): vo
  * @param callback The event listener.
  */
 function upsertEventAttributeListener(target: TAnyEventTarget, type: string, callback: TEventListenerLike): void {
-  const list = ensureEventListenerList(getEventTargetInternalData(target, 'target'), type);
+  const list = ensureEventListenerList(eventTargetInternalDataGet(target, 'target'), type);
   
   list.attrCallback = callback;
   

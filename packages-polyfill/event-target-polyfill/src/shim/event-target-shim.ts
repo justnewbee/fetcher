@@ -9,13 +9,13 @@ import {
   IEventListener,
   TEventListenerLike,
   TEventData,
-  TFallbackEvent,
-  TEventListenerListMap
+  TFallbackEvent
 } from '../types';
 import {
-  assertType,
+  EventListenerWasDuplicated,
+  InvalidEventListener,
+  OptionWasIgnored,
   formatMessage,
-  createEventListenerListMap,
   ensureEventListenerList,
   isEventListenerObject,
   isEventListenerCapture,
@@ -26,7 +26,9 @@ import {
   addEventListener,
   findEventListenerIndex,
   removeEventListener,
-  removeEventListenerAt
+  removeEventListenerAt,
+  eventTargetInternalDataGet,
+  eventTargetInternalDataInit
 } from '../util';
 
 import EventShim, {
@@ -35,11 +37,6 @@ import EventShim, {
 import {
   EventWrapper
 } from './event-wrapper';
-import {
-  EventListenerWasDuplicated,
-  InvalidEventListener,
-  OptionWasIgnored
-} from './warnings';
 import {
   DOMExceptionShim
 } from './dom-exception-shim';
@@ -60,22 +57,6 @@ interface INormalizedAddOptions<Target extends TAnyEventTarget, EventType extend
   passive: boolean;
   once: boolean;
   signal: IAbortSignal | undefined;
-}
-
-/**
- * Internal data.
- */
-const internalDataMap = new WeakMap<object, TEventListenerListMap>();
-
-/**
- * Get private data.
- */
-export function getEventTargetInternalData(target: object, name = 'this'): TEventListenerListMap {
-  const retv = internalDataMap.get(target);
-  
-  assertType(retv !== undefined, '\'%s\' must be an object that EventTarget constructor created, but got another one: %o', name, target);
-  
-  return retv;
 }
 
 /**
@@ -191,7 +172,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
    * Initialize this instance.
    */
   constructor() {
-    internalDataMap.set(this, createEventListenerListMap());
+    eventTargetInternalDataInit(this);
   }
   
   // /**
@@ -230,7 +211,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   addEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IAddEventListenerOptions): void {
-    const listenerMap = getEventTargetInternalData(this);
+    const listenerMap = eventTargetInternalDataGet(this);
     const {
       callback,
       capture,
@@ -299,7 +280,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   removeEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IEventListenerOptions): void {
-    const listenerMap = getEventTargetInternalData(this);
+    const listenerMap = eventTargetInternalDataGet(this);
     const {
       callback,
       capture,
@@ -326,7 +307,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   dispatchEvent(e: TEventData<EventMap, Mode, string> | TFallbackEvent<Mode>): boolean {
-    const list = getEventTargetInternalData(this)[e.type];
+    const list = eventTargetInternalDataGet(this)[e.type];
     
     if (list === undefined) {
       return true;
@@ -413,5 +394,3 @@ for (const key of Object.getOwnPropertyNames(EventTargetShim.prototype)) {
     enumerable: true
   });
 }
-
-globalThis.EventTarget = EventTargetShim;

@@ -12,13 +12,14 @@ import {
 import EventTargetShim, {
   Event as EventShim
 } from '../src/index';
+import polyfillEventTarget from '../src/polyfill/polyfill-event-target';
 import {
   CanceledInPassiveListener,
   EventListenerWasDuplicated,
   InvalidEventListener,
   NonCancelableEventWasCanceled,
   OptionWasIgnored
-} from '../src/shim/warnings';
+} from '../src/util';
 
 import {
   TSpy,
@@ -61,10 +62,10 @@ describe('\'EventTarget\' class', () => {
     const nativeDescribe = NativeEventTarget ? describe : describe.skip;
 
     nativeDescribe('if native EventTarget class is present', () => {
-      it('`target instanceof window.EventTarget` should be true', () => {
-        const target = new EventTargetShim();
+      it('should not replace the native EventTarget class', () => {
+        polyfillEventTarget();
 
-        assert(target instanceof NativeEventTarget);
+        assert.strictEqual((globalThis as { EventTarget?: typeof EventTargetShim; }).EventTarget, NativeEventTarget);
       });
     });
   });

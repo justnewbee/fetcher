@@ -10,12 +10,13 @@ import {
 import EventTarget, {
   Event
 } from '../src';
+import polyfillEvent from '../src/polyfill/polyfill-event';
 import {
   FalsyWasAssignedToCancelBubble,
   InitEventWasCalledWhileDispatching,
   NonCancelableEventWasCanceled,
   TruthyWasAssignedToReturnValue
-} from '../src/shim/warnings';
+} from '../src/util';
 
 import {
   setupErrorCheck
@@ -43,10 +44,10 @@ describe('\'Event\' class', () => {
     const nativeDescribe = NativeEvent ? describe : describe.skip;
 
     nativeDescribe('if native Event class is present', () => {
-      it('`event instanceof window.Event` should be true', () => {
-        const event = new Event('');
+      it('should not replace the native Event class', () => {
+        polyfillEvent();
 
-        assert(event instanceof NativeEvent);
+        assert.strictEqual((globalThis as { Event?: typeof Event; }).Event, NativeEvent);
       });
     });
   });

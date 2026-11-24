@@ -5,11 +5,9 @@ export {
   setEventAttributeValue
 } from './shim/event-attribute-handler';
 export {
-  setErrorHandler
-} from './shim/error-handler';
-export {
+  setErrorHandler,
   setWarningHandler
-} from './shim/warning-handler';
+} from './util';
 
 export type {
   TEventListener as EventListener,

@@ -1,19 +1,16 @@
 import {
-  assertType
-} from '../util';
-import {
   IEventClassType,
   IEventTargetClassType,
   IEventInit
 } from '../types';
-
 import {
+  assertType,
   CanceledInPassiveListener,
   FalsyWasAssignedToCancelBubble,
   InitEventWasCalledWhileDispatching,
   NonCancelableEventWasCanceled,
   TruthyWasAssignedToReturnValue
-} from './warnings';
+} from '../util';
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Event/eventPhase
 const NONE = 0;
@@ -405,5 +402,3 @@ for (const key of Object.getOwnPropertyNames(EventShim.prototype)) {
     enumerable: true
   });
 }
-
-globalThis.Event = EventShim;

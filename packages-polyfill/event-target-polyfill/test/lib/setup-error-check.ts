@@ -14,7 +14,7 @@ import {
 } from '../../src/types';
 import {
   Warning
-} from '../../src/shim/warning-handler';
+} from '../../src/util';
 
 export interface IErrorChecker {
   assertError(errorOrMessage: Error | string): void;

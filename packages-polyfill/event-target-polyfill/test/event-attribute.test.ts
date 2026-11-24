@@ -15,7 +15,7 @@ import EventTargetShim, {
 } from '../src';
 import {
   InvalidAttributeHandler
-} from '../src/shim/warnings';
+} from '../src/util';
 
 import {
   spy

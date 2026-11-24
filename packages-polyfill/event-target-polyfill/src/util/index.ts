@@ -9,9 +9,12 @@ export { default as removeEventListener } from './remove-event-listener';
 export { default as removeEventListenerAt } from './remove-event-listener-at';
 export { default as findEventListenerIndex } from './find-event-listener-index';
 
+export * from './event-target-internal-data';
+export * from './warning';
+export * from './error';
+
 export { default as createEventListenerListMap } from './create-event-listener-list-map';
 export { default as ensureEventListenerList } from './ensure-event-listener-list';
 
-export { default as anyToString } from './any-to-string';
 export { default as assertType } from './assert-type';
 export { default as formatMessage } from './format-message';
