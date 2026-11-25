@@ -1,6 +1,6 @@
 import {
   IEventListener,
-  IAbortSignal
+  IAbortSignalClassType
 } from '../types';
 
 import isEventListenerCapture from './is-event-listener-capture';
@@ -14,7 +14,7 @@ import {
 /**
  * Print warning for duplicated.
  */
-export default function warnEventListenerDuplicate(listener: IEventListener, passive: boolean, once: boolean, signal: IAbortSignal | undefined): void {
+export default function warnEventListenerDuplicate(listener: IEventListener, passive: boolean, once: boolean, signal: IAbortSignalClassType | undefined): void {
   EventListenerWasDuplicated.warn(isEventListenerCapture(listener) ? 'capture' : 'bubble', listener.callback);
   
   if (isEventListenerPassive(listener) !== passive) {

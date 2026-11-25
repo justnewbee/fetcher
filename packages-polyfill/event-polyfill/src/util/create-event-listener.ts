@@ -3,14 +3,14 @@ import {
 } from '../enum';
 import {
   TEventListenerLike,
-  IAbortSignal,
+  IAbortSignalClassType,
   IEventListener
 } from '../types';
 
 /**
  * Create a new listener.
  */
-export default function createEventListener(callback: TEventListenerLike, capture: boolean, passive: boolean, once: boolean, signal: IAbortSignal | undefined, signalListener: (() => void) | undefined): IEventListener {
+export default function createEventListener(callback: TEventListenerLike, capture: boolean, passive: boolean, once: boolean, signal: IAbortSignalClassType | undefined, signalListener: (() => void) | undefined): IEventListener {
   return {
     callback,
     flags: (capture ? EEventListenerFlags.Capture : EEventListenerFlags.None) | (passive ? EEventListenerFlags.Passive : EEventListenerFlags.None) | (once ? EEventListenerFlags.Once : EEventListenerFlags.None),

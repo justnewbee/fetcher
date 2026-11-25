@@ -125,3 +125,11 @@ export default class DOMExceptionShim extends Error { // eslint-disable-line @ty
     (Error as IErrorCapture).captureStackTrace?.(this, DOMExceptionShim);
   }
 }
+
+export function createDomException(message?: string, name?: string): DOMException {
+  if (typeof DOMException === 'undefined') {
+    return new DOMExceptionShim(message, name);
+  }
+  
+  return new DOMException(message, name);
+}

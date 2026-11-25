@@ -1,6 +1,5 @@
 export { default as getEventAttributeValue } from './get-event-attribute-value';
 export { default as setEventAttributeValue } from './set-event-attribute-value';
-export { default as defineEventWrapper } from './define-event-wrapper';
 export { default as defineEventWrapperRedirectDescriptor } from './define-event-wrapper-redirect-descriptor';
 
 export { default as normalizeEventListenerAddOptions } from './normalize-event-listener-add-options';
@@ -16,8 +15,11 @@ export { default as removeEventListenerAt } from './remove-event-listener-at';
 export { default as findEventListenerIndex } from './find-event-listener-index';
 export { default as warnEventListenerDuplicate } from './warn-event-listener-duplicate';
 
-export * from './event-internal-data';
-export * from './event-target-internal-data';
-export * from './event-wrapper-internal-data';
 export * from './warning';
 export * from './error';
+export * from './map-of-event-internal';
+export * from './map-of-event-target-internal';
+export * from './map-of-event-wrapper-internal';
+export * from './map-of-event-wrapper-constructor';
+export * from './map-of-abort-signal-internal';
+export * from './map-of-abort-controller-signal';

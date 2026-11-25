@@ -1,7 +1,7 @@
 import assertType from './assert-type';
 import {
-  eventWrapperInternalDataGet
-} from './event-wrapper-internal-data';
+  mapOfEventWrapperInternalGet
+} from './map-of-event-wrapper-internal';
 
 /**
  * Get the property descriptor to redirect a given property.
@@ -13,7 +13,7 @@ export default function defineEventWrapperRedirectDescriptor(obj: object, key: s
   
   return {
     get() {
-      const original = eventWrapperInternalDataGet(this).original as Record<string, unknown>;
+      const original = mapOfEventWrapperInternalGet(this).original as Record<string, unknown>;
       const value = original[key];
       
       if (typeof value === 'function') {
@@ -23,7 +23,7 @@ export default function defineEventWrapperRedirectDescriptor(obj: object, key: s
       return value;
     },
     set(value: unknown) {
-      const original = eventWrapperInternalDataGet(this).original as Record<string, unknown>;
+      const original = mapOfEventWrapperInternalGet(this).original as Record<string, unknown>;
       
       original[key] = value;
     },

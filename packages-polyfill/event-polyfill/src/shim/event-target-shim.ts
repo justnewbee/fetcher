@@ -22,9 +22,9 @@ import {
   removeEventListenerAt,
   warnEventListenerDuplicate,
   invokeEventListenerCallback,
-  eventInternalDataGet,
-  eventTargetInternalDataGet,
-  eventTargetInternalDataSet
+  mapOfEventInternalGet,
+  mapOfEventTargetInternalGet,
+  mapOfEventTargetInternalSet
 } from '../util';
 
 import DOMExceptionShim from './dom-exception-shim';
@@ -40,7 +40,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
    * Initialize this instance.
    */
   constructor() {
-    eventTargetInternalDataSet(this);
+    mapOfEventTargetInternalSet(this);
   }
   
   /**
@@ -67,7 +67,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   addEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IEventListenerAddOptions): void {
-    const listenerMap = eventTargetInternalDataGet(this);
+    const listenerMap = mapOfEventTargetInternalGet(this);
     const {
       callback,
       capture,
@@ -124,7 +124,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   removeEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IEventListenerOptions): void {
-    const listenerMap = eventTargetInternalDataGet(this);
+    const listenerMap = mapOfEventTargetInternalGet(this);
     const {
       callback,
       capture,
@@ -149,14 +149,14 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   dispatchEvent(e: TEventData<EventMap, Mode, string> | TFallbackEvent<Mode>): boolean {
-    const list = eventTargetInternalDataGet(this)[e.type];
+    const list = mapOfEventTargetInternalGet(this)[e.type];
     
     if (list === undefined) {
       return true;
     }
     
     const event = e instanceof EventShim ? e : EventWrapper.wrap(e);
-    const eventData = eventInternalDataGet(event, 'event');
+    const eventData = mapOfEventInternalGet(event, 'event');
     
     if (eventData.dispatchFlag) {
       if (typeof DOMException !== 'undefined') {

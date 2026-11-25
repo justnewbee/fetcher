@@ -1,6 +1,7 @@
 # @fetchx/event-polyfill
 
 > Common purpose [DOMException], [Event], [EventTarget], [AbortSignal], [AbortController] ponyfill & polyfill. A fork of [abort-controller] & [event-target-shim].
+> 如果你需要在小程序中使用 [DOMException]、[Event]、[EventTarget]、[AbortSignal]、[AbortController]，可以考虑使用这个包。
 
 ## How to use
 

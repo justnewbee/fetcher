@@ -2,7 +2,7 @@ import {
   IListenerList,
   TEventListenerLike,
   IEventListener,
-  IAbortSignal
+  IAbortSignalClassType
 } from '../types';
 
 import createEventListener from './create-event-listener';
@@ -11,7 +11,7 @@ import removeEventListener from './remove-event-listener';
 /**
  * Add the given listener, does copy-on-write if needed.
  */
-export default function addEventListener(list: IListenerList, callback: TEventListenerLike, capture: boolean, passive: boolean, once: boolean, signal: IAbortSignal | undefined): IEventListener {
+export default function addEventListener(list: IListenerList, callback: TEventListenerLike, capture: boolean, passive: boolean, once: boolean, signal: IAbortSignalClassType | undefined): IEventListener {
   let signalListener: (() => void) | undefined;
   
   if (signal !== undefined) {

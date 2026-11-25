@@ -3,15 +3,15 @@ import {
 } from '../types';
 
 import {
-  eventTargetInternalDataGet
-} from './event-target-internal-data';
+  mapOfEventTargetInternalGet
+} from './map-of-event-target-internal';
 import removeEventListener from './remove-event-listener';
 
 /**
  * Remove the given event attribute handler.
  */
 export default function removeEventAttributeListener(target: TAnyEventTarget, type: string): void {
-  const listMap = eventTargetInternalDataGet(target, 'target');
+  const listMap = mapOfEventTargetInternalGet(target, 'target');
   const list = listMap[type];
   
   if (list?.attrListener) {

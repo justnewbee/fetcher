@@ -49,4 +49,23 @@ describe('\'AbortController\' class', () => {
   test('should throw a TypeError if \'abort\' is called on a non-AbortController object', () => {
     assert.throws(() => AbortController.prototype.abort.call({}), TypeError);
   });
+  
+  test('should abort the signal with the given reason', () => {
+    const controller = new AbortController();
+    const reason = new Error('stop');
+    
+    controller.abort(reason);
+    
+    assert.strictEqual(controller.signal.aborted, true);
+    assert.strictEqual(controller.signal.reason, reason);
+  });
+  
+  test('should abort the signal with an AbortError by default', () => {
+    const controller = new AbortController();
+    
+    controller.abort();
+    
+    assert(controller.signal.reason instanceof DOMException);
+    assert.strictEqual(controller.signal.reason.name, 'AbortError');
+  });
 });

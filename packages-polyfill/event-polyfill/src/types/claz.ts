@@ -81,7 +81,6 @@ export interface IEventClassType<EventType extends string = string> {
    * @see https://dom.spec.whatwg.org/#dom-event-timestamp
    */
   readonly timeStamp: number;
-  
   /**
    * `true` if event bubbling was stopped.
    * @deprecated
@@ -130,59 +129,98 @@ export interface IEventTargetClassType<EventMap extends Record<string, IEventCla
    * Add an event listener.
    */
   addEventListener<Type extends string & keyof EventMap>(type: Type, callback?: TEventListener<this, EventMap[Type]> | null, options?: IEventListenerAddOptions): void;
-  
   /**
    * Add an event listener.
    */
   addEventListener(type: string, callback?: TEventListenerFallback<this, Mode>, options?: IEventListenerAddOptions): void;
-  
   /**
    * Add an event listener.
    *
    * @deprecated Use `{capture: boolean}` object instead of a boolean value.
    */
   addEventListener<Type extends string & keyof EventMap>(type: Type, callback: TEventListener<this, EventMap[Type]> | null | undefined, capture: boolean): void;
-  
   /**
    * Add an event listener.
    *
    * @deprecated Use `{capture: boolean}` object instead of a boolean value.
    */
   addEventListener(type: string, callback: TEventListenerFallback<this, Mode>, capture: boolean): void;
-  
   /**
    * Remove an added event listener.
    */
   removeEventListener<Type extends string & keyof EventMap>(type: Type, callback?: TEventListener<this, EventMap[Type]> | null, options?: IEventListenerOptions): void;
-  
   /**
    * Remove an added event listener.
    */
   removeEventListener(type: string, callback?: TEventListenerFallback<this, Mode>, options?: IEventListenerOptions): void;
-  
   /**
    * Remove an added event listener.
    *
    * @deprecated Use `{capture: boolean}` object instead of a boolean value.
    */
   removeEventListener<Type extends string & keyof EventMap>(type: Type, callback: TEventListener<this, EventMap[Type]> | null | undefined, capture: boolean): void;
-  
   /**
    * Remove an added event listener.
    *
    * @deprecated Use `{capture: boolean}` object instead of a boolean value.
    */
   removeEventListener(type: string, callback: TEventListenerFallback<this, Mode>, capture: boolean): void;
-  
   /**
    * Dispatch an event.
    */
   dispatchEvent<Type extends string & keyof EventMap>(event: TEventData<EventMap, Mode, Type>): boolean;
-  
   /**
    * Dispatch an event.
    */
   dispatchEvent(event: TFallbackEvent<Mode>): boolean;
+}
+
+/**
+ * An implementation of the `AbortSignal` interface.
+ *
+ * @see https://dom.spec.whatwg.org/#interface-abortsignal
+ */
+export interface IAbortSignalClassType extends IEventTargetClassType<{
+  abort: IEventClassType;
+}> {
+  /**
+   * `true` if this signal has been aborted.
+   * @see https://dom.spec.whatwg.org/#dom-abortsignal-aborted
+   */
+  readonly aborted: boolean;
+  /**
+   * The abort reason.
+   * @see https://dom.spec.whatwg.org/#dom-abortsignal-reason
+   */
+  readonly reason: unknown;
+  /**
+   * The event handler for the `abort` event.
+   * @see https://dom.spec.whatwg.org/#dom-abortsignal-onabort
+   */
+  onabort: TEventListenerCallbackFunction<this, IEventClassType> | null;
+  /**
+   * Throw the abort reason if this signal has been aborted.
+   * @see https://dom.spec.whatwg.org/#dom-abortsignal-throwifaborted
+   */
+  throwIfAborted(): void;
+}
+
+/**
+ * An implementation of the `AbortController` interface.
+ *
+ * @see https://dom.spec.whatwg.org/#interface-abortcontroller
+ */
+export interface IAbortControllerClassType {
+  /**
+   * The `AbortSignal` object associated with this controller.
+   * @see https://dom.spec.whatwg.org/#dom-abortcontroller-signal
+   */
+  readonly signal: IAbortSignalClassType;
+  /**
+   * Abort the associated signal with the given reason.
+   * @see https://dom.spec.whatwg.org/#dom-abortcontroller-abort
+   */
+  abort(reason?: unknown): void;
 }
 
 /**
@@ -221,7 +259,7 @@ export interface IEventListener {
   /**
    * The `AbortSignal` to remove this listener.
    */
-  readonly signal: IAbortSignal | undefined;
+  readonly signal: IAbortSignalClassType | undefined;
   /**
    * The `abort` event listener for the `signal`.
    * To remove it from the `signal`.
@@ -296,20 +334,6 @@ export type TEventListenerFallback<Target extends TAnyEventTarget, Mode extends 
 export type TFallbackEvent<Mode extends 'standard' | 'strict'> = Mode extends 'standard' ? IEventClassType : never;
 
 /**
- * The abort signal.
- *
- * @see https://dom.spec.whatwg.org/#abortsignal
- */
-export interface IAbortSignal extends IEventTargetClassType<{
-  abort: IEventClassType;
-}> {
-  readonly aborted: boolean;
-  readonly reason: unknown;
-  onabort: TEventListenerCallbackFunction<this, IEventClassType> | null;
-  throwIfAborted(): void;
-}
-
-/**
  * The common options for both `addEventListener` and `removeEventListener` methods.
  *
  * @see https://dom.spec.whatwg.org/#dictdef-eventlisteneroptions
@@ -326,7 +350,7 @@ export interface IEventListenerOptions {
 export interface IEventListenerAddOptions extends IEventListenerOptions {
   passive?: boolean;
   once?: boolean;
-  signal?: IAbortSignal | undefined;
+  signal?: IAbortSignalClassType | undefined;
 }
 
 /**
@@ -344,5 +368,5 @@ export interface IEventListenerOptionsNormalized<Target extends TAnyEventTarget,
 export interface IEventListenerAddOptionsNormalized<Target extends TAnyEventTarget, EventType extends IEventClassType> extends IEventListenerOptionsNormalized<Target, EventType> {
   passive: boolean;
   once: boolean;
-  signal: IAbortSignal | undefined;
+  signal: IAbortSignalClassType | undefined;
 }

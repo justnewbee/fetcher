@@ -4,13 +4,6 @@ import {
 } from './claz';
 
 /**
- * The event-like object that can be wrapped.
- */
-export type TEventLike = {
-  readonly type: string;
-} & Partial<IEventClassType>;
-
-/**
  * The options of the `Event` constructor.
  * @see https://dom.spec.whatwg.org/#dictdef-eventinit
  */
@@ -19,6 +12,13 @@ export interface IEventInit {
   cancelable?: boolean;
   composed?: boolean;
 }
+
+/**
+ * The event-like object that can be wrapped.
+ */
+export type TEventLike = {
+  readonly type: string;
+} & Partial<IEventClassType>;
 
 export interface IEventInternalData {
   /**
