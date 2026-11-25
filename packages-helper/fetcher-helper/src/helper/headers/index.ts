@@ -1,4 +1,5 @@
 export { default as headersNormalize } from './headers-normalize';
+export { default as headersNormalizeToPlain } from './headers-normalize-to-plain';
 export { default as headersGet } from './headers-get';
 export { default as headersSet } from './headers-set';
 export { default as headersDelete } from './headers-delete';

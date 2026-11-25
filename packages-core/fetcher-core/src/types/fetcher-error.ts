@@ -1,5 +1,5 @@
 import {
-  FetcherHeadersFallbackNormalized
+  FetcherHeadersPlainNormalized
 } from '@fetchx/fetcher-helper';
 
 import {
@@ -18,7 +18,7 @@ export interface IErrorExtendedInfo {
   /**
    * 预留扩展字段 - 原始 response 中的 header
    */
-  responseHeaders?: Headers | FetcherHeadersFallbackNormalized | null;
+  responseHeaders?: Headers | FetcherHeadersPlainNormalized | null;
   /**
    * 预留扩展字段 - 原始 response 中的数据；强行把返回变成出错时需要
    */

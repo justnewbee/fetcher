@@ -1,7 +1,7 @@
-export type TFetcherHeadersFallback = Record<string, string | number | boolean>;
+export type TFetcherHeadersPlain = Record<string, string | number | boolean>;
 
-export type TFetcherHeadersFallbackNormalized = Record<string, string>;
+export type TFetcherHeadersPlainNormalized = Record<string, string>;
 
-export type TFetcherHeaders = Headers | TFetcherHeadersFallback;
+export type TFetcherHeaders = Headers | TFetcherHeadersPlain;
 
-export type TFetcherHeadersNormalized = Headers | TFetcherHeadersFallbackNormalized;
+export type TFetcherHeadersNormalized = Headers | TFetcherHeadersPlainNormalized;

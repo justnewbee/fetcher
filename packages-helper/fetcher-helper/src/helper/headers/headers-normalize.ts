@@ -2,8 +2,8 @@ import _forEach from 'lodash/forEach';
 import _capitalize from 'lodash/capitalize';
 
 import {
-  TFetcherHeadersFallback,
-  TFetcherHeadersFallbackNormalized
+  TFetcherHeadersPlain,
+  TFetcherHeadersPlainNormalized
 } from '../../types';
 
 /**
@@ -11,8 +11,8 @@ import {
  *
  * Headers 的 key 大小写无关，但比较标准的写法如 `Content-Type`，这里就是保证所有的 key 都是这种格式
  */
-export default function headersNormalize(headers?: TFetcherHeadersFallback): TFetcherHeadersFallbackNormalized {
-  const normalizedHeaders: TFetcherHeadersFallbackNormalized = {};
+export default function headersNormalize(headers?: TFetcherHeadersPlain): TFetcherHeadersPlainNormalized {
+  const normalizedHeaders: TFetcherHeadersPlainNormalized = {};
   
   _forEach(headers, (v, k) => {
     normalizedHeaders[k.split('-').map(_capitalize).join('-')] = typeof v === 'string' ? v : String(v);

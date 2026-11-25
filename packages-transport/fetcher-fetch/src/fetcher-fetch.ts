@@ -1,4 +1,8 @@
 import {
+  isAbortError
+} from '@fetchx/fetcher-helper';
+
+import {
   EFetchErrorName
 } from './enum';
 import {
@@ -47,7 +51,7 @@ export default function fetcherFetch(url: string, options: IFetchOptions = {}): 
     
     // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
     // https://javascript.info/fetch-abort
-    if (error.name === 'AbortError' || error.name === EFetchErrorName.TIMEOUT as string) {
+    if (isAbortError(error) || error.name === EFetchErrorName.TIMEOUT as string) {
       throw error;
     }
     

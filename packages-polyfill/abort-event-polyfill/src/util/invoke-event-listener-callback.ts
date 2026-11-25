@@ -19,7 +19,7 @@ export default function invokeEventListenerCallback({
     } else if (typeof callback.handleEvent === 'function') {
       callback.handleEvent(event);
     }
-  } catch (thrownError) {
-    reportError(thrownError);
+  } catch (err) {
+    reportError(err);
   }
 }

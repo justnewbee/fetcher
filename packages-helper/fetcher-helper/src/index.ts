@@ -6,8 +6,8 @@ export type {
   // headers
   TFetcherHeaders as FetcherHeaders,
   TFetcherHeadersNormalized as FetcherHeadersNormalized,
-  TFetcherHeadersFallback as FetcherHeadersFallback,
-  TFetcherHeadersFallbackNormalized as FetcherHeadersFallbackNormalized,
+  TFetcherHeadersPlain as FetcherHeadersPlain,
+  TFetcherHeadersPlainNormalized as FetcherHeadersPlainNormalized,
   // params
   TFetcherParams as FetcherParams,
   TFetcherParamsMergeable as FetcherParamsMergeable,

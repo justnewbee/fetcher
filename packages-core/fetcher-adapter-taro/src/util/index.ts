@@ -1,2 +1,2 @@
 export { default as toTaroResponseType } from './to-taro-response-type';
-export { default as ensureError } from './ensure-error';
+export { default as ensureTaroError } from './ensure-taro-error';

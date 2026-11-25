@@ -1,3 +1,4 @@
+export * from './error';
 export * from './fundamental';
 export * from './headers';
 export * from './params';

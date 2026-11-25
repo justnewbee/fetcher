@@ -163,11 +163,11 @@ function decodeSafely(decoder: IDecoderLike, input: Uint8Array, stream: boolean)
       }),
       error: undefined
     };
-  } catch (error) {
+  } catch (err) {
     return {
       ok: false,
       value: '',
-      error
+      error: err
     };
   }
 }
@@ -187,11 +187,11 @@ function decodeChunksSafely(decoder: IDecoderLike, chunks: Uint8Array[]): IDecod
       value,
       error: undefined
     };
-  } catch (error) {
+  } catch (err) {
     return {
       ok: false,
       value: '',
-      error
+      error: err
     };
   }
 }

@@ -160,7 +160,7 @@ describe('sseWithEventSource', () => {
 
     abortController.abort();
 
-    const error = await promise.catch((e: unknown) => e);
+    const error = await promise.catch((err: unknown) => err);
 
     expect(error).toBeInstanceOf(Error);
     expect((error as Error).name).toBe('AbortError');

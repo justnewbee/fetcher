@@ -4,7 +4,7 @@ interface ITaroPromiseReject {
   errMsg?: string;
 }
 
-export default function ensureError(err?: unknown): Error {
+export default function ensureTaroError(err?: unknown): Error {
   if (!err) {
     return new Error();
   }

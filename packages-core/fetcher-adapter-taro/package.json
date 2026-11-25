@@ -35,7 +35,7 @@
   },
   "peerDependencies": {
     "@babel/runtime": ">=7.0.0",
-    "@tarojs/taro": ">=4.2.0"
+    "@tarojs/taro": ">=4.3.0"
   },
   "dependencies": {
     "@fetchx/fetcher-core": "workspace:^",

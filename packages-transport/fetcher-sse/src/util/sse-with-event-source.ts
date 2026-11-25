@@ -1,5 +1,6 @@
 import {
-  createError
+  createError,
+  createAbortError
 } from '@fetchx/fetcher-helper';
 
 import {
@@ -47,7 +48,7 @@ export default function sseWithEventSource(url: string, {
       }
       
       eventSource.close();
-      reject(createError('[sseWithEventSource] EventSource aborted', 'AbortError'));
+      reject(createAbortError('[sseWithEventSource] EventSource aborted'));
     }, {
       once: true
     });

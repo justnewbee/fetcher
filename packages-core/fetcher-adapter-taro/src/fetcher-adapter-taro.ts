@@ -3,7 +3,8 @@ import Taro, {
 } from '@tarojs/taro';
 import {
   FetcherHeadersNormalized,
-  headersNormalize
+  headersNormalize,
+  isAbortError
 } from '@fetchx/fetcher-helper';
 import {
   FetcherErrorName,
@@ -14,8 +15,8 @@ import {
 } from '@fetchx/fetcher-core';
 
 import {
-  toTaroResponseType,
-  ensureError
+  ensureTaroError,
+  toTaroResponseType
 } from './util';
 
 export default function fetcherAdapterTaro<T = unknown>(url: string, headers: FetcherHeadersNormalized, body: FetcherBodyNormalized, config: FetcherConfig): Promise<FetcherResponse<T>> {
@@ -62,10 +63,10 @@ export default function fetcherAdapterTaro<T = unknown>(url: string, headers: Fe
       headers: headersNormalize(result.header)
     };
   }, (err: unknown) => {
-    const originalError = ensureError(err);
+    const originalError = ensureTaroError(err);
     
     // 超时的情况下，Taro 内部用的是 AbortController，到这里无法感知是否为超时还是用户手动 abort
-    if (originalError.name === 'AbortError') {
+    if (isAbortError(originalError)) {
       throw originalError;
     }
     

@@ -179,7 +179,7 @@ describe('fetcherJsonp', () => {
     expect(window[callbackFn]).toBeTruthy();
     expect(document.querySelector(scriptQuery)).toBeTruthy();
     
-    expect(await promise.catch((e: unknown) => e as Error)).toHaveProperty('name', 'JsonpError.Network');
+    expect(await promise.catch((err: unknown) => err as Error)).toHaveProperty('name', 'JsonpError.Network');
     
     // @ts-expect-error callback cleared on network error
     expect(window[callbackFn]).toBeFalsy(); // cleared on network error (cleanup, not cleanupPrematurely)
@@ -201,7 +201,7 @@ describe('fetcherJsonp', () => {
     expect(window[callbackFn]).toBeTruthy();
     expect(document.querySelector(scriptQuery)).toBeTruthy();
     
-    expect(await promise.catch((e: unknown) => e as Error)).toHaveProperty('name', 'JsonpError.Timeout');
+    expect(await promise.catch((err: unknown) => err as Error)).toHaveProperty('name', 'JsonpError.Timeout');
     
     // by design: timeout 后 cleanupPrematurely 把 callback 设为 noop（仍 truthy）
     // @ts-expect-error callback becomes noop after timeout, not removed

@@ -1,5 +1,5 @@
 import {
-  FetcherHeadersFallbackNormalized
+  FetcherHeadersPlainNormalized
 } from '@fetchx/fetcher-helper';
 
 /**
@@ -8,6 +8,6 @@ import {
  */
 export interface IFetcherResponse<T = unknown> {
   readonly url: string;
-  readonly headers: Headers | FetcherHeadersFallbackNormalized;
+  readonly headers: Headers | FetcherHeadersPlainNormalized;
   readonly data: T;
 }
