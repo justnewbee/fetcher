@@ -1,167 +1,35 @@
 import {
   IEventClassType,
   IEventTargetClassType,
-  TAnyEventTarget,
   TEventListener,
-  IAbortSignal,
-  IAddEventListenerOptions,
+  IEventListenerAddOptions,
   IEventListenerOptions,
-  IEventListener,
   TEventListenerLike,
+  TEventListenerFallback,
   TEventData,
   TFallbackEvent
 } from '../types';
 import {
-  EventListenerWasDuplicated,
-  InvalidEventListener,
-  OptionWasIgnored,
-  formatMessage,
-  ensureEventListenerList,
-  isEventListenerObject,
-  isEventListenerCapture,
   isEventListenerOnce,
   isEventListenerPassive,
   isEventListenerRemoved,
-  invokeEventListenerCallback,
+  normalizeEventListenerAddOptions,
+  normalizeEventListenerOptions,
+  ensureEventListenerList,
   addEventListener,
   findEventListenerIndex,
   removeEventListener,
   removeEventListenerAt,
+  warnEventListenerDuplicate,
+  invokeEventListenerCallback,
+  eventInternalDataGet,
   eventTargetInternalDataGet,
-  eventTargetInternalDataInit
+  eventTargetInternalDataSet
 } from '../util';
 
-import EventShim, {
-  getEventInternalData
-} from './event-shim';
-import {
-  EventWrapper
-} from './event-wrapper';
-import {
-  DOMExceptionShim
-} from './dom-exception-shim';
-
-/**
- * Normalized options of the `removeEventListener` method.
- */
-interface INormalizedOptions<Target extends TAnyEventTarget, EventType extends IEventClassType> {
-  type: string;
-  callback: TEventListener<Target, EventType> | undefined;
-  capture: boolean;
-}
-
-/**
- * Normalized options of the `addEventListener` method.
- */
-interface INormalizedAddOptions<Target extends TAnyEventTarget, EventType extends IEventClassType> extends INormalizedOptions<Target, EventType> {
-  passive: boolean;
-  once: boolean;
-  signal: IAbortSignal | undefined;
-}
-
-/**
- * Check if the given value is an options object.
- * @param value The value to check.
- */
-function isOptionsObject(value: unknown): value is IEventListenerOptions {
-  return typeof value === 'object' && value !== null;
-}
-
-/**
- * Assert the type of 'callback' argument.
- * @param callback The callback to check.
- */
-function assertCallback(callback: unknown): void {
-  if (typeof callback === 'function' || isEventListenerObject(callback)) {
-    return;
-  }
-  
-  if (callback === null || callback === undefined || typeof callback === 'object') {
-    InvalidEventListener.warn(callback);
-    
-    return;
-  }
-  
-  throw new TypeError(formatMessage(InvalidEventListener.message, [callback]));
-}
-
-/**
- * Normalize the options of the `addEventListener` method.
- * @param type The event type.
- * @param callback The event listener.
- * @param options The options to normalize.
- */
-function normalizeAddOptions<Target extends TAnyEventTarget, EventType extends IEventClassType>(type: string, callback: TEventListener<Target, EventType> | null | undefined, options: boolean | IAddEventListenerOptions | undefined): INormalizedAddOptions<Target, EventType> {
-  assertCallback(callback);
-  
-  if (isOptionsObject(options)) {
-    return {
-      type,
-      callback: callback ?? undefined,
-      capture: options.capture ?? false,
-      passive: options.passive ?? false,
-      once: options.once ?? false,
-      signal: options.signal ?? undefined
-    };
-  }
-  
-  return {
-    type,
-    callback: callback ?? undefined,
-    capture: options ?? false,
-    passive: false,
-    once: false,
-    signal: undefined
-  };
-}
-
-/**
- * Normalize the options of the `removeEventListener` method.
- *
- * @param type The event type.
- * @param callback The event listener.
- * @param options The options to normalize.
- */
-function normalizeOptions<Target extends TAnyEventTarget, EventType extends IEventClassType>(type: string, callback: TEventListener<Target, EventType> | null | undefined, options: boolean | IEventListenerOptions | undefined): INormalizedOptions<Target, EventType> {
-  assertCallback(callback);
-  
-  if (isOptionsObject(options)) {
-    return {
-      type,
-      callback: callback ?? undefined,
-      capture: options.capture ?? false
-    };
-  }
-  
-  return {
-    type,
-    callback: callback ?? undefined,
-    capture: options ?? false
-  };
-}
-
-/**
- * Print warning for duplicated.
- * @param listener The current listener that is duplicated.
- * @param passive The passive flag of the new duplicated listener.
- * @param once The once flag of the new duplicated listener.
- * @param signal The signal object of the new duplicated listener.
- */
-function warnDuplicate(listener: IEventListener, passive: boolean, once: boolean, signal: IAbortSignal | undefined): void {
-  EventListenerWasDuplicated.warn(isEventListenerCapture(listener) ? 'capture' : 'bubble', listener.callback);
-  
-  if (isEventListenerPassive(listener) !== passive) {
-    OptionWasIgnored.warn('passive');
-  }
-  
-  if (isEventListenerOnce(listener) !== once) {
-    OptionWasIgnored.warn('once');
-  }
-  
-  if (listener.signal !== signal) {
-    OptionWasIgnored.warn('signal');
-  }
-}
+import DOMExceptionShim from './dom-exception-shim';
+import EventShim from './event-shim';
+import EventWrapper from './event-wrapper';
 
 /**
  * An implementation of the `EventTarget` interface.
@@ -172,45 +40,33 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
    * Initialize this instance.
    */
   constructor() {
-    eventTargetInternalDataInit(this);
+    eventTargetInternalDataSet(this);
   }
   
-  // /**
-  //  * Add an event listener.
-  //  * @param type The event type.
-  //  * @param callback The event listener.
-  //  * @param options Options.
-  //  */
-  // addEventListener<Type extends string & keyof EventMap>(type: Type, callback?: TEventListener<this, EventMap[Type]> | null, options?: IAddEventListenerOptions): void;
-  //
-  // /**
-  //  * Add an event listener.
-  //  * @param type The event type.
-  //  * @param callback The event listener.
-  //  * @param options Options.
-  //  */
-  // addEventListener(type: string, callback?: TFallbackEventListener<this, Mode>, options?: IAddEventListenerOptions): void;
-  //
-  // /**
-  //  * Add an event listener.
-  //  * @param type The event type.
-  //  * @param callback The event listener.
-  //  * @param capture The capture flag.
-  //  * @deprecated Use `{capture: boolean}` object instead of a boolean value.
-  //  */
-  // addEventListener<Type extends string & keyof EventMap>(type: Type, callback: TEventListener<this, EventMap[Type]> | null | undefined, capture: boolean): void;
-  //
-  // /**
-  //  * Add an event listener.
-  //  * @param type The event type.
-  //  * @param callback The event listener.
-  //  * @param capture The capture flag.
-  //  * @deprecated Use `{capture: boolean}` object instead of a boolean value.
-  //  */
-  // addEventListener(type: string, callback: TFallbackEventListener<this, Mode>, capture: boolean): void;
+  /**
+   * Add an event listener.
+   */
+  addEventListener<Type extends string & keyof EventMap>(type: Type, callback?: TEventListener<this, EventMap[Type]> | null, options?: IEventListenerAddOptions): void;
+  
+  /**
+   * Add an event listener.
+   */
+  addEventListener(type: string, callback?: TEventListenerFallback<this, Mode>, options?: IEventListenerAddOptions): void;
+  
+  /**
+   * Add an event listener.
+   * @deprecated Use `{capture: boolean}` object instead of a boolean value.
+   */
+  addEventListener<Type extends string & keyof EventMap>(type: Type, callback: TEventListener<this, EventMap[Type]> | null | undefined, capture: boolean): void;
+  
+  /**
+   * Add an event listener.
+   * @deprecated Use `{capture: boolean}` object instead of a boolean value.
+   */
+  addEventListener(type: string, callback: TEventListenerFallback<this, Mode>, capture: boolean): void;
   
   // Implementation
-  addEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IAddEventListenerOptions): void {
+  addEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IEventListenerAddOptions): void {
     const listenerMap = eventTargetInternalDataGet(this);
     const {
       callback,
@@ -219,7 +75,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
       passive,
       signal,
       type
-    } = normalizeAddOptions(type0, callback0, options0);
+    } = normalizeEventListenerAddOptions(type0, callback0, options0);
     
     if (callback === undefined || signal?.aborted) {
       return;
@@ -234,7 +90,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
       const listener = list.listeners[index];
       
       if (listener !== undefined) {
-        warnDuplicate(listener, passive, once, signal);
+        warnEventListenerDuplicate(listener, passive, once, signal);
       }
       
       return;
@@ -244,39 +100,27 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
     addEventListener(list, callback as unknown as TEventListenerLike, capture, passive, once, signal);
   }
   
-  // /**
-  //  * Remove an added event listener.
-  //  * @param type The event type.
-  //  * @param callback The event listener.
-  //  * @param options Options.
-  //  */
-  // removeEventListener<Type extends string & keyof EventMap>(type: Type, callback?: TEventListener<this, EventMap[Type]> | null, options?: IEventListenerOptions): void;
-  //
-  // /**
-  //  * Remove an added event listener.
-  //  * @param type The event type.
-  //  * @param callback The event listener.
-  //  * @param options Options.
-  //  */
-  // removeEventListener(type: string, callback?: TFallbackEventListener<this, Mode>, options?: IEventListenerOptions): void;
-  //
-  // /**
-  //  * Remove an added event listener.
-  //  * @param type The event type.
-  //  * @param callback The event listener.
-  //  * @param capture The capture flag.
-  //  * @deprecated Use `{capture: boolean}` object instead of a boolean value.
-  //  */
-  // removeEventListener<Type extends string & keyof EventMap>(type: Type, callback: TEventListener<this, EventMap[Type]> | null | undefined, capture: boolean): void;
-  //
-  // /**
-  //  * Remove an added event listener.
-  //  * @param type The event type.
-  //  * @param callback The event listener.
-  //  * @param capture The capture flag.
-  //  * @deprecated Use `{capture: boolean}` object instead of a boolean value.
-  //  */
-  // removeEventListener(type: string, callback: TFallbackEventListener<this, Mode>, capture: boolean): void;
+  /**
+   * Remove an added event listener.
+   */
+  removeEventListener<Type extends string & keyof EventMap>(type: Type, callback?: TEventListener<this, EventMap[Type]> | null, options?: IEventListenerOptions): void;
+  
+  /**
+   * Remove an added event listener.
+   */
+  removeEventListener(type: string, callback?: TEventListenerFallback<this, Mode>, options?: IEventListenerOptions): void;
+  
+  /**
+   * Remove an added event listener.
+   * @deprecated Use `{capture: boolean}` object instead of a boolean value.
+   */
+  removeEventListener<Type extends string & keyof EventMap>(type: Type, callback: TEventListener<this, EventMap[Type]> | null | undefined, capture: boolean): void;
+  
+  /**
+   * Remove an added event listener.
+   * @deprecated Use `{capture: boolean}` object instead of a boolean value.
+   */
+  removeEventListener(type: string, callback: TEventListenerFallback<this, Mode>, capture: boolean): void;
   
   // Implementation
   removeEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IEventListenerOptions): void {
@@ -285,7 +129,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
       callback,
       capture,
       type
-    } = normalizeOptions(type0, callback0, options0);
+    } = normalizeEventListenerOptions(type0, callback0, options0);
     const list = listenerMap[type];
     
     if (callback !== undefined && list !== undefined) {
@@ -293,17 +137,15 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
     }
   }
   
-  // /**
-  //  * Dispatch an event.
-  //  * @param event The `Event` object to dispatch.
-  //  */
-  // dispatchEvent<Type extends string & keyof EventMap>(event: TEventData<EventMap, Mode, Type>): boolean;
-  //
-  // /**
-  //  * Dispatch an event.
-  //  * @param event The `Event` object to dispatch.
-  //  */
-  // dispatchEvent(event: TFallbackEvent<Mode>): boolean;
+  /**
+   * Dispatch an event.
+   */
+  dispatchEvent<Type extends string & keyof EventMap>(event: TEventData<EventMap, Mode, Type>): boolean;
+  
+  /**
+   * Dispatch an event.
+   */
+  dispatchEvent(event: TFallbackEvent<Mode>): boolean;
   
   // Implementation
   dispatchEvent(e: TEventData<EventMap, Mode, string> | TFallbackEvent<Mode>): boolean {
@@ -314,7 +156,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
     }
     
     const event = e instanceof EventShim ? e : EventWrapper.wrap(e);
-    const eventData = getEventInternalData(event, 'event');
+    const eventData = eventInternalDataGet(event, 'event');
     
     if (eventData.dispatchFlag) {
       if (typeof DOMException !== 'undefined') {

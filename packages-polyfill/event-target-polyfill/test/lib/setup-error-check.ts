@@ -10,7 +10,7 @@ import {
   setWarningHandler
 } from '../../src';
 import {
-  IWarning
+  IWarningInfo
 } from '../../src/types';
 import {
   Warning
@@ -21,9 +21,9 @@ export interface IErrorChecker {
   assertWarning<Args extends unknown[]>(warning: Warning<Args>, ...args: Args): void;
 }
 
-export function setupErrorCheck(): IErrorChecker {
+export default function setupErrorCheck(): IErrorChecker {
   const errors: Error[] = [];
-  const warnings: IWarning[] = [];
+  const warnings: IWarningInfo[] = [];
   
   beforeEach(() => {
     errors.length = 0;

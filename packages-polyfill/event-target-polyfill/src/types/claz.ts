@@ -2,6 +2,11 @@ import {
   EListenerFlags
 } from '../enum';
 
+import {
+  TIsValidEventMap,
+  TExplicitEventType
+} from './common';
+
 /**
  * An implementation of the `Event` interface.
  * @see https://dom.spec.whatwg.org/#interface-event
@@ -117,18 +122,19 @@ export interface IEventClassType<EventType extends string = string> {
 
 /**
  * An implementation of the `EventTarget` interface.
+ *
  * @see https://dom.spec.whatwg.org/#eventtarget
  */
 export interface IEventTargetClassType<EventMap extends Record<string, IEventClassType> = Record<string, IEventClassType>, Mode extends 'standard' | 'strict' = 'standard'> {
   /**
    * Add an event listener.
    */
-  addEventListener<Type extends string & keyof EventMap>(type: Type, callback?: TEventListener<this, EventMap[Type]> | null, options?: IAddEventListenerOptions): void;
+  addEventListener<Type extends string & keyof EventMap>(type: Type, callback?: TEventListener<this, EventMap[Type]> | null, options?: IEventListenerAddOptions): void;
   
   /**
    * Add an event listener.
    */
-  addEventListener(type: string, callback?: TFallbackEventListener<this, Mode>, options?: IAddEventListenerOptions): void;
+  addEventListener(type: string, callback?: TEventListenerFallback<this, Mode>, options?: IEventListenerAddOptions): void;
   
   /**
    * Add an event listener.
@@ -142,7 +148,7 @@ export interface IEventTargetClassType<EventMap extends Record<string, IEventCla
    *
    * @deprecated Use `{capture: boolean}` object instead of a boolean value.
    */
-  addEventListener(type: string, callback: TFallbackEventListener<this, Mode>, capture: boolean): void;
+  addEventListener(type: string, callback: TEventListenerFallback<this, Mode>, capture: boolean): void;
   
   /**
    * Remove an added event listener.
@@ -152,7 +158,7 @@ export interface IEventTargetClassType<EventMap extends Record<string, IEventCla
   /**
    * Remove an added event listener.
    */
-  removeEventListener(type: string, callback?: TFallbackEventListener<this, Mode>, options?: IEventListenerOptions): void;
+  removeEventListener(type: string, callback?: TEventListenerFallback<this, Mode>, options?: IEventListenerOptions): void;
   
   /**
    * Remove an added event listener.
@@ -166,17 +172,15 @@ export interface IEventTargetClassType<EventMap extends Record<string, IEventCla
    *
    * @deprecated Use `{capture: boolean}` object instead of a boolean value.
    */
-  removeEventListener(type: string, callback: TFallbackEventListener<this, Mode>, capture: boolean): void;
+  removeEventListener(type: string, callback: TEventListenerFallback<this, Mode>, capture: boolean): void;
   
   /**
    * Dispatch an event.
-   * @param event The `Event` object to dispatch.
    */
   dispatchEvent<Type extends string & keyof EventMap>(event: TEventData<EventMap, Mode, Type>): boolean;
   
   /**
    * Dispatch an event.
-   * @param event The `Event` object to dispatch.
    */
   dispatchEvent(event: TFallbackEvent<Mode>): boolean;
 }
@@ -185,6 +189,14 @@ export interface IEventTargetClassType<EventMap extends Record<string, IEventCla
  * The callback type used when invoking listeners.
  */
 export type TListenerCallback = (this: object, event: IEventClassType) => void;
+
+/**
+ * The event listener object.
+ * @see https://dom.spec.whatwg.org/#callbackdef-eventlistener
+ */
+export interface IEventListenerObject<EventType extends IEventClassType = IEventClassType> {
+  handleEvent(event: EventType): void;
+}
 
 /**
  * The event listener accepted by the internal listener list.
@@ -256,39 +268,9 @@ export type TAnyEventTarget = IEventTargetClassType<Record<string, IEventClassTy
 export type TEventListenerCallback<Target extends TAnyEventTarget, EventType extends IEventClassType> = (this: Target, event: EventType) => void;
 
 /**
- * The event listener object.
- * @see https://dom.spec.whatwg.org/#callbackdef-eventlistener
- */
-export interface IEventListenerObject<EventType extends IEventClassType = IEventClassType> {
-  handleEvent(event: EventType): void;
-}
-
-/**
  * The event listener.
  */
 export type TEventListener<Target extends TAnyEventTarget, EventType extends IEventClassType> = TEventListenerCallback<Target, EventType> | IEventListenerObject<EventType>;
-
-/**
- * The common options for both `addEventListener` and `removeEventListener` methods.
- * @see https://dom.spec.whatwg.org/#dictdef-eventlisteneroptions
- */
-export interface IEventListenerOptions {
-  capture?: boolean;
-}
-
-/**
- * Define explicit `type` property if the given type is a string literal.
- * Otherwise, never.
- */
-export type TExplicitEventType<Type extends string> = string extends Type ? never : {
-  readonly type: Type;
-};
-
-/**
- * Check if given event map is valid.
- * It's valid if the keys of the event map are narrower than `string`.
- */
-export type TIsValidEventMap<Type> = string extends keyof Type ? false : true;
 
 /**
  * The event data to dispatch in strict mode.
@@ -303,7 +285,7 @@ export type TEventData<EventMap extends Record<string, IEventClassType>, Mode ex
  * The event listener type in standard mode.
  * Otherwise, never.
  */
-export type TFallbackEventListener<Target extends TAnyEventTarget, Mode extends 'standard' | 'strict'> = Mode extends 'standard'
+export type TEventListenerFallback<Target extends TAnyEventTarget, Mode extends 'standard' | 'strict'> = Mode extends 'standard'
   ? TEventListener<Target, IEventClassType> | null | undefined
   : never;
 
@@ -328,11 +310,39 @@ export interface IAbortSignal extends IEventTargetClassType<{
 }
 
 /**
+ * The common options for both `addEventListener` and `removeEventListener` methods.
+ *
+ * @see https://dom.spec.whatwg.org/#dictdef-eventlisteneroptions
+ */
+export interface IEventListenerOptions {
+  capture?: boolean;
+}
+
+/**
  * The options for the `addEventListener` methods.
+ *
  * @see https://dom.spec.whatwg.org/#dictdef-addeventlisteneroptions
  */
-export interface IAddEventListenerOptions extends IEventListenerOptions {
+export interface IEventListenerAddOptions extends IEventListenerOptions {
   passive?: boolean;
   once?: boolean;
   signal?: IAbortSignal | undefined;
+}
+
+/**
+ * Normalized options of the `removeEventListener` method.
+ */
+export interface IEventListenerOptionsNormalized<Target extends TAnyEventTarget, EventType extends IEventClassType> {
+  type: string;
+  callback: TEventListener<Target, EventType> | undefined;
+  capture: boolean;
+}
+
+/**
+ * Normalized options of the `addEventListener` method.
+ */
+export interface IEventListenerAddOptionsNormalized<Target extends TAnyEventTarget, EventType extends IEventClassType> extends IEventListenerOptionsNormalized<Target, EventType> {
+  passive: boolean;
+  once: boolean;
+  signal: IAbortSignal | undefined;
 }

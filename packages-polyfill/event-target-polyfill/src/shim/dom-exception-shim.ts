@@ -61,7 +61,7 @@ const NAME_TO_CODE: Record<string, number> = {
  *
  * @see https://dom.spec.whatwg.org/#dom-domexception-domexception
  */
-export class DOMExceptionShim extends Error { // eslint-disable-line @typescript-eslint/naming-convention
+export default class DOMExceptionShim extends Error { // eslint-disable-line @typescript-eslint/naming-convention
   static readonly INDEX_SIZE_ERR = INDEX_SIZE_ERR;
   static readonly DOMSTRING_SIZE_ERR = DOMSTRING_SIZE_ERR;
   static readonly HIERARCHY_REQUEST_ERR = HIERARCHY_REQUEST_ERR;
@@ -125,5 +125,3 @@ export class DOMExceptionShim extends Error { // eslint-disable-line @typescript
     (Error as IErrorCapture).captureStackTrace?.(this, DOMExceptionShim);
   }
 }
-
-globalThis.DOMException = DOMExceptionShim;

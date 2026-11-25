@@ -1,7 +1,7 @@
 /**
  * The warning information.
  */
-export interface IWarning {
+export interface IWarningInfo {
   /**
    * The code of this warning.
    */
@@ -18,6 +18,5 @@ export interface IWarning {
 
 /**
  * The warning handler.
- * @param warning The warning.
  */
-export type TWarningHandler = (warning: IWarning) => void;
+export type TWarningHandler = (warning: IWarningInfo) => void;

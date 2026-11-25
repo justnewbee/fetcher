@@ -18,7 +18,6 @@ export class Warning<Args extends unknown[]> {
   
   /**
    * Report this warning.
-   * @param args The arguments of the warning.
    */
   warn(...args: Args): void {
     try {

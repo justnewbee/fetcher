@@ -23,7 +23,7 @@ export type TSpy<T extends TAnyFunction = () => void> = T & {
   readonly calls: ISpyCall<T>[];
 };
 
-export function spy<T extends TAnyFunction>(impl?: T): TSpy<T> {
+export default function spy<T extends TAnyFunction>(impl?: T): TSpy<T> {
   const fn = (impl ? vi.fn(impl) : vi.fn()) as unknown as {
     mock: {
       calls: unknown[][];

@@ -1,15 +1,14 @@
 import {
+  EventTarget
+} from '../../src';
+import {
   eventTargetInternalDataGet
 } from '../../src/util';
-import EventTargetShim from '../../src/shim/event-target-shim';
 
 /**
  * Get registered event listeners from an `EventTarget` object.
  */
-export function countEventListeners(
-    target: EventTargetShim,
-    type?: string
-): number {
+export default function countEventListeners(target: EventTarget, type?: string): number {
   const listenerMap = eventTargetInternalDataGet(target, 'target');
   const keys = type ? [type] : Object.keys(listenerMap);
   

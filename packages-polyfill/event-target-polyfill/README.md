@@ -2,17 +2,27 @@
 
 > Common purpose [EventTarget] ponyfill & polyfill. A fork of [event-target-shim] v6.0.2.
 
-## Why
+## How to use
 
-* 虽然 `EventTargetShim` 已经是 Baseline Widely Available，但可恶的小程序时依然不支持。
-* 直接移植 [event-target-shim] 的核心实现，仅调整构建与严格类型检查以适配本仓库。
+```shell
+pnpm add --save @fetchx/event-target-polyfill
+```
 
-## Usage
-
-Ponyfill：
+然后在项目初始化前：
 
 ```ts
-import EventTarget, { Event } from '@fetchx/event-target-polyfill';
+import eventTargetPolyfill from '@fetchx/event-target-polyfill';
+
+eventTargetPolyfill(); // 将 Polyfill globalThis.DOMException | Event | EventTarget
+```
+
+如果想以 Ponyfill 的形式使用（虽然不推荐）：
+
+```ts
+import {
+  Event,
+  EventTarget
+} from '@fetchx/event-target-polyfill';
 
 const target = new EventTarget();
 
@@ -23,19 +33,10 @@ target.addEventListener('foo', event => {
 target.dispatchEvent(new Event('foo'));
 ```
 
-Polyfill：
+## Why
 
-```ts
-import EventTarget from '@fetchx/event-target-polyfill';
-
-if (typeof globalThis.EventTarget === 'undefined') {
-  globalThis.EventTarget = EventTarget;
-}
-```
-
-## License
-
-MIT。原始实现版权归 Toru Nagashima 及其他贡献者所有，同样以 MIT 协议发布。
+* 虽然 `EventTargetShim` 已经是 Baseline Widely Available，但可恶的小程序时依然不支持。
+* 直接移植 [event-target-shim] 的核心实现，仅调整构建与严格类型检查以适配本仓库。
 
 [EventTarget]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget
 [event-target-shim]: https://github.com/mysticatea/event-target-shim

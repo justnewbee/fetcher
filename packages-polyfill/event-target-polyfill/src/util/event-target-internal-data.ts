@@ -21,6 +21,6 @@ export function eventTargetInternalDataGet(target: object, name = 'this'): TEven
   return retv;
 }
 
-export function eventTargetInternalDataInit(target: object): void {
-  internalDataMap.set(target, createEventListenerListMap());
+export function eventTargetInternalDataSet(target: object, map = createEventListenerListMap()): void {
+  internalDataMap.set(target, map);
 }

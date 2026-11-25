@@ -15,6 +15,5 @@ export interface IErrorCapture {
 
 /**
  * The error handler.
- * @param error The thrown error object.
  */
 export type TErrorHandler = (error: Error) => void;

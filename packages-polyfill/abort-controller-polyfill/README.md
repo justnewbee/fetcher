@@ -2,6 +2,18 @@
 
 > Common purpose [AbortController] & [AbortSignal] ponyfill & polyfill. A fork of [abort-controller].
 
+## How to use
+
+```shell
+pnpm add --save @fetchx/abort-controller-polyfill
+```
+
+然后在项目初始化前：
+
+```ts
+import '@fetchx/abort-controller-polyfill';
+```
+
 ## Why
 
 * 虽然 AbortController 已经是 Baseline Widely Available，但可恶的小程序时依然不支持。

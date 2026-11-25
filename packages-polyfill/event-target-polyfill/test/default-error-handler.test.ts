@@ -7,37 +7,30 @@ import {
   afterEach,
   beforeEach,
   describe,
-  it
+  test
 } from 'vitest';
 
-import EventTargetShim, {
+import {
   Event as EventShim,
+  EventTarget as EventTargetShim,
   setWarningHandler
 } from '../src/index';
 
-import {
-  spy
-} from './lib/spy';
+import spy from './lib/spy';
 
 describe('The default error handler', () => {
-  const onBrowser
-    = typeof window !== 'undefined'
-      && typeof window.dispatchEvent === 'function';
-  const onNode
-    = !onBrowser
-      && typeof process !== 'undefined'
-      && typeof process.emit === 'function';
+  const onBrowser = typeof window !== 'undefined' && typeof window.dispatchEvent === 'function';
+  const onNode = !onBrowser && typeof process !== 'undefined' && typeof process.emit === 'function';
 
   beforeEach(() => {
     setWarningHandler(() => {});
   });
   afterEach(() => {
     setWarningHandler(undefined);
-  })
-
-  //
-  ;(onBrowser ? describe : describe.skip)('on a browser', () => {
-    it('should dispatch an ErrorEvent if a listener threw an error', () => {
+  });
+  
+  (onBrowser ? describe : describe.skip)('on a browser', () => {
+    test('should dispatch an ErrorEvent if a listener threw an error', () => {
       const originalConsoleError = console.error;
       const f = spy((_message, _source, _lineno, _colno, _error) => {});
       const consoleError = spy((..._args: unknown[]) => {});
@@ -61,17 +54,12 @@ describe('The default error handler', () => {
       assert.strictEqual(f.calls.length, 1, 'f should be called.');
       assert.strictEqual(f.calls[0].arguments[0], error.message);
       assert.strictEqual(f.calls[0].arguments[4], error);
-      assert.strictEqual(
-          consoleError.calls.length,
-          1,
-          'console.error should be called.'
-      );
+      assert.strictEqual(consoleError.calls.length, 1, 'console.error should be called.');
       assert.strictEqual(consoleError.calls[0].arguments[0], error);
     });
-  })
-
-  //
-  ;(onNode ? describe : describe.skip)('on Node.js', () => {
+  });
+  
+  (onNode ? describe : describe.skip)('on Node.js', () => {
     let uncaughtExceptionListeners: ((..._args: unknown[]) => void)[];
 
     // Detach the test runner's `uncaughtException` handlers while this test
@@ -86,7 +74,7 @@ describe('The default error handler', () => {
       }
     });
 
-    it('should emit an uncaughtException event if a listener threw an error', () => {
+    test('should emit an uncaughtException event if a listener threw an error', () => {
       const f = spy(_event => {});
       const target = new EventTargetShim();
       const error = new Error('test error');

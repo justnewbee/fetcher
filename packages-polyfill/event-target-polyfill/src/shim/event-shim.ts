@@ -1,15 +1,17 @@
 import {
   IEventClassType,
   IEventTargetClassType,
-  IEventInit
+  IEventInit,
+  IEventInternalData
 } from '../types';
 import {
-  assertType,
   CanceledInPassiveListener,
   FalsyWasAssignedToCancelBubble,
   InitEventWasCalledWhileDispatching,
   NonCancelableEventWasCanceled,
-  TruthyWasAssignedToReturnValue
+  TruthyWasAssignedToReturnValue,
+  eventInternalDataGet,
+  eventInternalDataSet
 } from '../util';
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Event/eventPhase
@@ -26,80 +28,6 @@ const EVENT_CONSTANTS = {
 } as const;
 
 const IS_TRUSTED = false;
-
-/**
- * Private data.
- */
-interface IEventInternalData {
-  /**
-   * The value of `type` attribute.
-   */
-  readonly type: string;
-  /**
-   * The value of `bubbles` attribute.
-   */
-  readonly bubbles: boolean;
-  /**
-   * The value of `cancelable` attribute.
-   */
-  readonly cancelable: boolean;
-  /**
-   * The value of `composed` attribute.
-   */
-  readonly composed: boolean;
-  /**
-   * The value of `timeStamp` attribute.
-   */
-  readonly timeStamp: number;
-  /**
-   * @see https://dom.spec.whatwg.org/#dom-event-target
-   */
-  target: IEventTargetClassType | null;
-  /**
-   * @see https://dom.spec.whatwg.org/#dom-event-currenttarget
-   */
-  currentTarget: IEventTargetClassType | null;
-  /**
-   * @see https://dom.spec.whatwg.org/#stop-propagation-flag
-   */
-  stopPropagationFlag: boolean;
-  /**
-   * @see https://dom.spec.whatwg.org/#stop-immediate-propagation-flag
-   */
-  stopImmediatePropagationFlag: boolean;
-  /**
-   * @see https://dom.spec.whatwg.org/#canceled-flag
-   */
-  canceledFlag: boolean;
-  /**
-   * @see https://dom.spec.whatwg.org/#in-passive-listener-flag
-   */
-  inPassiveListenerFlag: boolean;
-  /**
-   * @see https://dom.spec.whatwg.org/#dispatch-flag
-   */
-  dispatchFlag: boolean;
-}
-
-/**
- * Private data for event wrappers.
- */
-const internalDataMap = new WeakMap<object, IEventInternalData>();
-
-/**
- * Get private data.
- *
- * @param event The event object to get private data.
- * @param name The variable name to report.
- * @returns The private data of the event.
- */
-function getEventInternalData(event: unknown, name = 'this'): IEventInternalData {
-  const retv = internalDataMap.get(event as object);
-  
-  assertType(retv !== undefined, '\'%s\' must be an object that Event constructor created, but got another one: %o', name, event);
-  
-  return retv;
-}
 
 /**
  * https://dom.spec.whatwg.org/#set-the-canceled-flag
@@ -120,10 +48,6 @@ function setCancelFlag(data: IEventInternalData): void {
   data.canceledFlag = true;
 }
 
-export {
-  getEventInternalData as getEventInternalData
-};
-
 /**
  * An implementation of `Event` interface, that wraps a given event object.
  * `EventTarget` shim can control the internal state of this `Event` objects.
@@ -143,8 +67,7 @@ export default class EventShim<EventType extends string = string> implements IEv
   
   /**
    * Initialize this event instance.
-   * @param type The type of this event.
-   * @param eventInitDict Options to initialize.
+   *
    * @see https://dom.spec.whatwg.org/#dom-event-event
    */
   constructor(type: EventType, eventInitDict?: IEventInit) {
@@ -155,9 +78,8 @@ export default class EventShim<EventType extends string = string> implements IEv
     
     const opts = eventInitDict ?? {};
     
-    internalDataMap.set(this, {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- coerce at runtime because callers may pass non-string types
-      type: String(type),
+    eventInternalDataSet(this, {
+      type,
       bubbles: opts.bubbles ?? false,
       cancelable: opts.cancelable ?? false,
       composed: opts.composed ?? false,
@@ -187,7 +109,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-type
    */
   get type(): EventType {
-    return getEventInternalData(this).type as EventType;
+    return eventInternalDataGet(this).type as EventType;
   }
   
   /**
@@ -195,7 +117,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-target
    */
   get target(): IEventTargetClassType | null {
-    return getEventInternalData(this).target;
+    return eventInternalDataGet(this).target;
   }
   
   /**
@@ -204,7 +126,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-srcelement
    */
   get srcElement(): IEventTargetClassType | null {
-    return getEventInternalData(this).target;
+    return eventInternalDataGet(this).target;
   }
   
   /**
@@ -212,7 +134,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-currenttarget
    */
   get currentTarget(): IEventTargetClassType | null {
-    return getEventInternalData(this).currentTarget;
+    return eventInternalDataGet(this).currentTarget;
   }
   
   /**
@@ -221,7 +143,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-composedpath
    */
   composedPath(): IEventTargetClassType[] {
-    const currentTarget = getEventInternalData(this).currentTarget;
+    const currentTarget = eventInternalDataGet(this).currentTarget;
     
     if (currentTarget) {
       return [currentTarget];
@@ -235,7 +157,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-eventphase
    */
   get eventPhase(): number {
-    return getEventInternalData(this).dispatchFlag ? 2 : 0;
+    return eventInternalDataGet(this).dispatchFlag ? 2 : 0;
   }
   
   /**
@@ -244,7 +166,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-stoppropagation
    */
   stopPropagation(): void {
-    getEventInternalData(this).stopPropagationFlag = true;
+    eventInternalDataGet(this).stopPropagationFlag = true;
   }
   
   /**
@@ -253,7 +175,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-cancelbubble
    */
   get cancelBubble(): boolean {
-    return getEventInternalData(this).stopPropagationFlag;
+    return eventInternalDataGet(this).stopPropagationFlag;
   }
   
   /**
@@ -263,7 +185,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    */
   set cancelBubble(value: boolean) {
     if (value) {
-      getEventInternalData(this).stopPropagationFlag = true;
+      eventInternalDataGet(this).stopPropagationFlag = true;
     } else {
       FalsyWasAssignedToCancelBubble.warn();
     }
@@ -274,7 +196,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-stopimmediatepropagation
    */
   stopImmediatePropagation(): void {
-    const data = getEventInternalData(this);
+    const data = eventInternalDataGet(this);
     
     data.stopPropagationFlag = data.stopImmediatePropagationFlag = true;
   }
@@ -284,7 +206,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-bubbles
    */
   get bubbles(): boolean {
-    return getEventInternalData(this).bubbles;
+    return eventInternalDataGet(this).bubbles;
   }
   
   /**
@@ -292,7 +214,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-cancelable
    */
   get cancelable(): boolean {
-    return getEventInternalData(this).cancelable;
+    return eventInternalDataGet(this).cancelable;
   }
   
   /**
@@ -301,7 +223,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-returnvalue
    */
   get returnValue(): boolean {
-    return !getEventInternalData(this).canceledFlag;
+    return !eventInternalDataGet(this).canceledFlag;
   }
   
   /**
@@ -311,7 +233,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    */
   set returnValue(value: boolean) {
     if (!value) {
-      setCancelFlag(getEventInternalData(this));
+      setCancelFlag(eventInternalDataGet(this));
     } else {
       TruthyWasAssignedToReturnValue.warn();
     }
@@ -322,7 +244,7 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-preventdefault
    */
   preventDefault(): void {
-    setCancelFlag(getEventInternalData(this));
+    setCancelFlag(eventInternalDataGet(this));
   }
   
   /**
@@ -330,14 +252,14 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-defaultprevented
    */
   get defaultPrevented(): boolean {
-    return getEventInternalData(this).canceledFlag;
+    return eventInternalDataGet(this).canceledFlag;
   }
   
   /**
    * @see https://dom.spec.whatwg.org/#dom-event-composed
    */
   get composed(): boolean {
-    return getEventInternalData(this).composed;
+    return eventInternalDataGet(this).composed;
   }
   
   /**
@@ -351,14 +273,14 @@ export default class EventShim<EventType extends string = string> implements IEv
    * @see https://dom.spec.whatwg.org/#dom-event-timestamp
    */
   get timeStamp(): number {
-    return getEventInternalData(this).timeStamp;
+    return eventInternalDataGet(this).timeStamp;
   }
   
   /**
    * @deprecated Don't use this method. The constructor did initialization.
    */
   initEvent(type: string, bubbles = false, cancelable = false): void {
-    const data = getEventInternalData(this);
+    const data = eventInternalDataGet(this);
     
     if (data.dispatchFlag) {
       InitEventWasCalledWhileDispatching.warn();
@@ -366,10 +288,9 @@ export default class EventShim<EventType extends string = string> implements IEv
       return;
     }
     
-    internalDataMap.set(this, {
+    eventInternalDataSet(this, {
       ...data,
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- coerce at runtime because callers may pass non-string types
-      type: String(type),
+      type,
       bubbles,
       cancelable,
       target: null,

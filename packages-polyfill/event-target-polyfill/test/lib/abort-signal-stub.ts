@@ -1,7 +1,8 @@
-import EventTarget, {
-  type AbortSignal,
-  type CallbackFunction,
+import {
+  AbortSignal,
+  CallbackFunction,
   Event,
+  EventTarget,
   getEventAttributeValue,
   setEventAttributeValue
 } from '../../src';
@@ -9,7 +10,7 @@ import EventTarget, {
 /**
  * Stub for AbortSignal.
  */
-export class AbortSignalStub extends EventTarget<{
+export default class AbortSignalStub extends EventTarget<{
   abort: Event;
 }> {
   public aborted = false;
