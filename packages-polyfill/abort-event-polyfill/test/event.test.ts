@@ -19,7 +19,9 @@ import {
 
 import setupErrorCheck from './lib/setup-error-check';
 
-const NativeEvent: typeof Event | undefined = (globalThis as { Event?: typeof Event; }).Event;
+const NativeEvent = (globalThis as {
+  Event?: typeof Event;
+}).Event;
 
 describe('\'Event\' class', () => {
   const {
@@ -38,9 +40,7 @@ describe('\'Event\' class', () => {
       });
     });
     
-    const nativeDescribe = NativeEvent ? describe : describe.skip;
-    
-    nativeDescribe('if native Event class is present', () => {
+    (NativeEvent ? describe : describe.skip)('if native Event class is present', () => {
       test('should not replace the native Event class', () => {
         polyfill();
         

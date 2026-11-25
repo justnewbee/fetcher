@@ -1,4 +1,4 @@
-# @fetchx/event-polyfill
+# @fetchx/abort-event-polyfill
 
 > Common purpose [DOMException], [Event], [EventTarget], [AbortSignal], [AbortController] ponyfill & polyfill. A fork of [abort-controller] & [event-target-shim].
 > 如果你需要在小程序中使用 [DOMException]、[Event]、[EventTarget]、[AbortSignal]、[AbortController]，可以考虑使用这个包。
@@ -6,13 +6,13 @@
 ## How to use
 
 ```shell
-pnpm add --save @fetchx/event-polyfill
+pnpm add --save @fetchx/abort-event-polyfill
 ```
 
 然后在项目初始化前：
 
 ```ts
-import polyfill from '@fetchx/event-polyfill';
+import polyfill from '@fetchx/abort-event-polyfill';
 
 polyfill();
 ```
@@ -23,12 +23,12 @@ Ponyfill 的形式使用也行，虽然不推荐：
 import {
   Event,
   EventTarget
-} from '@fetchx/event-polyfill';
+} from '@fetchx/abort-event-polyfill';
 
 const target = new EventTarget();
 
 target.addEventListener('foo', event => {
-  console.log(event.type);
+  console.info(event.type);
 });
 
 target.dispatchEvent(new Event('foo'));

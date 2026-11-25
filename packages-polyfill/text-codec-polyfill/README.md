@@ -1,17 +1,17 @@
-# @fetchx/text-coder-polyfill
+# @fetchx/text-codec-polyfill
 
 > Common purpose [TextEncoder] & [TextDecoder] ponyfill & polyfill. Currently only the UTF-8 encoding is supported.
 
 ## How to use
 
 ```shell
-pnpm add --save @fetchx/text-coder-polyfill
+pnpm add --save @fetchx/text-codec-polyfill
 ```
 
 然后在项目初始化前：
 
 ```ts
-import polyfill from '@fetchx/text-coder-polyfill';
+import polyfill from '@fetchx/text-codec-polyfill';
 
 polyfill();
 ```
@@ -22,12 +22,12 @@ Ponyfill 的形式使用也行，虽然不推荐：
 import {
   TextDecoder,
   TextEncoder
-} from '@fetchx/text-coder-polyfill';
+} from '@fetchx/text-codec-polyfill';
 
 const bytes = new TextEncoder().encode('中文');
 
-console.log(bytes); // Uint8Array [0xE4, 0xB8, 0xAD, 0xE6, 0x96, 0x87]
-console.log(new TextDecoder().decode(bytes)); // '中文'
+console.info(bytes); // Uint8Array [0xE4, 0xB8, 0xAD, 0xE6, 0x96, 0x87]
+console.info(new TextDecoder().decode(bytes)); // '中文'
 ```
 
 ## Supported

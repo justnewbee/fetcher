@@ -28,17 +28,21 @@ import AbortSignalStub from './lib/abort-signal-stub';
 import countEventListeners from './lib/count-event-listeners';
 import setupErrorCheck from './lib/setup-error-check';
 
-const NativeDomException: typeof DOMException | undefined = (globalThis as {
+const NativeDomException = (globalThis as {
   DOMException?: typeof DOMException;
 }).DOMException;
-const NativeEventTarget: typeof EventShim | undefined = (globalThis as {
+const NativeEventTarget = (globalThis as {
   EventTarget?: typeof EventTargetShim;
 }).EventTarget;
-const NativeEvent: typeof EventShim | undefined = (globalThis as { Event?: typeof EventShim; }).Event;
-const NativeKeyboardEvent: typeof KeyboardEvent | undefined = (globalThis as {
+const NativeEvent = (globalThis as {
+  Event?: typeof EventShim;
+}).Event;
+const NativeKeyboardEvent = (globalThis as {
   KeyboardEvent?: typeof KeyboardEvent;
 }).KeyboardEvent;
-const NativeMouseEvent: typeof MouseEvent | undefined = (globalThis as { MouseEvent?: typeof MouseEvent; }).MouseEvent;
+const NativeMouseEvent = (globalThis as {
+  MouseEvent?: typeof MouseEvent;
+}).MouseEvent;
 
 describe('\'EventTarget\' class', () => {
   const {
@@ -58,9 +62,7 @@ describe('\'EventTarget\' class', () => {
       }, TypeError);
     });
     
-    const nativeDescribe = NativeEventTarget ? describe : describe.skip;
-    
-    nativeDescribe('if native EventTarget class is present', () => {
+    (NativeEventTarget ? describe : describe.skip)('if native EventTarget class is present', () => {
       test('should not replace the native EventTarget class', () => {
         polyfill();
         
@@ -131,14 +133,10 @@ describe('\'EventTarget\' class', () => {
     });
     
     test('should add multiple given event listeners.', () => {
-      target.addEventListener('foo', () => {
-      });
-      target.addEventListener('foo', () => {
-      });
-      target.addEventListener('foo', () => {
-      });
-      target.addEventListener('bar', () => {
-      });
+      target.addEventListener('foo', () => {});
+      target.addEventListener('foo', () => {});
+      target.addEventListener('foo', () => {});
+      target.addEventListener('bar', () => {});
       
       assert.strictEqual(countEventListeners(target), 4);
       assert.strictEqual(countEventListeners(target, 'foo'), 3);
@@ -239,7 +237,7 @@ describe('\'EventTarget\' class', () => {
       };
       
       target.addEventListener('foo', f, {
-        signal: null
+        signal: undefined
       });
       target.addEventListener('foo', f, {
         signal: new AbortSignalStub()
@@ -257,7 +255,7 @@ describe('\'EventTarget\' class', () => {
       target.addEventListener('foo', f, {
         passive: true,
         once: true,
-        signal: null
+        signal: undefined
       });
       target.addEventListener('foo', f, {
         passive: false,
@@ -474,7 +472,7 @@ describe('\'EventTarget\' class', () => {
       const retv = target.dispatchEvent(event);
       
       assert.strictEqual(f.handleEvent.calls.length, 1, 'handleEvent should be called');
-      assert.strictEqual(f.handleEvent.calls[0].this, f);
+      assert.strictEqual(f.handleEvent.calls[0]?.this, f);
       assert.strictEqual(f.handleEvent.calls[0].arguments[0], event);
       assert.strictEqual(retv, true);
       assertWarning(InvalidEventListener, f);
@@ -493,7 +491,7 @@ describe('\'EventTarget\' class', () => {
       const retv = target.dispatchEvent(event);
       
       assert.strictEqual(f1.calls.length, 1, 'foo should be called once');
-      assert.strictEqual(f1.calls[0].arguments.length, 1, 'the argument of callback should be one');
+      assert.strictEqual(f1.calls[0]?.arguments.length, 1, 'the argument of callback should be one');
       assert.strictEqual(f1.calls[0].arguments[0], event, 'the argument of callback should be the given Event object');
       assert.strictEqual(f2.calls.length, 0, 'bar should not be called');
       assert.strictEqual(retv, true);
@@ -926,15 +924,13 @@ describe('\'EventTarget\' class', () => {
       target.dispatchEvent(event);
       
       assert.strictEqual(f.calls.length, 1, 'f should be called');
-      assert.strictEqual(f.calls[0].type, 'throw' as const);
-      assert.strictEqual(f.calls[0].throw.name, 'InvalidStateError');
-      assert.strictEqual(f.calls[0].throw.code, 11);
+      assert.strictEqual(f.calls[0]?.type, 'throw' as const);
+      assert.strictEqual((f.calls[0].throw as { name: string; }).name, 'InvalidStateError');
+      assert.strictEqual((f.calls[0].throw as { code: number; }).code, 11);
       assertError('This event has been in dispatching.');
     });
     
-    const withNativeDomException = NativeDomException ? describe : describe.skip;
-    
-    withNativeDomException('if the native DOMException is present, the InvalidStateError', () => {
+    (NativeDomException ? describe : describe.skip)('if the native DOMException is present, the InvalidStateError', () => {
       test('should be a DOMException instance.', () => {
         const event = new EventShim('foo');
         const f = spy(() => {
@@ -947,8 +943,8 @@ describe('\'EventTarget\' class', () => {
         target.dispatchEvent(event);
         
         assert.strictEqual(f.calls.length, 1, 'f should be called');
-        assert(f.calls[0].type === 'throw', 'f shold throw a value');
-        assert(f.calls[0].throw instanceof NativeDomException, 'the thrown value should be a DOMException');
+        assert(f.calls[0]?.type === 'throw', 'f should throw a value');
+        assert(f.calls[0].throw instanceof NativeDomException!, 'the thrown value should be a DOMException'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
         assertError('This event has been in dispatching.');
       });
     });
@@ -964,25 +960,23 @@ describe('\'EventTarget\' class', () => {
       assert.strictEqual(f.calls.length, 0, 'f should not be called');
     });
     
-    const withNativeEvent = NativeEvent ? describe : describe.skip;
-    
-    withNativeEvent('if native Event class is present', () => {
+    (NativeEvent ? describe : describe.skip)('if native Event class is present', () => {
       test('should call a registered listener even if the argument is a native Event object.', () => {
         const f1 = spy((_event: EventShim) => {
         });
         
         target.addEventListener('foo', f1);
         
-        const retv = target.dispatchEvent(new NativeEvent('foo'));
+        const retv = target.dispatchEvent(new NativeEvent!('foo')); // eslint-disable-line @typescript-eslint/no-non-null-assertion
         
         assert.strictEqual(f1.calls.length, 1, 'foo should be called once');
-        assert(f1.calls[0].arguments[0] instanceof EventShim, 'the argument of callback should be an instance of our Event class (wrapper)');
+        assert(f1.calls[0]?.arguments[0] instanceof EventShim, 'the argument of callback should be an instance of our Event class (wrapper)');
         assert.strictEqual(retv, true);
       });
       
       describe('if the argument is a native Event object, the event object in the listener', () => {
         test('\'type\' property should be the same value as the original.', () => {
-          const event = new NativeEvent('foo');
+          const event = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           let ok = false;
           
           target.addEventListener('foo', wrapper => {
@@ -994,7 +988,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'target\' property should be the event target that is dispatching.', () => {
-          const event = new NativeEvent('foo');
+          const event = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           let ok = false;
           
           target.addEventListener('foo', wrapper => {
@@ -1006,7 +1000,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'currentTarget\' property should be the event target that is dispatching.', () => {
-          const event = new NativeEvent('foo');
+          const event = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           let ok = false;
           
           target.addEventListener('foo', wrapper => {
@@ -1018,7 +1012,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'eventPhase\' property should be 2.', () => {
-          const event = new NativeEvent('foo');
+          const event = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           let ok = false;
           
           target.addEventListener('foo', wrapper => {
@@ -1030,7 +1024,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'stopPropagation()\' method should change both \'cancelBubble\' property.', () => {
-          const event = new NativeEvent('foo');
+          const event = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           let ok = false;
           
           target.addEventListener('foo', wrapper => {
@@ -1044,7 +1038,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'cancelBubble\' property should be the same value as the original.', () => {
-          const event = new NativeEvent('foo');
+          const event = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           
           event.stopPropagation();
           let ok = true;
@@ -1058,11 +1052,7 @@ describe('\'EventTarget\' class', () => {
         
         // Node.js's `Event` class is buggy.
         const isStopImmediatePropagationBuggy = (() => {
-          if (!NativeEvent) {
-            return false;
-          }
-          
-          const e = new NativeEvent('foo');
+          const e = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           
           e.stopImmediatePropagation();
           
@@ -1070,7 +1060,7 @@ describe('\'EventTarget\' class', () => {
         })();
         
         (isStopImmediatePropagationBuggy ? test.skip : test)('\'stopImmediatePropagation()\' method should change both \'cancelBubble\' property.', () => {
-          const event = new NativeEvent('foo');
+          const event = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           let ok = false;
           
           target.addEventListener('foo', wrapper => {
@@ -1084,7 +1074,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'bubbles\' property should be the same value as the original.', () => {
-          const event = new NativeEvent('foo', {
+          const event = new NativeEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             bubbles: true
           });
           let ok = false;
@@ -1098,7 +1088,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'cancelable\' property should be the same value as the original.', () => {
-          const event = new NativeEvent('foo', {
+          const event = new NativeEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             cancelable: true
           });
           let ok = false;
@@ -1112,7 +1102,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'returnValue\' property should be the same value as the original.', () => {
-          const event = new NativeEvent('foo', {
+          const event = new NativeEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             cancelable: true
           });
           
@@ -1128,7 +1118,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'preventDefault()\' method should change both \'defaultPrevented\' property.', () => {
-          const event = new NativeEvent('foo', {
+          const event = new NativeEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             cancelable: true
           });
           let ok = false;
@@ -1144,7 +1134,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'defaultPrevented\' property should be the same value as the original.', () => {
-          const event = new NativeEvent('foo', {
+          const event = new NativeEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             cancelable: true
           });
           
@@ -1160,7 +1150,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'composed\' property should be the same value as the original.', () => {
-          const event = new NativeEvent('foo', {
+          const event = new NativeEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             composed: true
           });
           let ok = false;
@@ -1174,7 +1164,7 @@ describe('\'EventTarget\' class', () => {
         });
         
         test('\'timeStamp\' property should be the same value as the original.', async () => {
-          const event = new NativeEvent('foo');
+          const event = new NativeEvent!('foo'); // eslint-disable-line @typescript-eslint/no-non-null-assertion
           
           await new Promise(resolve => {
             setTimeout(resolve, 100);
@@ -1191,15 +1181,13 @@ describe('\'EventTarget\' class', () => {
       });
     });
     
-    const withNativeKeyboardEvent = NativeKeyboardEvent ? describe : describe.skip;
-    
-    withNativeKeyboardEvent('if native KeyboardEvent class is present', () => {
+    (NativeKeyboardEvent ? describe : describe.skip)('if native KeyboardEvent class is present', () => {
       describe('if the argument is a native KeyboardEvent object, the event object in the listener', () => {
         test('\'key\' property should be the same value as the original.', () => {
           const customTarget = new EventTargetShim<{
             foo: KeyboardEvent;
           }>();
-          const event = new NativeKeyboardEvent('foo', {
+          const event = new NativeKeyboardEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             key: 'Enter'
           });
           let ok = false;
@@ -1216,7 +1204,7 @@ describe('\'EventTarget\' class', () => {
           const customTarget = new EventTargetShim<{
             foo: KeyboardEvent;
           }>();
-          const event = new NativeKeyboardEvent('foo', {
+          const event = new NativeKeyboardEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             shiftKey: true
           });
           let ok = false;
@@ -1231,13 +1219,11 @@ describe('\'EventTarget\' class', () => {
       });
     });
     
-    const withNativeMouseEvent = NativeMouseEvent ? describe : describe.skip;
-    
-    withNativeMouseEvent('if native MouseEvent class is present', () => {
+    (NativeMouseEvent ? describe : describe.skip)('if native MouseEvent class is present', () => {
       describe('if the argument is a native MouseEvent object, the event object in the listener', () => {
         test('\'button\' property should be the same value as the original.', () => {
           const customTarget = new EventTargetShim<{ foo: MouseEvent; }>();
-          const event = new NativeMouseEvent('foo', {
+          const event = new NativeMouseEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             button: 1
           });
           let ok = false;
@@ -1252,7 +1238,7 @@ describe('\'EventTarget\' class', () => {
         
         test('\'getModifierState\' method should return the same value as the original.', () => {
           const customTarget = new EventTargetShim<{ foo: MouseEvent; }>();
-          const event = new NativeMouseEvent('foo', {
+          const event = new NativeMouseEvent!('foo', { // eslint-disable-line @typescript-eslint/no-non-null-assertion
             shiftKey: true
           });
           let ok = false;

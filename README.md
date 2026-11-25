@@ -206,7 +206,7 @@ const stream = fetchSse('https://api.example.com/events', {
     Authorization: 'Bearer <token>'
   },
   onChunk(chunk) {
-    console.log(chunk);
+    console.info(chunk);
   }
 });
 

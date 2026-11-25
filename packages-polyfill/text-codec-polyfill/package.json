@@ -1,14 +1,10 @@
 {
-  "name": "@fetchx/event-polyfill",
+  "name": "@fetchx/text-codec-polyfill",
   "version": "0.1.0-alpha.0",
-  "description": "A common purpose EventTarget and AbortController ponyfill & polyfill.",
+  "description": "A common purpose TextEncoder TextDecoder ponyfill & polyfill.",
   "keywords": [
-    "whatwg",
-    "dom-exception",
-    "event",
-    "event-target",
-    "abort-controller",
-    "abort-signal",
+    "text-encoder",
+    "text-decoder",
     "shim",
     "ponyfill",
     "polyfill"
@@ -22,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-polyfill/event-polyfill",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-polyfill/text-codec-polyfill",
   "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",
