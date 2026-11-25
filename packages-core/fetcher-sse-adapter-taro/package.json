@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-sse-adapter-taro",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0",
   "description": "Fetcher SSE adapter for taro.",
   "keywords": [],
   "license": "MIT",

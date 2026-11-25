@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-interceptor-headers",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Fetcher interceptor that adds headers.",
   "keywords": [],
   "license": "MIT",

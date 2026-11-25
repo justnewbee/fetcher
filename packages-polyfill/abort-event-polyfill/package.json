@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/abort-event-polyfill",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A common purpose EventTarget and AbortController ponyfill & polyfill.",
   "keywords": [
     "whatwg",
