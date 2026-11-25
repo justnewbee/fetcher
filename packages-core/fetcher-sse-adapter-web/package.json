@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/fetcher-sse-adapter-web",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "FetcherSse adapter for web.",
   "keywords": [],
   "license": "MIT",

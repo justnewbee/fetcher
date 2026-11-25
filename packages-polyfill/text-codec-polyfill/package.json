@@ -1,6 +1,6 @@
 {
   "name": "@fetchx/text-codec-polyfill",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0",
   "description": "A common purpose TextEncoder TextDecoder ponyfill & polyfill.",
   "keywords": [
     "text-encoder",
