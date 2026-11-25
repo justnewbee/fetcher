@@ -9,4 +9,4 @@
 1. 不是 `Promise`（这里封装了）
 2. 支持 timeout
 3. 支持 progress
-4. 支持 abort，但需要得到 xhr 对象，这里用 `AbortController` 做了封装
+4. 支持 abort，但需要得到 xhr 对象，这里用 `AbortControllerShim` 做了封装

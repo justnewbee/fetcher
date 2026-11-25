@@ -966,6 +966,46 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
 
+  packages-polyfill/abort-controller-polyfill:
+    dependencies:
+      '@babel/runtime':
+        specifier: '>=7.0.0'
+        version: 7.29.10
+      '@fetchx/event-polyfill':
+        specifier: workspace:^
+        version: link:../event-polyfill
+    devDependencies:
+      '@babel/cli':
+        specifier: ^7.29.7
+        version: 7.29.7(@babel/core@7.29.7(supports-color@7.2.0))
+      '@babel/core':
+        specifier: ^7.29.7
+        version: 7.29.7(supports-color@7.2.0)
+      '@babel/plugin-transform-runtime':
+        specifier: ^7.29.7
+        version: 7.29.7(@babel/core@7.29.7(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/preset-env':
+        specifier: ^7.29.7
+        version: 7.29.7(@babel/core@7.29.7(supports-color@7.2.0))(supports-color@7.2.0)
+      '@babel/preset-typescript':
+        specifier: ^7.29.7
+        version: 7.29.7(@babel/core@7.29.7(supports-color@7.2.0))(supports-color@7.2.0)
+      '@kcuf/ts-config':
+        specifier: ^0.2.0
+        version: 0.2.0(typescript@6.0.3)
+      '@vitest/coverage-v8':
+        specifier: ^5.1.1
+        version: 5.1.1(vitest@5.1.1)
+      rimraf:
+        specifier: ^6.1.4
+        version: 6.1.4
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: ^5.1.1
+        version: 5.1.1(@types/node@26.6.7)(@vitest/coverage-v8@5.1.1)(jsdom@31.0.1)(vite@8.3.4(@types/node@26.6.7)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))
+
   packages-polyfill/event-polyfill:
     dependencies:
       '@babel/runtime':

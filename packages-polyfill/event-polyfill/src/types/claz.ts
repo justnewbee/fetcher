@@ -265,12 +265,12 @@ export type TAnyEventTarget = IEventTargetClassType<Record<string, IEventClassTy
 /**
  * The event listener function.
  */
-export type TEventListenerCallback<Target extends TAnyEventTarget, EventType extends IEventClassType> = (this: Target, event: EventType) => void;
+export type TEventListenerCallbackFunction<Target extends TAnyEventTarget, EventType extends IEventClassType> = (this: Target, event: EventType) => void;
 
 /**
  * The event listener.
  */
-export type TEventListener<Target extends TAnyEventTarget, EventType extends IEventClassType> = TEventListenerCallback<Target, EventType> | IEventListenerObject<EventType>;
+export type TEventListener<Target extends TAnyEventTarget, EventType extends IEventClassType> = TEventListenerCallbackFunction<Target, EventType> | IEventListenerObject<EventType>;
 
 /**
  * The event data to dispatch in strict mode.
@@ -305,7 +305,7 @@ export interface IAbortSignal extends IEventTargetClassType<{
 }> {
   readonly aborted: boolean;
   readonly reason: unknown;
-  onabort: TEventListenerCallback<this, IEventClassType> | null;
+  onabort: TEventListenerCallbackFunction<this, IEventClassType> | null;
   throwIfAborted(): void;
 }
 

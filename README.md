@@ -67,7 +67,7 @@ const pending = api.withAbort.get('/api/slow');
 pending.abort();
 ```
 
-也可在完整配置中传入标准的 `AbortSignal`。
+也可在完整配置中传入标准的 `AbortSignalShim`。
 
 ### 拦截请求和响应
 
@@ -102,7 +102,7 @@ ejectResponse();
 | `headers` | 请求 Header |
 | `timeout` | 请求超时时间，单位为毫秒 |
 | `credentials` | 凭据策略；Web 跨域请求默认使用 `include`，同源请求默认使用 `same-origin` |
-| `signal` | `AbortSignal`，用于取消请求 |
+| `signal` | `AbortSignalShim`，用于取消请求 |
 | `onProgress` | 上传进度回调；Web 端配置后会通过 XHR 发送请求 |
 | `responseType` | 响应解析类型：`json`、`text`、`blob`、`blob-download`、`array-buffer` 或 `array-buffer-download` |
 | `downloadName` | 下载文件名 |
