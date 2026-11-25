@@ -1,7 +1,7 @@
 /**
  * The flags of listeners.
  */
-export const enum EListenerFlags {
+export const enum EEventListenerFlags {
   None = 0,
   Capture = 0x01,
   Passive = 0x02,

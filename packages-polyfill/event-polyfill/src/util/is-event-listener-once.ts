@@ -1,5 +1,5 @@
 import {
-  EListenerFlags
+  EEventListenerFlags
 } from '../enum';
 import {
   IEventListener
@@ -9,5 +9,5 @@ import {
  * Check if the given listener has the `once` flag or not.
  */
 export default function isEventListenerOnce(listener: IEventListener): boolean {
-  return Boolean(listener.flags & EListenerFlags.Once);
+  return Boolean(listener.flags & EEventListenerFlags.Once);
 }

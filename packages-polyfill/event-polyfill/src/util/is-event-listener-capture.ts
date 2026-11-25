@@ -1,5 +1,5 @@
 import {
-  EListenerFlags
+  EEventListenerFlags
 } from '../enum';
 import {
   IEventListener
@@ -9,5 +9,5 @@ import {
  * Check if the given listener has the `capture` flag or not.
  */
 export default function isEventListenerCapture(listener: IEventListener): boolean {
-  return Boolean(listener.flags & EListenerFlags.Capture);
+  return Boolean(listener.flags & EEventListenerFlags.Capture);
 }

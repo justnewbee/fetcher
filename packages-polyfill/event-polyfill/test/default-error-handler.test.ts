@@ -52,10 +52,10 @@ describe('The default error handler', () => {
       }
 
       assert.strictEqual(f.calls.length, 1, 'f should be called.');
-      assert.strictEqual(f.calls[0].arguments[0], error.message);
+      assert.strictEqual(f.calls[0]?.arguments[0], error.message);
       assert.strictEqual(f.calls[0].arguments[4], error);
       assert.strictEqual(consoleError.calls.length, 1, 'console.error should be called.');
-      assert.strictEqual(consoleError.calls[0].arguments[0], error);
+      assert.strictEqual(consoleError.calls[0]?.arguments[0], error);
     });
   });
   
@@ -88,7 +88,7 @@ describe('The default error handler', () => {
       process.removeListener('uncaughtException', f);
 
       assert.strictEqual(f.calls.length, 1, 'f should be called.');
-      assert.strictEqual(f.calls[0].arguments[0], error);
+      assert.strictEqual(f.calls[0]?.arguments[0], error);
     });
   });
 });

@@ -1,5 +1,5 @@
 {
-  "name": "@fetchx/event-target-polyfill",
+  "name": "@fetchx/event-polyfill",
   "version": "0.1.0-alpha.0",
   "description": "A common purpose EventTarget ponyfill & polyfill.",
   "keywords": [
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/justnewbee/fetcher.git"
   },
-  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-polyfill/event-target-polyfill",
+  "homepage": "https://github.com/justnewbee/fetcher/tree/main/packages-polyfill/event-polyfill",
   "bugs": "https://github.com/justnewbee/fetcher/issues",
   "author": {
     "name": "Jianchun Wang",

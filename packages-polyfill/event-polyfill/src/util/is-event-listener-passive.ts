@@ -1,5 +1,5 @@
 import {
-  EListenerFlags
+  EEventListenerFlags
 } from '../enum';
 import {
   IEventListener
@@ -9,5 +9,5 @@ import {
  * Check if the given listener has the `passive` flag or not.
  */
 export default function isEventListenerPassive(listener: IEventListener): boolean {
-  return Boolean(listener.flags & EListenerFlags.Passive);
+  return Boolean(listener.flags & EEventListenerFlags.Passive);
 }

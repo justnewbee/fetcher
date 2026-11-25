@@ -1,5 +1,5 @@
 import {
-  EListenerFlags
+  EEventListenerFlags
 } from '../enum';
 import {
   IEventListener
@@ -9,5 +9,5 @@ import {
  * Set the `removed` flag to the given listener.
  */
 export default function setEventListenerRemoved(listener: IEventListener): void {
-  listener.flags |= EListenerFlags.Removed;
+  listener.flags |= EEventListenerFlags.Removed;
 }

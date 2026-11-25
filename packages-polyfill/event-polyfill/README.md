@@ -1,17 +1,17 @@
-# @fetchx/event-target-polyfill
+# @fetchx/event-polyfill
 
 > Common purpose [EventTarget] ponyfill & polyfill. A fork of [event-target-shim] v6.0.2.
 
 ## How to use
 
 ```shell
-pnpm add --save @fetchx/event-target-polyfill
+pnpm add --save @fetchx/event-polyfill
 ```
 
 然后在项目初始化前：
 
 ```ts
-import eventTargetPolyfill from '@fetchx/event-target-polyfill';
+import eventTargetPolyfill from '@fetchx/event-polyfill';
 
 eventTargetPolyfill(); // 将 Polyfill globalThis.DOMException | Event | EventTarget
 ```
@@ -22,7 +22,7 @@ eventTargetPolyfill(); // 将 Polyfill globalThis.DOMException | Event | EventTa
 import {
   Event,
   EventTarget
-} from '@fetchx/event-target-polyfill';
+} from '@fetchx/event-polyfill';
 
 const target = new EventTarget();
 

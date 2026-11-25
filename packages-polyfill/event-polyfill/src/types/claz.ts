@@ -1,5 +1,5 @@
 import {
-  EListenerFlags
+  EEventListenerFlags
 } from '../enum';
 
 import {
@@ -217,7 +217,7 @@ export interface IEventListener {
    * The flags of this listener.
    * This is writable to add the removed flag.
    */
-  flags: EListenerFlags;
+  flags: EEventListenerFlags;
   /**
    * The `AbortSignal` to remove this listener.
    */
