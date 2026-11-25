@@ -7,7 +7,7 @@ import {
 
 import {
   EventTarget
-} from '../src/index';
+} from '../src';
 import {
   InvalidEventListener
 } from '../src/util';

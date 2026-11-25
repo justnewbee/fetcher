@@ -14,7 +14,7 @@ import {
   Event as EventShim,
   EventTarget as EventTargetShim,
   setWarningHandler
-} from '../src/index';
+} from '../src';
 
 import spy from './lib/spy';
 
@@ -65,6 +65,8 @@ describe('The default error handler', () => {
     // Detach the test runner's `uncaughtException` handlers while this test
     // case because it expects `uncaughtException` to be emitted.
     beforeEach(() => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       uncaughtExceptionListeners = process.listeners('uncaughtException');
       process.removeAllListeners('uncaughtException');
     });

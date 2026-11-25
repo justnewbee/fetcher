@@ -1,20 +1,21 @@
 import {
-  IEventInternalData
+  IEventClassType,
+  IEventInternal
 } from '../types';
 
 import assertType from './assert-type';
 
-const theMap = new WeakMap<object, IEventInternalData>();
+const theMap = new WeakMap<IEventClassType, IEventInternal>();
 
-export function mapOfEventInternalGet(event: unknown, name = 'this'): IEventInternalData {
-  const retv = theMap.get(event as object);
+export function mapOfEventInternalGet(event: IEventClassType, name = 'this'): IEventInternal {
+  const internal = theMap.get(event);
   
-  assertType(retv !== undefined, '\'%s\' must be an object that Event constructor created, but got another one: %o', name, event);
+  assertType(internal !== undefined, '\'%s\' must be an object that Event constructor created, but got another one: %o', name, event);
   
-  return retv;
+  return internal;
 }
 
-export function mapOfEventInternalSet(target: object, data: Omit<IEventInternalData, 'type'> & {
+export function mapOfEventInternalSet(target: IEventClassType, data: Omit<IEventInternal, 'type'> & {
   type: number | string;
 }): void {
   theMap.set(target, {

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-deprecated */
 import {
   IEventClassType,
+  IEventWrapperClassType,
   TEventLike,
   TEventWrapperOf,
   TEventWrapperConstructor
@@ -21,7 +22,7 @@ import EventShim from './event-shim';
  *
  * @see https://dom.spec.whatwg.org/#interface-event
  */
-export default class EventWrapper<EventType extends string> extends EventShim<EventType> {
+export default class EventWrapper<EventType extends string> extends EventShim<EventType> implements IEventWrapperClassType<EventType> {
   /**
    * Wrap a given event object to control states.
    */

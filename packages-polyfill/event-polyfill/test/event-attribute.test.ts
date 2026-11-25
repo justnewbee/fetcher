@@ -10,12 +10,12 @@ import {
 
 import {
   Event as EventShim,
-  EventTarget as EventTargetShim,
-  getEventAttributeValue,
-  setEventAttributeValue
+  EventTarget as EventTargetShim
 } from '../src';
 import {
-  InvalidAttributeHandler
+  InvalidAttributeHandler,
+  getEventAttributeValue,
+  setEventAttributeValue
 } from '../src/util';
 
 import spy from './lib/spy';
@@ -255,7 +255,6 @@ describe('Event attribute handlers', () => {
         handleEvent: spy()
       };
 
-      // @ts-expect-error -- the runtime accepts values the public types reject
       setEventAttributeValue(target, 'foo', f);
       target.dispatchEvent(new EventShim('foo'));
       

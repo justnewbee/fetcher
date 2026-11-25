@@ -2,13 +2,14 @@ import {
   TEventLike
 } from './event';
 import {
-  IEventClassType
+  IEventClassType,
+  IEventWrapperClassType
 } from './claz';
 
 /**
  * The wrapper type of the given event-like object.
  */
-export type TEventWrapperOf<T extends TEventLike> = IEventClassType<T['type']> & Omit<T, keyof IEventClassType>;
+export type TEventWrapperOf<T extends TEventLike> = IEventWrapperClassType<T['type']> & Omit<T, keyof IEventClassType>;
 
 /**
  * The constructor of an event wrapper.

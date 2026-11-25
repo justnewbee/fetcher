@@ -20,7 +20,7 @@ export type TEventLike = {
   readonly type: string;
 } & Partial<IEventClassType>;
 
-export interface IEventInternalData {
+export interface IEventInternal {
   /**
    * The value of `type` attribute.
    */

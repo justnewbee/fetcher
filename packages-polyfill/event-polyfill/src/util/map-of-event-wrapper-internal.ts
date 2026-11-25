@@ -6,12 +6,12 @@ import assertType from './assert-type';
 
 const theMap = new WeakMap<object, IEventWrapperInternalData>();
 
-export function mapOfEventWrapperInternalGet(event: unknown): IEventWrapperInternalData {
-  const retv = theMap.get(event as object);
+export function mapOfEventWrapperInternalGet(event: object): IEventWrapperInternalData {
+  const data = theMap.get(event);
   
-  assertType(retv !== undefined, '\'this\' is expected an Event object, but got %o', event);
+  assertType(data !== undefined, '\'this\' is expected an Event object, but got %o', event);
   
-  return retv;
+  return data;
 }
 
 export function mapOfEventWrapperInternalSet(target: object, data: IEventWrapperInternalData): void {

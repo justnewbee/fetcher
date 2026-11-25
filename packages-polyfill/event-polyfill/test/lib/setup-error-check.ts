@@ -6,15 +6,11 @@ import {
 } from 'vitest';
 
 import {
+  WarningInfo,
+  Warning,
   setErrorHandler,
   setWarningHandler
 } from '../../src';
-import {
-  IWarningInfo
-} from '../../src/types';
-import {
-  Warning
-} from '../../src/util';
 
 export interface IErrorChecker {
   assertError(errorOrMessage: Error | string): void;
@@ -23,7 +19,7 @@ export interface IErrorChecker {
 
 export default function setupErrorCheck(): IErrorChecker {
   const errors: Error[] = [];
-  const warnings: IWarningInfo[] = [];
+  const warnings: WarningInfo[] = [];
   
   beforeEach(() => {
     errors.length = 0;

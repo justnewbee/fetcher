@@ -4,16 +4,16 @@ export { default as EventTarget } from './shim/event-target-shim';
 export { default as AbortSignal } from './shim/abort-signal-shim';
 export { default as AbortController } from './shim/abort-controller-shim';
 
+export { default } from './polyfill';
+
 export {
-  getEventAttributeValue,
-  setEventAttributeValue,
+  Warning,
   setErrorHandler,
   setWarningHandler
 } from './util';
 
-export { default } from './polyfill';
-
 export type {
+  IWarningInfo as WarningInfo,
   TEventListenerCallbackFunction as CallbackFunction,
   TEventListener as EventListener,
   IEventListenerOptions as EventListenerOptions,

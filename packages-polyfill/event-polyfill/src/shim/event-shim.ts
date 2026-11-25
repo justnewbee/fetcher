@@ -2,7 +2,7 @@ import {
   IEventClassType,
   IEventTargetClassType,
   IEventInit,
-  IEventInternalData
+  IEventInternal
 } from '../types';
 import {
   CanceledInPassiveListener,
@@ -32,7 +32,7 @@ const IS_TRUSTED = false;
 /**
  * https://dom.spec.whatwg.org/#set-the-canceled-flag
  */
-function setCancelFlag(data: IEventInternalData): void {
+function setCancelFlag(data: IEventInternal): void {
   if (data.inPassiveListenerFlag) {
     CanceledInPassiveListener.warn();
     

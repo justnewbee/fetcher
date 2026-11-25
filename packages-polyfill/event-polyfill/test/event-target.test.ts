@@ -9,11 +9,10 @@ import {
   test
 } from 'vitest';
 
-import {
+import polyfill, {
   Event as EventShim,
   EventTarget as EventTargetShim
-} from '../src/index';
-import polyfill from '../src/polyfill';
+} from '../src';
 import {
   CanceledInPassiveListener,
   EventListenerWasDuplicated,

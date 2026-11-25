@@ -1,10 +1,12 @@
 import {
   CallbackFunction,
   Event,
-  EventTarget,
+  EventTarget
+} from '../../src';
+import {
   getEventAttributeValue,
   setEventAttributeValue
-} from '../../src';
+} from '../../src/util';
 
 /**
  * Stub for AbortSignal.

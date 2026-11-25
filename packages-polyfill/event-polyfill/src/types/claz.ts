@@ -120,6 +120,16 @@ export interface IEventClassType<EventType extends string = string> {
 }
 
 /**
+ * An implementation of the event wrapper.
+ *
+ * The wrapper behaves like an `Event`, and redirects the properties that are
+ * not part of the `Event` interface to the wrapped event-like object.
+ *
+ * @see https://dom.spec.whatwg.org/#interface-event
+ */
+export interface IEventWrapperClassType<EventType extends string = string> extends IEventClassType<EventType> {}
+
+/**
  * An implementation of the `EventTarget` interface.
  *
  * @see https://dom.spec.whatwg.org/#eventtarget

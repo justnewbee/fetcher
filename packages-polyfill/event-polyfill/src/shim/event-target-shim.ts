@@ -23,8 +23,8 @@ import {
   warnEventListenerDuplicate,
   invokeEventListenerCallback,
   mapOfEventInternalGet,
-  mapOfEventTargetInternalGet,
-  mapOfEventTargetInternalSet
+  mapOfEventTargetListenerListMapGet,
+  mapOfEventTargetListenerListMapSet
 } from '../util';
 
 import DOMExceptionShim from './dom-exception-shim';
@@ -40,7 +40,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
    * Initialize this instance.
    */
   constructor() {
-    mapOfEventTargetInternalSet(this);
+    mapOfEventTargetListenerListMapSet(this);
   }
   
   /**
@@ -67,7 +67,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   addEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IEventListenerAddOptions): void {
-    const listenerMap = mapOfEventTargetInternalGet(this);
+    const listenerMap = mapOfEventTargetListenerListMapGet(this);
     const {
       callback,
       capture,
@@ -124,7 +124,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   removeEventListener<Type extends string & keyof EventMap>(type0: Type, callback0?: TEventListener<this, EventMap[Type]> | null, options0?: boolean | IEventListenerOptions): void {
-    const listenerMap = mapOfEventTargetInternalGet(this);
+    const listenerMap = mapOfEventTargetListenerListMapGet(this);
     const {
       callback,
       capture,
@@ -149,7 +149,7 @@ export default class EventTargetShim<EventMap extends Record<string, IEventClass
   
   // Implementation
   dispatchEvent(e: TEventData<EventMap, Mode, string> | TFallbackEvent<Mode>): boolean {
-    const list = mapOfEventTargetInternalGet(this)[e.type];
+    const list = mapOfEventTargetListenerListMapGet(this)[e.type];
     
     if (list === undefined) {
       return true;
