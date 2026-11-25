@@ -1,5 +1,4 @@
 import {
-  AbortSignal,
   CallbackFunction,
   Event,
   EventTarget,
@@ -17,8 +16,8 @@ export default class AbortSignalStub extends EventTarget<{
   
   public reason: unknown = undefined;
   
-  public get onabort(): CallbackFunction<AbortSignal, Event> | null {
-    return getEventAttributeValue<AbortSignal, Event>(this, 'abort');
+  public get onabort(): CallbackFunction<EventTarget, Event> | null {
+    return getEventAttributeValue<EventTarget, Event>(this, 'abort');
   }
   
   public set onabort(value) {

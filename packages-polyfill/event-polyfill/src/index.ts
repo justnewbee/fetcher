@@ -14,13 +14,10 @@ export {
 export { default } from './polyfill';
 
 export type {
-  TEventListener as EventListener,
   TEventListenerCallbackFunction as CallbackFunction,
-  IEventListenerObject as CallbackObject,
-  IEventListenerOptions as Options,
-  IEventListenerAddOptions as AddOptions,
+  TEventListener as EventListener,
+  IEventListenerOptions as EventListenerOptions,
+  IEventListenerAddOptions as EventListenerAddOptions,
   TEventData as EventData,
-  TEventListenerFallback as FallbackEventListener,
-  TFallbackEvent as FallbackEvent,
   IEventInit as EventInit
 } from './types';

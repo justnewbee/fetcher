@@ -4,9 +4,11 @@
   "description": "A common purpose EventTarget ponyfill & polyfill.",
   "keywords": [
     "whatwg",
+    "dom-exception-shim",
     "event-shim",
     "event-target-shim",
-    "dom-exception-shim",
+    "abort-controller-shim",
+    "abort-signal-shim",
     "ponyfill",
     "polyfill"
   ],
