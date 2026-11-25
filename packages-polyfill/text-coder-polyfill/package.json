@@ -3,8 +3,9 @@
   "version": "0.1.0-alpha.0",
   "description": "A common purpose TextEncoder TextDecoder ponyfill & polyfill.",
   "keywords": [
-    "text-encoder-shim",
-    "text-decoder-shim",
+    "text-encoder",
+    "text-decoder",
+    "shim",
     "ponyfill",
     "polyfill"
   ],

@@ -1,14 +1,15 @@
 {
   "name": "@fetchx/event-polyfill",
   "version": "0.1.0-alpha.0",
-  "description": "A common purpose EventTarget ponyfill & polyfill.",
+  "description": "A common purpose EventTarget and AbortController ponyfill & polyfill.",
   "keywords": [
     "whatwg",
-    "dom-exception-shim",
-    "event-shim",
-    "event-target-shim",
-    "abort-controller-shim",
-    "abort-signal-shim",
+    "dom-exception",
+    "event",
+    "event-target",
+    "abort-controller",
+    "abort-signal",
+    "shim",
     "ponyfill",
     "polyfill"
   ],
